@@ -1,4 +1,6 @@
 {
   "creativeTab.cooking": "Cooking",
-  "item.everbloomdandaloo.tomato": "Tomato"
+  "creativeTab.aether": "Aether",
+  "item.everbloomdandaloo.tomato": "Tomato",
+  "block.everbloomdandaloo.tomato_bush": "TomatoBush"
 }

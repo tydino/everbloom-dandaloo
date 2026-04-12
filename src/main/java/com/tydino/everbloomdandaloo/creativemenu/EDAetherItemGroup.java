@@ -11,17 +11,16 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 
-public class EDCookingItemGroup {
-
+public class EDAetherItemGroup {
     public static final ResourceKey<CreativeModeTab> CreativeTab_key = ResourceKey.create(
-            BuiltInRegistries.CREATIVE_MODE_TAB.key(), Identifier.fromNamespaceAndPath(EverbloomDandaloo.MOD_ID, "cooking")
+            BuiltInRegistries.CREATIVE_MODE_TAB.key(), Identifier.fromNamespaceAndPath(EverbloomDandaloo.MOD_ID, "aether")
     );
     public static final CreativeModeTab CreativeTab = FabricCreativeModeTab.builder()
             .icon(() -> new ItemStack(EDCookingItemRegistry.Tomato))
-            .title(Component.translatable("creativeTab.cooking"))
+            .title(Component.translatable("creativeTab.aether"))
             .displayItems((params, output) -> {
 
-                //foods
+                //temp
                 output.accept(EDCookingItemRegistry.Tomato);
             })
             .build();

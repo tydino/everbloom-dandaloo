@@ -2,6 +2,7 @@ package com.tydino.everbloomdandaloo;
 
 import com.tydino.everbloomdandaloo.blocks.EDBlockRegistry;
 import com.tydino.everbloomdandaloo.creativemenu.EDItemGroups;
+import com.tydino.everbloomdandaloo.entities.EDEntityTypes;
 import com.tydino.everbloomdandaloo.items.EDItemRegistry;
 import net.fabricmc.api.ModInitializer;
 
@@ -10,6 +11,7 @@ import org.slf4j.LoggerFactory;
 
 /// ToDO
 /// update fabricloom
+/// add animations and finished ai to the dagger stabber
 
 /// utilize: https://docs.fabricmc.net/develop/items/first-item
 
@@ -20,9 +22,10 @@ public class EverbloomDandaloo implements ModInitializer {
 	@Override
 	public void onInitialize() {
 
-		EDBlockRegistry.onInitialize();
-		EDItemRegistry.onInitialize();
+		EDBlockRegistry.onInitialize(); //BLOCKS//
+		EDItemRegistry.onInitialize(); //ITEMS//
+		EDEntityTypes.onInitialize(); //ENTITIES//
 
-		EDItemGroups.onInitialize();
+		EDItemGroups.onInitialize(); //ITEMGROUPS//
 	}
 }
