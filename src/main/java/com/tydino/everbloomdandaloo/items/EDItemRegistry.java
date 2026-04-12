@@ -1,6 +1,7 @@
 package com.tydino.everbloomdandaloo.items;
 
 import com.tydino.everbloomdandaloo.EverbloomDandaloo;
+import com.tydino.everbloomdandaloo.items.aether.EDAetherItemRegistry;
 import com.tydino.everbloomdandaloo.items.cooking.EDCookingItemRegistry;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -16,6 +17,7 @@ public class EDItemRegistry {
     public static void onInitialize(){
 
         EDCookingItemRegistry.onInitialize();
+        EDAetherItemRegistry.onInitialize();
     }
 
     //generic register

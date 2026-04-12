@@ -1,6 +1,7 @@
 package com.tydino.everbloomdandaloo.creativemenu;
 
 import com.tydino.everbloomdandaloo.EverbloomDandaloo;
+import com.tydino.everbloomdandaloo.items.aether.EDAetherItemRegistry;
 import com.tydino.everbloomdandaloo.items.cooking.EDCookingItemRegistry;
 import net.fabricmc.fabric.api.creativetab.v1.FabricCreativeModeTab;
 import net.minecraft.core.Registry;
@@ -21,7 +22,7 @@ public class EDAetherItemGroup {
             .displayItems((params, output) -> {
 
                 //temp
-                output.accept(EDCookingItemRegistry.Tomato);
+                output.accept(EDAetherItemRegistry.SpawnDaggerStabber);
             })
             .build();
 

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "everbloomdandaloo:item/spawn_daggerstabber"
+  }
+}
