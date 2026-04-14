@@ -21,6 +21,13 @@ public class DaggerStabberEntityRenderer extends MobRenderer<DaggerStabberEntity
     }
 
     @Override
+    public void extractRenderState(DaggerStabberEntity entity, DaggerStabberRenderState state, float partialTicks) {
+        super.extractRenderState(entity, state, partialTicks);
+        state.idleAnimation.copyFrom(entity.idleAnimation);
+        state.blinkAnimation.copyFrom(entity.blinkAnimation);
+    }
+
+    @Override
     public Identifier getTextureLocation(DaggerStabberRenderState state) {
         return TEXTURE;
     }

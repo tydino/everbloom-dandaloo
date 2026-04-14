@@ -5,12 +5,15 @@ package com.tydino.everbloomdandaloo.client.entities.aether.dagger_stabber;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
+import net.minecraft.client.animation.KeyframeAnimation;
 import net.minecraft.client.model.EntityModel;
+import net.minecraft.client.model.animal.chicken.ChickenModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.resources.Identifier;
+import net.minecraft.util.Mth;
 
 public class daggerStabberModel extends EntityModel<DaggerStabberRenderState> {
 	// This layer location should be baked with EntityRendererProvider.Context in the entity renderer and passed into this model's constructor
@@ -41,6 +44,9 @@ public class daggerStabberModel extends EntityModel<DaggerStabberRenderState> {
 	private final ModelPart rightrighttoe;
 	private final ModelPart rightlefttoe;
 
+	final KeyframeAnimation idle;
+	final KeyframeAnimation blink;
+
 	public daggerStabberModel(ModelPart root) {
 		super(root);
 		this.body = root.getChild("body");
@@ -68,6 +74,9 @@ public class daggerStabberModel extends EntityModel<DaggerStabberRenderState> {
 		this.rightthigh = this.rightshin.getChild("rightthigh");
 		this.rightrighttoe = this.rightfoot.getChild("rightrighttoe");
 		this.rightlefttoe = this.rightfoot.getChild("rightlefttoe");
+
+		this.idle = DaggerStabberAnimations.IDLE.bake(root);
+		this.blink = DaggerStabberAnimations.BLINK.bake(root);
 	}
 
 	public static LayerDefinition createBodyLayer() {
@@ -131,5 +140,20 @@ public class daggerStabberModel extends EntityModel<DaggerStabberRenderState> {
 		PartDefinition rightlefttoe = rightfoot.addOrReplaceChild("rightlefttoe", CubeListBuilder.create().texOffs(45, 37).addBox(0.0F, 0.0F, -2.0F, 1.0F, 1.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 0.0F, -3.0F));
 
 		return LayerDefinition.create(meshdefinition, 52, 42);
+	}
+
+	@Override
+	public void setupAnim(DaggerStabberRenderState state) {
+		super.setupAnim(state);
+
+		if(state.idleAnimation.isStarted()){
+			this.idle.apply(state.idleAnimation, state.ageInTicks);
+		}
+		if(state.blinkAnimation.isStarted()){
+			this.blink.apply(state.blinkAnimation, state.ageInTicks);
+		}
+
+		this.head.xRot = state.xRot * (float) (Math.PI / 180.0);
+		this.head.yRot = state.yRot * (float) (Math.PI / 180.0);
 	}
 }
