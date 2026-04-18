@@ -146,11 +146,12 @@ public class daggerStabberModel extends EntityModel<DaggerStabberRenderState> {
 	public void setupAnim(DaggerStabberRenderState state) {
 		super.setupAnim(state);
 
-		if(state.idleAnimation.isStarted()){
-			this.idle.apply(state.idleAnimation, state.ageInTicks);
-		}
 		if(state.blinkAnimation.isStarted()){
 			this.blink.apply(state.blinkAnimation, state.ageInTicks);
+		}
+
+		if(state.idleAnimation.isStarted()){
+			this.idle.apply(state.idleAnimation, state.ageInTicks);
 		}
 
 		this.head.xRot = state.xRot * (float) (Math.PI / 180.0);

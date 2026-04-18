@@ -85,7 +85,6 @@ public class DaggerStabberEntity extends PathfinderMob {
                     setIdle(false);
                 }
             }else {
-                EverbloomDandaloo.LOGGER.info("idle true");
                 setIdle(true);
                 idleCount = 20;
             }
@@ -95,11 +94,8 @@ public class DaggerStabberEntity extends PathfinderMob {
                     setBlink(false);
                 }
             }else {
-                if(this.random.nextInt(10)==1) {
-                    EverbloomDandaloo.LOGGER.info("blink true");
-                    setBlink(true);
-                    blinkCount = 15+this.random.nextInt(20);
-                }
+                setBlink(true);
+                blinkCount = 40;
             }
         }
     }
@@ -124,14 +120,14 @@ public class DaggerStabberEntity extends PathfinderMob {
     protected void addAdditionalSaveData(ValueOutput output) {
         super.addAdditionalSaveData(output);
         output.putInt("idle_count", idleCount);
-        output.putInt("blink_count", idleCount);
+        output.putInt("blink_count", blinkCount);
     }
 
     @Override
     protected void readAdditionalSaveData(ValueInput input) {
         super.readAdditionalSaveData(input);
         idleCount = input.getInt("idle_count").orElse(0);
-        idleCount = input.getInt("blink_count").orElse(0);
+        blinkCount = input.getInt("blink_count").orElse(0);
         setIdle(idleCount>0);
         setBlink(blinkCount>0);
     }
