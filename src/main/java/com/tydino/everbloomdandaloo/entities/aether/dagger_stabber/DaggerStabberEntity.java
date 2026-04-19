@@ -6,24 +6,27 @@ import com.tydino.everbloomdandaloo.items.cooking.EDCookingItemRegistry;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.world.entity.AnimationState;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.PathfinderMob;
+import net.minecraft.util.TimeUtil;
+import net.minecraft.util.valueproviders.UniformInt;
+import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
-import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
-import net.minecraft.world.entity.ai.goal.RandomStrollGoal;
-import net.minecraft.world.entity.ai.goal.TemptGoal;
+import net.minecraft.world.entity.ai.goal.*;
+import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
+import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
+import net.minecraft.world.entity.ai.goal.target.ResetUniversalAngerTargetGoal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
+import org.jspecify.annotations.Nullable;
 
-import java.util.List;
+public class DaggerStabberEntity extends PathfinderMob implements NeutralMob {
 
-public class DaggerStabberEntity extends PathfinderMob {
+    private static final EntityDataAccessor<Long> DATA_ANGER_END_TIME = SynchedEntityData.defineId(DaggerStabberEntity.class, EntityDataSerializers.LONG);
+    private static final UniformInt PERSISTENT_ANGER_TIME = TimeUtil.rangeOfSeconds(20, 60);
+    private EntityReference<LivingEntity> persistentAngerTarget;
 
     static final EntityDataAccessor<Boolean> IDLE = SynchedEntityData.defineId(DaggerStabberEntity.class, EntityDataSerializers.BOOLEAN);
     public final AnimationState idleAnimation = new AnimationState();
@@ -45,15 +48,20 @@ public class DaggerStabberEntity extends PathfinderMob {
         return PathfinderMob.createMobAttributes()
                 .add(Attributes.MAX_HEALTH, 10)
                 .add(Attributes.TEMPT_RANGE, 10)
+                .add(Attributes.ATTACK_DAMAGE, 3)
                 .add(Attributes.MOVEMENT_SPEED, 0.2);
     }
 
     @Override
     protected void registerGoals() {
-        this.goalSelector.addGoal(0, new TemptGoal(this, 1, Ingredient.of(EDCookingItemRegistry.Tomato), false));
-        this.goalSelector.addGoal(1, new RandomStrollGoal(this, 1));
-        this.goalSelector.addGoal(2, new LookAtPlayerGoal(this, Player.class,3 ));
-        this.goalSelector.addGoal(3, new RandomLookAroundGoal(this));
+        this.goalSelector.addGoal(0, new MeleeAttackGoal(this, 1.0, true));
+        this.goalSelector.addGoal(1, new TemptGoal(this, 1, Ingredient.of(EDCookingItemRegistry.Tomato), false));
+        this.goalSelector.addGoal(2, new RandomStrollGoal(this, 1));
+        this.goalSelector.addGoal(3, new LookAtPlayerGoal(this, Player.class,3 ));
+        this.goalSelector.addGoal(4, new RandomLookAroundGoal(this));
+        this.targetSelector.addGoal(1, new HurtByTargetGoal(this).setAlertOthers());
+        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal(this, Player.class, 10, true, false, this::isAngryAt));
+        this.targetSelector.addGoal(3, new ResetUniversalAngerTargetGoal<>(this, true));
     }
 
     @Override
@@ -61,6 +69,7 @@ public class DaggerStabberEntity extends PathfinderMob {
         super.defineSynchedData(entityData);
         entityData.define(IDLE, false);
         entityData.define(BLINK, false);
+        entityData.define(DATA_ANGER_END_TIME, -1L);
     }
 
     @Override
@@ -121,6 +130,7 @@ public class DaggerStabberEntity extends PathfinderMob {
         super.addAdditionalSaveData(output);
         output.putInt("idle_count", idleCount);
         output.putInt("blink_count", blinkCount);
+        this.addPersistentAngerSaveData(output);
     }
 
     @Override
@@ -130,5 +140,21 @@ public class DaggerStabberEntity extends PathfinderMob {
         blinkCount = input.getInt("blink_count").orElse(0);
         setIdle(idleCount>0);
         setBlink(blinkCount>0);
+        this.readPersistentAngerSaveData(this.level(), input);
     }
+
+    @Override
+    public long getPersistentAngerEndTime() {return this.entityData.get(DATA_ANGER_END_TIME);}
+
+    @Override
+    public void setPersistentAngerEndTime(long endTime) {this.entityData.set(DATA_ANGER_END_TIME, endTime);}
+
+    @Override
+    public @Nullable EntityReference<LivingEntity> getPersistentAngerTarget() {return this.persistentAngerTarget;}
+
+    @Override
+    public void setPersistentAngerTarget(@Nullable EntityReference<LivingEntity> persistentAngerTarget) {this.persistentAngerTarget = persistentAngerTarget;}
+
+    @Override
+    public void startPersistentAngerTimer() {this.setTimeToRemainAngry(PERSISTENT_ANGER_TIME.sample(this.random));}
 }
