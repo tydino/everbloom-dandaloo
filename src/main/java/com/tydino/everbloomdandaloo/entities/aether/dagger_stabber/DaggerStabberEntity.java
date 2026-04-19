@@ -36,7 +36,7 @@ public class DaggerStabberEntity extends PathfinderMob implements NeutralMob {
     public final AnimationState blinkAnimation = new AnimationState();
     int blinkCount;
 
-    public final EntityDataAccessor<Boolean> STAB = SynchedEntityData.defineId(DaggerStabberEntity.class, EntityDataSerializers.BOOLEAN);
+    static final EntityDataAccessor<Boolean> STAB = SynchedEntityData.defineId(DaggerStabberEntity.class, EntityDataSerializers.BOOLEAN);
     public final AnimationState StabAnimation = new AnimationState();
     int StabCount;
     public final AnimationState noStabAnimation = new AnimationState();
@@ -92,7 +92,7 @@ public class DaggerStabberEntity extends PathfinderMob implements NeutralMob {
         if(updatedItems == STAB){
             StabAnimation.animateWhen(isStab(), this.tickCount);
         }else{
-            noStabAnimation.animateWhen(!isStab(), this.tickCount);
+            //noStabAnimation.animateWhen(!isStab(), this.tickCount);
         }
     }
 
