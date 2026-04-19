@@ -24,15 +24,15 @@ public class DaggerStabberAnimations {
             ))
             .addAnimation("neck", new AnimationChannel(
                     AnimationChannel.Targets.POSITION,
-                    new Keyframe(0f, KeyframeAnimations.degreeVec(0,0,0),AnimationChannel.Interpolations.LINEAR),
-                    new Keyframe(0.13f, KeyframeAnimations.degreeVec(0,-0.75f,0),AnimationChannel.Interpolations.LINEAR),
-                    new Keyframe(0.25f, KeyframeAnimations.degreeVec(0,-1,0),AnimationChannel.Interpolations.LINEAR),
-                    new Keyframe(0.38f, KeyframeAnimations.degreeVec(0,-0.75f,0),AnimationChannel.Interpolations.LINEAR),
-                    new Keyframe(0.5f, KeyframeAnimations.degreeVec(0,0,0),AnimationChannel.Interpolations.LINEAR),
-                    new Keyframe(0.63f, KeyframeAnimations.degreeVec(0,0.75f,0),AnimationChannel.Interpolations.LINEAR),
-                    new Keyframe(0.75f, KeyframeAnimations.degreeVec(0,1,0),AnimationChannel.Interpolations.LINEAR),
-                    new Keyframe(0.88f, KeyframeAnimations.degreeVec(0,0.75f,0),AnimationChannel.Interpolations.LINEAR),
-                    new Keyframe(1f, KeyframeAnimations.degreeVec(0,0,0),AnimationChannel.Interpolations.LINEAR)
+                    new Keyframe(0f, KeyframeAnimations.posVec(0,0,0),AnimationChannel.Interpolations.LINEAR),
+                    new Keyframe(0.13f, KeyframeAnimations.posVec(0,-0.75f,0),AnimationChannel.Interpolations.LINEAR),
+                    new Keyframe(0.25f, KeyframeAnimations.posVec(0,-1,0),AnimationChannel.Interpolations.LINEAR),
+                    new Keyframe(0.38f, KeyframeAnimations.posVec(0,-0.75f,0),AnimationChannel.Interpolations.LINEAR),
+                    new Keyframe(0.5f, KeyframeAnimations.posVec(0,0,0),AnimationChannel.Interpolations.LINEAR),
+                    new Keyframe(0.63f, KeyframeAnimations.posVec(0,0.75f,0),AnimationChannel.Interpolations.LINEAR),
+                    new Keyframe(0.75f, KeyframeAnimations.posVec(0,1,0),AnimationChannel.Interpolations.LINEAR),
+                    new Keyframe(0.88f, KeyframeAnimations.posVec(0,0.75f,0),AnimationChannel.Interpolations.LINEAR),
+                    new Keyframe(1f, KeyframeAnimations.posVec(0,0,0),AnimationChannel.Interpolations.LINEAR)
             ))
             .addAnimation("head", new AnimationChannel(
                     AnimationChannel.Targets.ROTATION,
@@ -67,11 +67,11 @@ public class DaggerStabberAnimations {
             ))
             .addAnimation("rightear", new AnimationChannel(
                     AnimationChannel.Targets.POSITION,
-                    new Keyframe(0f, KeyframeAnimations.degreeVec(0f,0f,0f),AnimationChannel.Interpolations.LINEAR),
-                    new Keyframe(0.25f, KeyframeAnimations.degreeVec(0f,-0.75f,0f),AnimationChannel.Interpolations.LINEAR),
-                    new Keyframe(0.75f, KeyframeAnimations.degreeVec(0f,-1f,0f),AnimationChannel.Interpolations.LINEAR),
-                    new Keyframe(0.88f, KeyframeAnimations.degreeVec(0f,-0.75f,0f),AnimationChannel.Interpolations.LINEAR),
-                    new Keyframe(1f, KeyframeAnimations.degreeVec(0f,0f,0f),AnimationChannel.Interpolations.LINEAR)
+                    new Keyframe(0f, KeyframeAnimations.posVec(0f,0f,0f),AnimationChannel.Interpolations.LINEAR),
+                    new Keyframe(0.25f, KeyframeAnimations.posVec(0f,-0.75f,0f),AnimationChannel.Interpolations.LINEAR),
+                    new Keyframe(0.75f, KeyframeAnimations.posVec(0f,-1f,0f),AnimationChannel.Interpolations.LINEAR),
+                    new Keyframe(0.88f, KeyframeAnimations.posVec(0f,-0.75f,0f),AnimationChannel.Interpolations.LINEAR),
+                    new Keyframe(1f, KeyframeAnimations.posVec(0f,0f,0f),AnimationChannel.Interpolations.LINEAR)
             ))
             .addAnimation("leftear", new AnimationChannel(
                     AnimationChannel.Targets.ROTATION,
@@ -86,25 +86,25 @@ public class DaggerStabberAnimations {
             ))
             .addAnimation("leftear", new AnimationChannel(
                     AnimationChannel.Targets.POSITION,
-                    new Keyframe(0f, KeyframeAnimations.degreeVec(0f,0f,0f),AnimationChannel.Interpolations.LINEAR),
-                    new Keyframe(0.25f, KeyframeAnimations.degreeVec(0f,-0.75f,0f),AnimationChannel.Interpolations.LINEAR),
-                    new Keyframe(0.75f, KeyframeAnimations.degreeVec(0f,-1f,0f),AnimationChannel.Interpolations.LINEAR),
-                    new Keyframe(0.88f, KeyframeAnimations.degreeVec(0f,-0.75f,0f),AnimationChannel.Interpolations.LINEAR),
-                    new Keyframe(1f, KeyframeAnimations.degreeVec(0f,0f,0f),AnimationChannel.Interpolations.LINEAR)
+                    new Keyframe(0f, KeyframeAnimations.posVec(0f,0f,0f),AnimationChannel.Interpolations.LINEAR),
+                    new Keyframe(0.25f, KeyframeAnimations.posVec(0f,-0.75f,0f),AnimationChannel.Interpolations.LINEAR),
+                    new Keyframe(0.75f, KeyframeAnimations.posVec(0f,-1f,0f),AnimationChannel.Interpolations.LINEAR),
+                    new Keyframe(0.88f, KeyframeAnimations.posVec(0f,-0.75f,0f),AnimationChannel.Interpolations.LINEAR),
+                    new Keyframe(1f, KeyframeAnimations.posVec(0f,0f,0f),AnimationChannel.Interpolations.LINEAR)
             )).build();
     public static final AnimationDefinition BLINK = AnimationDefinition.Builder.withLength(0.75f)
             .addAnimation("eyelids", new AnimationChannel(
                     AnimationChannel.Targets.POSITION,
-                    new Keyframe(0f, KeyframeAnimations.degreeVec(0f,0f,0f),AnimationChannel.Interpolations.LINEAR),
-                    new Keyframe(0.25f, KeyframeAnimations.degreeVec(0f,-2f,0f),AnimationChannel.Interpolations.LINEAR),
-                    new Keyframe(0.5f, KeyframeAnimations.degreeVec(0f,-2f,0f),AnimationChannel.Interpolations.LINEAR),
-                    new Keyframe(0.75f, KeyframeAnimations.degreeVec(0f,0f,0f),AnimationChannel.Interpolations.LINEAR)
+                    new Keyframe(0f, KeyframeAnimations.posVec(0f,0f,0f),AnimationChannel.Interpolations.LINEAR),
+                    new Keyframe(0.25f, KeyframeAnimations.posVec(0f,-2f,0f),AnimationChannel.Interpolations.LINEAR),
+                    new Keyframe(0.5f, KeyframeAnimations.posVec(0f,-2f,0f),AnimationChannel.Interpolations.LINEAR),
+                    new Keyframe(0.75f, KeyframeAnimations.posVec(0f,0f,0f),AnimationChannel.Interpolations.LINEAR)
             ))
             .addAnimation("eyelids", new AnimationChannel(
                     AnimationChannel.Targets.SCALE,
-                    new Keyframe(0f, KeyframeAnimations.degreeVec(0f,0f,0f),AnimationChannel.Interpolations.LINEAR),
-                    new Keyframe(0.25f, KeyframeAnimations.degreeVec(0f,2f,0f),AnimationChannel.Interpolations.LINEAR),
-                    new Keyframe(0.5f, KeyframeAnimations.degreeVec(0f,2f,0f),AnimationChannel.Interpolations.LINEAR),
-                    new Keyframe(0.75f, KeyframeAnimations.degreeVec(0f,0f,0f),AnimationChannel.Interpolations.LINEAR)
+                    new Keyframe(0f, KeyframeAnimations.scaleVec(1f,1f,1f),AnimationChannel.Interpolations.LINEAR),
+                    new Keyframe(0.25f, KeyframeAnimations.scaleVec(1f,2f,1f),AnimationChannel.Interpolations.LINEAR),
+                    new Keyframe(0.5f, KeyframeAnimations.scaleVec(1f,2f,1f),AnimationChannel.Interpolations.LINEAR),
+                    new Keyframe(0.75f, KeyframeAnimations.scaleVec(1f,1f,1f),AnimationChannel.Interpolations.LINEAR)
             )).build();
 }

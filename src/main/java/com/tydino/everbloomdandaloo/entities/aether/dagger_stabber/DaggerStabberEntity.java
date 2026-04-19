@@ -95,7 +95,7 @@ public class DaggerStabberEntity extends PathfinderMob {
                 }
             }else {
                 setBlink(true);
-                blinkCount = 40;
+                blinkCount = 40+ random.nextInt(20, 40);
             }
         }
     }
