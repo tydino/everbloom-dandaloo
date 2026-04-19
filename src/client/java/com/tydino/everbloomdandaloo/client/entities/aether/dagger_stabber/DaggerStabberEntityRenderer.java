@@ -25,6 +25,8 @@ public class DaggerStabberEntityRenderer extends MobRenderer<DaggerStabberEntity
         super.extractRenderState(entity, state, partialTicks);
         state.idleAnimation.copyFrom(entity.idleAnimation);
         state.blinkAnimation.copyFrom(entity.blinkAnimation);
+        state.noStabAniamtion.copyFrom(entity.noStabAnimation);
+        state.StabAnimation.copyFrom(entity.StabAnimation);
     }
 
     @Override

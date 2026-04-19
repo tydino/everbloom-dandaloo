@@ -46,6 +46,8 @@ public class daggerStabberModel extends EntityModel<DaggerStabberRenderState> {
 
 	final KeyframeAnimation idle;
 	final KeyframeAnimation blink;
+	final KeyframeAnimation stab;
+	final KeyframeAnimation noStab;
 
 	public daggerStabberModel(ModelPart root) {
 		super(root);
@@ -77,6 +79,8 @@ public class daggerStabberModel extends EntityModel<DaggerStabberRenderState> {
 
 		this.idle = DaggerStabberAnimations.IDLE.bake(root);
 		this.blink = DaggerStabberAnimations.BLINK.bake(root);
+		this.stab = DaggerStabberAnimations.STAB.bake(root);
+		this.noStab = DaggerStabberAnimations.NOSTAB.bake(root);
 	}
 
 	public static LayerDefinition createBodyLayer() {
@@ -152,6 +156,14 @@ public class daggerStabberModel extends EntityModel<DaggerStabberRenderState> {
 
 		if(state.idleAnimation.isStarted()){
 			this.idle.apply(state.idleAnimation, state.ageInTicks);
+		}
+
+		if(state.StabAnimation.isStarted()){
+			this.stab.apply(state.StabAnimation, state.ageInTicks);
+		}
+
+		if(state.noStabAniamtion.isStarted()){
+			this.noStab.apply(state.noStabAniamtion, state.ageInTicks);
 		}
 
 		this.head.xRot = state.xRot * (float) (Math.PI / 180.0);

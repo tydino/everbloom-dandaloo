@@ -36,6 +36,12 @@ public class DaggerStabberEntity extends PathfinderMob implements NeutralMob {
     public final AnimationState blinkAnimation = new AnimationState();
     int blinkCount;
 
+    public final EntityDataAccessor<Boolean> STAB = SynchedEntityData.defineId(DaggerStabberEntity.class, EntityDataSerializers.BOOLEAN);
+    public final AnimationState StabAnimation = new AnimationState();
+    int StabCount;
+    public final AnimationState noStabAnimation = new AnimationState();
+    int noStabCount;
+
     public DaggerStabberEntity(Level world){
         this(AetherEntityTypes.DaggerStabber, world);
     }
@@ -69,6 +75,7 @@ public class DaggerStabberEntity extends PathfinderMob implements NeutralMob {
         super.defineSynchedData(entityData);
         entityData.define(IDLE, false);
         entityData.define(BLINK, false);
+        entityData.define(STAB, false);
         entityData.define(DATA_ANGER_END_TIME, -1L);
     }
 
@@ -81,6 +88,11 @@ public class DaggerStabberEntity extends PathfinderMob implements NeutralMob {
         }
         if(updatedItems == BLINK){
             blinkAnimation.animateWhen(isBlink(), this.tickCount);
+        }
+        if(updatedItems == STAB){
+            StabAnimation.animateWhen(isStab(), this.tickCount);
+        }else{
+            noStabAnimation.animateWhen(!isStab(), this.tickCount);
         }
     }
 
@@ -106,6 +118,17 @@ public class DaggerStabberEntity extends PathfinderMob implements NeutralMob {
                 setBlink(true);
                 blinkCount = 40+ random.nextInt(20, 40);
             }
+
+            if(isStab()){
+                if(StabCount--<=0){
+                    setStab(false);
+                }
+            }else if(isAngry()){
+                setStab(true);
+                StabCount = 20;
+            }else{
+                noStabCount=20;
+            }
         }
     }
 
@@ -125,11 +148,21 @@ public class DaggerStabberEntity extends PathfinderMob implements NeutralMob {
         entityData.set(BLINK, blink);
     }
 
+    public boolean isStab(){
+        return entityData.get(STAB);
+    }
+
+    void setStab(boolean stab){
+        entityData.set(STAB, stab);
+    }
+
     @Override
     protected void addAdditionalSaveData(ValueOutput output) {
         super.addAdditionalSaveData(output);
         output.putInt("idle_count", idleCount);
         output.putInt("blink_count", blinkCount);
+        output.putInt("stab_count", StabCount);
+        output.putInt("nostab_count", noStabCount);
         this.addPersistentAngerSaveData(output);
     }
 
@@ -138,8 +171,11 @@ public class DaggerStabberEntity extends PathfinderMob implements NeutralMob {
         super.readAdditionalSaveData(input);
         idleCount = input.getInt("idle_count").orElse(0);
         blinkCount = input.getInt("blink_count").orElse(0);
+        StabCount = input.getInt("stab_count").orElse(0);
+        noStabCount = input.getInt("nostab_count").orElse(0);
         setIdle(idleCount>0);
         setBlink(blinkCount>0);
+        setStab(StabCount>0);
         this.readPersistentAngerSaveData(this.level(), input);
     }
 

@@ -11,7 +11,7 @@ import org.slf4j.LoggerFactory;
 
 /// ToDO
 /// update fabricloom
-/// add animations and finished ai to the dagger stabber
+/// finish implementing the STAB varible for dagger stabber
 /// add the image for the aether creative tab
 
 /// utilize: https://docs.fabricmc.net/develop/items/first-item

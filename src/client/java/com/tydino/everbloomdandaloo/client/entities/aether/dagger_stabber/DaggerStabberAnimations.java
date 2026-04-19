@@ -107,4 +107,96 @@ public class DaggerStabberAnimations {
                     new Keyframe(0.5f, KeyframeAnimations.scaleVec(1f,2f,1f),AnimationChannel.Interpolations.LINEAR),
                     new Keyframe(0.75f, KeyframeAnimations.scaleVec(1f,1f,1f),AnimationChannel.Interpolations.LINEAR)
             )).build();
+    public static final AnimationDefinition STAB = AnimationDefinition.Builder.withLength(1f)
+            .addAnimation("head", new AnimationChannel(
+                    AnimationChannel.Targets.ROTATION,
+                    new Keyframe(0f, KeyframeAnimations.degreeVec(0f,0f,0f),AnimationChannel.Interpolations.LINEAR),
+                    new Keyframe(0.13f, KeyframeAnimations.degreeVec(15f,0f,0f),AnimationChannel.Interpolations.LINEAR),
+                    new Keyframe(0.25f, KeyframeAnimations.degreeVec(-20f,0f,0f),AnimationChannel.Interpolations.LINEAR),
+                    new Keyframe(0.75f, KeyframeAnimations.degreeVec(-20f,0f,0f),AnimationChannel.Interpolations.LINEAR),
+                    new Keyframe(1f, KeyframeAnimations.degreeVec(0f,0f,0f),AnimationChannel.Interpolations.LINEAR)
+            ))
+            .addAnimation("stabber1", new AnimationChannel(
+                    AnimationChannel.Targets.POSITION,
+                    new Keyframe(0.25f, KeyframeAnimations.posVec(0f,0f,0f),AnimationChannel.Interpolations.LINEAR),
+                    new Keyframe(0.38f, KeyframeAnimations.posVec(0f,0f,-6f),AnimationChannel.Interpolations.LINEAR),
+                    new Keyframe(1f, KeyframeAnimations.posVec(0f,0f,0f),AnimationChannel.Interpolations.LINEAR)
+            ))
+            .addAnimation("stabber2", new AnimationChannel(
+                    AnimationChannel.Targets.POSITION,
+                    new Keyframe(0.25f, KeyframeAnimations.posVec(0f,0f,0f),AnimationChannel.Interpolations.LINEAR),
+                    new Keyframe(0.5f, KeyframeAnimations.posVec(0f,0f,-5f),AnimationChannel.Interpolations.LINEAR),
+                    new Keyframe(1f, KeyframeAnimations.posVec(0f,0f,0f),AnimationChannel.Interpolations.LINEAR)
+            ))
+            .addAnimation("stabber3", new AnimationChannel(
+                    AnimationChannel.Targets.POSITION,
+                    new Keyframe(0.25f, KeyframeAnimations.posVec(0f,0f,0f),AnimationChannel.Interpolations.LINEAR),
+                    new Keyframe(0.63f, KeyframeAnimations.posVec(0f,0f,-5f),AnimationChannel.Interpolations.LINEAR),
+                    new Keyframe(1f, KeyframeAnimations.posVec(0f,0f,0f),AnimationChannel.Interpolations.LINEAR)
+            ))
+            .addAnimation("stabber4", new AnimationChannel(
+                    AnimationChannel.Targets.POSITION,
+                    new Keyframe(0.25f, KeyframeAnimations.posVec(0f,0f,0f),AnimationChannel.Interpolations.LINEAR),
+                    new Keyframe(0.75f, KeyframeAnimations.posVec(0f,0f,-5f),AnimationChannel.Interpolations.LINEAR),
+                    new Keyframe(1f, KeyframeAnimations.posVec(0f,0f,0f),AnimationChannel.Interpolations.LINEAR)
+            )).build();
+    public static final AnimationDefinition NOSTAB = AnimationDefinition.Builder.withLength(1f)
+            .addAnimation("toplip", new AnimationChannel(
+                    AnimationChannel.Targets.POSITION,
+                    new Keyframe(0f, KeyframeAnimations.posVec(0f,0f,0f), AnimationChannel.Interpolations.LINEAR),
+                    new Keyframe(0.25f, KeyframeAnimations.posVec(0f,-1.5f,0f), AnimationChannel.Interpolations.LINEAR),
+                    new Keyframe(0.5f, KeyframeAnimations.posVec(0f,-1f,0f), AnimationChannel.Interpolations.LINEAR),
+                    new Keyframe(0.75f, KeyframeAnimations.posVec(0f,-1.5f,0f), AnimationChannel.Interpolations.LINEAR),
+                    new Keyframe(1f, KeyframeAnimations.posVec(0f,0f,0f), AnimationChannel.Interpolations.LINEAR)
+            ))
+            .addAnimation("toplip", new AnimationChannel(
+                    AnimationChannel.Targets.SCALE,
+                    new Keyframe(0f, KeyframeAnimations.scaleVec(1f,1f,1f), AnimationChannel.Interpolations.LINEAR),
+                    new Keyframe(0.25f, KeyframeAnimations.scaleVec(1f,1.5f,1f), AnimationChannel.Interpolations.LINEAR),
+                    new Keyframe(0.75f, KeyframeAnimations.scaleVec(1f,1.5f,1f), AnimationChannel.Interpolations.LINEAR),
+                    new Keyframe(1f, KeyframeAnimations.scaleVec(1f,1f,1f), AnimationChannel.Interpolations.LINEAR)
+            ))
+            .addAnimation("leftlip", new AnimationChannel(
+                    AnimationChannel.Targets.POSITION,
+                    new Keyframe(0f, KeyframeAnimations.posVec(0f,0f,0f), AnimationChannel.Interpolations.LINEAR),
+                    new Keyframe(0.25f, KeyframeAnimations.posVec(0f,1.5f,0f), AnimationChannel.Interpolations.LINEAR),
+                    new Keyframe(0.75f, KeyframeAnimations.posVec(0f,1.5f,0f), AnimationChannel.Interpolations.LINEAR),
+                    new Keyframe(1f, KeyframeAnimations.posVec(0f,0f,0f), AnimationChannel.Interpolations.LINEAR)
+            ))
+            .addAnimation("leftlip", new AnimationChannel(
+                    AnimationChannel.Targets.SCALE,
+                    new Keyframe(0f, KeyframeAnimations.scaleVec(1f,1f,1f), AnimationChannel.Interpolations.LINEAR),
+                    new Keyframe(0.25f, KeyframeAnimations.scaleVec(1.5f,1f,1f), AnimationChannel.Interpolations.LINEAR),
+                    new Keyframe(0.75f, KeyframeAnimations.scaleVec(1.5f,1f,1f), AnimationChannel.Interpolations.LINEAR),
+                    new Keyframe(1f, KeyframeAnimations.scaleVec(1f,1f,1f), AnimationChannel.Interpolations.LINEAR)
+            ))
+            .addAnimation("bottomlip", new AnimationChannel(
+                    AnimationChannel.Targets.POSITION,
+                    new Keyframe(0f, KeyframeAnimations.posVec(0f,0f,0f), AnimationChannel.Interpolations.LINEAR),
+                    new Keyframe(0.25f, KeyframeAnimations.posVec(0f,1.5f,0f), AnimationChannel.Interpolations.LINEAR),
+                    new Keyframe(0.5f, KeyframeAnimations.posVec(0f,1f,0f), AnimationChannel.Interpolations.LINEAR),
+                    new Keyframe(0.75f, KeyframeAnimations.posVec(0f,1.5f,0f), AnimationChannel.Interpolations.LINEAR),
+                    new Keyframe(1f, KeyframeAnimations.posVec(0f,0f,0f), AnimationChannel.Interpolations.LINEAR)
+            ))
+            .addAnimation("bottomlip", new AnimationChannel(
+                    AnimationChannel.Targets.SCALE,
+                    new Keyframe(0f, KeyframeAnimations.scaleVec(1f,1f,1f), AnimationChannel.Interpolations.LINEAR),
+                    new Keyframe(0.25f, KeyframeAnimations.scaleVec(1f,1.5f,1f), AnimationChannel.Interpolations.LINEAR),
+                    new Keyframe(0.75f, KeyframeAnimations.scaleVec(1f,1.5f,1f), AnimationChannel.Interpolations.LINEAR),
+                    new Keyframe(1f, KeyframeAnimations.scaleVec(1f,1f,1f), AnimationChannel.Interpolations.LINEAR)
+            ))
+            .addAnimation("rightlip", new AnimationChannel(
+                    AnimationChannel.Targets.POSITION,
+                    new Keyframe(0f, KeyframeAnimations.posVec(0f,0f,0f), AnimationChannel.Interpolations.LINEAR),
+                    new Keyframe(0.25f, KeyframeAnimations.posVec(-1.5f,0f,0f), AnimationChannel.Interpolations.LINEAR),
+                    new Keyframe(0.75f, KeyframeAnimations.posVec(1.5f,0f,0f), AnimationChannel.Interpolations.LINEAR),
+                    new Keyframe(1f, KeyframeAnimations.posVec(0f,0f,0f), AnimationChannel.Interpolations.LINEAR)
+            ))
+            .addAnimation("rightlip", new AnimationChannel(
+                    AnimationChannel.Targets.SCALE,
+                    new Keyframe(0f, KeyframeAnimations.scaleVec(1f,1f,1f), AnimationChannel.Interpolations.LINEAR),
+                    new Keyframe(0.25f, KeyframeAnimations.scaleVec(1.5f,1f,1f), AnimationChannel.Interpolations.LINEAR),
+                    new Keyframe(0.75f, KeyframeAnimations.scaleVec(1.5f,1f,1f), AnimationChannel.Interpolations.LINEAR),
+                    new Keyframe(1f, KeyframeAnimations.scaleVec(1f,1f,1f), AnimationChannel.Interpolations.LINEAR)
+            )).build();
 }
