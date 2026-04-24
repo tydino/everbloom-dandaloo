@@ -199,4 +199,38 @@ public class DaggerStabberAnimations {
                     new Keyframe(0.75f, KeyframeAnimations.scaleVec(1.5f,1f,1f), AnimationChannel.Interpolations.LINEAR),
                     new Keyframe(1f, KeyframeAnimations.scaleVec(1f,1f,1f), AnimationChannel.Interpolations.LINEAR)
             )).build();
+    public static final AnimationDefinition WALK = AnimationDefinition.Builder.withLength(1f)
+            .addAnimation("body", new AnimationChannel(
+                    AnimationChannel.Targets.ROTATION,
+                    new Keyframe(0f, KeyframeAnimations.degreeVec(0f,0f,0f),AnimationChannel.Interpolations.LINEAR),
+                    new Keyframe(0.25f, KeyframeAnimations.degreeVec(0f,0f,-5f),AnimationChannel.Interpolations.LINEAR),
+                    new Keyframe(0.5f, KeyframeAnimations.degreeVec(0f,0f,0f),AnimationChannel.Interpolations.LINEAR),
+                    new Keyframe(0.75f, KeyframeAnimations.degreeVec(0f,0f,5f),AnimationChannel.Interpolations.LINEAR),
+                    new Keyframe(1f, KeyframeAnimations.degreeVec(0f,0f,0f),AnimationChannel.Interpolations.LINEAR)
+            ))
+            .addAnimation("body", new AnimationChannel(
+                    AnimationChannel.Targets.POSITION,
+                    new Keyframe(0f, KeyframeAnimations.posVec(0f,0f,0f),AnimationChannel.Interpolations.LINEAR),
+                    new Keyframe(0.25f, KeyframeAnimations.posVec(0f,-1f,0f),AnimationChannel.Interpolations.LINEAR),
+                    new Keyframe(0.5f, KeyframeAnimations.posVec(0f,0f,0f),AnimationChannel.Interpolations.LINEAR),
+                    new Keyframe(0.75f, KeyframeAnimations.posVec(0f,-1f,0f),AnimationChannel.Interpolations.LINEAR),
+                    new Keyframe(1f, KeyframeAnimations.posVec(0f,0f,0f),AnimationChannel.Interpolations.LINEAR)
+            ))
+            .addAnimation("neck", new AnimationChannel(
+                    AnimationChannel.Targets.ROTATION,
+                    new Keyframe(0f, KeyframeAnimations.degreeVec(0f,0f,0f),AnimationChannel.Interpolations.LINEAR),
+                    new Keyframe(0.25f, KeyframeAnimations.degreeVec(0f,0f,-5f),AnimationChannel.Interpolations.LINEAR),
+                    new Keyframe(0.75f, KeyframeAnimations.degreeVec(0f,0f,5f),AnimationChannel.Interpolations.LINEAR),
+                    new Keyframe(1f, KeyframeAnimations.degreeVec(0f,0f,0f),AnimationChannel.Interpolations.LINEAR)
+            ))
+            .addAnimation("head", new AnimationChannel(
+                    AnimationChannel.Targets.ROTATION,
+                    new Keyframe(0f, KeyframeAnimations.degreeVec(0f,0f,0f),AnimationChannel.Interpolations.LINEAR),
+                    new Keyframe(0.25f, KeyframeAnimations.degreeVec(0f,0f,-5f),AnimationChannel.Interpolations.LINEAR),
+                    new Keyframe(0.38f, KeyframeAnimations.degreeVec(0f,0f,-10f),AnimationChannel.Interpolations.LINEAR),
+                    new Keyframe(0.5f, KeyframeAnimations.degreeVec(0f,0f,0f),AnimationChannel.Interpolations.LINEAR),
+                    new Keyframe(0.75f, KeyframeAnimations.degreeVec(0f,0f,5f),AnimationChannel.Interpolations.LINEAR),
+                    new Keyframe(0.88f, KeyframeAnimations.degreeVec(0f,0f,10f),AnimationChannel.Interpolations.LINEAR),
+                    new Keyframe(1f, KeyframeAnimations.degreeVec(0f,0f,0f),AnimationChannel.Interpolations.LINEAR)
+            )).build();
 }

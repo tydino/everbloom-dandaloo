@@ -60,7 +60,7 @@ public class DaggerStabberEntity extends PathfinderMob implements NeutralMob {
 
     @Override
     protected void registerGoals() {
-        this.goalSelector.addGoal(0, new MeleeAttackGoal(this, 1.0, true));
+        this.goalSelector.addGoal(0, new MeleeAttackGoal(this, 1.5, true));
         this.goalSelector.addGoal(1, new TemptGoal(this, 1, Ingredient.of(EDCookingItemRegistry.Tomato), false));
         this.goalSelector.addGoal(2, new RandomStrollGoal(this, 1));
         this.goalSelector.addGoal(3, new LookAtPlayerGoal(this, Player.class,3 ));
@@ -100,7 +100,7 @@ public class DaggerStabberEntity extends PathfinderMob implements NeutralMob {
     public void tick() {
         super.tick();
 
-        if (!level().isClientSide()){
+        if (!level().isClientSide()){//NOT CLIENT-SERVER
             if (isIdle()){
                 if(idleCount-- <= 0){
                     setIdle(false);

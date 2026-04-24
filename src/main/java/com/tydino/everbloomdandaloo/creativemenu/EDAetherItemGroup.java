@@ -21,8 +21,8 @@ public class EDAetherItemGroup {
             .title(Component.translatable("creativeTab.aether"))
             .displayItems((params, output) -> {
 
-                //temp
                 output.accept(EDAetherItemRegistry.SpawnDaggerStabber);
+                output.accept(EDAetherItemRegistry.DaggerStabberDagger);
             })
             .build();
 

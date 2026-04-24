@@ -48,6 +48,7 @@ public class daggerStabberModel extends EntityModel<DaggerStabberRenderState> {
 	final KeyframeAnimation blink;
 	final KeyframeAnimation stab;
 	final KeyframeAnimation noStab;
+	final KeyframeAnimation walk;
 
 	public daggerStabberModel(ModelPart root) {
 		super(root);
@@ -81,6 +82,7 @@ public class daggerStabberModel extends EntityModel<DaggerStabberRenderState> {
 		this.blink = DaggerStabberAnimations.BLINK.bake(root);
 		this.stab = DaggerStabberAnimations.STAB.bake(root);
 		this.noStab = DaggerStabberAnimations.NOSTAB.bake(root);
+		this.walk = DaggerStabberAnimations.WALK.bake(root);
 	}
 
 	public static LayerDefinition createBodyLayer() {
@@ -165,6 +167,8 @@ public class daggerStabberModel extends EntityModel<DaggerStabberRenderState> {
 		if(state.noStabAniamtion.isStarted()){
 			this.noStab.apply(state.noStabAniamtion, state.ageInTicks);
 		}
+
+		this.walk.applyWalk(state.walkAnimationPos, state.walkAnimationSpeed, 2f, 5f);
 
 		this.head.xRot = state.xRot * (float) (Math.PI / 180.0);
 		this.head.yRot = state.yRot * (float) (Math.PI / 180.0);
