@@ -168,7 +168,7 @@ public class daggerStabberModel extends EntityModel<DaggerStabberRenderState> {
 			this.noStab.apply(state.noStabAniamtion, state.ageInTicks);
 		}
 
-		this.walk.applyWalk(state.walkAnimationPos, state.walkAnimationSpeed, 2f, 5f);
+		this.walk.applyWalk(state.walkAnimationPos, state.walkAnimationSpeed, 2f, 2.5f); /// animation step / distanceentity speed
 
 		this.head.xRot = state.xRot * (float) (Math.PI / 180.0);
 		this.head.yRot = state.yRot * (float) (Math.PI / 180.0);

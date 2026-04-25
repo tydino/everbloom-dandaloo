@@ -55,7 +55,7 @@ public class DaggerStabberEntity extends PathfinderMob implements NeutralMob {
                 .add(Attributes.MAX_HEALTH, 10)
                 .add(Attributes.TEMPT_RANGE, 10)
                 .add(Attributes.ATTACK_DAMAGE, 3)
-                .add(Attributes.MOVEMENT_SPEED, 0.2);
+                .add(Attributes.MOVEMENT_SPEED, 0.15);
     }
 
     @Override
