@@ -22,6 +22,7 @@ public class EDAetherItemGroup {
             .displayItems((params, output) -> {
 
                 output.accept(EDAetherItemRegistry.SpawnDaggerStabber);
+                output.accept(EDAetherItemRegistry.DaggerStabberMeat);
                 output.accept(EDAetherItemRegistry.DaggerStabberDagger);
             })
             .build();

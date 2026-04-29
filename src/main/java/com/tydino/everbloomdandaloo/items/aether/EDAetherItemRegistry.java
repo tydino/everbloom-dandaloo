@@ -32,6 +32,8 @@ public class EDAetherItemRegistry {
             new Item.Properties().spawnEgg(AetherEntityTypes.DaggerStabber)
     );
 
+    public static final Item DaggerStabberMeat = EDItemRegistry.register("dagger_stabber_meat", Item::new, new Item.Properties());
+
     public static final Item DaggerStabberDagger = EDItemRegistry.register("daggerstabber_dagger", Item::new, new Item.Properties().sword(AetherItemsSetOne, 4f, 2f));
 
     public static void onInitialize(){

@@ -6,12 +6,14 @@ import com.tydino.everbloomdandaloo.entities.EDEntityTypes;
 import com.tydino.everbloomdandaloo.items.EDItemRegistry;
 import net.fabricmc.api.ModInitializer;
 
-import net.fabricmc.fabric.api.event.player.AttackEntityCallback;
+import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
+import net.minecraft.server.level.ServerPlayer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /// ToDO
 /// update fabricloom
+/// add au revoir
 /// finish making the attack to dagger stabber
 /// add the image for the aether creative tab
 
