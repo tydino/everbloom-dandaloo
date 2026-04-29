@@ -160,9 +160,7 @@ public class daggerStabberModel extends EntityModel<DaggerStabberRenderState> {
 			this.idle.apply(state.idleAnimation, state.ageInTicks);
 		}
 
-		if(state.StabAnimation.isStarted()){
-			this.stab.apply(state.StabAnimation, state.ageInTicks);
-		}
+		this.stab.apply(state.StabAnimation, state.ageInTicks);
 
 		if(state.noStabAniamtion.isStarted()){
 			this.noStab.apply(state.noStabAniamtion, state.ageInTicks);

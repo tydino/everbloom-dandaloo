@@ -36,10 +36,9 @@ public class DaggerStabberEntity extends PathfinderMob implements NeutralMob {
     public final AnimationState blinkAnimation = new AnimationState();
     int blinkCount;
 
-    static final EntityDataAccessor<Boolean> STAB = SynchedEntityData.defineId(DaggerStabberEntity.class, EntityDataSerializers.BOOLEAN);
     public final AnimationState StabAnimation = new AnimationState();
-    int StabCount;
-    public final AnimationState noStabAnimation = new AnimationState();
+    int StabCount = 0;
+    public final AnimationState noStabAnimation = new AnimationState();///DO NOT USE
     int noStabCount;
 
     public DaggerStabberEntity(Level world){
@@ -75,7 +74,6 @@ public class DaggerStabberEntity extends PathfinderMob implements NeutralMob {
         super.defineSynchedData(entityData);
         entityData.define(IDLE, false);
         entityData.define(BLINK, false);
-        entityData.define(STAB, false);
         entityData.define(DATA_ANGER_END_TIME, -1L);
     }
 
@@ -89,18 +87,13 @@ public class DaggerStabberEntity extends PathfinderMob implements NeutralMob {
         if(updatedItems == BLINK){
             blinkAnimation.animateWhen(isBlink(), this.tickCount);
         }
-        if(updatedItems == STAB){
-            StabAnimation.animateWhen(isStab(), this.tickCount);
-        }else{
-            //noStabAnimation.animateWhen(!isStab(), this.tickCount);
-        }
     }
 
     @Override
     public void tick() {
         super.tick();
 
-        if (!level().isClientSide()){//NOT CLIENT-SERVER
+        if (!level().isClientSide()){//NOT CLIENT - IS SERVER
             if (isIdle()){
                 if(idleCount-- <= 0){
                     setIdle(false);
@@ -118,18 +111,28 @@ public class DaggerStabberEntity extends PathfinderMob implements NeutralMob {
                 setBlink(true);
                 blinkCount = 40+ random.nextInt(20, 40);
             }
-
-            if(isStab()){
-                if(StabCount--<=0){
-                    setStab(false);
-                }
-            }else if(isAngry()){
-                setStab(true);
-                StabCount = 20;
+        }
+        if(level().isClientSide()){//IS CLIENT - NOT SERVER
+            if(this.StabCount > 0){
+                this.StabCount--;
             }else{
-                noStabCount=20;
+                this.StabAnimation.stop();
             }
         }
+    }
+
+    @Override
+    public void handleEntityEvent(byte id) {
+        if(id == 4){
+            startStabAnimation();
+        }else {
+            super.handleEntityEvent(id);
+        }
+    }
+
+    public void startStabAnimation() {
+        this.StabCount = 20;
+        this.StabAnimation.start(this.tickCount);
     }
 
     public boolean isIdle(){
@@ -146,14 +149,6 @@ public class DaggerStabberEntity extends PathfinderMob implements NeutralMob {
 
     void setBlink(boolean blink){
         entityData.set(BLINK, blink);
-    }
-
-    public boolean isStab(){
-        return entityData.get(STAB);
-    }
-
-    void setStab(boolean stab){
-        entityData.set(STAB, stab);
     }
 
     @Override
@@ -175,7 +170,6 @@ public class DaggerStabberEntity extends PathfinderMob implements NeutralMob {
         noStabCount = input.getInt("nostab_count").orElse(0);
         setIdle(idleCount>0);
         setBlink(blinkCount>0);
-        setStab(StabCount>0);
         this.readPersistentAngerSaveData(this.level(), input);
     }
 

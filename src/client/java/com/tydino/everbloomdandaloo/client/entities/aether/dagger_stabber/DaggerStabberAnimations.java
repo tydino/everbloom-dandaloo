@@ -108,6 +108,7 @@ public class DaggerStabberAnimations {
                     new Keyframe(0.75f, KeyframeAnimations.scaleVec(1f,1f,1f),AnimationChannel.Interpolations.LINEAR)
             )).build();
     public static final AnimationDefinition STAB = AnimationDefinition.Builder.withLength(1f)
+            .looping()
             .addAnimation("head", new AnimationChannel(
                     AnimationChannel.Targets.ROTATION,
                     new Keyframe(0f, KeyframeAnimations.degreeVec(0f,0f,0f),AnimationChannel.Interpolations.LINEAR),

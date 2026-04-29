@@ -6,6 +6,7 @@ import com.tydino.everbloomdandaloo.entities.EDEntityTypes;
 import com.tydino.everbloomdandaloo.items.EDItemRegistry;
 import net.fabricmc.api.ModInitializer;
 
+import net.fabricmc.fabric.api.event.player.AttackEntityCallback;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
