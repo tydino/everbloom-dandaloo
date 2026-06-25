@@ -6,8 +6,8 @@ import com.tydino.everbloomdandaloo.entities.EDEntityTypes;
 import com.tydino.everbloomdandaloo.items.EDItemRegistry;
 import net.fabricmc.api.ModInitializer;
 
-import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
-import net.minecraft.server.level.ServerPlayer;
+import net.fabricmc.fabric.api.loot.v3.LootTableEvents;
+import net.minecraft.resources.Identifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -26,10 +26,20 @@ public class EverbloomDandaloo implements ModInitializer {
 	@Override
 	public void onInitialize() {
 
-		EDBlockRegistry.onInitialize(); //BLOCKS//
 		EDItemRegistry.onInitialize(); //ITEMS//
+		EDBlockRegistry.onInitialize(); //BLOCKS//
 		EDEntityTypes.onInitialize(); //ENTITIES//
 
 		EDItemGroups.onInitialize(); //ITEMGROUPS//
+
+		LootTableEvents.MODIFY.register((key, tableBuilder, source, registries) -> {
+			// Replace "your_entity_loot_table_name" with the path to your custom entity loot table JSON
+			Identifier myEntityLootTable = Identifier.fromNamespaceAndPath(MOD_ID, "entities/dagger_stabber");
+
+			if (source.isBuiltin() && myEntityLootTable.equals(key)) {
+				// The event fires, and automatically associates the entity with this loot table
+				// No datagen or getLootTableId override needed.
+			}
+		});
 	}
 }

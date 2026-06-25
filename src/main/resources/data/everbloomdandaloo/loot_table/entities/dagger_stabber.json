@@ -1,0 +1,19 @@
+{
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "everbloomdandaloo:dagger_stabber_meat",
+          "weight": 8
+        },
+        {
+          "type": "minecraft:item",
+          "name": "everbloomdandaloo:daggerstabber_dagger",
+          "weight": 1
+        }
+      ]
+    }
+  ]
+}
