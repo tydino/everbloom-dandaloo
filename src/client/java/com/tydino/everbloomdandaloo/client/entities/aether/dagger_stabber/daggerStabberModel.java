@@ -47,7 +47,6 @@ public class daggerStabberModel extends EntityModel<DaggerStabberRenderState> {
 	final KeyframeAnimation idle;
 	final KeyframeAnimation blink;
 	final KeyframeAnimation stab;
-	final KeyframeAnimation noStab;
 	final KeyframeAnimation walk;
 
 	public daggerStabberModel(ModelPart root) {
@@ -81,7 +80,6 @@ public class daggerStabberModel extends EntityModel<DaggerStabberRenderState> {
 		this.idle = DaggerStabberAnimations.IDLE.bake(root);
 		this.blink = DaggerStabberAnimations.BLINK.bake(root);
 		this.stab = DaggerStabberAnimations.STAB.bake(root);
-		this.noStab = DaggerStabberAnimations.NOSTAB.bake(root);
 		this.walk = DaggerStabberAnimations.WALK.bake(root);
 	}
 
@@ -161,10 +159,6 @@ public class daggerStabberModel extends EntityModel<DaggerStabberRenderState> {
 		}
 
 		this.stab.apply(state.StabAnimation, state.ageInTicks);
-
-		if(state.noStabAniamtion.isStarted()){
-			this.noStab.apply(state.noStabAniamtion, state.ageInTicks);
-		}
 
 		this.walk.applyWalk(state.walkAnimationPos, state.walkAnimationSpeed, 2f, 2.5f); /// animation step / distanceentity speed
 

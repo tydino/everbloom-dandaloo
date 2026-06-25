@@ -1,0 +1,48 @@
+{
+  "type": "minecraft:overworld",
+  "generator": {
+    "type": "minecraft:noise",
+    "settings": "minecraft:amplified",
+    "biome_source": {
+      "type": "minecraft:multi_noise",
+      "biomes": [
+        {
+          "biome": "everbloomdandaloo:aether_plains",
+          "parameters": {
+            "temperature": 0,
+            "humidity": 0.5,
+            "continentalness": 0,
+            "erosion": 0,
+            "weirdness": 0,
+            "depth": 0,
+            "offset": 0
+          }
+        },
+        {
+          "biome": "minecraft:jungle",
+          "parameters": {
+            "temperature": 0.25,
+            "humidity": 0.6,
+            "continentalness": 0.2,
+            "erosion": 0.2,
+            "weirdness": 0,
+            "depth": 0,
+            "offset": 0
+          }
+        },
+        {
+          "biome": "minecraft:sparse_jungle",
+          "parameters": {
+            "temperature": 0.25,
+            "humidity": 0.6,
+            "continentalness": 0.1,
+            "erosion": 0.1,
+            "weirdness": 0,
+            "depth": 0,
+            "offset": 0
+          }
+        }
+      ]
+    }
+  }
+}

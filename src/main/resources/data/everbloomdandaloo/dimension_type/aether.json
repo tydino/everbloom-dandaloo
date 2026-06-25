@@ -1,0 +1,23 @@
+{
+  "ultrawarm": false,
+  "natural": true,
+  "piglin_safe": true,
+  "respawn_anchor_works": true,
+  "bed_works": true,
+  "has_raids": false,
+  "has_skylight": true,
+  "has_ceiling": false,
+  "has_ender_dragon_fight": false,
+  "coordinate_scale": 4,
+  "ambient_light": 0,
+  "has_fixed_time": true,
+  "logical_height": 0,
+  "effects": "minecraft:overworld",
+  "skybox": "overworld",
+  "cardinal_light": "default",
+  "infiniburn": "#minecraft:infiniburn_overworld",
+  "min_y": -256,
+  "height": 1024,
+  "monster_spawn_light_level": 0,
+  "monster_spawn_block_light_limit": 0
+}

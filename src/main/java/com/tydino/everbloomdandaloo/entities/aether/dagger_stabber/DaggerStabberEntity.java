@@ -6,6 +6,7 @@ import com.tydino.everbloomdandaloo.items.cooking.EDCookingItemRegistry;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.TimeUtil;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.entity.*;
@@ -37,9 +38,7 @@ public class DaggerStabberEntity extends PathfinderMob implements NeutralMob {
     int blinkCount;
 
     public final AnimationState StabAnimation = new AnimationState();
-    int StabCount = 0;
-    public final AnimationState noStabAnimation = new AnimationState();///DO NOT USE
-    int noStabCount;
+    int StabCount;
 
     public DaggerStabberEntity(Level world){
         this(AetherEntityTypes.DaggerStabber, world);
@@ -111,28 +110,37 @@ public class DaggerStabberEntity extends PathfinderMob implements NeutralMob {
                 setBlink(true);
                 blinkCount = 40+ random.nextInt(20, 40);
             }
+
+            this.StabAnimation.animateWhen(this.StabCount > 0, this.tickCount);
         }
-        if(level().isClientSide()){//IS CLIENT - NOT SERVER
-            if(this.StabCount > 0){
-                this.StabCount--;
-            }else{
-                this.StabAnimation.stop();
-            }
+    }
+
+    @Override
+    public void aiStep() {
+        if(this.StabCount > 0){
+            StabCount--;
+        }
+        super.aiStep();
+    }
+
+    @Override
+    public boolean doHurtTarget(ServerLevel level, Entity target) {
+        if (!(target instanceof LivingEntity)) {
+            return false;
+        } else {
+            this.StabCount = 20;
+            this.level().broadcastEntityEvent(this, (byte)4);
+            return super.doHurtTarget(level, target);
         }
     }
 
     @Override
     public void handleEntityEvent(byte id) {
-        if(id == 4){
-            startStabAnimation();
-        }else {
-            super.handleEntityEvent(id);
+        if(id==4){
+            this.StabCount = 20;
+            this.playAttackSound();
         }
-    }
-
-    public void startStabAnimation() {
-        this.StabCount = 20;
-        this.StabAnimation.start(this.tickCount);
+        super.handleEntityEvent(id);
     }
 
     public boolean isIdle(){
@@ -156,8 +164,6 @@ public class DaggerStabberEntity extends PathfinderMob implements NeutralMob {
         super.addAdditionalSaveData(output);
         output.putInt("idle_count", idleCount);
         output.putInt("blink_count", blinkCount);
-        output.putInt("stab_count", StabCount);
-        output.putInt("nostab_count", noStabCount);
         this.addPersistentAngerSaveData(output);
     }
 
@@ -166,8 +172,6 @@ public class DaggerStabberEntity extends PathfinderMob implements NeutralMob {
         super.readAdditionalSaveData(input);
         idleCount = input.getInt("idle_count").orElse(0);
         blinkCount = input.getInt("blink_count").orElse(0);
-        StabCount = input.getInt("stab_count").orElse(0);
-        noStabCount = input.getInt("nostab_count").orElse(0);
         setIdle(idleCount>0);
         setBlink(blinkCount>0);
         this.readPersistentAngerSaveData(this.level(), input);
