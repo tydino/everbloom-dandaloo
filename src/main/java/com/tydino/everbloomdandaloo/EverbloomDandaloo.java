@@ -2,6 +2,7 @@ package com.tydino.everbloomdandaloo;
 
 import com.tydino.everbloomdandaloo.blocks.EDBlockRegistry;
 import com.tydino.everbloomdandaloo.creativemenu.EDItemGroups;
+import com.tydino.everbloomdandaloo.entities.EDEntitySpawn;
 import com.tydino.everbloomdandaloo.entities.EDEntityTypes;
 import com.tydino.everbloomdandaloo.items.EDItemRegistry;
 import net.fabricmc.api.ModInitializer;
@@ -29,6 +30,7 @@ public class EverbloomDandaloo implements ModInitializer {
 		EDItemRegistry.onInitialize(); //ITEMS//
 		EDBlockRegistry.onInitialize(); //BLOCKS//
 		EDEntityTypes.onInitialize(); //ENTITIES//
+		EDEntitySpawn.onInitialize();//ENTITIES SPAWN//
 
 		EDItemGroups.onInitialize(); //ITEMGROUPS//
 

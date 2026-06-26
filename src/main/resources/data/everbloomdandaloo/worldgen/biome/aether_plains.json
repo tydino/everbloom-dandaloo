@@ -17,12 +17,6 @@
         "maxCount": 4,
         "minCount": 4,
         "weight": 12
-      },
-      {
-        "type": "everbloomdandaloo:dagger_stabber",
-        "weight": 2,
-        "minCount": 1,
-        "maxCount": 4
       }
     ]
   },
