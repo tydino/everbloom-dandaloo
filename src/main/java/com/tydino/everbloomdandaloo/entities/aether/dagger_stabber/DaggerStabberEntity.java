@@ -23,6 +23,8 @@ import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
 import org.jspecify.annotations.Nullable;
 
+//NEVER USE DaggerStabberEntity as a direct reference. Au Revoir is sorted as an example
+
 public class DaggerStabberEntity extends PathfinderMob implements NeutralMob {
 
     private static final EntityDataAccessor<Long> DATA_ANGER_END_TIME = SynchedEntityData.defineId(DaggerStabberEntity.class, EntityDataSerializers.LONG);
@@ -39,10 +41,6 @@ public class DaggerStabberEntity extends PathfinderMob implements NeutralMob {
 
     public final AnimationState StabAnimation = new AnimationState();
     int StabCount;
-
-    public DaggerStabberEntity(Level world){
-        this(AetherEntityTypes.DaggerStabber, world);
-    }
 
     public DaggerStabberEntity(EntityType<? extends PathfinderMob> type, Level level) {
         super(type, level);
