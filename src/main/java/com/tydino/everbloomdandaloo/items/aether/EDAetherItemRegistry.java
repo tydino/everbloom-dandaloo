@@ -45,6 +45,12 @@ public class EDAetherItemRegistry {
             new Item.Properties().spawnEgg(AetherEntityTypes.AuRevoir)
     );
 
+    public static final Item AuRevoirTail = EDItemRegistry.register(
+            "au_revoir_tail",
+            AuRevoirTailItem::new,
+            new Item.Properties()
+    );
+
     public static void onInitialize(){
 
     }

@@ -24,6 +24,9 @@ public class EDAetherItemGroup {
                 output.accept(EDAetherItemRegistry.SpawnDaggerStabber);
                 output.accept(EDAetherItemRegistry.DaggerStabberMeat);
                 output.accept(EDAetherItemRegistry.DaggerStabberDagger);
+
+                output.accept(EDAetherItemRegistry.SpawnAuRevoir);
+                output.accept(EDAetherItemRegistry.AuRevoirTail);
             })
             .build();
 

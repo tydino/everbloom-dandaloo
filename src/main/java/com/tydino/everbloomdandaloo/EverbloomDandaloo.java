@@ -14,8 +14,6 @@ import org.slf4j.LoggerFactory;
 
 /// ToDO
 /// update fabricloom
-/// add au revoir's 'latch'
-/// finish dagger stabber by adding sound and figuring out the dagger issue
 /// add the image for the aether creative tab
 
 /// utilize: https://docs.fabricmc.net/develop/items/first-item
