@@ -1,14 +1,14 @@
 {
-  "temperature": 0.8,
+  "temperature": 0.9,
   "downfall": 0,
   "has_precipitation": true,
   "temperature_modifier": "none",
+  "creature_spawn_probability": 0.5,
   "effects": {
-    "water_color": 15374837,
-    "grass_color": 2811636,
-    "foliage_color": 13624123,
-    "dry_foliage_color": 10652007,
-    "grass_color_modifier": "none"
+    "water_color": 11698671,
+    "grass_color": 837305,
+    "foliage_color": 13460892,
+    "dry_foliage_color": 13509228
   },
   "spawners": {
     "creature": [
@@ -16,14 +16,12 @@
         "type": "minecraft:sheep",
         "maxCount": 4,
         "minCount": 4,
-        "weight": 12
+        "weight": 10
       }
     ]
   },
   "spawn_costs": {},
-  "carvers": [
-    "minecraft:cave"
-  ],
+  "carvers": [],
   "features": [
     [],
     [
@@ -33,10 +31,7 @@
     [
       "minecraft:amethyst_geode"
     ],
-    [
-      "minecraft:monster_room",
-      "minecraft:monster_room_deep"
-    ],
+    [],
     [],
     [],
     [
@@ -76,16 +71,14 @@
     ],
     [
       "minecraft:glow_lichen",
-      "minecraft:patch_tall_grass_2",
-      "minecraft:patch_bush",
-      "minecraft:trees_plains",
-      "minecraft:flower_plains",
-      "minecraft:patch_grass_plain",
+      "minecraft:trees_jungle",
+      "minecraft:flower_warm",
+      "minecraft:patch_grass_jungle",
       "minecraft:brown_mushroom_normal",
       "minecraft:red_mushroom_normal",
-      "minecraft:patch_pumpkin",
       "minecraft:patch_sugar_cane",
-      "minecraft:patch_firefly_bush_near_water"
+      "minecraft:vines",
+      "minecraft:patch_melon"
     ],
     [
       "minecraft:freeze_top_layer"

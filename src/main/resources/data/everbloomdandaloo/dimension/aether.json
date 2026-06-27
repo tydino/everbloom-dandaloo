@@ -19,7 +19,7 @@
           }
         },
         {
-          "biome": "minecraft:jungle",
+          "biome": "everbloomdandaloo:aether_jungle",
           "parameters": {
             "temperature": 0.25,
             "humidity": 0.6,

@@ -12,11 +12,12 @@ import net.minecraft.world.entity.SpawnPlacements;
 import net.minecraft.world.level.biome.Biome;
 
 public class EDEntitySpawn {
-    /// AETHER ///
+    /// AETHER BIOMES ///
     public static final ResourceKey<Biome>  Aether_Plains = ResourceKey.create(Registries.BIOME, Identifier.fromNamespaceAndPath(EverbloomDandaloo.MOD_ID, "aether_plains"));
+    public static final ResourceKey<Biome>  Aether_JUNGLE = ResourceKey.create(Registries.BIOME, Identifier.fromNamespaceAndPath(EverbloomDandaloo.MOD_ID, "aether_jungle"));
 
     public static void onInitialize(){
-        /// AETHER ///
+        /// AETHER ENTITIES///
         BiomeModifications.addSpawn(
                 BiomeSelectors.includeByKey(Aether_Plains),
                 MobCategory.CREATURE,
@@ -25,5 +26,21 @@ public class EDEntitySpawn {
                 1,
                 4
                 );
+        BiomeModifications.addSpawn(
+                BiomeSelectors.includeByKey(Aether_JUNGLE),
+                MobCategory.CREATURE,
+                AetherEntityTypes.DaggerStabber,
+                2,
+                1,
+                4
+        );
+        BiomeModifications.addSpawn(
+                BiomeSelectors.includeByKey(Aether_JUNGLE),
+                MobCategory.CREATURE,
+                AetherEntityTypes.AuRevoir,
+                1,
+                1,
+                1
+        );
     }
 }

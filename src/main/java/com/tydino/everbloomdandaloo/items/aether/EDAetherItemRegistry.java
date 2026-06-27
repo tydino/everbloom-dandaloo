@@ -15,6 +15,7 @@ import javax.swing.text.html.HTML;
 
 public class EDAetherItemRegistry {
 
+    /// ITEM TYPES ///
     public static final TagKey<Item> AetherItemsRepairItem = TagKey.create(BuiltInRegistries.ITEM.key(), Identifier.fromNamespaceAndPath(EverbloomDandaloo.MOD_ID, "repairs_aether_items"));
 
     public static final ToolMaterial AetherItemsSetOne = new ToolMaterial(
@@ -26,6 +27,7 @@ public class EDAetherItemRegistry {
             AetherItemsRepairItem
     );
 
+    /// DAGGER STABBER ///
     public static final Item SpawnDaggerStabber = EDItemRegistry.register(
             "spawn_daggerstabber",
             SpawnEggItem::new,
@@ -35,6 +37,13 @@ public class EDAetherItemRegistry {
     public static final Item DaggerStabberMeat = EDItemRegistry.register("dagger_stabber_meat", Item::new, new Item.Properties());
 
     public static final Item DaggerStabberDagger = EDItemRegistry.register("daggerstabber_dagger", Item::new, new Item.Properties().sword(AetherItemsSetOne, 4f, 2f));
+
+    /// AU REVOIR ///
+    public static final Item SpawnAuRevoir = EDItemRegistry.register(
+            "spawn_aurevoir",
+            SpawnEggItem::new,
+            new Item.Properties().spawnEgg(AetherEntityTypes.AuRevoir)
+    );
 
     public static void onInitialize(){
 
