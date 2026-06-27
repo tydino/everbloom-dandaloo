@@ -1,0 +1,28 @@
+{
+  "mob.au_revoir.ambient": {
+    "sounds": [
+      "mob/au_revoir/ambient1",
+      "mob/au_revoir/ambient2"
+    ],
+    "replace": false
+  },
+  "mob.au_revoir.hurt": {
+  "sounds": [
+    "mob/au_revoir/hurt1",
+    "mob/au_revoir/hurt2"
+  ],
+  "replace": false
+},
+  "mob.au_revoir.death": {
+    "sounds": [
+      "mob/au_revoir/death"
+    ],
+    "replace": false
+  },
+  "mob.au_revoir.latch": {
+    "sounds": [
+      "mob/au_revoir/latch"
+    ],
+    "replace": false
+  }
+}

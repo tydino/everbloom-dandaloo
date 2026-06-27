@@ -1,10 +1,13 @@
 package com.tydino.everbloomdandaloo.entities.aether.au_revoir;
 
+import com.tydino.everbloomdandaloo.entities.aether.EDAetherEntitySounds;
 import com.tydino.everbloomdandaloo.entities.custom_entity_bases.FlyingNonLandingEntity;
 import com.tydino.everbloomdandaloo.entities.custom_goals.flying.FlyingGoals;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.AnimationState;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.PathfinderMob;
@@ -18,6 +21,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
+import org.jspecify.annotations.Nullable;
 
 public class AuRevoirEntity extends FlyingNonLandingEntity {
 
@@ -128,7 +132,23 @@ public class AuRevoirEntity extends FlyingNonLandingEntity {
         setFlap(flapCount>0);
         setBlink(blinkCount>0);
     }
+    /// SOUNDS ///
+    @Override
+    protected @Nullable SoundEvent getAmbientSound() {
+        return EDAetherEntitySounds.AuRevoir_AMBIENT;
+    }
 
+    @Override
+    protected @Nullable SoundEvent getHurtSound(DamageSource source) {
+        return EDAetherEntitySounds.AuRevoir_HURT;
+    }
+
+    @Override
+    protected @Nullable SoundEvent getDeathSound() {
+        return EDAetherEntitySounds.AuRevoir_DEATH;
+    }
+
+    /// UNIQUE TO THE AU REVOIR ///
     @Override
     public boolean canBeLeashed() {
         return false;
