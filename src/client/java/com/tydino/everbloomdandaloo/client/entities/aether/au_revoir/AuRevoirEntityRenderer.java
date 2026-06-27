@@ -29,6 +29,6 @@ public class AuRevoirEntityRenderer extends MobRenderer<AuRevoirEntity, AuRevoir
         super.extractRenderState(entity, state, partialTicks);
         state.flappingAnimation.copyFrom(entity.flapAnimation);
         state.blinkAnimation.copyFrom(entity.blinkAnimation);
-        //state.latchAnimation.copyFrom(entity.latchAnimation); NOT IN YET
+        state.latchAnimation.copyFrom(entity.latchAnimation);
     }
 }

@@ -211,7 +211,7 @@ public class DaggerStabberEntity extends PathfinderMob implements NeutralMob {
 
     @Override
     protected void playAttackSound() {
-        float pitchForAttackSound = (float)this.random.nextInt(25, 100)/10;
+        float pitchForAttackSound = (float)this.random.nextInt(50, 150)/10;
         this.playSound(EDAetherEntitySounds.DaggerStabber_ATTACK, 1.0f, pitchForAttackSound);
     }
 }

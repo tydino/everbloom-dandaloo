@@ -154,7 +154,9 @@ public class daggerStabberModel extends EntityModel<DaggerStabberRenderState> {
 			this.idle.apply(state.idleAnimation, state.ageInTicks);
 		}
 
-		this.stab.apply(state.StabAnimation, state.ageInTicks);
+		if(state.StabAnimation.isStarted()) {
+			this.stab.apply(state.StabAnimation, state.ageInTicks);
+		}
 
 		this.walk.applyWalk(state.walkAnimationPos, state.walkAnimationSpeed, 2f, 2.5f); /// animation step / distanceentity speed
 

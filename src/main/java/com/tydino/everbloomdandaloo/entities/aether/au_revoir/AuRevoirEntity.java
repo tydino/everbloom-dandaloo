@@ -16,6 +16,7 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.control.FlyingMoveControl;
 import net.minecraft.world.entity.ai.goal.FloatGoal;
 import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
+import net.minecraft.world.entity.ai.goal.PanicGoal;
 import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
@@ -34,6 +35,8 @@ public class AuRevoirEntity extends FlyingNonLandingEntity {
     public final AnimationState blinkAnimation = new AnimationState();
     int blinkCount;
 
+    public final AnimationState latchAnimation = new AnimationState();
+
     /// REFRENCED IN GAME /// COMMON ISSUE OF IT NOT BEING PUBLIC, MAKE SURE TO DOUBLE CHECK THAT!
     public AuRevoirEntity(EntityType<? extends PathfinderMob> type, Level level) {
         super(type, level);
@@ -43,17 +46,18 @@ public class AuRevoirEntity extends FlyingNonLandingEntity {
     /// SELF EXPLANATORIES ///
     public static AttributeSupplier.Builder createAttributes(){
         return PathfinderMob.createMobAttributes()
-                .add(Attributes.MAX_HEALTH, 20)
-                .add(Attributes.FLYING_SPEED, 0.2)
-                .add(Attributes.MOVEMENT_SPEED, 0.05);
+                .add(Attributes.MAX_HEALTH, 100)
+                .add(Attributes.FLYING_SPEED, 0.25)
+                .add(Attributes.MOVEMENT_SPEED, 0.15);
     }
 
     @Override
     protected void registerGoals() {
-        this.goalSelector.addGoal(0, new FlyingGoals.wander(this, 8, 6, 1, 3));
-        this.goalSelector.addGoal(1, new FloatGoal(this));
-        this.goalSelector.addGoal(2, new LookAtPlayerGoal(this, Player.class,5 ));
-        this.goalSelector.addGoal(3, new RandomLookAroundGoal(this));
+        this.goalSelector.addGoal(0, new AuRevoirLatch(this, 4));
+        this.goalSelector.addGoal(1, new FlyingGoals.wander(this, 8, 6, 1, 3));
+        this.goalSelector.addGoal(2, new FloatGoal(this));
+        this.goalSelector.addGoal(3, new LookAtPlayerGoal(this, Player.class,5 ));
+        this.goalSelector.addGoal(4, new RandomLookAroundGoal(this));
     }
 
     @Override
@@ -152,5 +156,25 @@ public class AuRevoirEntity extends FlyingNonLandingEntity {
     @Override
     public boolean canBeLeashed() {
         return false;
+    }
+
+    void playLatchSound(){
+        this.playSound(EDAetherEntitySounds.AuRevoir_LATCH, 1.0f, 1.0f);
+    }
+
+    public class AuRevoirLatch extends PanicGoal{
+
+        AuRevoirEntity mob;
+        public AuRevoirLatch(AuRevoirEntity mob, double speedModifier) {
+            super(mob, speedModifier);
+            this.mob = mob;
+        }
+
+        @Override
+        public void start() {
+            super.start();
+            this.mob.playLatchSound();
+            this.mob.latchAnimation.start(this.mob.tickCount);
+        }
     }
 }

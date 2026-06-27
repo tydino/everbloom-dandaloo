@@ -94,6 +94,8 @@ public class AuRevoirModel extends EntityModel<AuRevoirRenderState> {
 			this.flap.apply(state.flappingAnimation, state.ageInTicks);
 		}
 
-		this.latch.apply(state.latchAnimation, state.ageInTicks);
+		if(state.latchAnimation.isStarted()) {
+			this.latch.apply(state.latchAnimation, state.ageInTicks);
+		}
 	}
 }
