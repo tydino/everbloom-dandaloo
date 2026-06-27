@@ -14,7 +14,7 @@ import org.slf4j.LoggerFactory;
 
 /// ToDO
 /// update fabricloom
-/// add au revoir
+/// add au revoir properly
 /// finish dagger stabber by adding sound and figuring out the dagger issue
 /// add the image for the aether creative tab
 
