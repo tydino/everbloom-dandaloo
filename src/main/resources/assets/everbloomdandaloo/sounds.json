@@ -24,5 +24,31 @@
       "mob/au_revoir/latch"
     ],
     "replace": false
+  },
+  "mob.dagger_stabber.ambient": {
+    "sounds": [
+      "mob/dagger_stabber/ambient1",
+      "mob/dagger_stabber/ambient2"
+    ],
+    "replace": false
+  },
+  "mob.dagger_stabber.hurt": {
+    "sounds": [
+      "mob/dagger_stabber/hurt1",
+      "mob/dagger_stabber/hurt2"
+    ],
+    "replace": false
+  },
+  "mob.dagger_stabber.death": {
+    "sounds": [
+      "mob/dagger_stabber/death"
+    ],
+    "replace": false
+  },
+  "mob.dagger_stabber.attack": {
+    "sounds": [
+      "mob/dagger_stabber/attack"
+    ],
+    "replace": false
   }
 }

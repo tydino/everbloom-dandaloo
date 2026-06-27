@@ -2,13 +2,16 @@ package com.tydino.everbloomdandaloo.entities.aether.dagger_stabber;
 
 import com.tydino.everbloomdandaloo.EverbloomDandaloo;
 import com.tydino.everbloomdandaloo.entities.aether.AetherEntityTypes;
+import com.tydino.everbloomdandaloo.entities.aether.EDAetherEntitySounds;
 import com.tydino.everbloomdandaloo.items.cooking.EDCookingItemRegistry;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.util.TimeUtil;
 import net.minecraft.util.valueproviders.UniformInt;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -56,11 +59,12 @@ public class DaggerStabberEntity extends PathfinderMob implements NeutralMob {
 
     @Override
     protected void registerGoals() {
-        this.goalSelector.addGoal(0, new MeleeAttackGoal(this, 1.5, true));
-        this.goalSelector.addGoal(1, new TemptGoal(this, 1, Ingredient.of(EDCookingItemRegistry.Tomato), false));
-        this.goalSelector.addGoal(2, new RandomStrollGoal(this, 1));
-        this.goalSelector.addGoal(3, new LookAtPlayerGoal(this, Player.class,3 ));
-        this.goalSelector.addGoal(4, new RandomLookAroundGoal(this));
+        this.goalSelector.addGoal(0, new FloatGoal(this));
+        this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 1.5, true));
+        this.goalSelector.addGoal(2, new TemptGoal(this, 1, Ingredient.of(EDCookingItemRegistry.Tomato), false));
+        this.goalSelector.addGoal(3, new RandomStrollGoal(this, 1));
+        this.goalSelector.addGoal(4, new LookAtPlayerGoal(this, Player.class,3 ));
+        this.goalSelector.addGoal(5, new RandomLookAroundGoal(this));
         this.targetSelector.addGoal(1, new HurtByTargetGoal(this).setAlertOthers());
         this.targetSelector.addGoal(2, new NearestAttackableTargetGoal(this, Player.class, 10, true, false, this::isAngryAt));
         this.targetSelector.addGoal(3, new ResetUniversalAngerTargetGoal<>(this, true));
@@ -189,4 +193,25 @@ public class DaggerStabberEntity extends PathfinderMob implements NeutralMob {
 
     @Override
     public void startPersistentAngerTimer() {this.setTimeToRemainAngry(PERSISTENT_ANGER_TIME.sample(this.random));}
+
+    @Override
+    protected @Nullable SoundEvent getAmbientSound() {
+        return EDAetherEntitySounds.DaggerStabber_AMBIENT;
+    }
+
+    @Override
+    protected @Nullable SoundEvent getHurtSound(DamageSource source) {
+        return EDAetherEntitySounds.DaggerStabber_HURT;
+    }
+
+    @Override
+    protected @Nullable SoundEvent getDeathSound() {
+        return EDAetherEntitySounds.DaggerStabber_DEATH;
+    }
+
+    @Override
+    protected void playAttackSound() {
+        float pitchForAttackSound = (float)this.random.nextInt(25, 100)/10;
+        this.playSound(EDAetherEntitySounds.DaggerStabber_ATTACK, 1.0f, pitchForAttackSound);
+    }
 }
