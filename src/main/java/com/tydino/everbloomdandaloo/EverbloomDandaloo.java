@@ -16,6 +16,8 @@ import org.slf4j.LoggerFactory;
 /// update fabricloom
 /// add the image for the aether creative tab
 
+/// REMINDERS
+/// ctrl+alt+shift+J selects all of same thing for copy paste when needed.
 /// utilize: https://docs.fabricmc.net/develop/items/first-item
 
 public class EverbloomDandaloo implements ModInitializer {
