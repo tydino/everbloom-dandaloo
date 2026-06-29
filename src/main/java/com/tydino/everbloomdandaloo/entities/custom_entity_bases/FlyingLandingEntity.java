@@ -4,11 +4,13 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.control.FlyingMoveControl;
 import net.minecraft.world.entity.ai.navigation.FlyingPathNavigation;
+import net.minecraft.world.entity.ai.navigation.GroundPathNavigation;
 import net.minecraft.world.entity.ai.navigation.PathNavigation;
 import net.minecraft.world.entity.animal.FlyingAnimal;
 import net.minecraft.world.level.Level;
 
 public class FlyingLandingEntity extends PathfinderMob implements FlyingAnimal {
+    boolean flyLastChange = isFlying();
 
     protected FlyingLandingEntity(EntityType<? extends PathfinderMob> type, Level level, int maxTurn, boolean canHoverInPlace) {
         super(type, level);
@@ -17,14 +19,26 @@ public class FlyingLandingEntity extends PathfinderMob implements FlyingAnimal {
 
     @Override
     protected PathNavigation createNavigation(Level level) {
-        FlyingPathNavigation flightNavigation = new FlyingPathNavigation(this, level);
-        flightNavigation.setCanOpenDoors(false);
-        flightNavigation.setCanFloat(true);
-        return flightNavigation;
+        if(this.isFlying()) {
+            FlyingPathNavigation flightNavigation = new FlyingPathNavigation(this, level);
+            flightNavigation.setCanOpenDoors(false);
+            flightNavigation.setCanFloat(true);
+            return flightNavigation;
+        }
+        return new GroundPathNavigation(this, level);
     }
 
     @Override
     public boolean isFlying() {
         return !this.onGround();
+    }
+
+    @Override
+    public void tick() {
+        super.tick();
+        if(this.isFlying()!=this.flyLastChange){
+            this.flyLastChange = isFlying();
+            this.createNavigation(level());
+        }
     }
 }

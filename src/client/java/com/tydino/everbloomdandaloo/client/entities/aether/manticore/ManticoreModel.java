@@ -1,6 +1,7 @@
 package com.tydino.everbloomdandaloo.client.entities.aether.manticore;
 
 import com.tydino.everbloomdandaloo.client.entities.aether.manticore.ManticoreRenderState;
+import net.minecraft.client.animation.KeyframeAnimation;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
@@ -41,6 +42,13 @@ public class ManticoreModel extends EntityModel<ManticoreRenderState> {
 	private final ModelPart frontrightfoot;
 	private final ModelPart frontrightcalf;
 	private final ModelPart frontrightthigh;
+
+	final KeyframeAnimation idle;
+	final KeyframeAnimation blink;
+	final KeyframeAnimation walk;
+	final KeyframeAnimation attack;
+	final KeyframeAnimation flying;
+
 	public ManticoreModel(ModelPart root) {
 		super(root);
 		this.root = root.getChild("root");
@@ -74,6 +82,12 @@ public class ManticoreModel extends EntityModel<ManticoreRenderState> {
 		this.frontrightfoot = this.root.getChild("frontrightfoot");
 		this.frontrightcalf = this.frontrightfoot.getChild("frontrightcalf");
 		this.frontrightthigh = this.frontrightcalf.getChild("frontrightthigh");
+
+		this.walk = ManticoreAnimations.walking.bake(root);
+		this.idle = ManticoreAnimations.idle.bake(root);
+		this.blink = ManticoreAnimations.blinking.bake(root);
+		this.attack = ManticoreAnimations.attack.bake(root);
+		this.flying = ManticoreAnimations.flying.bake(root);
 	}
 	public static LayerDefinition createBodyLayer() {
 		MeshDefinition modelData = new MeshDefinition();
@@ -148,5 +162,31 @@ public class ManticoreModel extends EntityModel<ManticoreRenderState> {
 
 		PartDefinition frontrightthigh = frontrightcalf.addOrReplaceChild("frontrightthigh", CubeListBuilder.create().texOffs(56, 0).addBox(-1.0F, -11.0F, -1.0F, 3.0F, 11.0F, 3.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(0.0F, -4.0F, 0.0F, 0.1745F, 0.0F, 0.0F));
 		return LayerDefinition.create(modelData, 69, 74);
+	}
+
+	@Override
+	public void setupAnim(ManticoreRenderState state) {
+		super.setupAnim(state);
+
+		if(state.blinkAnimation.isStarted()){
+			this.blink.apply(state.blinkAnimation, state.ageInTicks);
+		}
+
+		if(state.idleAnimation.isStarted()){
+			this.idle.apply(state.idleAnimation, state.ageInTicks);
+		}
+
+		if(state.attackAnimation.isStarted()){
+			this.attack.apply(state.attackAnimation, state.ageInTicks);
+		}
+
+		if(state.flyingAniamtion.isStarted()){
+			this.flying.apply(state.flyingAniamtion, state.ageInTicks);
+		}
+
+		this.walk.applyWalk(state.walkAnimationPos, state.walkAnimationSpeed, 2f, 2.5f);/// animation step / distance entity speed
+
+		this.head.xRot = state.xRot * (float) (Math.PI / 180.0);
+		this.head.yRot = state.yRot * (float) (Math.PI / 180.0);
 	}
 }

@@ -6,6 +6,6 @@ import net.minecraft.world.entity.AnimationState;
 public class ManticoreRenderState extends LivingEntityRenderState {
     public final AnimationState idleAnimation = new AnimationState();
     public final AnimationState blinkAnimation = new AnimationState();
-    public final AnimationState FlyingAniamtion = new AnimationState();
-    public final AnimationState AttackAnimation = new AnimationState();
+    public final AnimationState flyingAniamtion = new AnimationState();
+    public final AnimationState attackAnimation = new AnimationState();
 }

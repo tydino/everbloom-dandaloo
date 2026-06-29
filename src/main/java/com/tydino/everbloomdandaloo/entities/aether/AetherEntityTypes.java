@@ -3,6 +3,7 @@ package com.tydino.everbloomdandaloo.entities.aether;
 import com.tydino.everbloomdandaloo.entities.EDEntityTypes;
 import com.tydino.everbloomdandaloo.entities.aether.au_revoir.AuRevoirEntity;
 import com.tydino.everbloomdandaloo.entities.aether.dagger_stabber.DaggerStabberEntity;
+import com.tydino.everbloomdandaloo.entities.aether.manticore.Manticore;
 import net.fabricmc.fabric.api.event.player.AttackEntityCallback;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.minecraft.world.entity.EntityType;
@@ -20,6 +21,11 @@ public class AetherEntityTypes {
             EntityType.Builder.of(AuRevoirEntity::new, MobCategory.CREATURE)
                     .sized(0.5f, 0.75f)
     );
+    public static final EntityType<Manticore> MANTICORE = EDEntityTypes.register(
+            "manticore",
+            EntityType.Builder.of(Manticore::new, MobCategory.MONSTER)
+                    .sized(1f, 1.5f)
+    );
 
     public static void onInitialize(){
 
@@ -28,5 +34,6 @@ public class AetherEntityTypes {
     public static void registerAttributes(){
         FabricDefaultAttributeRegistry.register(DaggerStabber, DaggerStabberEntity.createAttributes());
         FabricDefaultAttributeRegistry.register(AuRevoir, AuRevoirEntity.createAttributes());
+        FabricDefaultAttributeRegistry.register(MANTICORE, Manticore.createAttributes());
     }
 }

@@ -55,9 +55,8 @@ public class AuRevoirEntity extends FlyingNonLandingEntity {
     protected void registerGoals() {
         this.goalSelector.addGoal(0, new AuRevoirLatch(this, 4));
         this.goalSelector.addGoal(1, new FlyingGoals.wander(this, 8, 6, 1, 3));
-        this.goalSelector.addGoal(2, new FloatGoal(this));
-        this.goalSelector.addGoal(3, new LookAtPlayerGoal(this, Player.class,5 ));
-        this.goalSelector.addGoal(4, new RandomLookAroundGoal(this));
+        this.goalSelector.addGoal(2, new LookAtPlayerGoal(this, Player.class,5 ));
+        this.goalSelector.addGoal(3, new RandomLookAroundGoal(this));
     }
 
     @Override
