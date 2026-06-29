@@ -32,6 +32,14 @@ public class FlyingNonLandingEntity extends PathfinderMob implements FlyingAnima
     }
 
     @Override
+    public void tick() {
+        super.tick();
+        if(!this.level().isClientSide()){
+            this.fallDistance = 0.0f;
+        }
+    }
+
+    @Override
     public boolean isFlying() {
         return true;
     }
