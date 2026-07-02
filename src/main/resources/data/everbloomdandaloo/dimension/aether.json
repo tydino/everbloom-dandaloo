@@ -23,8 +23,44 @@
           "parameters": {
             "temperature": 0.25,
             "humidity": 0.6,
-            "continentalness": 0.2,
+            "continentalness": 0.4,
             "erosion": 0.2,
+            "weirdness": 0,
+            "depth": 0,
+            "offset": 0
+          }
+        },
+        {
+          "biome": "everbloomdandaloo:aether_mountain",
+          "parameters": {
+            "temperature": 0,
+            "humidity": 0,
+            "continentalness": 0.8,
+            "erosion": 0,
+            "weirdness": 0,
+            "depth": 0,
+            "offset": 0
+          }
+        },
+        {
+          "biome": "everbloomdandaloo:aether_manticore_mountain",
+          "parameters": {
+            "temperature": 0,
+            "humidity": 0,
+            "continentalness": 1,
+            "erosion": 0,
+            "weirdness": 0,
+            "depth": 0,
+            "offset": 0
+          }
+        },
+        {
+          "biome": "everbloomdandaloo:aether_ocean",
+          "parameters": {
+            "temperature": 0,
+            "humidity": 0,
+            "continentalness": -1,
+            "erosion": 0,
             "weirdness": 0,
             "depth": 0,
             "offset": 0
@@ -35,7 +71,7 @@
           "parameters": {
             "temperature": 0.25,
             "humidity": 0.6,
-            "continentalness": 0.1,
+            "continentalness": 0.2,
             "erosion": 0.1,
             "weirdness": 0,
             "depth": 0,

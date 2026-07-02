@@ -15,9 +15,12 @@ public class EDEntitySpawn {
     /// AETHER BIOMES ///
     public static final ResourceKey<Biome>  Aether_Plains = ResourceKey.create(Registries.BIOME, Identifier.fromNamespaceAndPath(EverbloomDandaloo.MOD_ID, "aether_plains"));
     public static final ResourceKey<Biome>  Aether_JUNGLE = ResourceKey.create(Registries.BIOME, Identifier.fromNamespaceAndPath(EverbloomDandaloo.MOD_ID, "aether_jungle"));
+    public static final ResourceKey<Biome>  Aether_MOUNTAIN = ResourceKey.create(Registries.BIOME, Identifier.fromNamespaceAndPath(EverbloomDandaloo.MOD_ID, "aether_mountain"));
+    public static final ResourceKey<Biome>  Aether_MANTICOREMOUNTAIN = ResourceKey.create(Registries.BIOME, Identifier.fromNamespaceAndPath(EverbloomDandaloo.MOD_ID, "aether_manticore_mountain"));
 
     public static void onInitialize(){
         /// AETHER ENTITIES///
+        //dagger stabber
         BiomeModifications.addSpawn(
                 BiomeSelectors.includeByKey(Aether_Plains),
                 MobCategory.CREATURE,
@@ -35,9 +38,27 @@ public class EDEntitySpawn {
                 4
         );
         BiomeModifications.addSpawn(
+                BiomeSelectors.includeByKey(Aether_MOUNTAIN),
+                MobCategory.CREATURE,
+                AetherEntityTypes.DaggerStabber,
+                2,
+                1,
+                4
+        );
+        //au revoir
+        BiomeModifications.addSpawn(
                 BiomeSelectors.includeByKey(Aether_JUNGLE),
                 MobCategory.CREATURE,
                 AetherEntityTypes.AuRevoir,
+                1,
+                1,
+                1
+        );
+        //manticore
+        BiomeModifications.addSpawn(
+                BiomeSelectors.includeByKey(Aether_MANTICOREMOUNTAIN),
+                MobCategory.MONSTER,
+                AetherEntityTypes.MANTICORE,
                 1,
                 1,
                 1
