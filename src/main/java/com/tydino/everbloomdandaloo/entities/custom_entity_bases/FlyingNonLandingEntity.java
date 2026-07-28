@@ -5,12 +5,11 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.navigation.FlyingPathNavigation;
 import net.minecraft.world.entity.ai.navigation.PathNavigation;
-import net.minecraft.world.entity.animal.FlyingAnimal;
 import net.minecraft.world.level.Level;
 
 //is to be used whenever a entity flies but will never land
 
-public class FlyingNonLandingEntity extends PathfinderMob implements FlyingAnimal {
+public class FlyingNonLandingEntity extends PathfinderMob {
     //construction matching super
     protected FlyingNonLandingEntity(EntityType<? extends PathfinderMob> type, Level level) {
         super(type, level);
@@ -39,7 +38,6 @@ public class FlyingNonLandingEntity extends PathfinderMob implements FlyingAnima
         }
     }
 
-    @Override
     public boolean isFlying() {
         return true;
     }
