@@ -6,10 +6,6 @@ plugins {
 version = project.mod_version
 group = project.maven_group
 
-repositories {
-	//blank
-}
-
 loom {
 	splitEnvironmentSourceSets()
 
@@ -19,7 +15,11 @@ loom {
 			sourceSet sourceSets.client
 		}
 	}
+}
 
+repositories {
+	maven{url "https://cursemaven.com"}
+	maven{url "https://teamreborn.net"}
 }
 
 fabricApi {
@@ -34,9 +34,12 @@ dependencies {
 	
 	implementation "net.fabricmc:fabric-loader:${project.loader_version}"
 
-	// Fabric API. This is technically optional, but you probably want it anyway.
+	// Fabric API.
 	implementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
 
+	implementation "teamreborn:energy:5.0.0"
+
+	implementation "curse.maven:techreborn-233564:8261648"
 }
 
 processResources {
