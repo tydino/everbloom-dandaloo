@@ -13,15 +13,15 @@ import net.minecraft.world.level.biome.Biome;
 
 public class EDEntitySpawn {
     /// AETHER BIOMES ///
-    public static final ResourceKey<Biome>  Aether_Plains = ResourceKey.create(Registries.BIOME, Identifier.fromNamespaceAndPath(EverbloomDandaloo.MOD_ID, "aether_plains"));
+    /*public static final ResourceKey<Biome>  Aether_Plains = ResourceKey.create(Registries.BIOME, Identifier.fromNamespaceAndPath(EverbloomDandaloo.MOD_ID, "aether_plains"));
     public static final ResourceKey<Biome>  Aether_JUNGLE = ResourceKey.create(Registries.BIOME, Identifier.fromNamespaceAndPath(EverbloomDandaloo.MOD_ID, "aether_jungle"));
     public static final ResourceKey<Biome>  Aether_MOUNTAIN = ResourceKey.create(Registries.BIOME, Identifier.fromNamespaceAndPath(EverbloomDandaloo.MOD_ID, "aether_mountain"));
-    public static final ResourceKey<Biome>  Aether_MANTICOREMOUNTAIN = ResourceKey.create(Registries.BIOME, Identifier.fromNamespaceAndPath(EverbloomDandaloo.MOD_ID, "aether_manticore_mountain"));
+    public static final ResourceKey<Biome>  Aether_MANTICOREMOUNTAIN = ResourceKey.create(Registries.BIOME, Identifier.fromNamespaceAndPath(EverbloomDandaloo.MOD_ID, "aether_manticore_mountain")); */
 
     public static void onInitialize(){
         /// AETHER ENTITIES///
         //dagger stabber
-        BiomeModifications.addSpawn(
+        /*BiomeModifications.addSpawn(
                 BiomeSelectors.includeByKey(Aether_Plains),
                 MobCategory.CREATURE,
                 AetherEntityTypes.DaggerStabber,
@@ -62,6 +62,6 @@ public class EDEntitySpawn {
                 1,
                 1,
                 1
-        );
+        ); */
     }
 }
