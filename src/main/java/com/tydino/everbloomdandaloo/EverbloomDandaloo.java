@@ -28,6 +28,7 @@ public class EverbloomDandaloo implements ModInitializer {
 		EDSounds.registerSounds(); //SOUNDS//
 		EDItemRegistry.onInitialize(); //ITEMS//
 		EDBlockRegistry.onInitialize(); //BLOCKS//
+
 		EDEntityTypes.onInitialize(); //ENTITIES//
 		EDEntitySpawn.onInitialize();//ENTITIES SPAWN//
 
