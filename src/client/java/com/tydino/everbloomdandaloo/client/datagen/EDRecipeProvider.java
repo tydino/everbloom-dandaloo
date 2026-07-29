@@ -22,9 +22,9 @@ public class EDRecipeProvider extends FabricRecipeProvider {
             @Override
             public void buildRecipes() {
                 shapeless(RecipeCategory.FOOD, EDCookingItemRegistry.Tomato, 1)
-                        .requires(Items.RED_WOOL)
-                        .unlockedBy(getHasName(Items.RED_WOOL), has(Items.RED_WOOL))
-                        .group("food")
+                        .requires(Items.WOOL.red())
+                        .unlockedBy(getHasName(Items.WOOL.red()), has(Items.WOOL.red()))
+                        .group("ed-food")//puts all the food into a group labeled as such to become collapsable
                         .save(output);
             }
         };
