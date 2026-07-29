@@ -1,4 +1,4 @@
-package com.tydino.everbloomdandaloo.creativemenu;
+package com.tydino.everbloomdandaloo.creativemenu.menus;
 
 import com.tydino.everbloomdandaloo.EverbloomDandaloo;
 import com.tydino.everbloomdandaloo.items.cooking.EDCookingItemRegistry;
@@ -22,7 +22,7 @@ public class EDCookingItemGroup {
             .displayItems((params, output) -> {
 
                 //foods
-                output.accept(EDCookingItemRegistry.Tomato);
+                output.accept(EDCookingItemRegistry.Tomato);// Remove as soon as able
             })
             .build();
 

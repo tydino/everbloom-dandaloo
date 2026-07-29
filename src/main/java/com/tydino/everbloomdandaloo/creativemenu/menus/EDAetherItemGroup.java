@@ -1,4 +1,4 @@
-package com.tydino.everbloomdandaloo.creativemenu;
+package com.tydino.everbloomdandaloo.creativemenu.menus;
 
 import com.tydino.everbloomdandaloo.EverbloomDandaloo;
 import com.tydino.everbloomdandaloo.items.aether.EDAetherItemRegistry;
@@ -12,6 +12,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 
+//Despite being labeled as the aether group, it will be known externally as "Depricated"
 public class EDAetherItemGroup {
     public static final ResourceKey<CreativeModeTab> CreativeTab_key = ResourceKey.create(
             BuiltInRegistries.CREATIVE_MODE_TAB.key(), Identifier.fromNamespaceAndPath(EverbloomDandaloo.MOD_ID, "aether")
@@ -27,6 +28,8 @@ public class EDAetherItemGroup {
 
                 output.accept(EDAetherItemRegistry.SpawnAuRevoir);
                 output.accept(EDAetherItemRegistry.AuRevoirTail);
+
+                output.accept(EDCookingItemRegistry.Tomato);
             })
             .build();
 

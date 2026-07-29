@@ -1,9 +1,10 @@
 {
   "creativeTab.cooking": "Cooking",
+
+  "creativeTab.aether": "Depricated",
   "item.everbloomdandaloo.tomato": "Tomato",
   "block.everbloomdandaloo.tomato_bush": "TomatoBush",
 
-  "creativeTab.aether": "Aether",
   "entity.everbloomdandaloo.dagger_stabber": "Dagger Stabber",
   "item.everbloomdandaloo.spawn_daggerstabber": "Spawn Dagger Stabber",
   "item.everbloomdandaloo.dagger_stabber_meat": "Dagger Stabber Meat",
