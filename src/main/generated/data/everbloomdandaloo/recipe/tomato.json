@@ -1,7 +1,6 @@
 {
   "type": "minecraft:crafting_shapeless",
-  "category": "misc",
-  "group": "food",
+  "group": "ed-food",
   "ingredients": [
     "minecraft:red_wool"
   ],

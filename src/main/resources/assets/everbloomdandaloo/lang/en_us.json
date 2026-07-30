@@ -1,5 +1,12 @@
 {
-  "creativeTab.aether": "Depricated Things From Everbloom Dandaloo",
+  "creativeTab.ancient": "Ancient :: Everbloom Dandaloo",
+  "creativeTab.permian": "Permian :: Everbloom Dandaloo",
+  "item.everbloomdandaloo.permian_animal_fossil": "Permian Animal Fossil",
+
+  "creativeTab.triassic": "Triassic :: Everbloom Dandaloo",
+  "item.everbloomdandaloo.triassic_animal_fossil": "Triassic Animal Fossil",
+
+  "creativeTab.aether": "Depricated Things :: Everbloom Dandaloo",
   "item.everbloomdandaloo.tomato": "Tomato",
   "block.everbloomdandaloo.tomato_bush": "TomatoBush",
 

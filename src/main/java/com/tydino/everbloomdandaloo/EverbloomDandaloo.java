@@ -11,8 +11,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /// REMINDERS
+///
+/// fossil is spelled with 2 's'
+///
 /// ctrl+alt+shift+J selects all of same thing for copy paste when needed.
-/// utilize: https://docs.fabricmc.net/develop/items/first-item
 /// If struggling check https://github.com/Tutorials-By-Kaupenjoe/Fabric-Tutorial-26.X/tree/30-update-to-26.2 there may be an answer there.
 
 public class EverbloomDandaloo implements ModInitializer {
