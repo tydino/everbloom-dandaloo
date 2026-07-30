@@ -1,5 +1,7 @@
 package com.tydino.everbloomdandaloo.client.datagen;
 
+import com.tydino.everbloomdandaloo.items.ancient.EDCretaceousItems;
+import com.tydino.everbloomdandaloo.items.ancient.EDJurassicItems;
 import com.tydino.everbloomdandaloo.items.ancient.EDPermianItems;
 import com.tydino.everbloomdandaloo.items.ancient.EDTriassicItems;
 import net.fabricmc.fabric.api.client.datagen.v1.provider.FabricModelProvider;
@@ -26,5 +28,11 @@ public class EDModelProvider extends FabricModelProvider {
 
         //triassic
         itemModelGenerators.generateFlatItem(EDTriassicItems.TriassicAnimalFossil, ModelTemplates.FLAT_ITEM);
+
+        //jurassic
+        itemModelGenerators.generateFlatItem(EDJurassicItems.JurassicAnimalFossil, ModelTemplates.FLAT_ITEM);
+
+        //cretaceous
+        itemModelGenerators.generateFlatItem(EDCretaceousItems.CretaceousAnimalFossil, ModelTemplates.FLAT_ITEM);
     }
 }

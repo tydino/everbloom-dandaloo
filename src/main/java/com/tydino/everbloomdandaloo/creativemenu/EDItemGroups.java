@@ -1,9 +1,6 @@
 package com.tydino.everbloomdandaloo.creativemenu;
 
-import com.tydino.everbloomdandaloo.creativemenu.menus.EDAetherItemGroup;
-import com.tydino.everbloomdandaloo.creativemenu.menus.EDAncientItemGroup;
-import com.tydino.everbloomdandaloo.creativemenu.menus.EDPermianItemGroup;
-import com.tydino.everbloomdandaloo.creativemenu.menus.EDTriassicItemGroup;
+import com.tydino.everbloomdandaloo.creativemenu.menus.*;
 
 public class EDItemGroups {
     public static void onInitialize(){
@@ -11,5 +8,7 @@ public class EDItemGroups {
         EDAncientItemGroup.onInitialize();
         EDPermianItemGroup.onInitialize();
         EDTriassicItemGroup.onInitialize();
+        EDJurassicItemGroup.onInitialize();
+        EDCretaceousItemGroup.onInitialize();
     }
 }

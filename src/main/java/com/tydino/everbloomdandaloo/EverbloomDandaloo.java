@@ -12,8 +12,6 @@ import org.slf4j.LoggerFactory;
 
 /// REMINDERS
 ///
-/// fossil is spelled with 2 's'
-///
 /// ctrl+alt+shift+J selects all of same thing for copy paste when needed.
 /// If struggling check https://github.com/Tutorials-By-Kaupenjoe/Fabric-Tutorial-26.X/tree/30-update-to-26.2 there may be an answer there.
 

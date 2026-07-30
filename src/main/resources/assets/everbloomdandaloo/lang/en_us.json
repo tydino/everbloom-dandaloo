@@ -6,6 +6,12 @@
   "creativeTab.triassic": "Triassic :: Everbloom Dandaloo",
   "item.everbloomdandaloo.triassic_animal_fossil": "Triassic Animal Fossil",
 
+  "creativeTab.jurassic": "Jurassic :: Everbloom Dandaloo",
+  "item.everbloomdandaloo.jurassic_animal_fossil": "Jurassic Animal Fossil",
+
+  "creativeTab.cretaceous": "Cretaceous :: Everbloom Dandaloo",
+  "item.everbloomdandaloo.cretaceous_animal_fossil": "Cretaceous Animal Fossil",
+
   "creativeTab.aether": "Depricated Things :: Everbloom Dandaloo",
   "item.everbloomdandaloo.tomato": "Tomato",
   "block.everbloomdandaloo.tomato_bush": "TomatoBush",

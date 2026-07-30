@@ -2,6 +2,8 @@ package com.tydino.everbloomdandaloo.items;
 
 import com.tydino.everbloomdandaloo.EverbloomDandaloo;
 import com.tydino.everbloomdandaloo.items.aether.EDAetherItemRegistry;
+import com.tydino.everbloomdandaloo.items.ancient.EDCretaceousItems;
+import com.tydino.everbloomdandaloo.items.ancient.EDJurassicItems;
 import com.tydino.everbloomdandaloo.items.ancient.EDPermianItems;
 import com.tydino.everbloomdandaloo.items.ancient.EDTriassicItems;
 import com.tydino.everbloomdandaloo.items.cooking.EDCookingItemRegistry;
@@ -20,6 +22,8 @@ public class EDItemRegistry {
 
         EDPermianItems.onInitialize();
         EDTriassicItems.onInitialize();
+        EDJurassicItems.onInitialize();
+        EDCretaceousItems.onInitialize();
 
         EDCookingItemRegistry.onInitialize();
         EDAetherItemRegistry.onInitialize();
