@@ -10,10 +10,6 @@ import net.fabricmc.api.ModInitializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-/// ToDO
-/// update fabricloom
-/// add the image for the aether creative tab
-
 /// REMINDERS
 /// ctrl+alt+shift+J selects all of same thing for copy paste when needed.
 /// utilize: https://docs.fabricmc.net/develop/items/first-item

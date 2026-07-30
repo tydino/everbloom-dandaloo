@@ -18,7 +18,7 @@ public class EDAetherItemGroup {
             BuiltInRegistries.CREATIVE_MODE_TAB.key(), Identifier.fromNamespaceAndPath(EverbloomDandaloo.MOD_ID, "aether")
     );
     public static final CreativeModeTab CreativeTab = FabricCreativeModeTab.builder()
-            .icon(() -> new ItemStack(EDCookingItemRegistry.Tomato))
+            .icon(() -> new ItemStack(EDAetherItemRegistry.SpawnDaggerStabber))
             .title(Component.translatable("creativeTab.aether"))
             .displayItems((params, output) -> {
 

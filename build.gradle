@@ -40,6 +40,7 @@ dependencies {
 	implementation "teamreborn:energy:5.0.0"
 
 	implementation "curse.maven:techreborn-233564:8261648"
+	implementation "curse.maven:farmers-delight-refabricated-993166:8483103"
 }
 
 processResources {
