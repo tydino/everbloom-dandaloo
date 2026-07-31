@@ -5,7 +5,10 @@ import com.tydino.everbloomdandaloo.creativemenu.EDItemGroups;
 import com.tydino.everbloomdandaloo.entities.EDEntitySpawn;
 import com.tydino.everbloomdandaloo.entities.EDEntityTypes;
 import com.tydino.everbloomdandaloo.items.EDItemRegistry;
+import com.tydino.everbloomdandaloo.items.ancient.EDCretaceousItems;
+import com.tydino.everbloomdandaloo.items.ancient.EDJurassicItems;
 import com.tydino.everbloomdandaloo.items.ancient.EDPaleozoicItems;
+import com.tydino.everbloomdandaloo.items.ancient.EDTriassicItems;
 import net.fabricmc.api.ModInitializer;
 
 import net.fabricmc.fabric.api.creativetab.v1.CreativeModeTabEvents;
@@ -34,8 +37,15 @@ public class EverbloomDandaloo implements ModInitializer {
 
 		EDItemGroups.onInitialize(); //ITEMGROUPS//
 
+		/// Ancient items added to vanilla creative mode tabs ///
+		// fossils //
 		CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.INGREDIENTS).register(content ->
-				content.insertAfter(Items.BONE_MEAL, EDPaleozoicItems.PermianAnimalFossil)
-				);
+				content.insertAfter(Items.BONE_MEAL, EDPaleozoicItems.PermianAnimalFossil));
+		CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.INGREDIENTS).register(content ->
+				content.insertAfter(EDPaleozoicItems.PermianAnimalFossil, EDTriassicItems.TriassicAnimalFossil));
+		CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.INGREDIENTS).register(content ->
+				content.insertAfter(EDTriassicItems.TriassicAnimalFossil, EDJurassicItems.JurassicAnimalFossil));
+		CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.INGREDIENTS).register(content ->
+				content.insertAfter(EDJurassicItems.JurassicAnimalFossil, EDCretaceousItems.CretaceousAnimalFossil));
 	}
 }

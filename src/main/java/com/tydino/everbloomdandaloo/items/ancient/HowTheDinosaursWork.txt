@@ -1,0 +1,206 @@
+How Dinosaurs in Everbloom Dandaloo work:
+(Ignore the dinos breeding on their own.)
+
+They are usually visually split into;
+3 tail pieces and a tail base,
+2 body pieces,
+At least 1 neck piece,
+A head with a separate headlead,
+The legs will have the same amount of joints, but can have multiple pieces in each joint that don't rotate individually,
+Eyelids and jaw move by themselves.
+
+The tail will follow through with the body using the equation:
+Float lagFactor = 0.3f; ( lower value means slower, 0.3f is a good starting place!)
+This.tailpeice += (this.root-of-bone.yaw - this.tailpeice.yaw) * lagFactor;
+(For more poppy dinosaurs who wag their tail, figure out how to make the tail wag)
+
+They will have the animations universally of:
+eat/drink (can be separated into multiple animations)
+EX: brachiosaurus having a eating animation, and separately a leaning down which would play in unisung for it eating from a feeder,
+Walking,
+Idle,
+Sitting down, (setting butt down)
+Sitting, (will internally be sitting, externally can be laying down)
+Standing up, (putting butt up)
+And (if not set as a “laidback” dino)
+Attack
+
+Regardless of age, except for tiny dinos/babies. Absolute babies will have an element of their egg on them, such as a baby brachiosaurus hopping in it’s egg, or one having it on their head/back.
+
+
+For behaviour of completed dinosaurs:
+
+For untamed;
+They will hunt/feed on their own (will eat from leaves or ground depending on size, they cannot break leaves),
+Will attack when attacked/will hunt other animals near them that aren’t their own species,
+If spawned as a child at random; It will stay that size permanently, and will spawn a parent to accompany them who will feed and care for them.
+
+For tamed;
+Tamed dinosaurs will still hunt other dinosaurs when needed.
+They will have needs which will notify the player when they need it/will need a feeder block that Will satiate their needs,
+Will have a way to attack for the player when at full size,
+The children will grow up,
+For breeding a male and female are needed, and the egg will hold the data for both parents and will look like one of it’s parents,
+
+When clicking on a dino, they will either sit, wander, or follow.
+If sitting they will stay where they sat, and when needed will go to a feeder if there is one, or will call for the player if there is none in ranger.
+Wandering will almost act like an untamed just calling for player when hungry instead.
+Wandering dinosaurs MAY walk to eggs to sit with them which will function like a incubator to the egg. (only certain dinosaurs will go to eggs to hatch)
+Follow will have it follow the player, they will not teleport.
+
+Dinosaurs who are fully grown can be bred with other dinosaurs of the same species if they are the opposite gender, they will also sometimes do it on their own.
+
+
+Gameplay:
+To get the dinosaurs you will get an egg through:
+Breeding 2 dinosaurs,
+Rejuvenating a fossil, or
+Processing amber
+
+Once you have an egg, you will need to place the egg into a incubator, or put them with an adult dinosaur that is able to do it. This will have a pop up that will be a notification to the player when they don’t put them with a torch or campfire, they will spoil if not done in time, where then you will need to rejuvenate the egg..
+
+Once hatched you will need a certain scarab for that dino and it’s time period. (EX: small golden scarab for a microraptor, or a big golden scarab for a tyrannosaurus, you get these by going back in the time periods to get them, they will be in specific biomes for where what one you may be found.) If you don’t get them the scarab they won’t grow and you won’t be able to go through the sitting, wandering, and standing methods.
+
+You will need to care for the dinosaur as it ages, or get a feeder/waterer*.
+
+
+The process of getting dinosaurs:
+
+You will need to locate fossils or amber underground and mine them.
+You will receive multiple pieces from either’s ore based on what type and age of the fossil, this is a rng, but are guaranteed 3 per mined one and up to 8 from one block.
+(each either fossil or amber will have their own ores)
+
+You will need to fix the fossil fragments;
+For paleozoic: you will need 1 fragment
+For triassic: you will need 2 fragments to get one generic fossil
+For jurassic: you will need 3 fragments to get one generic fossil
+For cretaceous: you will need 4 fragments to get one generic fossil
+For plants: you will need 6 fragments to get one generic plant fossil
+
+To fix these fragments, you will use a newly added machine that accepts 6 inputs called the ‘fossil recombiner’.
+
+With these fossils in the ‘fossil adapter’ you can get ‘refined bones’s, which will be for certain parts of dinosaurs being: body, head, limb(s), for bigger dinosaurs it will be split into front and back limbs.
+
+(As an end of road thing you can use these ‘refined bone’s in a ‘bone combinator’ to get a placeable skeleton. You can also get bones from dinosaurs you have that died, but they cannot be used again to get a new looking dino or different gender ones for what comes next. These bones will be labeled as “true bone”s ingame.)
+
+With ‘refined bone’s you will use a ‘bone analyzer’ which will use these seperated or complete dinosaur bones to synthesize ‘synthesized DNA’ for use in what comes next, this will be for the specific dinosaur you have put in.
+This will have an option to put in a singular refined bone from a dino to get a incomplete DNA vial to use to guarantee a dino from the incomplete dino vials from the DNA\
+Reformer.
+
+With amber, you will use ‘amber distiller’ which will also give you back sap and ‘dead bug’ items as part of the output, but also ‘distilled DNA’ this DNA will be for a specfic time period and will be a wild card on what it will give.
+
+With the ‘DNA reformer’ you can put in the previously made DNA.
+With synthesized DNA it will be complete for all parts and will guarantee an embryo.
+With distilled DNA it will be incomplete, and will fail, when it fails you will get back a DNA vial of a dinosaur portion to combine with another one later.
+You can put dinosaur meat or other parts of dead animals into the reformer to get DNA vial portions to make more of that animal.
+
+With a “DNA combinator” You can put 2 failed DNA vials into it to make a more complete vial. This vial when complete can be put back into the DNA reformer for a guaranteed embryo.
+
+With a ‘cultivat’ you can input the embryo into it to get a finished dinosaur egg.
+
+You can place this egg and let it spoil to make a decoration, put it with an existing dino you previously cultivated, or put it into an incubator which will have requirements for that egg to make them hatch.
+An existing dinosaur will remove the need of placing down the hatched dinosaur item.
+
+A hatched dinosaur will be a placeable Item from the incubator, once placed down it will just give you the corresponding baby dinosaur which cannot be picked back up, and will give you the scarab information for taming it.
+The hatched dinosaur will stay relatively where it hatched unless it has a parent to follow/herd it can join.
+
+To feed the dinosaurs you will drop food items for that dino and they will walk over and eat it, or you can use a ‘feeder’ which is more efficient with food, Each feeder does require certain foods in it for certain dinosaurs. The top cannot be obscured by any block but moss carpets
+
+To give the dinosaur water, you will need to either have a water source block they can access, or a watering ‘trough’ in range of the dino which it will drink from if not obscured on it’s top.
+
+To breed dinosaurs, they will either breed on their own, or you will need a breeding scarab for its time period.
+
+A breeding scarab is made by any scarab of a certain time period and the following items, A meat, crop, seed, and leaf. (or compost ball) This will give you 2 breeding scarabs from one scarab.
+
+All scarabs will become an item on death, and the item is placeable.
+You can tame a scarab using a ‘compost ball’ which is made with the same things needed for the breeding scarab. A breeding scarab can be used on a tamed scarab.
+
+Any scarab from that certain time period of a dinosaur can be used to tame the dino, but it will require different amounts of any of the smaller ones than needed to tame them.
+
+When a tamed dino is given a breeding scarab or breed on their own; the female will be given the egg as something for it to place, you will need an ‘ancient nest’ that is in a flat area placed on the ground, where the dinosaur will then lay the egg onto the nest block where then depending on the dino can be in a clutch of eggs.
+
+
+Needed blocks/items left to add:
+Figure out How to book/item notes in how they work
+
+Fossil ores,
+‘Fossil mounds’, (will be a clump of fossil ores on the surface, will be rare surface feature of certain biomes with certain eras )
+Amber ores,
+‘Amber reserves’ (a clump of purfied amber where it will give multiple ambers when broken, common near the surface, but are specifcally only useful for getting paleozoic era bugs, like arthropleura and meganeura)
+Fossil fragments, (item)
+Amber, (item)
+
+Fossil Recombiner, needs imported
+Fossil Adapter, (powered)
+Refined bones, (item)
+Bone Combinator, (powered)
+Bone Analyzer, (powered)
+Amber Distiller, (powered)
+Dead bug, (item)
+
+Vial, (item)
+Synthesized DNA, (item)
+Incomplete DNA, (item)
+Distilled DNA, (item)
+
+DNA Reformer, (powered)
+DNA Combinator, (powered)
+Embryos, (item)
+
+Cultivat, (powered)
+Incubator, (powered)
+Dinosaur eggs,
+Hatched Dinosaurs, (item)
+
+Feeder(s),
+(water) trough,
+Nest block, (a full block with a nest on top)
+Nest, (item)
+Breeding scarab, (item)
+Compost ball, (item)
+
+Things to figure out:
+How to do tooltips like how tech reborn handles it’s descriptions
+How to make it worth it to actually get most dinosaurs, even if multiple share a use.
+Making gendered dinosaurs with variants
+Data on items instead of just entities
+How to properly make a power bar for powered objects
+
+Most things are in everbloom-dandaloo-depricated pre-reset, not all of it can be used hence the reset, but how it works and was put together is there!
+Writeups for descriptions of blocks:
+
+Fossil Recombiner:
+You use this when you have fossil fragments to reform a fossil.
+
+Fossil Adapter:
+You use this when you have fossils to turn them into refined bones.
+
+Bone Combinator:
+You use this with refined bones to make a complete skeleton.
+
+Bone Analyzer(was Refiner):
+You use this with either a complete skeleton or a refined bone to get a DNA vial.
+
+Amber Distiller:
+You use this to distill amber you found into a distilled DNA vial.
+
+DNA Reformer:
+You use this with DNA vial(s) to form an embryo.
+
+DNA (rename to Sequencer ingame)Combinator:
+You use this with incomplete DNA vials to make a more complete DNA vial.
+
+Cultivat:
+You use this with an embryo to get an egg (or syringe).
+
+Incubator:
+You put an egg in here to get a hatched animal.
+
+Feeder:
+You use this when you have to be away from your animals that you have to feed.
+
+Trough:
+You use this when you have to be away from animals that you have to water.
+
+Nest block:
+Allows for an (viable) animal you have previously gotten to stay with your egg and will sit with it to hatch it.
