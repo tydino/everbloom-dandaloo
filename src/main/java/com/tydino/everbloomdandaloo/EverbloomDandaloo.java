@@ -5,10 +5,7 @@ import com.tydino.everbloomdandaloo.creativemenu.EDItemGroups;
 import com.tydino.everbloomdandaloo.entities.EDEntitySpawn;
 import com.tydino.everbloomdandaloo.entities.EDEntityTypes;
 import com.tydino.everbloomdandaloo.items.EDItemRegistry;
-import com.tydino.everbloomdandaloo.items.ancient.EDCretaceousItems;
-import com.tydino.everbloomdandaloo.items.ancient.EDJurassicItems;
-import com.tydino.everbloomdandaloo.items.ancient.EDPaleozoicItems;
-import com.tydino.everbloomdandaloo.items.ancient.EDTriassicItems;
+import com.tydino.everbloomdandaloo.items.ancient.*;
 import net.fabricmc.api.ModInitializer;
 
 import net.fabricmc.fabric.api.creativetab.v1.CreativeModeTabEvents;
@@ -37,8 +34,9 @@ public class EverbloomDandaloo implements ModInitializer {
 
 		EDItemGroups.onInitialize(); //ITEMGROUPS//
 
-		/// Ancient items added to vanilla creative mode tabs ///
-		// fossils //
+		///items added to vanilla creative mode tabs ///
+
+		// fossils //																													/// ANCIENT ///
 		CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.INGREDIENTS).register(content ->
 				content.insertAfter(Items.BONE_MEAL, EDPaleozoicItems.PermianAnimalFossil));
 		CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.INGREDIENTS).register(content ->
@@ -47,5 +45,28 @@ public class EverbloomDandaloo implements ModInitializer {
 				content.insertAfter(EDTriassicItems.TriassicAnimalFossil, EDJurassicItems.JurassicAnimalFossil));
 		CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.INGREDIENTS).register(content ->
 				content.insertAfter(EDJurassicItems.JurassicAnimalFossil, EDCretaceousItems.CretaceousAnimalFossil));
+
+		// fossil fragments //
+		CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.INGREDIENTS).register(content ->
+				content.insertAfter(EDPaleozoicItems.PermianAnimalFossil, EDPaleozoicItems.AnimalFossilFragments));
+		CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.INGREDIENTS).register(content ->
+				content.insertAfter(EDTriassicItems.TriassicAnimalFossil, EDTriassicItems.AnimalFossilFragments));
+		CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.INGREDIENTS).register(content ->
+				content.insertAfter(EDJurassicItems.JurassicAnimalFossil, EDJurassicItems.AnimalFossilFragments));
+		CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.INGREDIENTS).register(content ->
+				content.insertAfter(EDCretaceousItems.CretaceousAnimalFossil, EDCretaceousItems.AnimalFossilFragments));
+
+		// amber //
+		CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.INGREDIENTS).register(content ->
+				content.insertAfter(Items.SLIME_BALL, EDPaleozoicItems.BigBugAmber));
+		CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.INGREDIENTS).register(content ->
+				content.insertAfter(EDPaleozoicItems.BigBugAmber, EDAncientItems.AmberBugs));
+		CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.INGREDIENTS).register(content ->
+				content.insertAfter(EDAncientItems.AmberBugs, EDAncientItems.AmberMediumBug));
+		CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.INGREDIENTS).register(content ->
+				content.insertAfter(EDAncientItems.AmberMediumBug, EDAncientItems.AmberPlant));
+		CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.INGREDIENTS).register(content ->
+				content.insertAfter(EDAncientItems.AmberPlant, EDAncientItems.AmberWing));
+
 	}
 }

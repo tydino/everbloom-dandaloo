@@ -4,10 +4,7 @@ import com.tydino.everbloomdandaloo.blocks.ancient.energy.EDAncientEnergyBlocks;
 import com.tydino.everbloomdandaloo.blocks.cooking.EDCookingBlocks;
 import com.tydino.everbloomdandaloo.entities.aether.AetherEntityTypes;
 import com.tydino.everbloomdandaloo.items.aether.EDAetherItemRegistry;
-import com.tydino.everbloomdandaloo.items.ancient.EDCretaceousItems;
-import com.tydino.everbloomdandaloo.items.ancient.EDJurassicItems;
-import com.tydino.everbloomdandaloo.items.ancient.EDPaleozoicItems;
-import com.tydino.everbloomdandaloo.items.ancient.EDTriassicItems;
+import com.tydino.everbloomdandaloo.items.ancient.*;
 import com.tydino.everbloomdandaloo.items.cooking.EDCookingItemRegistry;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
@@ -23,10 +20,15 @@ public class EDLangProvider extends FabricLanguageProvider {
     @Override
     public void generateTranslations(HolderLookup.Provider provider, TranslationBuilder translationBuilder) {
         translationBuilder.add("creativeTab.ancient", "Ancient :: Everbloom Dandaloo");                                 /// ANCIENTS ///
+        translationBuilder.add(EDAncientItems.AmberBugs, "Amber with Bugs");
+        translationBuilder.add(EDAncientItems.AmberMediumBug, "Amber with a Bug");
+        translationBuilder.add(EDAncientItems.AmberPlant, "Amber with a Broken Plant");
+        translationBuilder.add(EDAncientItems.AmberWing, "Amber with a Wing");
 
         translationBuilder.add("creativeTab.paleozoic", "Paleozoic :: Everbloom Dandaloo"); /// PALEOZOIC ///
         translationBuilder.add(EDPaleozoicItems.PermianAnimalFossil, "Permian Animal Fossil");
         translationBuilder.add(EDPaleozoicItems.AnimalFossilFragments, "Permian Animal Fossil Fragments");
+        translationBuilder.add(EDPaleozoicItems.BigBugAmber, "Amber with a Rather large Bug");
 
         translationBuilder.add("creativeTab.triassic", "Triassic :: Everbloom Dandaloo"); /// TRIASSIC ///
         translationBuilder.add(EDTriassicItems.TriassicAnimalFossil, "Triassic Animal Fossil");

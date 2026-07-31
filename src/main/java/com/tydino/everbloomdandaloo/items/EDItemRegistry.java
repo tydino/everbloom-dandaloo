@@ -2,10 +2,7 @@ package com.tydino.everbloomdandaloo.items;
 
 import com.tydino.everbloomdandaloo.EverbloomDandaloo;
 import com.tydino.everbloomdandaloo.items.aether.EDAetherItemRegistry;
-import com.tydino.everbloomdandaloo.items.ancient.EDCretaceousItems;
-import com.tydino.everbloomdandaloo.items.ancient.EDJurassicItems;
-import com.tydino.everbloomdandaloo.items.ancient.EDPaleozoicItems;
-import com.tydino.everbloomdandaloo.items.ancient.EDTriassicItems;
+import com.tydino.everbloomdandaloo.items.ancient.*;
 import com.tydino.everbloomdandaloo.items.cooking.EDCookingItemRegistry;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -20,6 +17,7 @@ public class EDItemRegistry {
 
     public static void onInitialize(){
 
+        EDAncientItems.onInitialize();
         EDPaleozoicItems.onInitialize();
         EDTriassicItems.onInitialize();
         EDJurassicItems.onInitialize();

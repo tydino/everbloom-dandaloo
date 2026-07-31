@@ -23,6 +23,7 @@ public class EDPaleozoicItemGroup {
 
                 output.accept(EDPaleozoicItems.PermianAnimalFossil);
                 output.accept(EDPaleozoicItems.AnimalFossilFragments);
+                output.accept(EDPaleozoicItems.BigBugAmber);
             })
             .build();
 

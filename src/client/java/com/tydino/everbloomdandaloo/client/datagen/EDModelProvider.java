@@ -1,10 +1,7 @@
 package com.tydino.everbloomdandaloo.client.datagen;
 
 import com.tydino.everbloomdandaloo.blocks.ancient.energy.EDAncientEnergyBlocks;
-import com.tydino.everbloomdandaloo.items.ancient.EDCretaceousItems;
-import com.tydino.everbloomdandaloo.items.ancient.EDJurassicItems;
-import com.tydino.everbloomdandaloo.items.ancient.EDPaleozoicItems;
-import com.tydino.everbloomdandaloo.items.ancient.EDTriassicItems;
+import com.tydino.everbloomdandaloo.items.ancient.*;
 import net.fabricmc.fabric.api.client.datagen.v1.provider.FabricModelProvider;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.minecraft.client.data.models.BlockModelGenerators;
@@ -25,16 +22,23 @@ public class EDModelProvider extends FabricModelProvider {
     @Override
     public void generateItemModels(ItemModelGenerators itemModelGenerators) {
         /// ANCIENT ///
-        //permian
+        //ambers//
+        itemModelGenerators.generateFlatItem(EDPaleozoicItems.BigBugAmber, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(EDAncientItems.AmberBugs, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(EDAncientItems.AmberMediumBug, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(EDAncientItems.AmberPlant, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(EDAncientItems.AmberWing, ModelTemplates.FLAT_ITEM);
+
+        /// permian ///
         itemModelGenerators.generateFlatItem(EDPaleozoicItems.PermianAnimalFossil, ModelTemplates.FLAT_ITEM);
 
-        //triassic
+        /// triassic ///
         itemModelGenerators.generateFlatItem(EDTriassicItems.TriassicAnimalFossil, ModelTemplates.FLAT_ITEM);
 
-        //jurassic
+        /// jurassic ///
         itemModelGenerators.generateFlatItem(EDJurassicItems.JurassicAnimalFossil, ModelTemplates.FLAT_ITEM);
 
-        //cretaceous
+        /// cretaceous ///
         itemModelGenerators.generateFlatItem(EDCretaceousItems.CretaceousAnimalFossil, ModelTemplates.FLAT_ITEM);
     }
 }

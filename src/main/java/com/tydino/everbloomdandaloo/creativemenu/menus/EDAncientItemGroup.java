@@ -2,10 +2,7 @@ package com.tydino.everbloomdandaloo.creativemenu.menus;
 
 import com.tydino.everbloomdandaloo.EverbloomDandaloo;
 import com.tydino.everbloomdandaloo.blocks.ancient.energy.EDAncientEnergyBlocks;
-import com.tydino.everbloomdandaloo.items.ancient.EDCretaceousItems;
-import com.tydino.everbloomdandaloo.items.ancient.EDJurassicItems;
-import com.tydino.everbloomdandaloo.items.ancient.EDPaleozoicItems;
-import com.tydino.everbloomdandaloo.items.ancient.EDTriassicItems;
+import com.tydino.everbloomdandaloo.items.ancient.*;
 import net.fabricmc.fabric.api.creativetab.v1.FabricCreativeModeTab;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -35,6 +32,12 @@ public class EDAncientItemGroup {
                 output.accept(EDTriassicItems.AnimalFossilFragments);
                 output.accept(EDJurassicItems.AnimalFossilFragments);
                 output.accept(EDCretaceousItems.AnimalFossilFragments);
+                //amber
+                output.accept(EDPaleozoicItems.BigBugAmber);
+                output.accept(EDAncientItems.AmberMediumBug);
+                output.accept(EDAncientItems.AmberBugs);
+                output.accept(EDAncientItems.AmberWing);
+                output.accept(EDAncientItems.AmberPlant);
 
                 //powered objects
                 output.accept(EDAncientEnergyBlocks.FossilRecombiner);
