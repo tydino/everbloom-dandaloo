@@ -1,13 +1,22 @@
 package com.tydino.everbloomdandaloo.blocks.ancient.energy;
 
 import com.mojang.serialization.MapCodec;
+import com.tydino.everbloomdandaloo.menus.fossil_recombinator.FossilRecombinatorMenu;
 import net.minecraft.core.BlockPos;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.MenuProvider;
+import net.minecraft.world.SimpleMenuProvider;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.ContainerLevelAccess;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import org.jetbrains.annotations.Nullable;
 
 public class FossilRecombinerBlock extends HorizontalDirectionalBlock {
     public static final MapCodec<FossilRecombinerBlock> CODEC = simpleCodec(FossilRecombinerBlock::new);
@@ -21,4 +30,20 @@ public class FossilRecombinerBlock extends HorizontalDirectionalBlock {
 
     @Override
     protected VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {return SHAPE;}
+
+    @Override
+    protected InteractionResult useWithoutItem(BlockState blockState, Level level, BlockPos blockPos, Player player, BlockHitResult blockHitResult) {
+        if (!level.isClientSide()) {
+            player.openMenu(blockState.getMenuProvider(level, blockPos));
+        }
+
+        return InteractionResult.SUCCESS;
+    }
+
+    @Override
+    protected @Nullable MenuProvider getMenuProvider(BlockState state, Level level, BlockPos pos) {
+        return new SimpleMenuProvider(
+                (containerId, inventory, player) -> new FossilRecombinatorMenu(containerId, inventory, ContainerLevelAccess.create(level, pos)), this.getName()
+        );
+    }
 }

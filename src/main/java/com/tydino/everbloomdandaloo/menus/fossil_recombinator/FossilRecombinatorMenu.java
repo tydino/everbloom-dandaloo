@@ -1,0 +1,125 @@
+package com.tydino.everbloomdandaloo.menus.fossil_recombinator;
+
+import com.tydino.everbloomdandaloo.blocks.ancient.EDAncientBlocks;
+import com.tydino.everbloomdandaloo.recipes.EDRecipes;
+import com.tydino.everbloomdandaloo.recipes.fossil_recombinator.FossilRecombinatorInput;
+import com.tydino.everbloomdandaloo.recipes.fossil_recombinator.FossilRecombinatorRecipe;
+import com.tydino.everbloomdandaloo.menus.EDMenuTypes;
+import net.minecraft.network.protocol.game.ClientboundContainerSetSlotPacket;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.Container;
+import net.minecraft.world.SimpleContainer;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.inventory.ContainerLevelAccess;
+import net.minecraft.world.inventory.ResultContainer;
+import net.minecraft.world.inventory.Slot;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.RecipeHolder;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
+import java.util.Optional;
+
+public class FossilRecombinatorMenu extends AbstractContainerMenu {
+
+    private final Container input = new SimpleContainer(1) {
+        @Override
+        public void setChanged() {
+            super.setChanged();
+            FossilRecombinatorMenu.this.slotsChanged(this);
+        }
+    };
+
+    private final ResultContainer output = new ResultContainer();
+
+    private final ContainerLevelAccess access;
+
+    @Nullable
+    private final Player player;
+
+    public FossilRecombinatorMenu(int containerId, Inventory inventory) {
+        this(containerId, inventory, ContainerLevelAccess.NULL);
+    }
+
+    public FossilRecombinatorMenu(int containerId, Inventory inventory, ContainerLevelAccess access) {
+        super(EDMenuTypes.FossilRecombinator, containerId);
+
+        this.access = access;
+        this.player = inventory.player;
+
+        addSlot(new Slot(this.input, 0, 27, 47));
+
+        addSlot(new FossilRecombinatorResultSlot(this, this.output, 0, 134, 47));
+
+        addStandardInventorySlots(inventory, 8, 84);
+    }
+
+    protected void onTake(final Player player, final ItemStack stack) {
+        stack.onCraftedBy(player, stack.getCount());
+        this.output.awardUsedRecipes(player, List.of(this.input.getItem(0)));
+        this.input.removeItem(0, 1);
+    }
+
+    @Override
+    public void slotsChanged(Container container) {
+        super.slotsChanged(container);
+
+        this.access.execute((level, blockPos) -> {
+            if (level instanceof ServerLevel serverLevel && container == this.input) {
+                FossilRecombinatorInput recipeInput = new FossilRecombinatorInput(this.input.getItem(0));
+                Optional<RecipeHolder<FossilRecombinatorRecipe>> maybeRecipe = serverLevel.recipeAccess().getRecipeFor(EDRecipes.FossilRecombinatorRECIPE_TYPE, recipeInput, serverLevel);
+                ItemStack result = ItemStack.EMPTY;
+
+                if (maybeRecipe.isPresent()) {
+                    RecipeHolder<FossilRecombinatorRecipe> recipeHolder = maybeRecipe.get();
+                    FossilRecombinatorRecipe recipe = recipeHolder.value();
+
+                    if (this.output.setRecipeUsed((ServerPlayer) this.player, recipeHolder)) {
+                        ItemStack recipeResult = recipe.assemble(recipeInput);
+
+                        if (recipeResult.isItemEnabled(level.enabledFeatures())) {
+                            result = recipeResult;
+                        }
+                    }
+                } else {
+                    // We can set the used recipe to null if no recipe was found.
+                    //noinspection DataFlowIssue
+                    this.output.setRecipeUsed((ServerPlayer) this.player, null);
+                }
+
+                this.output.setItem(0, result);
+
+				/*
+				Alternatively, call broadcastChanges instead of setting the remote slot and sending a packet.
+				Based on how your Menu is structured, you may not need to manually call any syncing method, but it is recommended that you are very sure of yourself before you remove these calls to avoid server-client desyncs.
+				 */
+                this.setRemoteSlot(0, result);
+                ((ServerPlayer) this.player).connection.send(new ClientboundContainerSetSlotPacket(this.containerId, this.incrementStateId(), 0, result));
+            }
+        });
+    }
+
+    @Override
+    public ItemStack quickMoveStack(Player player, int slotIndex) {
+        return ItemStack.EMPTY;
+    }
+
+    @Override
+    public boolean stillValid(Player player) {
+        return stillValid(this.access, player, EDAncientBlocks.FossilRecombiner);
+    }
+
+    @Override
+    public void removed(Player player) {
+        super.removed(player);
+        this.access.execute((level, blockPos) -> this.clearContainer(player, this.input));
+    }
+
+    @Override
+    public boolean canTakeItemForPickAll(final ItemStack carried, final Slot target) {
+        return target.container != this.output && super.canTakeItemForPickAll(carried, target);
+    }
+}

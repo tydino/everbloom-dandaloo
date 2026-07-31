@@ -71,8 +71,8 @@ You will receive multiple pieces from either’s ore based on what type and age 
 (each either fossil or amber will have their own ores)
 
 You will need to fix the fossil fragments;
-For paleozoic: you will need 1 fragment
-For triassic: you will need 2 fragments to get one generic fossil
+For paleozoic: you will need 2 fragment
+For triassic: you will need 3 fragments to get one generic fossil
 For jurassic: you will need 3 fragments to get one generic fossil
 For cretaceous: you will need 4 fragments to get one generic fossil
 For plants: you will need 6 fragments to get one generic plant fossil

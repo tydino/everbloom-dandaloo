@@ -6,6 +6,8 @@ import com.tydino.everbloomdandaloo.entities.EDEntitySpawn;
 import com.tydino.everbloomdandaloo.entities.EDEntityTypes;
 import com.tydino.everbloomdandaloo.items.EDItemRegistry;
 import com.tydino.everbloomdandaloo.items.ancient.*;
+import com.tydino.everbloomdandaloo.recipes.EDRecipes;
+import com.tydino.everbloomdandaloo.menus.EDMenuTypes;
 import net.fabricmc.api.ModInitializer;
 
 import net.fabricmc.fabric.api.creativetab.v1.CreativeModeTabEvents;
@@ -16,6 +18,7 @@ import org.slf4j.LoggerFactory;
 
 /// REMINDERS
 /// ctrl+alt+shift+J selects all of same thing for copy paste when needed.
+/// look through if needed https://docs.fabricmc.net/develop/items/first-item
 /// If struggling check https://github.com/Tutorials-By-Kaupenjoe/Fabric-Tutorial-26.X/tree/30-update-to-26.2 there may be an answer there.
 
 public class EverbloomDandaloo implements ModInitializer {
@@ -28,6 +31,10 @@ public class EverbloomDandaloo implements ModInitializer {
 		EDItemRegistry.onInitialize(); //ITEMS//
 		LOGGER.info("Registering Block");
 		EDBlockRegistry.onInitialize(); //BLOCKS//
+		LOGGER.info("Registering Recipes");
+		EDRecipes.onInitialize();
+		LOGGER.info("Registeirng Menus");
+		EDMenuTypes.onInitialize();
 
 		LOGGER.info("Registering Entities");
 		EDEntityTypes.onInitialize(); //ENTITIES//
