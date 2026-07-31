@@ -19,5 +19,6 @@
   "item.everbloomdandaloo.spawn_aurevoir": "Spawn Au Revoir",
   "item.everbloomdandaloo.spawn_daggerstabber": "Spawn Dagger Stabber",
   "item.everbloomdandaloo.tomato": "Tomato",
-  "item.everbloomdandaloo.triassic_animal_fossil": "Triassic Animal Fossil"
+  "item.everbloomdandaloo.triassic_animal_fossil": "Triassic Animal Fossil",
+  "tooltip.everbloomdandaloo.fossil_recombiner": "You use this when you have fossil fragments to reform a fossil."
 }

@@ -6,13 +6,18 @@ import com.tydino.everbloomdandaloo.blocks.cooking.EDCookingBlocks;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.component.TooltipDisplay;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 
+import java.util.function.Consumer;
 import java.util.function.Function;
 
 public class EDBlockRegistry {
@@ -22,13 +27,31 @@ public class EDBlockRegistry {
         EDAncientEnergyBlocks.onInitialize();
     }
 
+    public static Block registerBlock(String name, Function<BlockBehaviour.Properties, Block> function, Component... toolTips) {
+        Block toRegister = function.apply(BlockBehaviour.Properties.of().setId(ResourceKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(EverbloomDandaloo.MOD_ID, name))));
+        registerBlockItem(name, toRegister, toolTips);
+        return Registry.register(BuiltInRegistries.BLOCK, Identifier.fromNamespaceAndPath(EverbloomDandaloo.MOD_ID, name), toRegister);
+    }
+    public static void registerBlockItem(String name, Block block, Component... toolTips) {
+        Registry.register(BuiltInRegistries.ITEM, Identifier.fromNamespaceAndPath(EverbloomDandaloo.MOD_ID, name),
+                new BlockItem(block, new Item.Properties().useBlockDescriptionPrefix()
+                        .setId(ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(EverbloomDandaloo.MOD_ID, name)))) {
+                    @Override
+                    public void appendHoverText(ItemStack itemStack, Item.TooltipContext context, TooltipDisplay display, Consumer<Component> builder, TooltipFlag tooltipFlag) {
+                        for (var component  : toolTips){
+                            builder.accept(component);
+                        }
+                        super.appendHoverText(itemStack, context, display, builder, tooltipFlag);
+                    }
+                });
+    }
+
     //taken from kaupenjoe this line of code belongs to him
     public static Block registerBlock(String name, Function<BlockBehaviour.Properties, Block> function) {
         Block toRegister = function.apply(BlockBehaviour.Properties.of().setId(ResourceKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(EverbloomDandaloo.MOD_ID, name))));
         registerBlockItem(name, toRegister);
         return Registry.register(BuiltInRegistries.BLOCK, Identifier.fromNamespaceAndPath(EverbloomDandaloo.MOD_ID, name), toRegister);
     }
-
     //taken from kaupenjoe this line of code belongs to him
     public static void registerBlockItem(String name, Block block) {
         Registry.register(BuiltInRegistries.ITEM, Identifier.fromNamespaceAndPath(EverbloomDandaloo.MOD_ID, name),
