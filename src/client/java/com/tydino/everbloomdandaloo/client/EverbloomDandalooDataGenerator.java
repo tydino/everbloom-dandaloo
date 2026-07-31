@@ -1,5 +1,6 @@
 package com.tydino.everbloomdandaloo.client;
 
+import com.tydino.everbloomdandaloo.client.datagen.EDLangProvider;
 import com.tydino.everbloomdandaloo.client.datagen.EDModelProvider;
 import com.tydino.everbloomdandaloo.client.datagen.EDRecipeProvider;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
@@ -12,5 +13,6 @@ public class EverbloomDandalooDataGenerator implements DataGeneratorEntrypoint {
 
 		pack.addProvider(EDModelProvider::new);
 		pack.addProvider(EDRecipeProvider::new);
+		pack.addProvider(EDLangProvider::new);
 	}
 }
