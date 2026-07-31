@@ -15,22 +15,14 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 
-public class EDAncientItemGroup {
-
+public class EDCraftingBlocks {
     public static final ResourceKey<CreativeModeTab> CreativeTab_key = ResourceKey.create(
-            BuiltInRegistries.CREATIVE_MODE_TAB.key(), Identifier.fromNamespaceAndPath(EverbloomDandaloo.MOD_ID, "ancient")
+            BuiltInRegistries.CREATIVE_MODE_TAB.key(), Identifier.fromNamespaceAndPath(EverbloomDandaloo.MOD_ID, "edcrafting")
     );
     public static final CreativeModeTab CreativeTab = FabricCreativeModeTab.builder()
             .icon(() -> new ItemStack(EDPaleozoicItems.PermianAnimalFossil))
-            .title(Component.translatable("creativeTab.ancient"))
+            .title(Component.translatable("creativeTab.edcrafting"))
             .displayItems((params, output) -> {
-
-                //fossils
-                output.accept(EDPaleozoicItems.PermianAnimalFossil);
-                output.accept(EDTriassicItems.TriassicAnimalFossil);
-                output.accept(EDJurassicItems.JurassicAnimalFossil);
-                output.accept(EDCretaceousItems.CretaceousAnimalFossil);
-
                 //powered objects
                 output.accept(EDAncientEnergyBlocks.FossilRecombiner);
             })

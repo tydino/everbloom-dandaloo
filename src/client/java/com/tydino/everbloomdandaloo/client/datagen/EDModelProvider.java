@@ -1,5 +1,6 @@
 package com.tydino.everbloomdandaloo.client.datagen;
 
+import com.tydino.everbloomdandaloo.blocks.ancient.energy.EDAncientEnergyBlocks;
 import com.tydino.everbloomdandaloo.items.ancient.EDCretaceousItems;
 import com.tydino.everbloomdandaloo.items.ancient.EDJurassicItems;
 import com.tydino.everbloomdandaloo.items.ancient.EDPaleozoicItems;
@@ -17,12 +18,13 @@ public class EDModelProvider extends FabricModelProvider {
 
     @Override
     public void generateBlockStateModels(BlockModelGenerators blockModelGenerators) {
-        //blockModelGenerators
+        /// ANCIENT ///
+        blockModelGenerators.createNonTemplateModelBlock(EDAncientEnergyBlocks.FossilRecombiner);
     }
 
     @Override
     public void generateItemModels(ItemModelGenerators itemModelGenerators) {
-        /// ancient ///
+        /// ANCIENT ///
         //permian
         itemModelGenerators.generateFlatItem(EDPaleozoicItems.PermianAnimalFossil, ModelTemplates.FLAT_ITEM);
 

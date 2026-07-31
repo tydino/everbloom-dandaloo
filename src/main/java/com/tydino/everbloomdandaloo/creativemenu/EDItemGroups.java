@@ -6,6 +6,7 @@ public class EDItemGroups {
     public static void onInitialize(){
         EDAetherItemGroup.onInitialize();
         EDAncientItemGroup.onInitialize();
+        EDCraftingBlocks.onInitialize();
         EDPaleozoicItemGroup.onInitialize();
         EDTriassicItemGroup.onInitialize();
         EDJurassicItemGroup.onInitialize();

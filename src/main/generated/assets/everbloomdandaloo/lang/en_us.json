@@ -1,8 +1,10 @@
 {
+  "block.everbloomdandaloo.fossil_recombiner": "Fossil Recombiner",
   "block.everbloomdandaloo.tomato_bush": "Tomato Bush",
   "creativeTab.aether": "Depricated Things :: Everbloom Dandaloo",
   "creativeTab.ancient": "Ancient :: Everbloom Dandaloo",
   "creativeTab.cretaceous": "Cretaceous :: Everbloom Dandaloo",
+  "creativeTab.edcrafting": "Crafting :: Everbloom Dandaloo",
   "creativeTab.jurassic": "Jurassic :: Everbloom Dandaloo",
   "creativeTab.paleozoic": "Paleozoic :: Everbloom Dandaloo",
   "creativeTab.triassic": "Triassic :: Everbloom Dandaloo",

@@ -1,6 +1,7 @@
 package com.tydino.everbloomdandaloo.blocks;
 
 import com.tydino.everbloomdandaloo.EverbloomDandaloo;
+import com.tydino.everbloomdandaloo.blocks.ancient.energy.EDAncientEnergyBlocks;
 import com.tydino.everbloomdandaloo.blocks.cooking.EDCookingBlocks;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -18,6 +19,21 @@ public class EDBlockRegistry {
 
     public static void onInitialize(){
         EDCookingBlocks.onInitialize();
+        EDAncientEnergyBlocks.onInitialize();
+    }
+
+    //taken from kaupenjoe this line of code belongs to him
+    public static Block registerBlock(String name, Function<BlockBehaviour.Properties, Block> function) {
+        Block toRegister = function.apply(BlockBehaviour.Properties.of().setId(ResourceKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(EverbloomDandaloo.MOD_ID, name))));
+        registerBlockItem(name, toRegister);
+        return Registry.register(BuiltInRegistries.BLOCK, Identifier.fromNamespaceAndPath(EverbloomDandaloo.MOD_ID, name), toRegister);
+    }
+
+    //taken from kaupenjoe this line of code belongs to him
+    public static void registerBlockItem(String name, Block block) {
+        Registry.register(BuiltInRegistries.ITEM, Identifier.fromNamespaceAndPath(EverbloomDandaloo.MOD_ID, name),
+                new BlockItem(block, new Item.Properties().useBlockDescriptionPrefix()
+                        .setId(ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(EverbloomDandaloo.MOD_ID, name)))));
     }
 
     public static Block register(String name, Function<BlockBehaviour.Properties, Block> blockFactory, BlockBehaviour.Properties settings, boolean shouldRegisterItem) {

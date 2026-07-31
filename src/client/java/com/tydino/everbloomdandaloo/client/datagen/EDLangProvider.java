@@ -1,5 +1,6 @@
 package com.tydino.everbloomdandaloo.client.datagen;
 
+import com.tydino.everbloomdandaloo.blocks.ancient.energy.EDAncientEnergyBlocks;
 import com.tydino.everbloomdandaloo.blocks.cooking.EDCookingBlocks;
 import com.tydino.everbloomdandaloo.entities.aether.AetherEntityTypes;
 import com.tydino.everbloomdandaloo.items.aether.EDAetherItemRegistry;
@@ -34,6 +35,10 @@ public class EDLangProvider extends FabricLanguageProvider {
 
         translationBuilder.add("creativeTab.cretaceous", "Cretaceous :: Everbloom Dandaloo"); /// cretaceous ///
         translationBuilder.add(EDCretaceousItems.CretaceousAnimalFossil, "Cretaceous Animal Fossil");
+
+
+        translationBuilder.add("creativeTab.edcrafting", "Crafting :: Everbloom Dandaloo");                           /// CRAFTING ///
+        translationBuilder.add(EDAncientEnergyBlocks.FossilRecombiner, "Fossil Recombiner");
 
 
         translationBuilder.add("creativeTab.aether", "Depricated Things :: Everbloom Dandaloo");                        /// DEPRICATED ///
