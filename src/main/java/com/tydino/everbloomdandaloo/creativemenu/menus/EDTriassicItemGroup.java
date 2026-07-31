@@ -1,7 +1,6 @@
 package com.tydino.everbloomdandaloo.creativemenu.menus;
 
 import com.tydino.everbloomdandaloo.EverbloomDandaloo;
-import com.tydino.everbloomdandaloo.items.ancient.EDPermianItems;
 import com.tydino.everbloomdandaloo.items.ancient.EDTriassicItems;
 import net.fabricmc.fabric.api.creativetab.v1.FabricCreativeModeTab;
 import net.minecraft.core.Registry;

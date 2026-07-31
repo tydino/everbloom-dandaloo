@@ -5,8 +5,12 @@ import com.tydino.everbloomdandaloo.creativemenu.EDItemGroups;
 import com.tydino.everbloomdandaloo.entities.EDEntitySpawn;
 import com.tydino.everbloomdandaloo.entities.EDEntityTypes;
 import com.tydino.everbloomdandaloo.items.EDItemRegistry;
+import com.tydino.everbloomdandaloo.items.ancient.EDPaleozoicItems;
 import net.fabricmc.api.ModInitializer;
 
+import net.fabricmc.fabric.api.creativetab.v1.CreativeModeTabEvents;
+import net.minecraft.world.item.CreativeModeTabs;
+import net.minecraft.world.item.Items;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -29,5 +33,9 @@ public class EverbloomDandaloo implements ModInitializer {
 		EDEntitySpawn.onInitialize();//ENTITIES SPAWN//
 
 		EDItemGroups.onInitialize(); //ITEMGROUPS//
+
+		CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.INGREDIENTS).register(content ->
+				content.insertAfter(Items.BONE_MEAL, EDPaleozoicItems.PermianAnimalFossil)
+				);
 	}
 }

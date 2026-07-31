@@ -1,12 +1,10 @@
 package com.tydino.everbloomdandaloo.creativemenu.menus;
 
 import com.tydino.everbloomdandaloo.EverbloomDandaloo;
-import com.tydino.everbloomdandaloo.items.aether.EDAetherItemRegistry;
 import com.tydino.everbloomdandaloo.items.ancient.EDCretaceousItems;
 import com.tydino.everbloomdandaloo.items.ancient.EDJurassicItems;
-import com.tydino.everbloomdandaloo.items.ancient.EDPermianItems;
+import com.tydino.everbloomdandaloo.items.ancient.EDPaleozoicItems;
 import com.tydino.everbloomdandaloo.items.ancient.EDTriassicItems;
-import com.tydino.everbloomdandaloo.items.cooking.EDCookingItemRegistry;
 import net.fabricmc.fabric.api.creativetab.v1.FabricCreativeModeTab;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -22,12 +20,12 @@ public class EDAncientItemGroup {
             BuiltInRegistries.CREATIVE_MODE_TAB.key(), Identifier.fromNamespaceAndPath(EverbloomDandaloo.MOD_ID, "ancient")
     );
     public static final CreativeModeTab CreativeTab = FabricCreativeModeTab.builder()
-            .icon(() -> new ItemStack(EDPermianItems.PermianAnimalFossil))
+            .icon(() -> new ItemStack(EDPaleozoicItems.PermianAnimalFossil))
             .title(Component.translatable("creativeTab.ancient"))
             .displayItems((params, output) -> {
 
                 //fossils
-                output.accept(EDPermianItems.PermianAnimalFossil);
+                output.accept(EDPaleozoicItems.PermianAnimalFossil);
                 output.accept(EDTriassicItems.TriassicAnimalFossil);
                 output.accept(EDJurassicItems.JurassicAnimalFossil);
                 output.accept(EDCretaceousItems.CretaceousAnimalFossil);
