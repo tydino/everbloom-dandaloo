@@ -19,10 +19,16 @@ public class EDBlockTagProvider extends FabricTagsProvider.BlockTagsProvider{
     protected void addTags(HolderLookup.Provider provider) {
         EverbloomDandaloo.LOGGER.info("Making Block tags for Everbloom Dandaloo");
         tag(BlockTags.MINEABLE_WITH_PICKAXE)
+                .add(EDBlockRegistry.getRK(EDAncientBlocks.FossilOre))
+                .add(EDBlockRegistry.getRK(EDAncientBlocks.DeepslateFossilOre))
+
                 .add(EDBlockRegistry.getRK(EDAncientBlocks.AmberOre))
                 .add(EDBlockRegistry.getRK(EDAncientBlocks.DeepslateAmberOre));
 
         tag(BlockTags.NEEDS_IRON_TOOL)
+                .add(EDBlockRegistry.getRK(EDAncientBlocks.FossilOre))
+                .add(EDBlockRegistry.getRK(EDAncientBlocks.DeepslateFossilOre))
+
                 .add(EDBlockRegistry.getRK(EDAncientBlocks.AmberOre))
                 .add(EDBlockRegistry.getRK(EDAncientBlocks.DeepslateAmberOre));
     }

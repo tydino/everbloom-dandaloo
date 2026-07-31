@@ -22,8 +22,13 @@ public class EDLangProvider extends FabricLanguageProvider {
     public void generateTranslations(HolderLookup.Provider provider, TranslationBuilder translationBuilder) {
         EverbloomDandaloo.LOGGER.info("Making The Names for Everbloom Dandaloo");
         translationBuilder.add("creativeTab.ancient", "Ancient :: Everbloom Dandaloo");                                 /// ANCIENTS ///
+
+        translationBuilder.add(EDAncientBlocks.FossilOre, "Fossil Ore");
+        translationBuilder.add(EDAncientBlocks.DeepslateFossilOre, "Deepslate Fossil Ore");
+
         translationBuilder.add(EDAncientBlocks.AmberOre, "Amber Ore");
         translationBuilder.add(EDAncientBlocks.DeepslateAmberOre, "Deepslate Amber Ore");
+
         translationBuilder.add(EDAncientItems.AmberBugs, "Amber with Bugs");
         translationBuilder.add(EDAncientItems.AmberMediumBug, "Amber with a Bug");
         translationBuilder.add(EDAncientItems.AmberPlant, "Amber with a Broken Plant");

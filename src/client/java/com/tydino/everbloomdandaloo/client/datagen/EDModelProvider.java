@@ -21,6 +21,9 @@ public class EDModelProvider extends FabricModelProvider {
         blockModelGenerators.createTrivialCube(EDAncientBlocks.AmberOre);
         blockModelGenerators.createTrivialCube(EDAncientBlocks.DeepslateAmberOre);
 
+        blockModelGenerators.createTrivialCube(EDAncientBlocks.FossilOre);
+        blockModelGenerators.createTrivialCube(EDAncientBlocks.DeepslateFossilOre);
+
         blockModelGenerators.createNonTemplateModelBlock(EDAncientBlocks.FossilRecombiner);
     }
 

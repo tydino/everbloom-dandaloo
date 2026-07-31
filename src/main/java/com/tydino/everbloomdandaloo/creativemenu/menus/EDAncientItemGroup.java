@@ -23,6 +23,8 @@ public class EDAncientItemGroup {
             .displayItems((params, output) -> {
 
                 //fossils
+                output.accept(EDAncientBlocks.FossilOre);
+                output.accept(EDAncientBlocks.DeepslateFossilOre);
                 output.accept(EDPaleozoicItems.PermianAnimalFossil);
                 output.accept(EDTriassicItems.TriassicAnimalFossil);
                 output.accept(EDJurassicItems.JurassicAnimalFossil);

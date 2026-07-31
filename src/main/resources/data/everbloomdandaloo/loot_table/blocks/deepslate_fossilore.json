@@ -1,0 +1,35 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "rolls": 4,
+      "bonus_rolls": 2,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "everbloomdandaloo:permian_animal_fossilfragments",
+          "weight": 1,
+          "quality": 1
+        },
+        {
+          "type": "minecraft:item",
+          "name": "everbloomdandaloo:triassic_animal_fossilfragments",
+          "weight": 2,
+          "quality": 1
+        },
+        {
+          "type": "minecraft:item",
+          "name": "everbloomdandaloo:jurassic_animal_fossilfragments",
+          "weight": 3,
+          "quality": 1
+        },
+        {
+          "type": "minecraft:item",
+          "name": "everbloomdandaloo:cretaceous_animal_fossilfragments",
+          "weight": 4,
+          "quality": 1
+        }
+      ]
+    }
+  ]
+}
