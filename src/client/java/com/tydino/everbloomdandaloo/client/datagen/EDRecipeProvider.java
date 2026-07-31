@@ -1,5 +1,6 @@
 package com.tydino.everbloomdandaloo.client.datagen;
 
+import com.tydino.everbloomdandaloo.EverbloomDandaloo;
 import com.tydino.everbloomdandaloo.items.cooking.EDCookingItemRegistry;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
@@ -18,6 +19,7 @@ public class EDRecipeProvider extends FabricRecipeProvider {
 
     @Override
     protected RecipeProvider createRecipeProvider(HolderLookup.Provider provider, RecipeOutput recipeOutput) {
+        EverbloomDandaloo.LOGGER.info("Making Recipes for Everbloom Dandaloo");
         return new RecipeProvider(provider, recipeOutput) {
             @Override
             public void buildRecipes() {

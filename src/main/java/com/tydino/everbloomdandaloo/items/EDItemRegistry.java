@@ -27,7 +27,12 @@ public class EDItemRegistry {
         EDAetherItemRegistry.onInitialize();
     }
 
-    //generic register
+    //generic registers
+
+    public static ResourceKey<Item> getRK(Item item) {
+        return BuiltInRegistries.ITEM.getResourceKey(item).get();
+    }
+
     public static <T extends Item> T register(String name, Function<Item.Properties, T> itemFactory, Item.Properties settings) {
         // Create the item key.
         ResourceKey<Item> itemKey = ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(EverbloomDandaloo.MOD_ID, name));

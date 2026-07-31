@@ -1,7 +1,7 @@
 package com.tydino.everbloomdandaloo.blocks;
 
 import com.tydino.everbloomdandaloo.EverbloomDandaloo;
-import com.tydino.everbloomdandaloo.blocks.ancient.energy.EDAncientEnergyBlocks;
+import com.tydino.everbloomdandaloo.blocks.ancient.EDAncientBlocks;
 import com.tydino.everbloomdandaloo.blocks.cooking.EDCookingBlocks;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -24,7 +24,11 @@ public class EDBlockRegistry {
 
     public static void onInitialize(){
         EDCookingBlocks.onInitialize();
-        EDAncientEnergyBlocks.onInitialize();
+        EDAncientBlocks.onInitialize();
+    }
+
+    public static ResourceKey<Block> getRK(Block block) {
+        return BuiltInRegistries.BLOCK.getResourceKey(block).get();
     }
 
     public static Block registerBlock(String name, Function<BlockBehaviour.Properties, Block> function, Component... toolTips) {

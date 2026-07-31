@@ -1,6 +1,7 @@
 package com.tydino.everbloomdandaloo.client.datagen;
 
-import com.tydino.everbloomdandaloo.blocks.ancient.energy.EDAncientEnergyBlocks;
+import com.tydino.everbloomdandaloo.EverbloomDandaloo;
+import com.tydino.everbloomdandaloo.blocks.ancient.EDAncientBlocks;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootSubProvider;
 import net.minecraft.core.HolderLookup;
@@ -14,9 +15,10 @@ public class EDBlockLootTables extends FabricBlockLootSubProvider {
 
     @Override
     public void generate() {
+        EverbloomDandaloo.LOGGER.info("Making Block Loot for Everbloom Dandaloo");
         /// ANCIENT ///
 
         //machines
-        dropSelf(EDAncientEnergyBlocks.FossilRecombiner);
+        dropSelf(EDAncientBlocks.FossilRecombiner);
     }
 }

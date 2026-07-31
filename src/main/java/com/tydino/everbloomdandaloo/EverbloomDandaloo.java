@@ -15,7 +15,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /// REMINDERS
-///
 /// ctrl+alt+shift+J selects all of same thing for copy paste when needed.
 /// If struggling check https://github.com/Tutorials-By-Kaupenjoe/Fabric-Tutorial-26.X/tree/30-update-to-26.2 there may be an answer there.
 
@@ -25,17 +24,22 @@ public class EverbloomDandaloo implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
-		EDSounds.registerSounds(); //SOUNDS//
+		LOGGER.info("Registering Items");
 		EDItemRegistry.onInitialize(); //ITEMS//
+		LOGGER.info("Registering Block");
 		EDBlockRegistry.onInitialize(); //BLOCKS//
 
+		LOGGER.info("Registering Entities");
 		EDEntityTypes.onInitialize(); //ENTITIES//
 		EDEntitySpawn.onInitialize();//ENTITIES SPAWN//
 
+		LOGGER.info("Registering Sounds");
+		EDSounds.registerSounds(); //SOUNDS//
+
+		LOGGER.info("Registering Item Groups (for creative)");
 		EDItemGroups.onInitialize(); //ITEMGROUPS//
 
-		///items added to vanilla creative mode tabs ///
-
+		LOGGER.info("Adding the Items into Vanilla Creative Tabs");
 		// fossils //																													/// ANCIENT ///
 		CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.INGREDIENTS).register(content ->
 				content.insertAfter(Items.BONE_MEAL, EDPaleozoicItems.PermianAnimalFossil));

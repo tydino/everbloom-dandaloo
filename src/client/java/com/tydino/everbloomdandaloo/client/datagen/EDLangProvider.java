@@ -1,6 +1,7 @@
 package com.tydino.everbloomdandaloo.client.datagen;
 
-import com.tydino.everbloomdandaloo.blocks.ancient.energy.EDAncientEnergyBlocks;
+import com.tydino.everbloomdandaloo.EverbloomDandaloo;
+import com.tydino.everbloomdandaloo.blocks.ancient.EDAncientBlocks;
 import com.tydino.everbloomdandaloo.blocks.cooking.EDCookingBlocks;
 import com.tydino.everbloomdandaloo.entities.aether.AetherEntityTypes;
 import com.tydino.everbloomdandaloo.items.aether.EDAetherItemRegistry;
@@ -19,7 +20,10 @@ public class EDLangProvider extends FabricLanguageProvider {
 
     @Override
     public void generateTranslations(HolderLookup.Provider provider, TranslationBuilder translationBuilder) {
+        EverbloomDandaloo.LOGGER.info("Making The Names for Everbloom Dandaloo");
         translationBuilder.add("creativeTab.ancient", "Ancient :: Everbloom Dandaloo");                                 /// ANCIENTS ///
+        translationBuilder.add(EDAncientBlocks.AmberOre, "Amber Ore");
+        translationBuilder.add(EDAncientBlocks.DeepslateAmberOre, "Deepslate Amber Ore");
         translationBuilder.add(EDAncientItems.AmberBugs, "Amber with Bugs");
         translationBuilder.add(EDAncientItems.AmberMediumBug, "Amber with a Bug");
         translationBuilder.add(EDAncientItems.AmberPlant, "Amber with a Broken Plant");
@@ -44,7 +48,7 @@ public class EDLangProvider extends FabricLanguageProvider {
 
 
         translationBuilder.add("creativeTab.edcrafting", "Crafting :: Everbloom Dandaloo");                           /// CRAFTING ///
-        translationBuilder.add(EDAncientEnergyBlocks.FossilRecombiner, "Fossil Recombiner");
+        translationBuilder.add(EDAncientBlocks.FossilRecombiner, "Fossil Recombiner");
         translationBuilder.add("tooltip.everbloomdandaloo.fossil_recombiner", "You use this when you have fossil fragments to reform a fossil.");
 
 

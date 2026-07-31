@@ -1,11 +1,7 @@
 package com.tydino.everbloomdandaloo.creativemenu.menus;
 
 import com.tydino.everbloomdandaloo.EverbloomDandaloo;
-import com.tydino.everbloomdandaloo.blocks.ancient.energy.EDAncientEnergyBlocks;
-import com.tydino.everbloomdandaloo.items.ancient.EDCretaceousItems;
-import com.tydino.everbloomdandaloo.items.ancient.EDJurassicItems;
-import com.tydino.everbloomdandaloo.items.ancient.EDPaleozoicItems;
-import com.tydino.everbloomdandaloo.items.ancient.EDTriassicItems;
+import com.tydino.everbloomdandaloo.blocks.ancient.EDAncientBlocks;
 import net.fabricmc.fabric.api.creativetab.v1.FabricCreativeModeTab;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -20,11 +16,11 @@ public class EDCraftingBlocks {
             BuiltInRegistries.CREATIVE_MODE_TAB.key(), Identifier.fromNamespaceAndPath(EverbloomDandaloo.MOD_ID, "edcrafting")
     );
     public static final CreativeModeTab CreativeTab = FabricCreativeModeTab.builder()
-            .icon(() -> new ItemStack(EDAncientEnergyBlocks.FossilRecombiner))
+            .icon(() -> new ItemStack(EDAncientBlocks.FossilRecombiner))
             .title(Component.translatable("creativeTab.edcrafting"))
             .displayItems((params, output) -> {
                 //powered objects
-                output.accept(EDAncientEnergyBlocks.FossilRecombiner);
+                output.accept(EDAncientBlocks.FossilRecombiner);
             })
             .build();
 

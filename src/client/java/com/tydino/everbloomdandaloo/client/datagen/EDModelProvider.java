@@ -1,6 +1,7 @@
 package com.tydino.everbloomdandaloo.client.datagen;
 
-import com.tydino.everbloomdandaloo.blocks.ancient.energy.EDAncientEnergyBlocks;
+import com.tydino.everbloomdandaloo.EverbloomDandaloo;
+import com.tydino.everbloomdandaloo.blocks.ancient.EDAncientBlocks;
 import com.tydino.everbloomdandaloo.items.ancient.*;
 import net.fabricmc.fabric.api.client.datagen.v1.provider.FabricModelProvider;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
@@ -15,12 +16,17 @@ public class EDModelProvider extends FabricModelProvider {
 
     @Override
     public void generateBlockStateModels(BlockModelGenerators blockModelGenerators) {
+        EverbloomDandaloo.LOGGER.info("Making Block Models for Everbloom Dandaloo");
         /// ANCIENT ///
-        blockModelGenerators.createNonTemplateModelBlock(EDAncientEnergyBlocks.FossilRecombiner);
+        blockModelGenerators.createTrivialCube(EDAncientBlocks.AmberOre);
+        blockModelGenerators.createTrivialCube(EDAncientBlocks.DeepslateAmberOre);
+
+        blockModelGenerators.createNonTemplateModelBlock(EDAncientBlocks.FossilRecombiner);
     }
 
     @Override
     public void generateItemModels(ItemModelGenerators itemModelGenerators) {
+        EverbloomDandaloo.LOGGER.info("Making Item Models for Everbloom Dandaloo");
         /// ANCIENT ///
         //ambers//
         itemModelGenerators.generateFlatItem(EDPaleozoicItems.BigBugAmber, ModelTemplates.FLAT_ITEM);
