@@ -8,10 +8,10 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.player.Inventory;
 
-public class FossilRecombinerScreen extends AbstractContainerScreen<FossilRecombinatorMenu> {
+public class FossilRecombinatorScreen extends AbstractContainerScreen<FossilRecombinatorMenu> {
     private static final Identifier SCREEN_TEXTURE = Identifier.withDefaultNamespace("textures/gui/container/anvil.png");
 
-    public FossilRecombinerScreen(FossilRecombinatorMenu abstractContainerMenu, Inventory inventory, Component component) {
+    public FossilRecombinatorScreen(FossilRecombinatorMenu abstractContainerMenu, Inventory inventory, Component component) {
         super(abstractContainerMenu, inventory, component);
     }
 

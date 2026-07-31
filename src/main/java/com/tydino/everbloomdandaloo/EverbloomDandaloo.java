@@ -16,6 +16,9 @@ import net.minecraft.world.item.Items;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/// TODO:
+/// Fix the menu for the Fossil Recombinator
+
 /// REMINDERS
 /// ctrl+alt+shift+J selects all of same thing for copy paste when needed.
 /// look through if needed https://docs.fabricmc.net/develop/items/first-item

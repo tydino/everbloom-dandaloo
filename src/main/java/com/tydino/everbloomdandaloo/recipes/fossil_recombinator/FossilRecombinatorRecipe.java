@@ -18,8 +18,7 @@ public class FossilRecombinatorRecipe implements Recipe<FossilRecombinatorInput>
     public static final MapCodec<FossilRecombinatorRecipe> CODEC = RecordCodecBuilder.mapCodec(instance ->
             instance.group(
                     ItemStackTemplate.CODEC.fieldOf("result").forGetter(FossilRecombinatorRecipe::getResult),
-                    Ingredient.CODEC.fieldOf("baseItem").forGetter(FossilRecombinatorRecipe::getBaseItem),
-                    Ingredient.CODEC.fieldOf("upgradeItem").forGetter(FossilRecombinatorRecipe::getUpgradeItem)
+                    Ingredient.CODEC.fieldOf("baseItem").forGetter(FossilRecombinatorRecipe::getBaseItem)
                     ).apply(instance, FossilRecombinatorRecipe::new)
     );
 
@@ -28,12 +27,10 @@ public class FossilRecombinatorRecipe implements Recipe<FossilRecombinatorInput>
             FossilRecombinatorRecipe::getResult,
             Ingredient.CONTENTS_STREAM_CODEC,
             FossilRecombinatorRecipe::getBaseItem,
-            Ingredient.CONTENTS_STREAM_CODEC,
-            FossilRecombinatorRecipe::getUpgradeItem,
             FossilRecombinatorRecipe::new
     );
 
-    public FossilRecombinatorRecipe(ItemStackTemplate result, Ingredient baseItem, Ingredient upgradeItem) {
+    public FossilRecombinatorRecipe(ItemStackTemplate result, Ingredient baseItem) {//more can be added here first!
         this.baseItem = baseItem;
         this.result = result;
     }
@@ -44,10 +41,6 @@ public class FossilRecombinatorRecipe implements Recipe<FossilRecombinatorInput>
 
     public Ingredient getBaseItem() {
         return this.baseItem;
-    }
-
-    public Ingredient getUpgradeItem(){
-        return null;
     }
 
     @Override
