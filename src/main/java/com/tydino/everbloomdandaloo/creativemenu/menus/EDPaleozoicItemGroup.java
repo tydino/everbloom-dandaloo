@@ -22,6 +22,7 @@ public class EDPaleozoicItemGroup {
             .displayItems((params, output) -> {
 
                 output.accept(EDPaleozoicItems.PermianAnimalFossil);
+                output.accept(EDPaleozoicItems.AnimalFossilFragments);
             })
             .build();
 

@@ -23,6 +23,7 @@ public class EDCretaceousItemGroup {
             .displayItems((params, output) -> {
 
                 output.accept(EDCretaceousItems.CretaceousAnimalFossil);
+                output.accept(EDCretaceousItems.AnimalFossilFragments);
             })
             .build();
 

@@ -22,6 +22,7 @@ public class EDTriassicItemGroup {
             .displayItems((params, output) -> {
 
                 output.accept(EDTriassicItems.TriassicAnimalFossil);
+                output.accept(EDTriassicItems.AnimalFossilFragments);
             })
             .build();
 

@@ -12,13 +12,17 @@
   "entity.everbloomdandaloo.dagger_stabber": "Dagger Stabber",
   "item.everbloomdandaloo.au_revoir_tail": "Au Revoir tail",
   "item.everbloomdandaloo.cretaceous_animal_fossil": "Cretaceous Animal Fossil",
+  "item.everbloomdandaloo.cretaceous_animal_fossilfragments": "Cretaceous Animal Fossil Fragments",
   "item.everbloomdandaloo.dagger_stabber_meat": "Dagger Stabber Meat",
   "item.everbloomdandaloo.daggerstabber_dagger": "Dagger Stabber Dagger",
   "item.everbloomdandaloo.jurassic_animal_fossil": "Jurassic Animal Fossil",
+  "item.everbloomdandaloo.jurassic_animal_fossilfragments": "Jurassic Animal Fossil Fragments",
   "item.everbloomdandaloo.permian_animal_fossil": "Permian Animal Fossil",
+  "item.everbloomdandaloo.permian_animal_fossilfragments": "Permian Animal Fossil Fragments",
   "item.everbloomdandaloo.spawn_aurevoir": "Spawn Au Revoir",
   "item.everbloomdandaloo.spawn_daggerstabber": "Spawn Dagger Stabber",
   "item.everbloomdandaloo.tomato": "Tomato",
   "item.everbloomdandaloo.triassic_animal_fossil": "Triassic Animal Fossil",
+  "item.everbloomdandaloo.triassic_animal_fossilfragments": "Triassic Animal Fossil Fragments",
   "tooltip.everbloomdandaloo.fossil_recombiner": "You use this when you have fossil fragments to reform a fossil."
 }

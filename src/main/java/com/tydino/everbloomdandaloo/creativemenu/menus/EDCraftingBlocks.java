@@ -20,7 +20,7 @@ public class EDCraftingBlocks {
             BuiltInRegistries.CREATIVE_MODE_TAB.key(), Identifier.fromNamespaceAndPath(EverbloomDandaloo.MOD_ID, "edcrafting")
     );
     public static final CreativeModeTab CreativeTab = FabricCreativeModeTab.builder()
-            .icon(() -> new ItemStack(EDPaleozoicItems.PermianAnimalFossil))
+            .icon(() -> new ItemStack(EDAncientEnergyBlocks.FossilRecombiner))
             .title(Component.translatable("creativeTab.edcrafting"))
             .displayItems((params, output) -> {
                 //powered objects

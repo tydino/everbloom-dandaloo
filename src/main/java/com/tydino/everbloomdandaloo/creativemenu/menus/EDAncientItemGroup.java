@@ -30,6 +30,11 @@ public class EDAncientItemGroup {
                 output.accept(EDTriassicItems.TriassicAnimalFossil);
                 output.accept(EDJurassicItems.JurassicAnimalFossil);
                 output.accept(EDCretaceousItems.CretaceousAnimalFossil);
+                //fossil fragments
+                output.accept(EDPaleozoicItems.AnimalFossilFragments);
+                output.accept(EDTriassicItems.AnimalFossilFragments);
+                output.accept(EDJurassicItems.AnimalFossilFragments);
+                output.accept(EDCretaceousItems.AnimalFossilFragments);
 
                 //powered objects
                 output.accept(EDAncientEnergyBlocks.FossilRecombiner);
