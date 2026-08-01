@@ -1,8 +1,8 @@
 package com.tydino.everbloomdandaloo.entities.aether.au_revoir;
 
 import com.tydino.everbloomdandaloo.entities.aether.EDAetherEntitySounds;
-import com.tydino.everbloomdandaloo.entities.custom_entity_bases.FlyingNonLandingEntity;
-import com.tydino.everbloomdandaloo.entities.custom_goals.flying.FlyingGoals;
+import com.tydino.everbloomdandaloo.entities.custom_entity_bases.DepricatedFlyingNonLandingEntity;
+import com.tydino.everbloomdandaloo.entities.custom_goals.flying.DepricatedFlyingGoals;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -14,7 +14,6 @@ import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.control.FlyingMoveControl;
-import net.minecraft.world.entity.ai.goal.FloatGoal;
 import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
 import net.minecraft.world.entity.ai.goal.PanicGoal;
 import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
@@ -24,7 +23,7 @@ import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
 import org.jspecify.annotations.Nullable;
 
-public class AuRevoirEntity extends FlyingNonLandingEntity {
+public class AuRevoirEntity extends DepricatedFlyingNonLandingEntity {
 
     /// ANIMATION DECLARATION /// MAKE SURE THE ENTITYDATE ACCESSORs ARE SET TO THE RIGHT ENTITY!
     static final EntityDataAccessor<Boolean> FLAP = SynchedEntityData.defineId(AuRevoirEntity.class, EntityDataSerializers.BOOLEAN);
@@ -54,7 +53,7 @@ public class AuRevoirEntity extends FlyingNonLandingEntity {
     @Override
     protected void registerGoals() {
         this.goalSelector.addGoal(0, new AuRevoirLatch(this, 4));
-        this.goalSelector.addGoal(1, new FlyingGoals.wander(this, 8, 6, 1, 3));
+        this.goalSelector.addGoal(1, new DepricatedFlyingGoals.wander(this, 8, 6, 1, 3));
         this.goalSelector.addGoal(2, new LookAtPlayerGoal(this, Player.class,5 ));
         this.goalSelector.addGoal(3, new RandomLookAroundGoal(this));
     }

@@ -1,7 +1,6 @@
 package com.tydino.everbloomdandaloo.menus.fossil_recombinator;
 
 import com.tydino.everbloomdandaloo.blocks.ancient.EDAncientBlocks;
-import com.tydino.everbloomdandaloo.menus.EDAbstractBaseMenu;
 import com.tydino.everbloomdandaloo.recipes.EDRecipes;
 import com.tydino.everbloomdandaloo.recipes.fossil_recombinator.FossilRecombinatorInput;
 import com.tydino.everbloomdandaloo.recipes.fossil_recombinator.FossilRecombinatorRecipe;
@@ -24,7 +23,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 import java.util.Optional;
 
-public class FossilRecombinatorMenu extends EDAbstractBaseMenu {
+public class FossilRecombinatorMenu extends AbstractContainerMenu {
 
     private final Container input = new SimpleContainer(1) {
         @Override
@@ -46,7 +45,7 @@ public class FossilRecombinatorMenu extends EDAbstractBaseMenu {
     }
 
     public FossilRecombinatorMenu(int containerId, Inventory inventory, ContainerLevelAccess access) {
-        super(EDMenuTypes.FossilRecombinator, containerId, 1);
+        super(EDMenuTypes.FossilRecombinator, containerId);
 
         this.access = access;
         this.player = inventory.player;
@@ -96,9 +95,9 @@ public class FossilRecombinatorMenu extends EDAbstractBaseMenu {
 				/*
 				Alternatively, call broadcastChanges instead of setting the remote slot and sending a packet.
 				Based on how your Menu is structured, you may not need to manually call any syncing method, but it is recommended that you are very sure of yourself before you remove these calls to avoid server-client desyncs.
-				 */
+
                 this.setRemoteSlot(0, result);
-                ((ServerPlayer) this.player).connection.send(new ClientboundContainerSetSlotPacket(this.containerId, this.incrementStateId(), 0, result));
+                ((ServerPlayer) this.player).connection.send(new ClientboundContainerSetSlotPacket(this.containerId, this.incrementStateId(), 0, result));*/
             }
         });
     }

@@ -1,32 +1,28 @@
 package com.tydino.everbloomdandaloo.entities.custom_goals.flying;
 
-import com.tydino.everbloomdandaloo.entities.custom_entity_bases.FlyingLandingEntity;
-import com.tydino.everbloomdandaloo.entities.custom_entity_bases.FlyingNonLandingEntity;
+import com.tydino.everbloomdandaloo.entities.custom_entity_bases.DepricatedFlyingLandingEntity;
+import com.tydino.everbloomdandaloo.entities.custom_entity_bases.DepricatedFlyingNonLandingEntity;
 import net.minecraft.core.BlockPos;
-import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.entity.ai.util.AirAndWaterRandomPos;
 import net.minecraft.world.entity.ai.util.HoverRandomPos;
-import net.minecraft.world.entity.animal.Animal;
-import net.minecraft.world.entity.animal.bee.Bee;
 import net.minecraft.world.phys.Vec3;
 import org.jspecify.annotations.Nullable;
 
 import java.util.EnumSet;
-import java.util.Objects;
 
-public class FlyingGoals {
+public class DepricatedFlyingGoals {
 
     /// only usable for NONLANDABLE entities ///
     public static class wander extends Goal {
-        public FlyingNonLandingEntity mob;
+        public DepricatedFlyingNonLandingEntity mob;
         public int horizontalDistance;
         public int verticalDistance;
         public int hoverMin;
         public int hoverMax;
 
 
-        public wander(FlyingNonLandingEntity mob, int horizontalDistance, int verticalDistance, int hoverMin, int hoverMax) {
+        public wander(DepricatedFlyingNonLandingEntity mob, int horizontalDistance, int verticalDistance, int hoverMin, int hoverMax) {
             super();
             this.setFlags(EnumSet.of(Goal.Flag.MOVE));
             this.mob = mob;
@@ -69,14 +65,14 @@ public class FlyingGoals {
 
     /// used for LANDABLE entities ///
     public static class fly extends Goal{
-        public FlyingLandingEntity mob;
+        public DepricatedFlyingLandingEntity mob;
         public int horizontalDistance;
         public int verticalDistance;
         public int hoverMin;
         public int hoverMax;
 
 
-        public fly(FlyingLandingEntity mob, int horizontalDistance, int verticalDistance, int hoverMin, int hoverMax) {
+        public fly(DepricatedFlyingLandingEntity mob, int horizontalDistance, int verticalDistance, int hoverMin, int hoverMax) {
             super();
             this.setFlags(EnumSet.of(Goal.Flag.MOVE));
             this.mob = mob;

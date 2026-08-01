@@ -9,9 +9,9 @@ import net.minecraft.world.level.Level;
 
 //is to be used whenever a entity flies but will never land
 
-public class FlyingNonLandingEntity extends PathfinderMob {
+public class DepricatedFlyingNonLandingEntity extends PathfinderMob {
     //construction matching super
-    protected FlyingNonLandingEntity(EntityType<? extends PathfinderMob> type, Level level) {
+    protected DepricatedFlyingNonLandingEntity(EntityType<? extends PathfinderMob> type, Level level) {
         super(type, level);
     }
 

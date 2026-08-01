@@ -1,7 +1,7 @@
 package com.tydino.everbloomdandaloo.entities.aether.manticore;
 
-import com.tydino.everbloomdandaloo.entities.custom_entity_bases.FlyingLandingEntity;
-import com.tydino.everbloomdandaloo.entities.custom_goals.flying.FlyingGoals;
+import com.tydino.everbloomdandaloo.entities.custom_entity_bases.DepricatedFlyingLandingEntity;
+import com.tydino.everbloomdandaloo.entities.custom_goals.flying.DepricatedFlyingGoals;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -21,7 +21,7 @@ import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
 import org.jspecify.annotations.Nullable;
 
-public class Manticore extends FlyingLandingEntity implements NeutralMob {
+public class Manticore extends DepricatedFlyingLandingEntity implements NeutralMob {
     /// ANIMATION DECLARATION /// MAKE SURE THE ENTITYDATE ACCESSORs ARE SET TO THE RIGHT ENTITY!
     static final EntityDataAccessor<Boolean> IDLE = SynchedEntityData.defineId(Manticore.class, EntityDataSerializers.BOOLEAN);
     public final AnimationState idleAnimation = new AnimationState();
@@ -61,7 +61,7 @@ public class Manticore extends FlyingLandingEntity implements NeutralMob {
         this.goalSelector.addGoal(0, new FloatGoal(this));
         this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 1.5, true));
         this.goalSelector.addGoal(2, new RandomStrollGoal(this, 1));
-        this.goalSelector.addGoal(3, new FlyingGoals.fly(this, 12, 15, 1, 5));
+        this.goalSelector.addGoal(3, new DepricatedFlyingGoals.fly(this, 12, 15, 1, 5));
         this.goalSelector.addGoal(4, new RandomLookAroundGoal(this));
         this.goalSelector.addGoal(5, new RandomLookAroundGoal(this));
         this.targetSelector.addGoal(1, new HurtByTargetGoal(this));

@@ -8,10 +8,10 @@ import net.minecraft.world.entity.ai.navigation.GroundPathNavigation;
 import net.minecraft.world.entity.ai.navigation.PathNavigation;
 import net.minecraft.world.level.Level;
 
-public class FlyingLandingEntity extends PathfinderMob{
+public class DepricatedFlyingLandingEntity extends PathfinderMob{
     boolean flyLastChange = isFlying();
 
-    protected FlyingLandingEntity(EntityType<? extends PathfinderMob> type, Level level, int maxTurn, boolean canHoverInPlace) {
+    protected DepricatedFlyingLandingEntity(EntityType<? extends PathfinderMob> type, Level level, int maxTurn, boolean canHoverInPlace) {
         super(type, level);
         this.moveControl = new FlyingMoveControl(this, maxTurn, canHoverInPlace);
     }

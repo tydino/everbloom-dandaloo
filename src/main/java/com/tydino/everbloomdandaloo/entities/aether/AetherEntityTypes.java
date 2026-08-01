@@ -4,7 +4,6 @@ import com.tydino.everbloomdandaloo.entities.EDEntityTypes;
 import com.tydino.everbloomdandaloo.entities.aether.au_revoir.AuRevoirEntity;
 import com.tydino.everbloomdandaloo.entities.aether.dagger_stabber.DaggerStabberEntity;
 import com.tydino.everbloomdandaloo.entities.aether.manticore.Manticore;
-import net.fabricmc.fabric.api.event.player.AttackEntityCallback;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
