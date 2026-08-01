@@ -109,6 +109,11 @@ public class EDAgingTameableEntity extends PathfinderMob {
         super.addAdditionalSaveData(output);
         output.putInt("idle_count", idleCount);
         output.putInt("blink_count", blinkCount);
+
+        output.putBoolean("gender", getGender());
+
+        output.putInt("age", getAge());
+        output.putInt("age_ticks", getAgeTicks());
     }
 
     @Override
@@ -118,6 +123,11 @@ public class EDAgingTameableEntity extends PathfinderMob {
         blinkCount = input.getInt("blink_count").orElse(0);
         setIdle(idleCount>0);
         setBlink(blinkCount>0);
+
+        setGender(input.getBooleanOr("gender", false));
+
+        setAge(input.getInt("age").orElse(0));
+        setAgeTicks(input.getInt("age_ticks").orElse(0));
     }
 
     @Override

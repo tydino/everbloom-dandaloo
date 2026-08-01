@@ -1,5 +1,6 @@
 package com.tydino.everbloomdandaloo.entities.ancient.jurassic;
 
+import com.tydino.everbloomdandaloo.EverbloomDandaloo;
 import com.tydino.everbloomdandaloo.entities.entitybases.EDAgingTameableEntity;
 import com.tydino.everbloomdandaloo.items.ancient.EDJurassicItems;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -29,7 +30,6 @@ public class BrachiosaurusEntity extends EDAgingTameableEntity {
 
     public static final EntityDataAccessor<Integer> VARIANT =
             SynchedEntityData.defineId(BrachiosaurusEntity.class, EntityDataSerializers.INT);
-    public boolean variantWasSet;
     public BrachiosaurusVariant getVariant(){
         return BrachiosaurusVariant.byId(this.getTypeVariant() & 255);
     }
@@ -69,13 +69,14 @@ public class BrachiosaurusEntity extends EDAgingTameableEntity {
     @Override
     protected void addAdditionalSaveData(ValueOutput output) {
         super.addAdditionalSaveData(output);
-        output.putBoolean("variant_has", false);
+        output.putInt("variant", this.getTypeVariant());
     }
 
     @Override
     protected void readAdditionalSaveData(ValueInput input) {
         super.readAdditionalSaveData(input);
-        variantWasSet = input.getBooleanOr("variant_has", false);
+        BrachiosaurusVariant variant = BrachiosaurusVariant.byId(input.getInt("variant").orElse(0));
+        setVariant(variant);
     }
 
     @Override
@@ -87,6 +88,8 @@ public class BrachiosaurusEntity extends EDAgingTameableEntity {
         }else{
             setGender(gender_male);
         }
+
+        EverbloomDandaloo.LOGGER.info("Variant:" + getVariant() + "Gender:" + getGender());
         return super.finalizeSpawn(level, difficulty, spawnReason, groupData);
     }
 }
