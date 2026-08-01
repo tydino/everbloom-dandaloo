@@ -1,7 +1,7 @@
 package com.tydino.everbloomdandaloo.entities.aether.manticore;
 
-import com.tydino.everbloomdandaloo.entities.custom_entity_bases.DepricatedFlyingLandingEntity;
-import com.tydino.everbloomdandaloo.entities.custom_goals.flying.DepricatedFlyingGoals;
+import com.tydino.everbloomdandaloo.entities.depricated_custom_entity_bases.DepricatedFlyingLandingEntity;
+import com.tydino.everbloomdandaloo.entities.depricated_custom_goals.flying.DepricatedFlyingGoals;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;

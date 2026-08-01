@@ -1,7 +1,7 @@
-package com.tydino.everbloomdandaloo.entities.custom_goals.flying;
+package com.tydino.everbloomdandaloo.entities.depricated_custom_goals.flying;
 
-import com.tydino.everbloomdandaloo.entities.custom_entity_bases.DepricatedFlyingLandingEntity;
-import com.tydino.everbloomdandaloo.entities.custom_entity_bases.DepricatedFlyingNonLandingEntity;
+import com.tydino.everbloomdandaloo.entities.depricated_custom_entity_bases.DepricatedFlyingLandingEntity;
+import com.tydino.everbloomdandaloo.entities.depricated_custom_entity_bases.DepricatedFlyingNonLandingEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.entity.ai.util.AirAndWaterRandomPos;

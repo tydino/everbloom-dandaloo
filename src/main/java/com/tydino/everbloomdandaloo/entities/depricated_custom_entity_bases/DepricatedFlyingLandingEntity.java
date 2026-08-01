@@ -1,4 +1,4 @@
-package com.tydino.everbloomdandaloo.entities.custom_entity_bases;
+package com.tydino.everbloomdandaloo.entities.depricated_custom_entity_bases;
 
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.PathfinderMob;

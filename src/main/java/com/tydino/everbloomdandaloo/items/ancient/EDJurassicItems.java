@@ -8,5 +8,7 @@ public class EDJurassicItems {
     public static Item JurassicAnimalFossil = EDItemRegistry.register("jurassic_animal_fossil", Item::new, new Item.Properties());
     public static Item AnimalFossilFragments = EDItemRegistry.register("jurassic_animal_fossilfragments", Item::new, new Item.Properties());
 
+    public static Item BigScarab = EDItemRegistry.register("big_silver_scarab", Item::new, new Item.Properties());
+
     public static void onInitialize(){}
 }

@@ -1,4 +1,4 @@
-package com.tydino.everbloomdandaloo.entities.custom_entity_bases;
+package com.tydino.everbloomdandaloo.entities.depricated_custom_entity_bases;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.EntityType;

@@ -1,8 +1,8 @@
 package com.tydino.everbloomdandaloo.entities.aether.au_revoir;
 
 import com.tydino.everbloomdandaloo.entities.aether.EDAetherEntitySounds;
-import com.tydino.everbloomdandaloo.entities.custom_entity_bases.DepricatedFlyingNonLandingEntity;
-import com.tydino.everbloomdandaloo.entities.custom_goals.flying.DepricatedFlyingGoals;
+import com.tydino.everbloomdandaloo.entities.depricated_custom_entity_bases.DepricatedFlyingNonLandingEntity;
+import com.tydino.everbloomdandaloo.entities.depricated_custom_goals.flying.DepricatedFlyingGoals;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;

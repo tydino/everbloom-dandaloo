@@ -4,6 +4,7 @@ import com.tydino.everbloomdandaloo.EverbloomDandaloo;
 import com.tydino.everbloomdandaloo.blocks.ancient.EDAncientBlocks;
 import com.tydino.everbloomdandaloo.blocks.cooking.EDCookingBlocks;
 import com.tydino.everbloomdandaloo.entities.aether.AetherEntityTypes;
+import com.tydino.everbloomdandaloo.entities.ancient.jurassic.JurassicEntityTypes;
 import com.tydino.everbloomdandaloo.items.aether.EDAetherItemRegistry;
 import com.tydino.everbloomdandaloo.items.ancient.*;
 import com.tydino.everbloomdandaloo.items.cooking.EDCookingItemRegistry;
@@ -46,13 +47,14 @@ public class EDLangProvider extends FabricLanguageProvider {
         translationBuilder.add("creativeTab.jurassic", "Jurassic :: Everbloom Dandaloo"); /// JURASSIC ///
         translationBuilder.add(EDJurassicItems.JurassicAnimalFossil, "Jurassic Animal Fossil");
         translationBuilder.add(EDJurassicItems.AnimalFossilFragments, "Jurassic Animal Fossil Fragments");
+        translationBuilder.add(JurassicEntityTypes.Brachiosaurus, "Brachiosaurus");
 
         translationBuilder.add("creativeTab.cretaceous", "Cretaceous :: Everbloom Dandaloo"); /// cretaceous ///
         translationBuilder.add(EDCretaceousItems.CretaceousAnimalFossil, "Cretaceous Animal Fossil");
         translationBuilder.add(EDCretaceousItems.AnimalFossilFragments, "Cretaceous Animal Fossil Fragments");
 
+        translationBuilder.add("creativeTab.edcrafting", "Crafting :: Everbloom Dandaloo");                             /// CRAFTING ///
 
-        translationBuilder.add("creativeTab.edcrafting", "Crafting :: Everbloom Dandaloo");                           /// CRAFTING ///
         translationBuilder.add(EDAncientBlocks.FossilRecombiner, "Fossil Recombiner");
         translationBuilder.add("tooltip.everbloomdandaloo.fossil_recombiner", "You use this when you have fossil fragments to reform a fossil.");
 

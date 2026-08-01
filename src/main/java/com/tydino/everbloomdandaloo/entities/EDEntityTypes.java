@@ -2,6 +2,7 @@ package com.tydino.everbloomdandaloo.entities;
 
 import com.tydino.everbloomdandaloo.EverbloomDandaloo;
 import com.tydino.everbloomdandaloo.entities.aether.AetherEntityTypes;
+import com.tydino.everbloomdandaloo.entities.ancient.AncientEntityTypes;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
@@ -15,6 +16,8 @@ public class EDEntityTypes {
     public static void onInitialize(){
         AetherEntityTypes.onInitialize();
         AetherEntityTypes.registerAttributes();
+
+        AncientEntityTypes.onInitialize();
     }
 
     public static <T extends Entity> EntityType<T> register(String name, EntityType.Builder<T> builder) {
