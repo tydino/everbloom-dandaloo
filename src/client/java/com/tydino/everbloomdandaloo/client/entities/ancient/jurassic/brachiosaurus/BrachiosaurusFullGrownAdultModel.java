@@ -49,6 +49,7 @@ public class BrachiosaurusFullGrownAdultModel extends EntityModel<BrachiosaurusR
 	final KeyframeAnimation sitDown;
 	final KeyframeAnimation sitting;
 	final KeyframeAnimation standUp;
+	final KeyframeAnimation blinking;
 
 	final KeyframeAnimation leanOver;
 
@@ -89,6 +90,7 @@ public class BrachiosaurusFullGrownAdultModel extends EntityModel<BrachiosaurusR
 		this.sitDown = BrachiosaurusFullGrownAdultAnimations.sittingdown.bake(root);
 		this.sitting = BrachiosaurusFullGrownAdultAnimations.sitting.bake(root);
 		this.standUp = BrachiosaurusFullGrownAdultAnimations.standingup.bake(root);
+		this.blinking = BrachiosaurusFullGrownAdultAnimations.blinking.bake(root);
 
 		this.leanOver = BrachiosaurusFullGrownAdultAnimations.leandown.bake(root);
 	}
@@ -184,7 +186,30 @@ public class BrachiosaurusFullGrownAdultModel extends EntityModel<BrachiosaurusR
 	public void setupAnim(BrachiosaurusRenderState state) {
 		super.setupAnim(state);
 
-		this.walk.applyWalk(state.walkAnimationPos, state.walkAnimationSpeed, 2f, 2.5f); /// length of animation step / distance entity moves speed ///
+		if(state.blinkAnimationState.isStarted()){
+			this.blinking.apply(state.blinkAnimationState, state.ageInTicks);
+		}
+
+		if(state.idleAnimationState.isStarted()){
+			this.idle.apply(state.idleAnimationState, state.ageInTicks);
+		}
+
+		if(state.eatAnimationState.isStarted()){
+			this.eat.apply(state.eatAnimationState, state.ageInTicks);
+			this.leanOver.apply(state.leanDownAnimationState, state.ageInTicks);
+		}
+
+		if(state.sittingdownAnimationState.isStarted()){
+			this.sitDown.apply(state.sittingdownAnimationState, state.ageInTicks);
+		}
+		if(state.sitAnimationState.isStarted()){
+			this.sitting.apply(state.sitAnimationState, state.ageInTicks);
+		}
+		if(state.standingupAnimationState.isStarted()){
+			this.standUp.apply(state.standingupAnimationState, state.ageInTicks);
+		}
+
+		this.walk.applyWalk(state.walkAnimationPos, state.walkAnimationSpeed, 2f, 5f); /// length of animation step / distance entity moves speed ///
 
 		//head
 		this.head.xRot = state.xRot * (float) (Math.PI / 180.0);

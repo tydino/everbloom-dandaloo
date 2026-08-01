@@ -11,10 +11,15 @@ import com.tydino.everbloomdandaloo.menus.EDMenuTypes;
 import net.fabricmc.api.ModInitializer;
 
 import net.fabricmc.fabric.api.creativetab.v1.CreativeModeTabEvents;
+import net.minecraft.world.entity.EntityDimensions;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.Items;
+import org.jetbrains.annotations.Nullable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /// TODO:
 /// Fix the menu for the Fossil Recombinator
@@ -40,6 +45,7 @@ public class EverbloomDandaloo implements ModInitializer {
 		EDMenuTypes.onInitialize();
 
 		LOGGER.info("Registering Entities");
+		Dimensions.onInitialize();
 		EDEntityTypes.onInitialize(); //ENTITIES//
 		EDEntitySpawn.onInitialize();//ENTITIES SPAWN//
 
@@ -82,5 +88,39 @@ public class EverbloomDandaloo implements ModInitializer {
 		CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.INGREDIENTS).register(content ->
 				content.insertAfter(EDAncientItems.AmberPlant, EDAncientItems.AmberWing));
 
+	}
+
+	public static class Dimensions{
+		public static void onInitialize(){
+			Ancient.onInitialize();
+		}
+		public static class Ancient{
+			public static void onInitialize(){
+				Jurassic.onInitialize();
+			}
+			public static class Jurassic{
+				public static void onInitialize(){
+					BrachiosaurusDimensionsLoader();
+				}
+
+				public static List<EntityDimensions> BrachiosaurusDimensions = new ArrayList<EntityDimensions>();
+				public static void BrachiosaurusDimensionsLoader(){
+					BrachiosaurusDimensions.add(register(0.25f, 0.7f, 1.575f));
+					BrachiosaurusDimensions.add(register(0.5f, 1.4f, 3.15f));
+					BrachiosaurusDimensions.add(register(0.75f, 2.1f, 4.725f));
+					BrachiosaurusDimensions.add(register(1f, 2.8f, 6.3f));
+					BrachiosaurusDimensions.add(register(1.25f, 3.5f, 7.875f));
+					BrachiosaurusDimensions.add(register(1.5f, 4.2f, 9.45f));
+					BrachiosaurusDimensions.add(register(1.75f, 4.9f, 11.025f));
+					BrachiosaurusDimensions.add(register(2f, 5.6f, 12.6f));
+					BrachiosaurusDimensions.add(register(2.25f, 6.3f, 14.175f));
+					BrachiosaurusDimensions.add(register(2.5f, 7f, 15.75f));
+				}
+			}
+		}
+
+		public static EntityDimensions register(float width, float height, float eyeHeight){
+			return EntityDimensions.scalable(width, height).withEyeHeight(eyeHeight);
+		}
 	}
 }

@@ -1,24 +1,20 @@
 package com.tydino.everbloomdandaloo.entities.ancient.jurassic;
 
 import com.tydino.everbloomdandaloo.EverbloomDandaloo;
-import com.tydino.everbloomdandaloo.entities.entitybases.EDAgingTameableEntity;
+import com.tydino.everbloomdandaloo.entities.entitybases.EDDinosaureEntityBase;
 import com.tydino.everbloomdandaloo.items.ancient.EDJurassicItems;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.util.Util;
 import net.minecraft.world.DifficultyInstance;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.PathfinderMob;
-import net.minecraft.world.entity.SpawnGroupData;
+import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.FloatGoal;
 import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
 import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
 import net.minecraft.world.entity.ai.goal.RandomStrollGoal;
-import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
@@ -26,7 +22,7 @@ import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
 import org.jspecify.annotations.Nullable;
 
-public class BrachiosaurusEntity extends EDAgingTameableEntity {
+public class BrachiosaurusEntity extends EDDinosaureEntityBase {
 
     public static final EntityDataAccessor<Integer> VARIANT =
             SynchedEntityData.defineId(BrachiosaurusEntity.class, EntityDataSerializers.INT);
@@ -40,15 +36,17 @@ public class BrachiosaurusEntity extends EDAgingTameableEntity {
         this.entityData.set(VARIANT, variant.getId() & 255);
     }
 
+    /// Constructors
     public BrachiosaurusEntity(EntityType<? extends PathfinderMob> type, Level level) {
-        super(type, level, EDJurassicItems.BigScarab, 0, 0);
+        super(type, level, EDJurassicItems.BigScarab, 9, 100/*TicksInDay * 2*/, EverbloomDandaloo.Dimensions.Ancient.Jurassic.BrachiosaurusDimensions,20, 20, 80);
     }
 
     public static AttributeSupplier.Builder createAttributes(){
         return PathfinderMob.createMobAttributes()
+                .add(Attributes.SCALE, 1)
                 .add(Attributes.MAX_HEALTH, 200)
                 .add(Attributes.TEMPT_RANGE, 10)
-                .add(Attributes.MOVEMENT_SPEED, 0.04);
+                .add(Attributes.MOVEMENT_SPEED, 0.1);
     }
 
     @Override
@@ -58,6 +56,8 @@ public class BrachiosaurusEntity extends EDAgingTameableEntity {
         this.goalSelector.addGoal(2, new LookAtPlayerGoal(this, Player.class,15 ));
         this.goalSelector.addGoal(3, new RandomLookAroundGoal(this));
     }
+
+    /// SAVE DATA ///
 
     @Override
     protected void defineSynchedData(SynchedEntityData.Builder entityData) {
@@ -78,6 +78,8 @@ public class BrachiosaurusEntity extends EDAgingTameableEntity {
         BrachiosaurusVariant variant = BrachiosaurusVariant.byId(input.getInt("variant").orElse(0));
         setVariant(variant);
     }
+
+    /// On Spawn ///
 
     @Override
     public @Nullable SpawnGroupData finalizeSpawn(ServerLevelAccessor level, DifficultyInstance difficulty, EntitySpawnReason spawnReason, @Nullable SpawnGroupData groupData) {
