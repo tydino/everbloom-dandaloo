@@ -10,5 +10,7 @@ public class EDAncientItems {
     public static final Item AmberPlant = EDItemRegistry.register("amber_plant", Item::new, new Item.Properties());
     public static final Item AmberWing = EDItemRegistry.register("amber_wing", Item::new, new Item.Properties());
 
+    public static final Item BreedingScarab = EDItemRegistry.register("breeding_scarab", Item::new, new Item.Properties());
+
     public static void onInitialize(){}
 }

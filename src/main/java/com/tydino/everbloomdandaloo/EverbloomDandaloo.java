@@ -14,7 +14,6 @@ import net.fabricmc.fabric.api.creativetab.v1.CreativeModeTabEvents;
 import net.minecraft.world.entity.EntityDimensions;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.Items;
-import org.jetbrains.annotations.Nullable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -24,6 +23,17 @@ import java.util.List;
 /// TODO:
 /// Fix the menu for the Fossil Recombinator
 /// Add Motabolism to the dinosaurs
+/// Add breeding to the dinosaurs:
+///@Override
+/// public boolean canBreedWith(AnimalEntity other) {
+///     if (other == this) return false;
+///     if (other.getClass() != this.getClass()) return false;
+///
+///     YourEntity partner = (YourEntity) other;
+///     // Require both to be in love, and have opposite gender booleans
+///     return this.isInLove() && partner.isInLove()
+///         && this.isFemale() != partner.isFemale();
+/// }
 
 /// REMINDERS
 /// ctrl+alt+shift+J selects all of same thing for copy paste when needed.
