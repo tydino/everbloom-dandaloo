@@ -10,8 +10,7 @@ public class JurassicEntityTypes {
     public static final EntityType<BrachiosaurusEntity> Brachiosaurus = EDEntityTypes.register(
             "brachiosaurus",
             EntityType.Builder.of(BrachiosaurusEntity::new, MobCategory.CREATURE)
-                    .sized(2.5f, 7f)
-    );
+                    .sized(0.25f, 0.7f).eyeHeight(1.575f));
 
     public static void onInitialize(){
 

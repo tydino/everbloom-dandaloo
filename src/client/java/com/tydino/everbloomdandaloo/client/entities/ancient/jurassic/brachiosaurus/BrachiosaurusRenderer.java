@@ -52,6 +52,11 @@ public class BrachiosaurusRenderer extends MobRenderer<BrachiosaurusEntity, Brac
         state.blinkAnimationState.copyFrom(entity.blinkAnimation);
         state.eatAnimationState.copyFrom(entity.eatAnimation);
         state.leanDownAnimationState.copyFrom(entity.eatAnimation);
+
+        state.sittingdownAnimationState.copyFrom(entity.sittingDownAnimation);
+        state.sitAnimationState.copyFrom(entity.sittingAnimation);
+        state.standingupAnimationState.copyFrom(entity.standingUpAnimation);
+
         state.Age = entity.getAge();
     }
 
