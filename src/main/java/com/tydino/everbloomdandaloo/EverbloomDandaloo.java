@@ -23,6 +23,7 @@ import java.util.List;
 
 /// TODO:
 /// Fix the menu for the Fossil Recombinator
+/// Add Motabolism to the dinosaurs
 
 /// REMINDERS
 /// ctrl+alt+shift+J selects all of same thing for copy paste when needed.

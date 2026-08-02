@@ -16,6 +16,7 @@ import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.gamerules.GameRules;
@@ -135,9 +136,7 @@ public class EDDinosaureEntityBase extends PathfinderMob implements OwnableEntit
         }
 
         if(getSittingDown()){
-            if(sittingDownCount == 0){
-                sittingDownCount++;
-            }else if(sittingDownCount < maxSittingDownCount){
+            if(sittingDownCount < maxSittingDownCount){
                 sittingDownCount++;
             }
         }
@@ -147,16 +146,21 @@ public class EDDinosaureEntityBase extends PathfinderMob implements OwnableEntit
             }else if(sittingCount >= maxSittingCount){
                 sittingCount = 0;
             }
-            if(sittingCount == 0){
-                sittingCount++;
-            }
         }
         if(getStandingUp()){
-            if(standingUpCount == 0){
-                standingUpCount++;
-            }else if(standingUpCount < maxStandingUpCount){
+            if(standingUpCount < maxStandingUpCount){
                 standingUpCount++;
             }
+        }
+        if(!properlySitting && standingUpCount >= maxStandingUpCount){
+            standingUpCount = 0;
+            setStandingUp(false);
+        }
+        if(properlySitting && sittingDownCount >=maxSittingDownCount){
+            sittingDownCount = 0;
+            setSittingDown(false);
+            setSitting(true);
+            sittingCount = 0;
         }
     }
 
@@ -191,6 +195,7 @@ public class EDDinosaureEntityBase extends PathfinderMob implements OwnableEntit
     void setAgeTicks(int input){
         entityData.set(AgeTicks, input);
     }
+    public boolean AgeLocked;
 
     public int MaxAge;
     public int RateOfAging;
@@ -228,37 +233,54 @@ public class EDDinosaureEntityBase extends PathfinderMob implements OwnableEntit
         this.tamingChance = chanceAtTaming;
     }
 
+    /// MOB INTERACTION ///
+
     public InteractionResult mobInteract(final Player player, final InteractionHand hand) {
         ItemStack itemStack = player.getItemInHand(hand);
 
-        if (!this.level().isClientSide() && itemStack.is(TameItem) && !isTame()) {
-            itemStack.consume(1, player);
-            this.tryToTame(player);
-            return InteractionResult.SUCCESS_SERVER;
-        }else if(isTame()){
-            if(properlySitting){
-                this.properlyWandering = true;
-                this.properlySitting = false;
-                this.properlyFollowing = false;
+        if(!this.level().isClientSide()) {
 
-                player.sendOverlayMessage(Component.literal("Wandering"));
-                return InteractionResult.SUCCESS_SERVER;
-            }
-            else if(properlyWandering){
-                this.properlyFollowing = true;
-                this.properlySitting = false;
-                this.properlyWandering = false;
+            if (itemStack.is(Items.GOLDEN_DANDELION)) {
+                itemStack.consume(1, player);
+                AgeLocked = !AgeLocked;
 
-                player.sendOverlayMessage(Component.literal("Following"));
+                if(AgeLocked) {
+                    player.sendOverlayMessage(Component.literal("Age Locked"));
+                }else{
+                    player.sendOverlayMessage(Component.literal("Aging Unlocked"));
+                }
                 return InteractionResult.SUCCESS_SERVER;
-            }
-            else if(properlyFollowing){
-                this.properlySitting = true;
-                this.properlyWandering = false;
-                this.properlyFollowing = false;
 
-                player.sendOverlayMessage(Component.literal("Sitting"));
+            }else if (itemStack.is(TameItem) && !isTame()) {
+                itemStack.consume(1, player);
+                this.tryToTame(player);
                 return InteractionResult.SUCCESS_SERVER;
+
+            }else if (isTame() && getOwner() == player) {
+                if (properlySitting) {
+                    this.properlyWandering = true;
+                    this.properlySitting = false;
+                    this.properlyFollowing = false;
+
+                    player.sendOverlayMessage(Component.literal("Wandering"));
+                    return InteractionResult.SUCCESS_SERVER;
+
+                } else if (properlyWandering) {
+                    this.properlyFollowing = true;
+                    this.properlySitting = false;
+                    this.properlyWandering = false;
+
+                    player.sendOverlayMessage(Component.literal("Following"));
+                    return InteractionResult.SUCCESS_SERVER;
+
+                } else if (properlyFollowing) {
+                    this.properlySitting = true;
+                    this.properlyWandering = false;
+                    this.properlyFollowing = false;
+
+                    player.sendOverlayMessage(Component.literal("Sitting"));
+                    return InteractionResult.SUCCESS_SERVER;
+                }
             }
         }
 
@@ -361,6 +383,7 @@ public class EDDinosaureEntityBase extends PathfinderMob implements OwnableEntit
 
         output.putInt("age", getAge());
         output.putInt("age_ticks", getAgeTicks());
+        output.putBoolean("agelocked", AgeLocked);
 
         EntityReference<LivingEntity> owner = this.getOwnerReference();
         EntityReference.store(owner, output, "Owner");
@@ -391,6 +414,7 @@ public class EDDinosaureEntityBase extends PathfinderMob implements OwnableEntit
 
         setAge(input.getInt("age").orElse(0));
         setAgeTicks(input.getInt("age_ticks").orElse(0));
+        AgeLocked = input.getBooleanOr("agelocked", false);
 
         EntityReference<LivingEntity> owner = EntityReference.readWithOldOwnerConversion(input, "Owner", this.level());
         if (owner != null) {
@@ -414,45 +438,46 @@ public class EDDinosaureEntityBase extends PathfinderMob implements OwnableEntit
     }
 
     /// TICKS ///
-    ///
     @Override
     public void tick() {
         super.tick();
-        if(!level().isClientSide()){
+        if(!level().isClientSide()) {
 
             /// AGE ///
-            if(MaxAge > getAge()){
-                setAgeTicks(getAgeTicks() + 1);
-                if(getAgeTicks() >= RateOfAging){
-                    setAgeTicks(0);
-                    setAge(getAge() + 1);
+            if (!AgeLocked) {
+                if (MaxAge > getAge()) {
+                    setAgeTicks(getAgeTicks() + 1);
+                    if (getAgeTicks() >= RateOfAging) {
+                        setAgeTicks(0);
+                        setAge(getAge() + 1);
+                    }
                 }
             }
 
             /// ANIMATIONS ///
-            if (getIdle()){
-                if(idleCount-- <= 0){
+            if (getIdle()) {
+                if (idleCount-- <= 0) {
                     setIdle(false);
                 }
-            }else {
+            } else {
                 setIdle(true);
                 idleCount = maxIdleCount;
             }
 
-            if (getBlink()){
-                if(blinkCount-- <= 0){
+            if (getBlink()) {
+                if (blinkCount-- <= 0) {
                     setBlink(false);
                 }
-            }else {
+            } else {
                 setBlink(true);
-                blinkCount = maxBlinkCount+ random.nextInt(20, 100);
+                blinkCount = maxBlinkCount + random.nextInt(20, 100);
             }
 
-            if (getEat()){
-                if(eatCount-- <= 0){
+            if (getEat()) {
+                if (eatCount-- <= 0) {
                     setEat(false);
                 }
-            }else {
+            } else {
                 setEat(true);
                 eatCount = maxEatCount;
             }

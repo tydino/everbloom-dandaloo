@@ -2,6 +2,7 @@ package com.tydino.everbloomdandaloo.entities.ancient.jurassic;
 
 import com.tydino.everbloomdandaloo.EverbloomDandaloo;
 import com.tydino.everbloomdandaloo.entities.entitybases.EDDinosaureEntityBase;
+import com.tydino.everbloomdandaloo.entities.entitygoals.EDDinosaurEntityGoals;
 import com.tydino.everbloomdandaloo.items.ancient.EDJurassicItems;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -11,10 +12,7 @@ import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.goal.FloatGoal;
-import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
-import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
-import net.minecraft.world.entity.ai.goal.RandomStrollGoal;
+import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
@@ -38,7 +36,7 @@ public class BrachiosaurusEntity extends EDDinosaureEntityBase {
 
     /// Constructors
     public BrachiosaurusEntity(EntityType<? extends PathfinderMob> type, Level level) {
-        super(type, level, EDJurassicItems.BigScarab, 9, 100/*TicksInDay * 2*/, EverbloomDandaloo.Dimensions.Ancient.Jurassic.BrachiosaurusDimensions,20, 20, 80, 40, 40, 40, true, 3);
+        super(type, level, EDJurassicItems.BigScarab, 9, 500/*TicksInDay * 2*/, EverbloomDandaloo.Dimensions.Ancient.Jurassic.BrachiosaurusDimensions,20, 20, 80, 40, 40, 40, true, 3);
     }
 
     public static AttributeSupplier.Builder createAttributes(){
@@ -46,15 +44,16 @@ public class BrachiosaurusEntity extends EDDinosaureEntityBase {
                 .add(Attributes.SCALE, 1)
                 .add(Attributes.MAX_HEALTH, 200)
                 .add(Attributes.TEMPT_RANGE, 10)
-                .add(Attributes.MOVEMENT_SPEED, 0.1);
+                .add(Attributes.MOVEMENT_SPEED, 0.09);
     }
-
     @Override
     protected void registerGoals() {
         this.goalSelector.addGoal(0, new FloatGoal(this));
-        this.goalSelector.addGoal(1, new RandomStrollGoal(this, 1));
-        this.goalSelector.addGoal(2, new LookAtPlayerGoal(this, Player.class,15 ));
-        this.goalSelector.addGoal(3, new RandomLookAroundGoal(this));
+        this.goalSelector.addGoal(1, new PanicGoal(this, 1.05));
+        this.goalSelector.addGoal(2, new EDDinosaurEntityGoals.WanderFarGoal(this, 1, 2f));
+        this.goalSelector.addGoal(3, new EDDinosaurEntityGoals.FollowOwner(this, 1.3, 5, 2));
+        this.goalSelector.addGoal(4, new LookAtPlayerGoal(this, Player.class,15 ));
+        this.goalSelector.addGoal(5, new RandomLookAroundGoal(this));
     }
 
     /// SAVE DATA ///

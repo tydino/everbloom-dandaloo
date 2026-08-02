@@ -209,7 +209,7 @@ public class BrachiosaurusFullGrownAdultModel extends EntityModel<BrachiosaurusR
 			this.standUp.apply(state.standingupAnimationState, state.ageInTicks);
 		}
 
-		this.walk.applyWalk(state.walkAnimationPos, state.walkAnimationSpeed, 2f, 5f); /// length of animation step / distance entity moves speed ///
+		this.walk.applyWalk(state.walkAnimationPos, state.walkAnimationSpeed, 4f, 18f);
 
 		//head
 		this.head.xRot = state.xRot * (float) (Math.PI / 180.0);
