@@ -22,8 +22,12 @@ public class EDJurassicItemGroup {
             .title(Component.translatable("creativeTab.jurassic"))
             .displayItems((params, output) -> {
 
+                /// FOSSILS
                 output.accept(EDJurassicItems.JurassicAnimalFossil);
                 output.accept(EDJurassicItems.AnimalFossilFragments);
+
+                /// scarabs
+                output.accept(EDJurassicItems.BigScarab);
 
                 /// DINOSAURS
                 output.accept(EDJurassicBlocks.BrachiosaurusEgg);

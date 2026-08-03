@@ -36,7 +36,7 @@ public class BrachiosaurusEntity extends EDDinosaureEntityBase {
 
     /// Constructors
     public BrachiosaurusEntity(EntityType<? extends PathfinderMob> type, Level level) {
-        super(type, level, EDJurassicItems.BigScarab, 9, 500/*TicksInDay * 2*/, EverbloomDandaloo.Dimensions.Ancient.Jurassic.BrachiosaurusDimensions,20, 20, 80, 40, 40, 40, true, 3);
+        super(type, level, EDJurassicItems.BigScarab, 9, 500/*TicksInDay * 2*/, EverbloomDandaloo.Dimensions.Ancient.Jurassic.BrachiosaurusDimensions,20, 20, 80, 40, 40, 40, true, 3, 6);
     }
 
     public static AttributeSupplier.Builder createAttributes(){

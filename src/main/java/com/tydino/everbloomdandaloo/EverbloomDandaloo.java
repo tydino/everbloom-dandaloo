@@ -25,7 +25,7 @@ import java.util.List;
 /// Add Motabolism to the dinosaurs
 /// Make the egg only hatchable around specific dinosaurs/mobs, or can be put into an incubator.
 /// Make eggs use the parents variants (possible way, store the variants as 2 variables that are saved into the egg it's self)
-/// Add breeding to the dinosaurs:
+/// Add breeding to the dinosaurs: example of gendered breeding (written from memory with comments explaining train of though)
 ///@Override
 /// public boolean canBreedWith(AnimalEntity other) {
 ///     if (other == this) return false;
@@ -119,7 +119,7 @@ public class EverbloomDandaloo implements ModInitializer {
 
 				public static List<EntityDimensions> BrachiosaurusDimensions = new ArrayList<EntityDimensions>();
 				public static void BrachiosaurusDimensionsLoader(){
-					BrachiosaurusDimensions.add(register(0.25f, 0.7f, 1.575f));
+					BrachiosaurusDimensions.add(register(0.5f, 1.5f, 3.15f));
 					BrachiosaurusDimensions.add(register(0.5f, 1.4f, 3.15f));
 					BrachiosaurusDimensions.add(register(0.75f, 2.1f, 4.725f));
 					BrachiosaurusDimensions.add(register(1f, 2.8f, 6.3f));

@@ -183,6 +183,7 @@ public class EDDinosaureEntityBase extends PathfinderMob implements OwnableEntit
             SynchedEntityData.defineId(EDDinosaureEntityBase.class, EntityDataSerializers.INT);
     public static final EntityDataAccessor<Integer> AgeTicks =
             SynchedEntityData.defineId(EDDinosaureEntityBase.class, EntityDataSerializers.INT);
+    public int ticksAlive;//will be used to count days alive
     public int getAge(){
         return entityData.get(AGE);
     }
@@ -199,6 +200,14 @@ public class EDDinosaureEntityBase extends PathfinderMob implements OwnableEntit
 
     public int MaxAge;
     public int RateOfAging;
+    public int ageToBreed;
+    public boolean isAbleToBreed(){
+        if(getAge() >= ageToBreed){
+            return true;
+        }else {
+            return false;
+        }
+    }
 
     /// TAMING ///
     protected static final EntityDataAccessor<Optional<EntityReference<LivingEntity>>> DATA_OWNERUUID_ID = SynchedEntityData.defineId(EDDinosaureEntityBase.class, EntityDataSerializers.OPTIONAL_LIVING_ENTITY_REFERENCE);
@@ -214,7 +223,7 @@ public class EDDinosaureEntityBase extends PathfinderMob implements OwnableEntit
 
     /// CONSTRUCTOR ///
 
-    protected EDDinosaureEntityBase(EntityType<? extends PathfinderMob> type, Level level, Item tameItem, int maxAge, int rateOfAging, List<EntityDimensions> dimensions, int LengthOfIdle, int LengthOfBlink, int LengthOfEat, int LengthOfSittingDown, int LengthOfSitting, int LengthOfStandingUp, boolean leashable, int chanceAtTaming) {
+    protected EDDinosaureEntityBase(EntityType<? extends PathfinderMob> type, Level level, Item tameItem, int maxAge, int rateOfAging, List<EntityDimensions> dimensions, int LengthOfIdle, int LengthOfBlink, int LengthOfEat, int LengthOfSittingDown, int LengthOfSitting, int LengthOfStandingUp, boolean leashable, int chanceAtTaming, int minAgeBeforeBreeding) {
         super(type, level);
         this.TameItem = tameItem;
         this.MaxAge = maxAge;
@@ -222,6 +231,7 @@ public class EDDinosaureEntityBase extends PathfinderMob implements OwnableEntit
         this.maxIdleCount = LengthOfIdle;
         this.maxBlinkCount = LengthOfBlink;
         this.maxEatCount = LengthOfEat;
+        this.ageToBreed = minAgeBeforeBreeding;
 
         this.maxSittingDownCount = LengthOfSittingDown;
         this.maxSittingCount = LengthOfSitting;
@@ -384,6 +394,7 @@ public class EDDinosaureEntityBase extends PathfinderMob implements OwnableEntit
         output.putInt("age", getAge());
         output.putInt("age_ticks", getAgeTicks());
         output.putBoolean("agelocked", AgeLocked);
+        output.putInt("ticks_days_old", ticksAlive);
 
         EntityReference<LivingEntity> owner = this.getOwnerReference();
         EntityReference.store(owner, output, "Owner");
@@ -415,6 +426,7 @@ public class EDDinosaureEntityBase extends PathfinderMob implements OwnableEntit
         setAge(input.getInt("age").orElse(0));
         setAgeTicks(input.getInt("age_ticks").orElse(0));
         AgeLocked = input.getBooleanOr("agelocked", false);
+        ticksAlive = input.getInt("ticks_days_old").orElse(0);
 
         EntityReference<LivingEntity> owner = EntityReference.readWithOldOwnerConversion(input, "Owner", this.level());
         if (owner != null) {
@@ -453,6 +465,7 @@ public class EDDinosaureEntityBase extends PathfinderMob implements OwnableEntit
                     }
                 }
             }
+            ticksAlive++;
 
             /// ANIMATIONS ///
             if (getIdle()) {

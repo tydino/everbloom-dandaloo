@@ -2,6 +2,7 @@ package com.tydino.everbloomdandaloo.client.entities.ancient.jurassic;
 
 import com.tydino.everbloomdandaloo.client.entities.EDModelLoader;
 import com.tydino.everbloomdandaloo.client.entities.ancient.jurassic.brachiosaurus.BrachiosaurusFullGrownAdultModel;
+import com.tydino.everbloomdandaloo.client.entities.ancient.jurassic.brachiosaurus.BrachiosaurusHatchlingModel;
 import com.tydino.everbloomdandaloo.client.entities.ancient.jurassic.brachiosaurus.BrachiosaurusRenderer;
 import com.tydino.everbloomdandaloo.entities.ancient.jurassic.JurassicEntityTypes;
 import net.fabricmc.fabric.api.client.rendering.v1.ModelLayerRegistry;
@@ -10,11 +11,13 @@ import net.minecraft.client.renderer.entity.EntityRenderers;
 
 public class EDJurassicModelLoader {
 
-    public static final ModelLayerLocation Brachiosaurus = EDModelLoader.createMain("brachiosaurus");
+    public static final ModelLayerLocation BrachiosaurusFullyGrown = EDModelLoader.createMain("brachiosaurus_fully_grown");
+    public static final ModelLayerLocation BrachiosaurusHatchling = EDModelLoader.createMain("brachiosaurus_hatchling");
 
     public static void onInitialize() {
         //brachiosaurus
-        ModelLayerRegistry.registerModelLayer(Brachiosaurus, BrachiosaurusFullGrownAdultModel::createBodyLayer);
+        ModelLayerRegistry.registerModelLayer(BrachiosaurusFullyGrown, BrachiosaurusFullGrownAdultModel::createBodyLayer);
+        ModelLayerRegistry.registerModelLayer(BrachiosaurusHatchling, BrachiosaurusHatchlingModel::createBodyLayer);
         EntityRenderers.register(JurassicEntityTypes.Brachiosaurus, BrachiosaurusRenderer::new);
     }
 }
