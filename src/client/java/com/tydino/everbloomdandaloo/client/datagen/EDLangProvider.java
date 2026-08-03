@@ -2,6 +2,7 @@ package com.tydino.everbloomdandaloo.client.datagen;
 
 import com.tydino.everbloomdandaloo.EverbloomDandaloo;
 import com.tydino.everbloomdandaloo.blocks.ancient.EDAncientBlocks;
+import com.tydino.everbloomdandaloo.blocks.ancient.EDJurassicBlocks;
 import com.tydino.everbloomdandaloo.blocks.cooking.EDCookingBlocks;
 import com.tydino.everbloomdandaloo.entities.aether.AetherEntityTypes;
 import com.tydino.everbloomdandaloo.entities.ancient.jurassic.JurassicEntityTypes;
@@ -47,7 +48,9 @@ public class EDLangProvider extends FabricLanguageProvider {
         translationBuilder.add("creativeTab.jurassic", "Jurassic :: Everbloom Dandaloo"); /// JURASSIC ///
         translationBuilder.add(EDJurassicItems.JurassicAnimalFossil, "Jurassic Animal Fossil");
         translationBuilder.add(EDJurassicItems.AnimalFossilFragments, "Jurassic Animal Fossil Fragments");
+
         translationBuilder.add(JurassicEntityTypes.Brachiosaurus, "Brachiosaurus");
+        translationBuilder.add(EDJurassicBlocks.BrachiosaurusEgg, "Brachiosaurus Egg");
 
         translationBuilder.add("creativeTab.cretaceous", "Cretaceous :: Everbloom Dandaloo"); /// cretaceous ///
         translationBuilder.add(EDCretaceousItems.CretaceousAnimalFossil, "Cretaceous Animal Fossil");

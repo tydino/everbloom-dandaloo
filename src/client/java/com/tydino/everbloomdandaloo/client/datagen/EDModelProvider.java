@@ -2,6 +2,7 @@ package com.tydino.everbloomdandaloo.client.datagen;
 
 import com.tydino.everbloomdandaloo.EverbloomDandaloo;
 import com.tydino.everbloomdandaloo.blocks.ancient.EDAncientBlocks;
+import com.tydino.everbloomdandaloo.blocks.ancient.EDJurassicBlocks;
 import com.tydino.everbloomdandaloo.items.ancient.*;
 import net.fabricmc.fabric.api.client.datagen.v1.provider.FabricModelProvider;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
@@ -25,6 +26,10 @@ public class EDModelProvider extends FabricModelProvider {
         blockModelGenerators.createTrivialCube(EDAncientBlocks.DeepslateFossilOre);
 
         blockModelGenerators.createNonTemplateModelBlock(EDAncientBlocks.FossilRecombiner);
+
+        /// EGGS ///
+        //jurassic
+        blockModelGenerators.createNonTemplateModelBlock(EDJurassicBlocks.BrachiosaurusEgg);
     }
 
     @Override

@@ -23,6 +23,8 @@ import java.util.List;
 /// TODO:
 /// Fix the menu for the Fossil Recombinator
 /// Add Motabolism to the dinosaurs
+/// Make the egg only hatchable around specific dinosaurs/mobs, or can be put into an incubator.
+/// Make eggs use the parents variants (possible way, store the variants as 2 variables that are saved into the egg it's self)
 /// Add breeding to the dinosaurs:
 ///@Override
 /// public boolean canBreedWith(AnimalEntity other) {
@@ -36,6 +38,7 @@ import java.util.List;
 /// }
 
 /// REMINDERS
+/// Texture filter;monochromatic at 25% on multiply
 /// ctrl+alt+shift+J selects all of same thing for copy paste when needed.
 /// look through if needed https://docs.fabricmc.net/develop/items/first-item
 /// If struggling check https://github.com/Tutorials-By-Kaupenjoe/Fabric-Tutorial-26.X/tree/30-update-to-26.2 there may be an answer there.

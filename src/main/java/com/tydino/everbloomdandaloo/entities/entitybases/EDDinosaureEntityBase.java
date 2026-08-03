@@ -186,13 +186,13 @@ public class EDDinosaureEntityBase extends PathfinderMob implements OwnableEntit
     public int getAge(){
         return entityData.get(AGE);
     }
-    void setAge(int input){
+    public void setAge(int input){
         entityData.set(AGE, input);
     }
     public int getAgeTicks(){
         return entityData.get(AgeTicks);
     }
-    void setAgeTicks(int input){
+    public void setAgeTicks(int input){
         entityData.set(AgeTicks, input);
     }
     public boolean AgeLocked;
