@@ -24,18 +24,6 @@ import java.util.List;
 /// Fix the menu for the Fossil Recombinator
 /// Add Motabolism to the dinosaurs
 /// Make the egg only hatchable around specific dinosaurs/mobs, or can be put into an incubator.
-/// Make eggs use the parents variants (possible way, store the variants as 2 variables that are saved into the egg it's self)
-/// Add breeding to the dinosaurs: example of gendered breeding (written from memory with comments explaining train of though)
-///@Override
-/// public boolean canBreedWith(AnimalEntity other) {
-///     if (other == this) return false;
-///     if (other.getClass() != this.getClass()) return false;
-///
-///     YourEntity partner = (YourEntity) other;
-///     // Require both to be in love, and have opposite gender booleans
-///     return this.isInLove() && partner.isInLove()
-///         && this.isFemale() != partner.isFemale();
-/// }
 
 /// REMINDERS
 /// Texture filter;monochromatic at 25% on multiply

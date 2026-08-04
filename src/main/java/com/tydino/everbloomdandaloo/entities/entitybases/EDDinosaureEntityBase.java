@@ -1,5 +1,6 @@
 package com.tydino.everbloomdandaloo.entities.entitybases;
 
+import com.tydino.everbloomdandaloo.items.ancient.EDAncientItems;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
@@ -13,6 +14,7 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -32,6 +34,7 @@ import java.util.Optional;
 public class EDDinosaureEntityBase extends PathfinderMob implements OwnableEntity{
 
     List<EntityDimensions> Dimensions;
+    public int variant;
 
     public static final int TicksInDay = 24000;///24000/20 is 1200, 1200/60 is 20. 20 minutes long
 
@@ -152,19 +155,20 @@ public class EDDinosaureEntityBase extends PathfinderMob implements OwnableEntit
                 standingUpCount++;
             }
         }
-        if(!properlySitting && standingUpCount >= maxStandingUpCount){
-            standingUpCount = 0;
-            setStandingUp(false);
-        }
         if(properlySitting && sittingDownCount >=maxSittingDownCount){
             sittingDownCount = 0;
             setSittingDown(false);
             setSitting(true);
             sittingCount = 0;
         }
+        if(properlyWandering || properlyFollowing){
+            setSittingDown(false);
+            setSitting(false);
+        }
     }
 
     /// GENDER
+    EntityReference<ServerPlayer> loveCause;
     public static final EntityDataAccessor<Boolean> GENDER =
             SynchedEntityData.defineId(EDDinosaureEntityBase.class, EntityDataSerializers.BOOLEAN);
     public static final boolean gender_male = true;
@@ -175,7 +179,39 @@ public class EDDinosaureEntityBase extends PathfinderMob implements OwnableEntit
     public void setGender(boolean input){
         entityData.set(GENDER, input);
     }
-
+    public static final EntityDataAccessor<Integer> IN_LOVE =
+            SynchedEntityData.defineId(EDDinosaureEntityBase.class, EntityDataSerializers.INT);
+    public boolean inLove(){
+        if(getInLove()>0){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    public int getInLove(){
+        return entityData.get(IN_LOVE);
+    }
+    public void setInLove(int input){
+        entityData.set(IN_LOVE, input);
+    }
+    public int InLoveTimer;
+    //Can only have egg if female.
+    public static final EntityDataAccessor<Boolean> HAS_EGG =
+            SynchedEntityData.defineId(EDDinosaureEntityBase.class, EntityDataSerializers.BOOLEAN);
+    public boolean getHasEgg(){
+        return entityData.get(HAS_EGG);
+    }
+    public void setHasEgg(boolean input){
+        entityData.set(HAS_EGG, input);
+    }
+    public boolean canLayEgg(){
+        if(getHasEgg()){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    public int partnerVariant;
 
     ///  AGE ///
     public static List<EntityDimensions> AgeDimensions;
@@ -223,7 +259,7 @@ public class EDDinosaureEntityBase extends PathfinderMob implements OwnableEntit
 
     /// CONSTRUCTOR ///
 
-    protected EDDinosaureEntityBase(EntityType<? extends PathfinderMob> type, Level level, Item tameItem, int maxAge, int rateOfAging, List<EntityDimensions> dimensions, int LengthOfIdle, int LengthOfBlink, int LengthOfEat, int LengthOfSittingDown, int LengthOfSitting, int LengthOfStandingUp, boolean leashable, int chanceAtTaming, int minAgeBeforeBreeding) {
+    protected EDDinosaureEntityBase(EntityType<? extends PathfinderMob> type, Level level, Item tameItem, int maxAge, int rateOfAging, List<EntityDimensions> dimensions, int LengthOfIdle, int LengthOfBlink, int LengthOfEat, int LengthOfSittingDown, int LengthOfSitting, int LengthOfStandingUp, boolean leashable, int chanceAtTaming, int minAgeBeforeBreeding, int maxInLoveTimer) {
         super(type, level);
         this.TameItem = tameItem;
         this.MaxAge = maxAge;
@@ -241,6 +277,7 @@ public class EDDinosaureEntityBase extends PathfinderMob implements OwnableEntit
 
         this.leashable = leashable;
         this.tamingChance = chanceAtTaming;
+        this.InLoveTimer = maxInLoveTimer;
     }
 
     /// MOB INTERACTION ///
@@ -267,7 +304,18 @@ public class EDDinosaureEntityBase extends PathfinderMob implements OwnableEntit
                 return InteractionResult.SUCCESS_SERVER;
 
             }else if (isTame() && getOwner() == player) {
-                if (properlySitting) {
+                if(itemStack.is(EDAncientItems.BreedingScarab)){
+                    int age = this.getAge();
+                    if (player instanceof ServerPlayer) {
+                        ServerPlayer serverPlayer = (ServerPlayer)player;
+                        if (age >= ageToBreed && this.canFallInLove() && !getHasEgg()) {
+                            this.usePlayerItem(player, hand, itemStack);
+                            this.setInLove(serverPlayer);
+                            ///this.playEatingSound();
+                            return InteractionResult.SUCCESS_SERVER;
+                        }
+                    }
+                }else if (properlySitting) {
                     this.properlyWandering = true;
                     this.properlySitting = false;
                     this.properlyFollowing = false;
@@ -317,7 +365,14 @@ public class EDDinosaureEntityBase extends PathfinderMob implements OwnableEntit
             this.spawnTamingParticles(true);
         } else if (id == 6) {
             this.spawnTamingParticles(false);
-        } else {
+        } else if (id == 18) {/// Breeding particles
+            for(int i = 0; i < 7; ++i) {
+                double xa = this.random.nextGaussian() * 0.02;
+                double ya = this.random.nextGaussian() * 0.02;
+                double za = this.random.nextGaussian() * 0.02;
+                this.level().addParticle(ParticleTypes.HEART, this.getRandomX((double)1.0F), this.getRandomY() + (double)0.5F, this.getRandomZ((double)1.0F), xa, ya, za);
+            }
+        } else{
             super.handleEntityEvent(id);
         }
 
@@ -338,6 +393,8 @@ public class EDDinosaureEntityBase extends PathfinderMob implements OwnableEntit
         entityData.define(STANDING_UP, false);
         //gender
         entityData.define(GENDER, false);
+        entityData.define(IN_LOVE, 0);
+        entityData.define(HAS_EGG, false);
         //age
         entityData.define(AGE, 0);
         entityData.define(AgeTicks, 0);
@@ -377,6 +434,8 @@ public class EDDinosaureEntityBase extends PathfinderMob implements OwnableEntit
     @Override
     protected void addAdditionalSaveData(ValueOutput output) {
         super.addAdditionalSaveData(output);
+        output.putInt("variant", variant);
+
         output.putInt("idle_count", idleCount);
         output.putInt("blink_count", blinkCount);
         output.putInt("eat_count", eatCount);
@@ -389,7 +448,11 @@ public class EDDinosaureEntityBase extends PathfinderMob implements OwnableEntit
         output.putBoolean("wander", properlyWandering);
         output.putBoolean("follow", properlyFollowing);
 
+        EntityReference.store(loveCause, output, "LoveCause");
         output.putBoolean("gender", getGender());
+        output.putInt("in_love", getInLove());
+        output.putBoolean("has_egg", getHasEgg());
+        output.putInt("partner_variant", partnerVariant);
 
         output.putInt("age", getAge());
         output.putInt("age_ticks", getAgeTicks());
@@ -403,6 +466,8 @@ public class EDDinosaureEntityBase extends PathfinderMob implements OwnableEntit
     @Override
     protected void readAdditionalSaveData(ValueInput input) {
         super.readAdditionalSaveData(input);
+        variant = input.getInt("variant").orElse(0);
+
         idleCount = input.getInt("idle_count").orElse(0);
         blinkCount = input.getInt("blink_count").orElse(0);
         eatCount = input.getInt("eat_count").orElse(0);
@@ -421,7 +486,11 @@ public class EDDinosaureEntityBase extends PathfinderMob implements OwnableEntit
         properlyWandering = input.getBooleanOr("wander", true);
         properlyFollowing = input.getBooleanOr("follow", false);
 
+        this.loveCause = EntityReference.read(input, "LoveCause");
         setGender(input.getBooleanOr("gender", false));
+        setInLove(input.getIntOr("in_love", 0));
+        setHasEgg(input.getBooleanOr("has_egg", false));
+        partnerVariant = input.getInt("partner_variant").orElse(0);
 
         setAge(input.getInt("age").orElse(0));
         setAgeTicks(input.getInt("age_ticks").orElse(0));
@@ -454,6 +523,11 @@ public class EDDinosaureEntityBase extends PathfinderMob implements OwnableEntit
     public void tick() {
         super.tick();
         if(!level().isClientSide()) {
+
+            /// IN LOVE
+            if (getInLove() > 0) {
+                setInLove(getInLove()-1);
+            }
 
             /// AGE ///
             if (!AgeLocked) {
@@ -508,10 +582,10 @@ public class EDDinosaureEntityBase extends PathfinderMob implements OwnableEntit
 
     private void tryToTame(final Player player) {
         if (this.random.nextInt(tamingChance) == 0) {
-            this.tame(player);
             this.navigation.stop();
             this.setTarget((LivingEntity)null);
             this.level().broadcastEntityEvent(this, (byte)7);
+            this.tame(player);
         } else {
             this.level().broadcastEntityEvent(this, (byte)6);
         }
@@ -619,5 +693,42 @@ public class EDDinosaureEntityBase extends PathfinderMob implements OwnableEntit
 
     protected boolean canFlyToOwner() {
         return false;
+    }
+
+    /// IN LOVE ///
+
+    public boolean canMate(final EDDinosaureEntityBase partner) {
+        if (partner == this) {
+            return false;
+        } else if (partner.getClass() != this.getClass()) {
+            return false;
+        } else {
+            return this.inLove() && partner.inLove();
+        }
+    }
+
+    public void resetLove(){
+        setInLove(0);
+    }
+
+    public void setInLove(final @Nullable Player player) {
+        setInLove(InLoveTimer);
+        if (player instanceof ServerPlayer serverPlayer) {
+            this.loveCause = EntityReference.of(serverPlayer);
+        }
+
+        this.level().broadcastEntityEvent(this, (byte)18);
+    }
+
+    public ServerPlayer getLoveCause() {
+        return EntityReference.get(loveCause, this.level(), ServerPlayer.class);
+    }
+
+    public boolean canFallInLove(){
+        if(getInLove()<=0){
+            return true;
+        }else{
+            return false;
+        }
     }
 }

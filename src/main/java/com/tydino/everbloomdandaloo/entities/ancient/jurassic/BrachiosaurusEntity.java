@@ -1,6 +1,7 @@
 package com.tydino.everbloomdandaloo.entities.ancient.jurassic;
 
 import com.tydino.everbloomdandaloo.EverbloomDandaloo;
+import com.tydino.everbloomdandaloo.blocks.ancient.EDJurassicBlocks;
 import com.tydino.everbloomdandaloo.entities.entitybases.EDDinosaureEntityBase;
 import com.tydino.everbloomdandaloo.entities.entitygoals.EDDinosaurEntityGoals;
 import com.tydino.everbloomdandaloo.items.ancient.EDJurassicItems;
@@ -36,7 +37,7 @@ public class BrachiosaurusEntity extends EDDinosaureEntityBase {
 
     /// Constructors
     public BrachiosaurusEntity(EntityType<? extends PathfinderMob> type, Level level) {
-        super(type, level, EDJurassicItems.BigScarab, 9, 500/*TicksInDay * 2*/, EverbloomDandaloo.Dimensions.Ancient.Jurassic.BrachiosaurusDimensions,20, 20, 80, 40, 40, 40, true, 3, 6);
+        super(type, level, EDJurassicItems.BigScarab, 9, 500/*TicksInDay * 2*/, EverbloomDandaloo.Dimensions.Ancient.Jurassic.BrachiosaurusDimensions,20, 20, 80, 40, 40, 40, true, 3, 1, 1200);
     }
 
     public static AttributeSupplier.Builder createAttributes(){
@@ -50,10 +51,12 @@ public class BrachiosaurusEntity extends EDDinosaureEntityBase {
     protected void registerGoals() {
         this.goalSelector.addGoal(0, new FloatGoal(this));
         this.goalSelector.addGoal(1, new PanicGoal(this, 1.05));
-        this.goalSelector.addGoal(2, new EDDinosaurEntityGoals.WanderFarGoal(this, 1, 2f));
-        this.goalSelector.addGoal(3, new EDDinosaurEntityGoals.FollowOwner(this, 1.3, 5, 2));
-        this.goalSelector.addGoal(4, new LookAtPlayerGoal(this, Player.class,15 ));
-        this.goalSelector.addGoal(5, new RandomLookAroundGoal(this));
+        this.goalSelector.addGoal(2, new EDDinosaurEntityGoals.LayEggGoal(this, 1.5, EDJurassicBlocks.BrachiosaurusEgg));
+        this.goalSelector.addGoal(2, new EDDinosaurEntityGoals.BreedGoal(this, 1));
+        this.goalSelector.addGoal(3, new EDDinosaurEntityGoals.WanderFarGoal(this, 1, 2f));
+        this.goalSelector.addGoal(4, new EDDinosaurEntityGoals.FollowOwnerGoal(this, 1.3, 5, 2));
+        this.goalSelector.addGoal(5, new LookAtPlayerGoal(this, Player.class,15 ));
+        this.goalSelector.addGoal(6, new RandomLookAroundGoal(this));
     }
 
     /// SAVE DATA ///
@@ -82,13 +85,15 @@ public class BrachiosaurusEntity extends EDDinosaureEntityBase {
 
     @Override
     public @Nullable SpawnGroupData finalizeSpawn(ServerLevelAccessor level, DifficultyInstance difficulty, EntitySpawnReason spawnReason, @Nullable SpawnGroupData groupData) {
-        BrachiosaurusVariant variant  = Util.getRandom(BrachiosaurusVariant.values(), this.random);
-        setVariant(variant);
+        BrachiosaurusVariant temp  = Util.getRandom(BrachiosaurusVariant.values(), this.random);
+        setVariant(temp);
         if(getVariant() == BrachiosaurusVariant.banana_female || getVariant() == BrachiosaurusVariant.movie_female){
             setGender(gender_female);
         }else{
             setGender(gender_male);
         }
+
+        variant = getVariant().getId();
 
         EverbloomDandaloo.LOGGER.info("Variant:" + getVariant() + "Gender:" + getGender());
         return super.finalizeSpawn(level, difficulty, spawnReason, groupData);

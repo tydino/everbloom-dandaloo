@@ -1,18 +1,36 @@
 package com.tydino.everbloomdandaloo.entities.entitygoals;
 
+import com.tydino.everbloomdandaloo.EverbloomDandaloo;
+import com.tydino.everbloomdandaloo.blocks.ancient.DinosaurEgg;
 import com.tydino.everbloomdandaloo.entities.entitybases.EDDinosaureEntityBase;
+import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.stats.Stats;
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.entity.ExperienceOrb;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.TamableAnimal;
 import net.minecraft.world.entity.ai.goal.Goal;
+import net.minecraft.world.entity.ai.goal.MoveToBlockGoal;
 import net.minecraft.world.entity.ai.navigation.FlyingPathNavigation;
 import net.minecraft.world.entity.ai.navigation.GroundPathNavigation;
 import net.minecraft.world.entity.ai.navigation.PathNavigation;
+import net.minecraft.world.entity.ai.targeting.TargetingConditions;
 import net.minecraft.world.entity.ai.util.DefaultRandomPos;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.gameevent.GameEvent;
+import net.minecraft.world.level.gamerules.GameRules;
 import net.minecraft.world.level.pathfinder.PathType;
 import net.minecraft.world.phys.Vec3;
 import org.jspecify.annotations.Nullable;
 
 import java.util.EnumSet;
+import java.util.List;
 
 public class EDDinosaurEntityGoals {
 
@@ -106,7 +124,7 @@ public class EDDinosaurEntityGoals {
         }
     }
 
-    public static class FollowOwner extends Goal{
+    public static class FollowOwnerGoal extends Goal{
         private final EDDinosaureEntityBase tamable;
         private @Nullable LivingEntity owner;
         private final double speedModifier;
@@ -116,7 +134,7 @@ public class EDDinosaurEntityGoals {
         private final float startDistance;
         private float oldWaterCost;
 
-        public FollowOwner(final EDDinosaureEntityBase tamable, final double speedModifier, final float startDistance, final float stopDistance) {
+        public FollowOwnerGoal(final EDDinosaureEntityBase tamable, final double speedModifier, final float startDistance, final float stopDistance) {
             this.tamable = tamable;
             this.speedModifier = speedModifier;
             this.navigation = tamable.getNavigation();
@@ -176,6 +194,128 @@ public class EDDinosaurEntityGoals {
 
                 this.navigation.moveTo(this.owner, this.speedModifier);
             }
+        }
+    }
+
+    public static class BreedGoal extends Goal{
+        static final TargetingConditions PARTNER_TARGETING = TargetingConditions.forNonCombat().range(8.0F).ignoreLineOfSight();
+        protected EDDinosaureEntityBase entity;
+        final Class<? extends EDDinosaureEntityBase> partnerClass;
+        protected final ServerLevel level;
+        protected EDDinosaureEntityBase partner;
+        private int loveTime;
+        final double speedModifier;
+
+        public BreedGoal(EDDinosaureEntityBase entity, double speedModifier){
+            this(entity, speedModifier, entity.getClass());
+        }
+
+        public BreedGoal(EDDinosaureEntityBase entity, double speedModifier, Class<? extends EDDinosaureEntityBase> clazz){
+            this.entity = entity;
+            this.level = getServerLevel(entity);
+            this.partnerClass = clazz;
+            this.speedModifier = speedModifier;
+            this.setFlags(EnumSet.of(Flag.MOVE, Flag.LOOK));
+        }
+
+        public boolean canUse() {
+            if (!this.entity.inLove()) {
+                return false;
+            } else {
+                this.partner = this.getFreePartner();
+                return this.partner != null;
+            }
+        }
+
+        public boolean canContinueToUse() {
+            return this.partner.isAlive() && this.partner.inLove() && this.loveTime < 60 && !this.partner.isPanicking();
+        }
+
+        public void stop() {
+            this.partner = null;
+            this.loveTime = 0;
+        }
+
+        public void tick() {
+            this.entity.getLookControl().setLookAt(this.partner, 10.0F, (float)this.entity.getMaxHeadXRot());
+            this.entity.getNavigation().moveTo(this.partner, this.speedModifier);
+            ++this.loveTime;
+            if (this.loveTime >= this.adjustedTickDelay(60) && this.entity.distanceToSqr(this.partner) < (double)9.0F && entity.getGender() == EDDinosaureEntityBase.gender_female) {
+                this.breed();
+            }
+        }
+
+        private @Nullable EDDinosaureEntityBase getFreePartner() {
+            List<? extends EDDinosaureEntityBase> animals = this.level.getNearbyEntities(this.partnerClass, PARTNER_TARGETING, this.entity, this.entity.getBoundingBox().inflate((double)10.0F));
+            double dist = Double.MAX_VALUE;
+            EDDinosaureEntityBase partner = null;
+
+            for(EDDinosaureEntityBase potentialPartner : animals) {
+                if(potentialPartner.getGender() != entity.getGender()) {
+                    if (this.entity.canMate(potentialPartner) && !potentialPartner.isPanicking() && this.entity.distanceToSqr(potentialPartner) < dist) {
+                        partner = potentialPartner;
+                        dist = this.entity.distanceToSqr(potentialPartner);
+                    }
+                }
+            }
+
+            return partner;
+        }
+
+        void breed(){
+            ServerPlayer LoveCause = this.entity.getLoveCause();
+            if (LoveCause == null && this.partner.getLoveCause() != null) {
+                LoveCause = this.partner.getLoveCause();
+            }
+
+            if (LoveCause != null) {
+                LoveCause.awardStat(Stats.ANIMALS_BRED);
+            }
+
+            this.entity.partnerVariant = partner.variant;
+            this.entity.setHasEgg(true);
+            this.entity.resetLove();
+            this.partner.resetLove();
+            RandomSource random = this.entity.getRandom();
+            if (getServerLevel(this.level).getGameRules().get(GameRules.MOB_DROPS)) {
+                this.level.addFreshEntity(new ExperienceOrb(this.level, this.entity.getX(), this.entity.getY(), this.entity.getZ(), random.nextInt(15) + 1));
+            }
+        }
+    }
+
+    public static class LayEggGoal extends MoveToBlockGoal {
+        private final EDDinosaureEntityBase entity;
+        Block Egg;
+
+        public LayEggGoal(final EDDinosaureEntityBase entity, final double speedModifier, Block egg) {
+            super(entity, speedModifier, 16);
+            this.entity = entity;
+            Egg = egg;
+        }
+
+        public boolean canUse() {
+            return this.entity.canLayEgg();
+        }
+
+        public boolean canContinueToUse() {
+            return super.canContinueToUse() && entity.canLayEgg();
+        }
+
+        @Override
+        public void start() {
+            super.start();
+            BlockPos entityPos = this.entity.blockPosition();
+            EverbloomDandaloo.LOGGER.info("REMINDER: SET THIS SO THAT THEY NEED NEST BLOCK, add variant to egg as well.");
+            Level level = entity.level();
+            BlockState eggState = Egg.defaultBlockState().setValue(DinosaurEgg.HasParents, true).setValue(DinosaurEgg.ParentVariantFather, entity.partnerVariant).setValue(DinosaurEgg.ParentVariantMother, entity.variant);
+            level.playSound(null, entityPos, SoundEvents.TURTLE_LAY_EGG, SoundSource.BLOCKS, 0.3F, 0.9F + level.getRandom().nextFloat() * 0.2F);
+            level.setBlock(entity.getOnPos().above(), eggState, 3);
+            level.gameEvent(GameEvent.BLOCK_PLACE, blockPos.above(), GameEvent.Context.of(entity, eggState));
+            entity.setHasEgg(false);
+        }
+
+        protected boolean isValidTarget(final LevelReader level, final BlockPos pos) {
+            return level.isEmptyBlock(pos);
         }
     }
 }

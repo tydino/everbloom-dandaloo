@@ -17,7 +17,9 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
+import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.pathfinder.PathComputationType;
 import net.minecraft.world.phys.Vec3;
@@ -40,14 +42,20 @@ public class DinosaurEgg extends Block {
     int HATCHING_TIME;
     public VoxelShape SHAPE;
     public EntityType<? extends EDDinosaureEntityBase> TDE;
+    public static IntegerProperty ParentVariantMother = IntegerProperty.create("parent_variant_mother", 0, 24);
+    public static IntegerProperty ParentVariantFather = IntegerProperty.create("parent_variant_father", 0, 24);
+    public static BooleanProperty HasParents = BooleanProperty.create("has_parents");
 
     public MapCodec<? extends DinosaurEgg> getCODEC() {
         return (MapCodec<? extends DinosaurEgg>) CODEC;
     }
 
-    public DinosaurEgg(Properties properties, int minX, int minY, int minZ, int maxX, int maxY, int maxZ, int hatchingTime, EntityType<? extends EDDinosaureEntityBase> TDE, MapCodec<?> codec) {
+    public DinosaurEgg(Properties properties, int minX, int minY, int minZ, int maxX, int maxY, int maxZ, int hatchingTime, EntityType<? extends EDDinosaureEntityBase> TDE, MapCodec<?> codec, int DinosaurVariants) {
         super(properties);
         this.registerDefaultState(defaultBlockState().setValue(HATCH, 0));
+        this.registerDefaultState(defaultBlockState().setValue(ParentVariantMother, 0));
+        this.registerDefaultState(defaultBlockState().setValue(ParentVariantFather, 0));
+        this.registerDefaultState(defaultBlockState().setValue(HasParents, false));
         this.SHAPE = DinosaurEgg.box(minX, minY, minZ, maxX, maxY, maxZ);
         this.HATCHING_TIME = hatchingTime;// /3 then *20 for full time in seconds
         this.CODEC = codec;
@@ -69,8 +77,8 @@ public class DinosaurEgg extends Block {
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(HATCH);
-        //for multiple: builder.add(new Property[]{HATCH, EGGS});
+        builder.add(new Property[]{HATCH, HasParents, ParentVariantFather, ParentVariantMother});
+        //for one: builder.add(HATCH);
     }
 
     @Override
@@ -100,5 +108,10 @@ public class DinosaurEgg extends Block {
 
     public boolean isPathfindable(final BlockState state, final PathComputationType type) {
         return true;
+    }
+
+    @Override
+    public Properties properties() {
+        return super.properties();
     }
 }
