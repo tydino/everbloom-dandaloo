@@ -56,10 +56,10 @@ public class EDDinosaureEntityBase extends PathfinderMob implements OwnableEntit
     public final AnimationState blinkAnimation = new AnimationState();
     int blinkCount;
     public boolean getBlink(){
-        return entityData.get(IDLE);
+        return entityData.get(BLINK);
     }
     public void setBlink(boolean input){
-        entityData.set(IDLE, input);
+        entityData.set(BLINK, input);
     }
     int maxBlinkCount;
 
@@ -67,10 +67,10 @@ public class EDDinosaureEntityBase extends PathfinderMob implements OwnableEntit
     public final AnimationState eatAnimation = new AnimationState();
     int eatCount;
     public boolean getEat(){
-        return entityData.get(IDLE);
+        return entityData.get(EAT);
     }
     public void setEat(boolean input){
-        entityData.set(IDLE, input);
+        entityData.set(EAT, input);
     }
     int maxEatCount;
 
