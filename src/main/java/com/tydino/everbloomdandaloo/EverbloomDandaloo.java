@@ -47,7 +47,6 @@ public class EverbloomDandaloo implements ModInitializer {
 		EDMenuTypes.onInitialize();
 
 		LOGGER.info("Registering Entities");
-		Dimensions.onInitialize();
 		EDEntityTypes.onInitialize(); //ENTITIES//
 		EDEntitySpawn.onInitialize();//ENTITIES SPAWN//
 
@@ -90,39 +89,5 @@ public class EverbloomDandaloo implements ModInitializer {
 		CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.INGREDIENTS).register(content ->
 				content.insertAfter(EDAncientItems.AmberPlant, EDAncientItems.AmberWing));
 
-	}
-
-	public static class Dimensions{
-		public static void onInitialize(){
-			Ancient.onInitialize();
-		}
-		public static class Ancient{
-			public static void onInitialize(){
-				Jurassic.onInitialize();
-			}
-			public static class Jurassic{
-				public static void onInitialize(){
-					BrachiosaurusDimensionsLoader();
-				}
-
-				public static List<EntityDimensions> BrachiosaurusDimensions = new ArrayList<EntityDimensions>();
-				public static void BrachiosaurusDimensionsLoader(){
-					BrachiosaurusDimensions.add(register(0.5f, 1.5f, 3.15f));
-					BrachiosaurusDimensions.add(register(0.5f, 1.4f, 3.15f));
-					BrachiosaurusDimensions.add(register(0.75f, 2.1f, 4.725f));
-					BrachiosaurusDimensions.add(register(1f, 2.8f, 6.3f));
-					BrachiosaurusDimensions.add(register(1.25f, 3.5f, 7.875f));
-					BrachiosaurusDimensions.add(register(1.5f, 4.2f, 9.45f));
-					BrachiosaurusDimensions.add(register(1.75f, 4.9f, 11.025f));
-					BrachiosaurusDimensions.add(register(2f, 5.6f, 12.6f));
-					BrachiosaurusDimensions.add(register(2.25f, 6.3f, 14.175f));
-					BrachiosaurusDimensions.add(register(2.5f, 7f, 15.75f));
-				}
-			}
-		}
-
-		public static EntityDimensions register(float width, float height, float eyeHeight){
-			return EntityDimensions.scalable(width, height).withEyeHeight(eyeHeight);
-		}
 	}
 }

@@ -43,7 +43,7 @@ public class BrachiosaurusHatchlingAnimations {
 		))
 		.build();
 
-	public static final AnimationDefinition blink = AnimationDefinition.Builder.withLength(1.0F).looping()
+	public static final AnimationDefinition blink = AnimationDefinition.Builder.withLength(1.0F)
 		.addAnimation("eyes", new AnimationChannel(AnimationChannel.Targets.SCALE,
 			new Keyframe(0.0F, KeyframeAnimations.scaleVec(1.0F, 1.0F, 1.0F), AnimationChannel.Interpolations.LINEAR),
 			new Keyframe(0.25F, KeyframeAnimations.scaleVec(1.0F, 0.0F, 1.0F), AnimationChannel.Interpolations.LINEAR),

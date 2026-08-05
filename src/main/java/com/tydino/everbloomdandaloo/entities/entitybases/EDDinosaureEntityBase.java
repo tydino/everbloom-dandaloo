@@ -33,6 +33,10 @@ import java.util.Optional;
 //utilize Vanilla: Animal, TameableAnimal, and AgeableMob as basis
 public class EDDinosaureEntityBase extends PathfinderMob implements OwnableEntity{
 
+    public static EntityDimensions registerDimensions(float width, float height, float eyeHeight){
+        return EntityDimensions.scalable(width, height).withEyeHeight(eyeHeight);
+    }
+
     List<EntityDimensions> Dimensions;
     public int variant;
 
@@ -63,7 +67,7 @@ public class EDDinosaureEntityBase extends PathfinderMob implements OwnableEntit
     }
     int maxBlinkCount;
 
-    static final EntityDataAccessor<Boolean> EAT = SynchedEntityData.defineId(EDDinosaureEntityBase.class, EntityDataSerializers.BOOLEAN);
+    static final EntityDataAccessor<Boolean> EAT = SynchedEntityData.defineId(EDDinosaureEntityBase.class, EntityDataSerializers.BOOLEAN);// line 564 is where the eat animation is turned on
     public final AnimationState eatAnimation = new AnimationState();
     int eatCount;
     public boolean getEat(){
@@ -560,6 +564,7 @@ public class EDDinosaureEntityBase extends PathfinderMob implements OwnableEntit
                 blinkCount = maxBlinkCount + random.nextInt(20, 100);
             }
 
+            /*
             if (getEat()) {
                 if (eatCount-- <= 0) {
                     setEat(false);
@@ -568,6 +573,7 @@ public class EDDinosaureEntityBase extends PathfinderMob implements OwnableEntit
                 setEat(true);
                 eatCount = maxEatCount;
             }
+            */
 
             setUpSitting();
         }

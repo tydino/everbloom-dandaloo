@@ -21,6 +21,8 @@ import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
 import org.jspecify.annotations.Nullable;
 
+import java.util.List;
+
 public class BrachiosaurusEntity extends EDDinosaureEntityBase {
 
     public static final EntityDataAccessor<Integer> VARIANT =
@@ -35,9 +37,21 @@ public class BrachiosaurusEntity extends EDDinosaureEntityBase {
         this.entityData.set(VARIANT, variant.getId() & 255);
     }
 
+    public static final List<EntityDimensions> BrachiosaurusDimensions = List.of(
+            registerDimensions(0.5f, 1.5f, 1.4f),// 0
+            registerDimensions(0.5f, 1.4f, 1.3f),// 1
+            registerDimensions(0.7f, 1.6f, 1.5f),// 2
+            registerDimensions(1f, 2.8f, 6.3f),// 3
+            registerDimensions(1.25f, 3.5f, 7.875f),// 4
+            registerDimensions(1.5f, 4.2f, 9.45f),// 5
+            registerDimensions(1.75f, 4.9f, 11.025f),// 6
+            registerDimensions(2f, 5.6f, 12.6f),// 7
+            registerDimensions(2.25f, 6.3f, 14.175f),// 8
+            registerDimensions(2.5f, 7f, 15.75f));// 9
+
     /// Constructors
     public BrachiosaurusEntity(EntityType<? extends PathfinderMob> type, Level level) {
-        super(type, level, EDJurassicItems.BigScarab, 9, 500/*TicksInDay * 2*/, EverbloomDandaloo.Dimensions.Ancient.Jurassic.BrachiosaurusDimensions,20, 20, 80, 40, 40, 40, true, 3, 1, 1200);
+        super(type, level, EDJurassicItems.BigScarab, 9, 500/*TicksInDay * 2*/, BrachiosaurusDimensions,20, 20, 80, 40, 40, 40, true, 3, 1, 1200);
     }
 
     public static AttributeSupplier.Builder createAttributes(){

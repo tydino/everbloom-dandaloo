@@ -8,7 +8,6 @@ import com.tydino.everbloomdandaloo.entities.ancient.jurassic.BrachiosaurusEntit
 import com.tydino.everbloomdandaloo.entities.ancient.jurassic.BrachiosaurusVariant;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.ChickenRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.client.renderer.state.level.CameraRenderState;
@@ -44,19 +43,36 @@ public class BrachiosaurusRenderer extends MobRenderer<BrachiosaurusEntity, Brac
                         Identifier.fromNamespaceAndPath(EverbloomDandaloo.MOD_ID, "textures/entity/ancient/jurassic/brachiosaurus/hatchling_brachiosaurus_female_banana.png"));
             });
 
+    static final Map<BrachiosaurusVariant, Identifier> TexturesForBaby =
+            Util.make(Maps.newEnumMap(BrachiosaurusVariant.class), map ->{
+                map.put(BrachiosaurusVariant.movie_male,
+                        Identifier.fromNamespaceAndPath(EverbloomDandaloo.MOD_ID, "textures/entity/ancient/jurassic/brachiosaurus/baby_brachiosaurus_male.png"));
+                map.put(BrachiosaurusVariant.movie_female,
+                        Identifier.fromNamespaceAndPath(EverbloomDandaloo.MOD_ID, "textures/entity/ancient/jurassic/brachiosaurus/baby_brachiosaurus_female.png"));
+                map.put(BrachiosaurusVariant.banana_male,
+                        Identifier.fromNamespaceAndPath(EverbloomDandaloo.MOD_ID, "textures/entity/ancient/jurassic/brachiosaurus/baby_brachiosaurus_male_banana.png"));
+                map.put(BrachiosaurusVariant.banana_female,
+                        Identifier.fromNamespaceAndPath(EverbloomDandaloo.MOD_ID, "textures/entity/ancient/jurassic/brachiosaurus/baby_brachiosaurus_female_banana.png"));
+            });
+
     final BrachiosaurusFullGrownAdultModel FullGrownModel;
-    final BrachiosaurusHatchlingModel Hatchlingmodel;
+    final BrachiosaurusHatchlingModel HatchlingModel;
+    final BrachiosaurusBabyModel BabyModel;
 
     public BrachiosaurusRenderer(EntityRendererProvider.Context context) {
         super(context, new BrachiosaurusFullGrownAdultModel(context.bakeLayer(EDJurassicModelLoader.BrachiosaurusFullyGrown)), 1f);
         this.FullGrownModel = new BrachiosaurusFullGrownAdultModel(context.bakeLayer(EDJurassicModelLoader.BrachiosaurusFullyGrown));
-        this.Hatchlingmodel =  new BrachiosaurusHatchlingModel(context.bakeLayer(EDJurassicModelLoader.BrachiosaurusHatchling));
+        this.HatchlingModel =  new BrachiosaurusHatchlingModel(context.bakeLayer(EDJurassicModelLoader.BrachiosaurusHatchling));
+        this.BabyModel = new BrachiosaurusBabyModel(context.bakeLayer(EDJurassicModelLoader.BrachiosaurusBaby));
     }
 
     @Override
     public Identifier getTextureLocation(BrachiosaurusRenderState state) {
         if(state.Age <= 0) {
             return TexturesForHatchling.get(state.variant);
+        }
+        else if(state.Age == 1 || state.Age ==2){
+            return TexturesForBaby.get(state.variant);
         }
         return TexturesForFullGrown.get(state.variant);
     }
@@ -85,14 +101,14 @@ public class BrachiosaurusRenderer extends MobRenderer<BrachiosaurusEntity, Brac
     @Override
     public void submit(BrachiosaurusRenderState state, PoseStack poseStack, SubmitNodeCollector submitNodeCollector, CameraRenderState camera) {
         if(state.Age <= 0){
-            this.model = this.Hatchlingmodel;
+            this.model = this.HatchlingModel;
             poseStack.scale(1f, 1f, 1f);
         }else if(state.Age == 1){
-            this.model = this.FullGrownModel;
-            poseStack.scale(0.2f, 0.2f, 0.2f);
+            this.model = this.BabyModel;
+            poseStack.scale(1f, 1f, 1f);
         }else if(state.Age == 2){
-            this.model = this.FullGrownModel;
-            poseStack.scale(0.3f, 0.3f, 0.3f);
+            this.model = this.BabyModel;
+            poseStack.scale(1.2f, 1.2f, 1.2f);
         }else if(state.Age == 3){
             this.model = this.FullGrownModel;
             poseStack.scale(0.4f, 0.4f, 0.4f);
