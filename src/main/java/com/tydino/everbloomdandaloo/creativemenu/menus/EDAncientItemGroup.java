@@ -48,6 +48,7 @@ public class EDAncientItemGroup {
                 output.accept(EDAncientItems.BreedingScarab);
                 /// DINOSAURS
                 output.accept(EDJurassicBlocks.BrachiosaurusEgg);
+                output.accept(EDJurassicItems.HatchedBrachiosaurus);
 
                 //powered objects
                 output.accept(EDAncientBlocks.FossilRecombiner);

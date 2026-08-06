@@ -9,6 +9,15 @@ A head with a separate headlead,
 The legs will have the same amount of joints, but can have multiple pieces in each joint that don't rotate individually,
 Eyelids and jaw move by themselves.
 
+Dinosaurs will have at max 5 models. No more than that. Dinosaurs will have at least 3 models, no less than that.
+The naming conventions for the models are as follows:
+Hatchling,(all must have one, and must have an element of the egg on it.)
+baby,(all must have one, it is the same model as the hatchling but without the egg.)
+juvenile, (if needed this one will be used)
+adult(all must have one, it is the biggest the dinosaur will be.)
+
+There can be more conventions as inbetween states if NEEDED only.
+
 The tail will follow through with the body using the equation:
 Float lagFactor = 0.3f; ( lower value means slower, 0.3f is a good starting place!)
 This.tailpeice += (this.root-of-bone.yaw - this.tailpeice.yaw) * lagFactor;
