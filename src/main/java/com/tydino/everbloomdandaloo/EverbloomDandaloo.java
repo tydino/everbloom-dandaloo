@@ -38,23 +38,23 @@ public class EverbloomDandaloo implements ModInitializer {
 	@Override
 	public void onInitialize() {
 		LOGGER.info("Registering Items");
-		EDItemRegistry.onInitialize(); //ITEMS//
+		EDItemRegistry.onInitialize();
 		LOGGER.info("Registering Block");
-		EDBlockRegistry.onInitialize(); //BLOCKS//
+		EDBlockRegistry.onInitialize();
 		LOGGER.info("Registering Recipes");
 		EDRecipes.onInitialize();
 		LOGGER.info("Registeirng Menus");
 		EDMenuTypes.onInitialize();
 
 		LOGGER.info("Registering Entities");
-		EDEntityTypes.onInitialize(); //ENTITIES//
+		EDEntityTypes.onInitialize(); //ENTITIES IN GENERAL//
 		EDEntitySpawn.onInitialize();//ENTITIES SPAWN//
 
 		LOGGER.info("Registering Sounds");
-		EDSounds.registerSounds(); //SOUNDS//
+		EDSounds.registerSounds();
 
 		LOGGER.info("Registering Item Groups (for creative)");
-		EDItemGroups.onInitialize(); //ITEMGROUPS//
+		EDItemGroups.onInitialize();
 
 		LOGGER.info("Adding the Items into Vanilla Creative Tabs");
 		// fossils //																													/// ANCIENT ///

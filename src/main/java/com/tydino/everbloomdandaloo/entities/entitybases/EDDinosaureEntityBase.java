@@ -218,7 +218,6 @@ public class EDDinosaureEntityBase extends PathfinderMob implements OwnableEntit
     public int partnerVariant;
 
     ///  AGE ///
-    public static List<EntityDimensions> AgeDimensions;
     public static final EntityDataAccessor<Integer> AGE =
             SynchedEntityData.defineId(EDDinosaureEntityBase.class, EntityDataSerializers.INT);
     public static final EntityDataAccessor<Integer> AgeTicks =
@@ -300,14 +299,21 @@ public class EDDinosaureEntityBase extends PathfinderMob implements OwnableEntit
                 }else{
                     player.sendOverlayMessage(Component.literal("Aging Unlocked"));
                 }
-                return InteractionResult.SUCCESS_SERVER;
+                return InteractionResult.SUCCESS;
 
-            }else if (itemStack.is(TameItem) && !isTame()) {
-                itemStack.consume(1, player);
-                this.tryToTame(player);
-                return InteractionResult.SUCCESS_SERVER;
-
-            }else if (isTame() && getOwner() == player) {
+            }
+            if(itemStack.is(EDAncientItems.GrowthSerum)){
+                if(getAge() <= MaxAge) {
+                    setAge(getAge() + 1);
+                    player.sendOverlayMessage(Component.literal("Aged Up By 1"));
+                    return InteractionResult.SUCCESS;
+                }else{
+                    itemStack.consume(1, player);
+                    player.sendOverlayMessage(Component.literal("You Cannot Age This Ancient Animal Any More."));
+                    return InteractionResult.PASS;
+                }
+            }
+            if (isTame() && getOwner() == player) {
                 if(itemStack.is(EDAncientItems.BreedingScarab)){
                     int age = this.getAge();
                     if (player instanceof ServerPlayer) {
@@ -316,16 +322,17 @@ public class EDDinosaureEntityBase extends PathfinderMob implements OwnableEntit
                             this.usePlayerItem(player, hand, itemStack);
                             this.setInLove(serverPlayer);
                             ///this.playEatingSound();
-                            return InteractionResult.SUCCESS_SERVER;
+                            return InteractionResult.SUCCESS;
                         }
                     }
-                }else if (properlySitting) {
+                }
+                if (properlySitting) {
                     this.properlyWandering = true;
                     this.properlySitting = false;
                     this.properlyFollowing = false;
 
                     player.sendOverlayMessage(Component.literal("Wandering"));
-                    return InteractionResult.SUCCESS_SERVER;
+                    return InteractionResult.SUCCESS;
 
                 } else if (properlyWandering) {
                     this.properlyFollowing = true;
@@ -333,7 +340,7 @@ public class EDDinosaureEntityBase extends PathfinderMob implements OwnableEntit
                     this.properlyWandering = false;
 
                     player.sendOverlayMessage(Component.literal("Following"));
-                    return InteractionResult.SUCCESS_SERVER;
+                    return InteractionResult.SUCCESS;
 
                 } else if (properlyFollowing) {
                     this.properlySitting = true;
@@ -341,8 +348,14 @@ public class EDDinosaureEntityBase extends PathfinderMob implements OwnableEntit
                     this.properlyFollowing = false;
 
                     player.sendOverlayMessage(Component.literal("Sitting"));
-                    return InteractionResult.SUCCESS_SERVER;
+                    return InteractionResult.SUCCESS;
                 }
+            }
+            if (itemStack.is(TameItem) && !isTame()) {
+                itemStack.consume(1, player);
+                this.tryToTame(player);
+                return InteractionResult.SUCCESS;
+
             }
         }
 

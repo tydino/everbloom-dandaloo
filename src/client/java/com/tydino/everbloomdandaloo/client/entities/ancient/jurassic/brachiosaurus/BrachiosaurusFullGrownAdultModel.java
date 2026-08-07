@@ -1,5 +1,6 @@
 package com.tydino.everbloomdandaloo.client.entities.ancient.jurassic.brachiosaurus;
 
+import com.tydino.everbloomdandaloo.Utilities.MathUtility;
 import net.minecraft.client.animation.KeyframeAnimation;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
@@ -182,6 +183,11 @@ public class BrachiosaurusFullGrownAdultModel extends EntityModel<BrachiosaurusR
 		return LayerDefinition.create(modelData, 368, 375);
 	}
 
+	float lastBodyRot;
+	float tailBaseDragRot;
+	float tailMiddleDragRot;
+	float tailTipDragRot;
+
 	@Override
 	public void setupAnim(BrachiosaurusRenderState state) {
 		super.setupAnim(state);
@@ -216,13 +222,20 @@ public class BrachiosaurusFullGrownAdultModel extends EntityModel<BrachiosaurusR
 		this.head.yRot = state.yRot * (float) (Math.PI / 180.0);
 
 		//Tail
-		Float lagFactor = 0.3f;
-		this.tailmiddle.xRot += (this.tailbase.xRot - this.tailmiddle.xRot) * lagFactor;
-		this.tailmiddletip.xRot += (this.tailmiddle.xRot - this.tailmiddletip.xRot) * lagFactor;
-		this.tailtip.xRot += (this.tailmiddletip.xRot - this.tailtip.xRot) * lagFactor;
+		float deltaYaw = MathUtility.wrapDegrees(state.bodyRot - this.lastBodyRot);
+		float targetDragBase = -deltaYaw * 0.4F;
+		this.tailBaseDragRot = MathUtility.lerp(0.2F, this.tailBaseDragRot, targetDragBase);
 
-		this.tailmiddle.yRot += (this.tailbase.yRot - this.tailmiddle.yRot) * lagFactor;
-		this.tailmiddletip.yRot += (this.tailmiddle.yRot - this.tailmiddletip.yRot) * lagFactor;
-		this.tailtip.yRot += (this.tailmiddletip.yRot - this.tailtip.yRot) * lagFactor;
+		float targetDragMiddle = targetDragBase + -deltaYaw * 0.3F;
+		this.tailMiddleDragRot = MathUtility.lerp(0.2F, this.tailMiddleDragRot, -targetDragMiddle);
+
+		float targetDragTip = targetDragMiddle + -deltaYaw * 0.2F;
+		this.tailTipDragRot = MathUtility.lerp(0.2F, this.tailTipDragRot, targetDragTip);
+
+		this.tailmiddle.yRot = this.tailBaseDragRot;
+		this.tailmiddletip.yRot =-this.tailMiddleDragRot;
+		this.tailtip.yRot = this.tailTipDragRot;
+
+		this.lastBodyRot = state.bodyRot;
 	}
 }

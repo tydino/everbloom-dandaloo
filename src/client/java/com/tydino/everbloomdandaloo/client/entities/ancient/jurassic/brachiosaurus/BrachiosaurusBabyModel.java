@@ -1,5 +1,6 @@
 package com.tydino.everbloomdandaloo.client.entities.ancient.jurassic.brachiosaurus;
 
+import com.tydino.everbloomdandaloo.Utilities.MathUtility;
 import com.tydino.everbloomdandaloo.client.entities.ancient.jurassic.brachiosaurus.BrachiosaurusRenderState;
 import net.minecraft.client.animation.KeyframeAnimation;
 import net.minecraft.client.model.EntityModel;
@@ -106,6 +107,9 @@ public class BrachiosaurusBabyModel extends EntityModel<BrachiosaurusRenderState
 		return LayerDefinition.create(modelData, 48, 35);
 	}
 
+	float lastBodyRot;
+	float tailDragRot;
+
 	@Override
 	public void setupAnim(BrachiosaurusRenderState state) {
 		super.setupAnim(state);
@@ -138,5 +142,14 @@ public class BrachiosaurusBabyModel extends EntityModel<BrachiosaurusRenderState
 		//head
 		this.head.xRot = state.xRot * (float) (Math.PI / 180.0);
 		this.head.yRot = state.yRot * (float) (Math.PI / 180.0);
+
+		//tail
+		float deltaYaw = MathUtility.wrapDegrees(state.bodyRot - this.lastBodyRot);
+		float targetDrag = -deltaYaw * 0.4F;
+		this.tailDragRot = MathUtility.lerp(0.2F, this.tailDragRot, targetDrag);
+
+		this.tail.zRot = -this.tailDragRot;
+
+		this.lastBodyRot = state.bodyRot;
 	}
 }

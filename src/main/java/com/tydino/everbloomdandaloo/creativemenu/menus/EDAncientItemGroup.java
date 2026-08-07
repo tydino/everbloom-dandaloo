@@ -22,7 +22,7 @@ public class EDAncientItemGroup {
             .icon(() -> new ItemStack(EDPaleozoicItems.PermianAnimalFossil))
             .title(Component.translatable("creativeTab.ancient"))
             .displayItems((params, output) -> {
-
+                output.accept(EDAncientItems.GrowthSerum);
                 //fossils
                 output.accept(EDAncientBlocks.FossilOre);
                 output.accept(EDAncientBlocks.DeepslateFossilOre);

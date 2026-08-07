@@ -6,6 +6,7 @@ They are usually visually split into;
 2 body pieces,
 At least 1 neck piece,
 A head with a separate headlead,
+The eyes are seperate from the body which in blink will be done with scale. eye can move if needed for the personality.
 The legs will have the same amount of joints, but can have multiple pieces in each joint that don't rotate individually,
 Eyelids and jaw move by themselves.
 
@@ -120,6 +121,8 @@ To give the dinosaur water, you will need to either have a water source block th
 To breed dinosaurs, they will either breed on their own, or you will need a breeding scarab for its time period.
 
 A breeding scarab is made by any scarab of a certain time period and the following items, A meat, crop, seed, and leaf. (or compost ball) This will give you 2 breeding scarabs from one scarab.
+
+To speed up growth, a growth serum will require a vial, enderpearl, and a compost ball
 
 All scarabs will become an item on death, and the item is placeable.
 You can tame a scarab using a ‘compost ball’ which is made with the same things needed for the breeding scarab. A breeding scarab can be used on a tamed scarab.

@@ -41,17 +41,22 @@ public class BrachiosaurusEntity extends EDDinosaureEntityBase {
             registerDimensions(0.5f, 1.5f, 1.4f),// 0
             registerDimensions(0.5f, 1.4f, 1.3f),// 1
             registerDimensions(0.7f, 1.6f, 1.5f),// 2
-            registerDimensions(1f, 2.8f, 6.3f),// 3
+            registerDimensions(1f, 1.7f, 1.8f),// 3
             registerDimensions(1.25f, 3.5f, 7.875f),// 4
             registerDimensions(1.5f, 4.2f, 9.45f),// 5
             registerDimensions(1.75f, 4.9f, 11.025f),// 6
             registerDimensions(2f, 5.6f, 12.6f),// 7
             registerDimensions(2.25f, 6.3f, 14.175f),// 8
-            registerDimensions(2.5f, 7f, 15.75f));// 9
+            registerDimensions(2.25f, 6.3f, 14.175f),// 9
+            registerDimensions(2.25f, 6.3f, 14.175f),// 10
+            registerDimensions(2.25f, 6.3f, 14.175f),// 11
+            registerDimensions(2.25f, 6.3f, 14.175f),// 12
+            registerDimensions(2.25f, 6.3f, 14.175f),// 13
+            registerDimensions(2.5f, 7f, 15.75f));// 14
 
     /// Constructors
     public BrachiosaurusEntity(EntityType<? extends PathfinderMob> type, Level level) {
-        super(type, level, EDJurassicItems.BigScarab, 9, 500/*TicksInDay * 2*/, BrachiosaurusDimensions,20, 20, 80, 40, 40, 40, true, 3, 1, 1200);
+        super(type, level, EDJurassicItems.BigScarab, 14, TicksInDay * 2, BrachiosaurusDimensions,40, 20, 80, 40, 40, 40, true, 3, 1, 1200);
     }
 
     public static AttributeSupplier.Builder createAttributes(){
