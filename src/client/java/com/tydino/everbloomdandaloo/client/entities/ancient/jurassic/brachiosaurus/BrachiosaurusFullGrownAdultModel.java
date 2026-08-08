@@ -224,13 +224,13 @@ public class BrachiosaurusFullGrownAdultModel extends EntityModel<BrachiosaurusR
 		//Tail
 		float deltaYaw = MathUtility.wrapDegrees(state.bodyRot - this.lastBodyRot);
 		float targetDragBase = -deltaYaw * 0.4F;
-		this.tailBaseDragRot = MathUtility.lerp(0.2F, this.tailBaseDragRot, targetDragBase);
+		this.tailBaseDragRot = Math.clamp(MathUtility.lerp(0.25F, this.tailBaseDragRot, targetDragBase), -1f, 1f);
 
 		float targetDragMiddle = targetDragBase + -deltaYaw * 0.3F;
-		this.tailMiddleDragRot = MathUtility.lerp(0.2F, this.tailMiddleDragRot, -targetDragMiddle);
+		this.tailMiddleDragRot = Math.clamp(MathUtility.lerp(0.3F, this.tailMiddleDragRot, -targetDragMiddle), -1f, 1f);
 
 		float targetDragTip = targetDragMiddle + -deltaYaw * 0.2F;
-		this.tailTipDragRot = MathUtility.lerp(0.2F, this.tailTipDragRot, targetDragTip);
+		this.tailTipDragRot = Math.clamp(MathUtility.lerp(0.4F, this.tailTipDragRot, targetDragTip), -1f, 1f);
 
 		this.tailmiddle.yRot = this.tailBaseDragRot;
 		this.tailmiddletip.yRot =-this.tailMiddleDragRot;

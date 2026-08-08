@@ -39,20 +39,20 @@ public class BrachiosaurusEntity extends EDDinosaureEntityBase {
 
     public static final List<EntityDimensions> BrachiosaurusDimensions = List.of(
             registerDimensions(0.5f, 1.5f, 1.4f),// 0
-            registerDimensions(0.5f, 1.4f, 1.3f),// 1
-            registerDimensions(0.7f, 1.6f, 1.5f),// 2
-            registerDimensions(1f, 1.7f, 1.8f),// 3
-            registerDimensions(1.25f, 3.5f, 7.875f),// 4
-            registerDimensions(1.5f, 4.2f, 9.45f),// 5
-            registerDimensions(1.75f, 4.9f, 11.025f),// 6
-            registerDimensions(2f, 5.6f, 12.6f),// 7
-            registerDimensions(2.25f, 6.3f, 14.175f),// 8
-            registerDimensions(2.25f, 6.3f, 14.175f),// 9
-            registerDimensions(2.25f, 6.3f, 14.175f),// 10
-            registerDimensions(2.25f, 6.3f, 14.175f),// 11
-            registerDimensions(2.25f, 6.3f, 14.175f),// 12
-            registerDimensions(2.25f, 6.3f, 14.175f),// 13
-            registerDimensions(2.5f, 7f, 15.75f));// 14
+            registerDimensions(0.5f, 0.5625f, 1.1875f),// 1
+            registerDimensions(0.625f, 0.625f, 1.4375f),// 2
+            registerDimensions(0.75f, 0.8125f, 1.75f),// 3
+            registerDimensions(1.25f, 1f, 2.375f),// 4
+            registerDimensions(2f, 1.75f, 4f),// 5
+            registerDimensions(1.75f, 2.625f, 5.875f),// 6
+            registerDimensions(2f, 3.5f, 7.75f),// 7
+            registerDimensions(2.25f, 4.375f, 9.75f),// 8
+            registerDimensions(2.25f, 5.125f, 11.875f),// 9
+            registerDimensions(2.5f, 5.25f, 12f),// 10
+            registerDimensions(2.5f, 5.25f, 12f),// 11
+            registerDimensions(3f, 5.875f, 13.625f),// 12
+            registerDimensions(3f, 6.5f, 14.5f),// 13
+            registerDimensions(3f, 7f, 15.75f));// 14
 
     /// Constructors
     public BrachiosaurusEntity(EntityType<? extends PathfinderMob> type, Level level) {

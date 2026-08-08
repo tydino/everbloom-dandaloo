@@ -303,7 +303,7 @@ public class EDDinosaureEntityBase extends PathfinderMob implements OwnableEntit
 
             }
             if(itemStack.is(EDAncientItems.GrowthSerum)){
-                if(getAge() <= MaxAge) {
+                if(getAge() <= MaxAge - 1) {
                     setAge(getAge() + 1);
                     player.sendOverlayMessage(Component.literal("Aged Up By 1"));
                     return InteractionResult.SUCCESS;
@@ -548,7 +548,7 @@ public class EDDinosaureEntityBase extends PathfinderMob implements OwnableEntit
 
             /// AGE ///
             if (!AgeLocked) {
-                if (MaxAge > getAge()) {
+                if (MaxAge-1 > getAge()) {
                     setAgeTicks(getAgeTicks() + 1);
                     if (getAgeTicks() >= RateOfAging) {
                         setAgeTicks(0);

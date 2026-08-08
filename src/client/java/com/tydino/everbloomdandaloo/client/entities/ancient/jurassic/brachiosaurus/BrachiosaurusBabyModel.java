@@ -146,7 +146,7 @@ public class BrachiosaurusBabyModel extends EntityModel<BrachiosaurusRenderState
 		//tail
 		float deltaYaw = MathUtility.wrapDegrees(state.bodyRot - this.lastBodyRot);
 		float targetDrag = -deltaYaw * 0.4F;
-		this.tailDragRot = MathUtility.lerp(0.2F, this.tailDragRot, targetDrag);
+		this.tailDragRot = Math.clamp(MathUtility.lerp(0.2F, this.tailDragRot, targetDrag), -5, 5);
 
 		this.tail.zRot = -this.tailDragRot;
 
