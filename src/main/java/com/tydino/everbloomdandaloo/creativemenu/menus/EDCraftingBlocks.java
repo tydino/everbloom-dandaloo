@@ -21,6 +21,7 @@ public class EDCraftingBlocks {
             .displayItems((params, output) -> {
                 //powered objects
                 output.accept(EDAncientBlocks.FossilRecombiner);
+                output.accept(EDAncientBlocks.FossilAdapter);
             })
             .build();
 

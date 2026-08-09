@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "b": "techreborn:electronic_circuit",
+    "c": "techreborn:iron_plate",
+    "r": "techreborn:rubber",
+    "w": "techreborn:wood_plate"
+  },
+  "pattern": [
+    "rcr",
+    "cwc",
+    "cbc"
+  ],
+  "result": {
+    "id": "everbloomdandaloo:fossil_adapter"
+  }
+}

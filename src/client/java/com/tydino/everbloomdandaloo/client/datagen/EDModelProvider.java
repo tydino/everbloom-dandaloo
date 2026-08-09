@@ -25,7 +25,8 @@ public class EDModelProvider extends FabricModelProvider {
         blockModelGenerators.createTrivialCube(EDAncientBlocks.FossilOre);
         blockModelGenerators.createTrivialCube(EDAncientBlocks.DeepslateFossilOre);
 
-        blockModelGenerators.createNonTemplateModelBlock(EDAncientBlocks.FossilRecombiner);
+        blockModelGenerators.createNonTemplateHorizontalBlock(EDAncientBlocks.FossilRecombiner);
+        blockModelGenerators.createNonTemplateHorizontalBlock(EDAncientBlocks.FossilAdapter);
 
         /// EGGS ///
         //jurassic

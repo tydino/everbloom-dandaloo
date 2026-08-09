@@ -21,9 +21,6 @@ public class EDBlockLootTables extends FabricBlockLootSubProvider {
 
         //machines
         dropSelf(EDAncientBlocks.FossilRecombiner);
-
-        /// EGGS ///
-        //jurassic
-        dropSelf(EDJurassicBlocks.BrachiosaurusEgg);
+        dropSelf(EDAncientBlocks.FossilAdapter);
     }
 }

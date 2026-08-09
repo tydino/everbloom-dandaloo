@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "everbloomdandaloo:block/fossil_adapter",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "everbloomdandaloo:block/fossil_adapter"
+    },
+    "facing=south": {
+      "model": "everbloomdandaloo:block/fossil_adapter",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "everbloomdandaloo:block/fossil_adapter",
+      "y": 270
+    }
+  }
+}

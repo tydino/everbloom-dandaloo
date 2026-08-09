@@ -65,6 +65,9 @@ public class EDLangProvider extends FabricLanguageProvider {
         translationBuilder.add(EDAncientBlocks.FossilRecombiner, "Fossil Recombiner");
         translationBuilder.add("tooltip.everbloomdandaloo.fossil_recombiner", "You use this when you have fossil fragments to reform a fossil.");
 
+        translationBuilder.add(EDAncientBlocks.FossilAdapter, "Fossil Adapter");
+        translationBuilder.add("tooltip.everbloomdandaloo.fossil_adapter", "With a full fossil, and a bone, you can reform the bone to a fossil.");
+
 
         translationBuilder.add("creativeTab.aether", "Depricated Things :: Everbloom Dandaloo");                        /// DEPRICATED ///
         translationBuilder.add(EDCookingItemRegistry.Tomato, "Tomato");

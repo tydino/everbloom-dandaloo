@@ -1,7 +1,19 @@
 {
   "variants": {
-    "": {
+    "facing=east": {
+      "model": "everbloomdandaloo:block/fossil_recombiner",
+      "y": 90
+    },
+    "facing=north": {
       "model": "everbloomdandaloo:block/fossil_recombiner"
+    },
+    "facing=south": {
+      "model": "everbloomdandaloo:block/fossil_recombiner",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "everbloomdandaloo:block/fossil_recombiner",
+      "y": 270
     }
   }
 }

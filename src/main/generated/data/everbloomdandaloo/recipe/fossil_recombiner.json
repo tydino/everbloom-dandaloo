@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "c": "minecraft:crafting_table",
+    "s": "minecraft:sandstone_slab"
+  },
+  "pattern": [
+    " s ",
+    "scs",
+    " s "
+  ],
+  "result": {
+    "id": "everbloomdandaloo:fossil_recombiner"
+  }
+}

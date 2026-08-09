@@ -1,6 +1,7 @@
 package com.tydino.everbloomdandaloo.client.datagen;
 
 import com.tydino.everbloomdandaloo.EverbloomDandaloo;
+import com.tydino.everbloomdandaloo.blocks.ancient.EDAncientBlocks;
 import com.tydino.everbloomdandaloo.items.cooking.EDCookingItemRegistry;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
@@ -11,6 +12,8 @@ import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.CookingBookCategory;
 import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.block.Blocks;
+import techreborn.init.TRContent;
 
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
@@ -44,6 +47,28 @@ public class EDRecipeProvider extends FabricRecipeProvider {
                         .requires(Items.WOOL.red())
                         .unlockedBy(getHasName(Items.WOOL.red()), has(Items.WOOL.red()))
                         .group("ed-food")//puts all the food into a group labeled as such to become collapsable
+                        .save(output);
+
+                /// ANCIENT ///
+                //blocks
+                shaped(RecipeCategory.REDSTONE, EDAncientBlocks.FossilRecombiner)
+                        .pattern(" s ")
+                        .pattern("scs")
+                        .pattern(" s ")
+                        .define('s', Blocks.SANDSTONE_SLAB)
+                        .define('c', Blocks.CRAFTING_TABLE)
+                        .unlockedBy(getHasName(Blocks.CRAFTING_TABLE), has(Blocks.CRAFTING_TABLE))
+                        .save(output);
+                //powered blocks
+                shaped(RecipeCategory.REDSTONE, EDAncientBlocks.FossilAdapter)
+                        .pattern("rcr")
+                        .pattern("cwc")
+                        .pattern("cbc")
+                        .define('c', TRContent.Plates.IRON)
+                        .define('w', TRContent.Plates.WOOD)
+                        .define('r', TRContent.Parts.RUBBER)
+                        .define('b', TRContent.Parts.ELECTRONIC_CIRCUIT)
+                        .unlockedBy(getHasName(TRContent.Parts.ELECTRONIC_CIRCUIT), has(TRContent.Parts.ELECTRONIC_CIRCUIT))
                         .save(output);
             }
         };

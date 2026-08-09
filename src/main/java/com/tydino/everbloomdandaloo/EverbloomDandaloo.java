@@ -23,6 +23,7 @@ import java.util.List;
 /// TODO:
 /// Fix the menu for the Fossil Recombinator
 /// Add Motabolism to the dinosaurs
+/// Fix textures of the custom blocks
 /// Make the egg only hatchable around specific dinosaurs/mobs, or can be put into an incubator.
 
 /// REMINDERS

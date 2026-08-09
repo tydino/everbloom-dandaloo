@@ -7,7 +7,7 @@ import net.minecraft.world.level.block.Block;
 public class EDJurassicBlocks {
 
     public static final Block BrachiosaurusEgg = EDBlockRegistry.registerBlock("brachiosaurus_egg",
-            properties -> new BrachiosaurusEgg(properties.strength(10f)));
+            properties -> new BrachiosaurusEgg(properties.strength(EDAncientBlocks.DinosaurEggBreakTime)));
 
     public static void onInitialize(){}
 }

@@ -52,6 +52,7 @@ public class EDAncientItemGroup {
 
                 //powered objects
                 output.accept(EDAncientBlocks.FossilRecombiner);
+                output.accept(EDAncientBlocks.FossilAdapter);
             })
             .build();
 
