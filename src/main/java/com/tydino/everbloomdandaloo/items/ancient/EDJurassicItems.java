@@ -19,5 +19,9 @@ public class EDJurassicItems {
     public static Item HatchedBrachiosaurus = EDItemRegistry.register("hatched_brachiosaurus", SpawnEggItem::new,
             new Item.Properties().spawnEgg(JurassicEntityTypes.Brachiosaurus));
 
+    public static Item BrachiosaurusLimb = EDItemRegistry.register("limb_brachiosaurus", Item::new, new Item.Properties());
+    public static Item BrachiosaurusRibcage = EDItemRegistry.register("ribcage_brachiosaurus", Item::new, new Item.Properties());
+    public static Item BrachiosaurusSkull = EDItemRegistry.register("skull_brachiosaurus", Item::new, new Item.Properties());
+
     public static void onInitialize(){}
 }

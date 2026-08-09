@@ -31,6 +31,10 @@ public class EDJurassicItemGroup {
 
                 /// DINOSAURS
                 output.accept(EDJurassicBlocks.BrachiosaurusEgg);
+                output.accept(EDJurassicItems.HatchedBrachiosaurus);
+                output.accept(EDJurassicItems.BrachiosaurusLimb);
+                output.accept(EDJurassicItems.BrachiosaurusRibcage);
+                output.accept(EDJurassicItems.BrachiosaurusSkull);
             })
             .build();
 

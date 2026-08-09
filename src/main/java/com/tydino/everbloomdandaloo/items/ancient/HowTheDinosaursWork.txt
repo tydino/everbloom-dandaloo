@@ -142,7 +142,7 @@ Amber ores,
 Fossil fragments, (item)
 Amber, (item)
 
-Fossil Recombiner, needs imported
+Fossil Recombiner
 Fossil Adapter, (powered)
 Refined bones, (item)
 Bone Combinator, (powered)
