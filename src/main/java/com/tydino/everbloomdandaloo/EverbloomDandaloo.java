@@ -22,9 +22,12 @@ import java.util.List;
 
 /// TODO:
 /// Fix the menu for the Fossil Recombinator
+/// Implement the menu to the Fossil Adapter
 /// Add Motabolism to the dinosaurs
 /// Fix textures of the custom blocks
+/// Make the fossil Adapter functionality
 /// Make the egg only hatchable around specific dinosaurs/mobs, or can be put into an incubator.
+/// Make and implement the missing textures and ways to get the untextured items
 
 /// REMINDERS
 /// Texture filter;monochromatic at 25% on multiply
