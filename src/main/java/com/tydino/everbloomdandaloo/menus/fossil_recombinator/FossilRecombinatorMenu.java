@@ -85,12 +85,11 @@ public class FossilRecombinatorMenu extends AbstractContainerMenu {
                         }
                     }
                 } else {
-                    // We can set the used recipe to null if no recipe was found.
-                    //noinspection DataFlowIssue
-                    this.output.setRecipeUsed((ServerPlayer) this.player, null);
+                    this.output.setRecipeUsed(null);
                 }
 
                 this.output.setItem(0, result);
+                this.broadcastChanges();
 
 				/*
 				Alternatively, call broadcastChanges instead of setting the remote slot and sending a packet.
