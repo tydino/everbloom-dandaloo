@@ -21,15 +21,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 /// TODO:
-/// Implement the menu to the Fossil Adapter
 /// Add Motabolism to the dinosaurs
-/// Fix textures of the custom blocks
+/// Rework the current fossils a bit to match a definitive system.
+/// Implement the menu to the Fossil Adapter
 /// Make the fossil Adapter functionality
+/// Fix textures of the custom blocks
 /// Make the egg only hatchable around specific dinosaurs/mobs, or can be put into an incubator.
 /// Make and implement the missing textures and ways to get the untextured items
 /// Reimplement the old mobs
 
 /// REMINDERS
+/// Make the systems definitive over RNG.
 /// Texture filter;monochromatic at 25% on multiply
 /// ctrl+alt+shift+J selects all of same thing for copy paste when needed.
 /// look through if needed https://docs.fabricmc.net/develop/items/first-item

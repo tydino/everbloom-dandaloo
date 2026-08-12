@@ -199,6 +199,8 @@ public class EDDinosaureEntityBase extends PathfinderMob implements OwnableEntit
         entityData.set(IN_LOVE, input);
     }
     public int InLoveTimer;
+    public int LoveCooldown;
+
     //Can only have egg if female.
     public static final EntityDataAccessor<Boolean> HAS_EGG =
             SynchedEntityData.defineId(EDDinosaureEntityBase.class, EntityDataSerializers.BOOLEAN);
@@ -318,7 +320,8 @@ public class EDDinosaureEntityBase extends PathfinderMob implements OwnableEntit
                     int age = this.getAge();
                     if (player instanceof ServerPlayer) {
                         ServerPlayer serverPlayer = (ServerPlayer)player;
-                        if (age >= ageToBreed && this.canFallInLove() && !getHasEgg()) {
+                        if (age >= ageToBreed && this.canFallInLove() && !getHasEgg() && LoveCooldown <=0) {
+                            LoveCooldown = TicksInDay*3;
                             this.usePlayerItem(player, hand, itemStack);
                             this.setInLove(serverPlayer);
                             ///this.playEatingSound();
@@ -470,6 +473,7 @@ public class EDDinosaureEntityBase extends PathfinderMob implements OwnableEntit
         output.putInt("in_love", getInLove());
         output.putBoolean("has_egg", getHasEgg());
         output.putInt("partner_variant", partnerVariant);
+        output.putInt("love_cooldown", LoveCooldown);
 
         output.putInt("age", getAge());
         output.putInt("age_ticks", getAgeTicks());
@@ -508,6 +512,7 @@ public class EDDinosaureEntityBase extends PathfinderMob implements OwnableEntit
         setInLove(input.getIntOr("in_love", 0));
         setHasEgg(input.getBooleanOr("has_egg", false));
         partnerVariant = input.getInt("partner_variant").orElse(0);
+        LoveCooldown = input.getIntOr("love_cooldown", 0);
 
         setAge(input.getInt("age").orElse(0));
         setAgeTicks(input.getInt("age_ticks").orElse(0));
@@ -544,6 +549,10 @@ public class EDDinosaureEntityBase extends PathfinderMob implements OwnableEntit
             /// IN LOVE
             if (getInLove() > 0) {
                 setInLove(getInLove()-1);
+            }
+
+            if(LoveCooldown>0){
+                LoveCooldown--;
             }
 
             /// AGE ///
