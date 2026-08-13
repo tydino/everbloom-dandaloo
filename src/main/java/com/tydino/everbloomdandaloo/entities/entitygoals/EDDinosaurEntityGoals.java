@@ -36,7 +36,7 @@ public class EDDinosaurEntityGoals {
 
     public static class WanderFarGoal extends Goal {
         public static final int DEFAULT_INTERVAL = 120;
-        protected final EDDinosaureEntityBase mob;
+        protected final EDDinosaureEntityBase entity;
         protected double wantedX;
         protected double wantedY;
         protected double wantedZ;
@@ -46,16 +46,16 @@ public class EDDinosaurEntityGoals {
         private final boolean checkNoActionTime;
         protected float distance;
 
-        public WanderFarGoal(final EDDinosaureEntityBase mob, final double speedModifier, float distanceForFollow) {
-            this(mob, speedModifier, 120, distanceForFollow);
+        public WanderFarGoal(final EDDinosaureEntityBase entity, final double speedModifier, float distanceForFollow) {
+            this(entity, speedModifier, 120, distanceForFollow);
         }
 
-        public WanderFarGoal(final EDDinosaureEntityBase mob, final double speedModifier, final int interval, float distanceForFollow) {
-            this(mob, speedModifier, interval, true, distanceForFollow);
+        public WanderFarGoal(final EDDinosaureEntityBase entity, final double speedModifier, final int interval, float distanceForFollow) {
+            this(entity, speedModifier, interval, true, distanceForFollow);
         }
 
-        public WanderFarGoal(final EDDinosaureEntityBase mob, final double speedModifier, final int interval, final boolean checkNoActionTime, float distanceForFollow) {
-            this.mob = mob;
+        public WanderFarGoal(final EDDinosaureEntityBase entity, final double speedModifier, final int interval, final boolean checkNoActionTime, float distanceForFollow) {
+            this.entity = entity;
             this.speedModifier = speedModifier;
             this.interval = interval;
             this.checkNoActionTime = checkNoActionTime;
@@ -64,23 +64,23 @@ public class EDDinosaurEntityGoals {
         }
 
         public boolean canUse() {
-            if(mob.properlySitting){
+            if(entity.properlySitting){
                 return false;
             }
-            if(this.mob.getOwner() != null) {
-                if (mob.properlyFollowing && this.mob.distanceToSqr(this.mob.getOwner()) >= (double) (this.distance * this.distance)) {
+            if(this.entity.getOwner() != null) {
+                if (entity.properlyFollowing && this.entity.distanceToSqr(this.entity.getOwner()) >= (double) (this.distance * this.distance)) {
                     return false;
                 }
             }
-            if (this.mob.hasControllingPassenger()) {
+            if (this.entity.hasControllingPassenger()) {
                 return false;
             } else {
                 if (!this.forceTrigger) {
-                    if (this.checkNoActionTime && this.mob.getNoActionTime() >= 100) {
+                    if (this.checkNoActionTime && this.entity.getNoActionTime() >= 100) {
                         return false;
                     }
 
-                    if (this.mob.getRandom().nextInt(reducedTickDelay(this.interval)) != 0) {
+                    if (this.entity.getRandom().nextInt(reducedTickDelay(this.interval)) != 0) {
                         return false;
                     }
                 }
@@ -99,19 +99,19 @@ public class EDDinosaurEntityGoals {
         }
 
         protected @Nullable Vec3 getPosition() {
-            return DefaultRandomPos.getPos(this.mob, 10, 7);
+            return DefaultRandomPos.getPos(this.entity, 10, 7);
         }
 
         public boolean canContinueToUse() {
-            return !this.mob.getNavigation().isDone() && !this.mob.hasControllingPassenger();
+            return !this.entity.getNavigation().isDone() && !this.entity.hasControllingPassenger();
         }
 
         public void start() {
-            this.mob.getNavigation().moveTo(this.wantedX, this.wantedY, this.wantedZ, this.speedModifier);
+            this.entity.getNavigation().moveTo(this.wantedX, this.wantedY, this.wantedZ, this.speedModifier);
         }
 
         public void stop() {
-            this.mob.getNavigation().stop();
+            this.entity.getNavigation().stop();
             super.stop();
         }
 
@@ -142,7 +142,7 @@ public class EDDinosaurEntityGoals {
             this.stopDistance = stopDistance;
             this.setFlags(EnumSet.of(Flag.MOVE, Flag.LOOK));
             if (!(tamable.getNavigation() instanceof GroundPathNavigation) && !(tamable.getNavigation() instanceof FlyingPathNavigation)) {
-                throw new IllegalArgumentException("Unsupported mob type for FollowOwnerGoal");
+                throw new IllegalArgumentException("Unsupported entity type for FollowOwnerGoal");
             }
         }
 

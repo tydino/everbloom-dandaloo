@@ -55,8 +55,8 @@ public class BrachiosaurusEntity extends EDDinosaureEntityBase {
             registerDimensions(3f, 7f, 15.75f));// 14
 
     /// Constructors
-    public BrachiosaurusEntity(EntityType<? extends PathfinderMob> type, Level level) {
-        super(type, level, EDJurassicItems.BigScarab, 14, TicksInDay * 2, BrachiosaurusDimensions,40, 20, 80, 40, 40, 40, true, 3, 1, 1200);
+    public BrachiosaurusEntity(EntityType<? extends PathfinderMob> type, Level level) {/// Hunger and thirst max's are temporary values.
+        super(type, level, EDJurassicItems.BigScarab, 14, TicksInDay * 2, BrachiosaurusDimensions,40, 20, 80, 40, 40, 40, true, 3, 1, 1200, 2, 1);
     }
 
     public static AttributeSupplier.Builder createAttributes(){

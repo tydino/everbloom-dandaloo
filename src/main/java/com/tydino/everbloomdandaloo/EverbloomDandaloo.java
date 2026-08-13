@@ -21,7 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /// TODO:
-/// Add Motabolism to the dinosaurs
+/// Add the ability for dinosaurs to eat and drink
 /// Rework the current fossils a bit to match a definitive system.
 /// Implement the menu to the Fossil Adapter
 /// Make the fossil Adapter functionality

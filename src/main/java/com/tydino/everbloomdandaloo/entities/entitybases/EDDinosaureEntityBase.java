@@ -1,5 +1,6 @@
 package com.tydino.everbloomdandaloo.entities.entitybases;
 
+import com.tydino.everbloomdandaloo.EverbloomDandaloo;
 import com.tydino.everbloomdandaloo.items.ancient.EDAncientItems;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
@@ -41,6 +42,7 @@ public class EDDinosaureEntityBase extends PathfinderMob implements OwnableEntit
     public int variant;
 
     public static final int TicksInDay = 24000;///24000/20 is 1200, 1200/60 is 20. 20 minutes long
+    public static final int TicksForMotabolism = TicksInDay/2;///10 minutes long
 
     public Item TameItem;
 
@@ -67,6 +69,7 @@ public class EDDinosaureEntityBase extends PathfinderMob implements OwnableEntit
     }
     int maxBlinkCount;
 
+    //Note: this will also be used for 'drinking'
     static final EntityDataAccessor<Boolean> EAT = SynchedEntityData.defineId(EDDinosaureEntityBase.class, EntityDataSerializers.BOOLEAN);// line 564 is where the eat animation is turned on
     public final AnimationState eatAnimation = new AnimationState();
     int eatCount;
@@ -77,6 +80,7 @@ public class EDDinosaureEntityBase extends PathfinderMob implements OwnableEntit
         entityData.set(EAT, input);
     }
     int maxEatCount;
+    public boolean eatingOrDrinking;
 
     static final EntityDataAccessor<Boolean> SITTING_DOWN = SynchedEntityData.defineId(EDDinosaureEntityBase.class, EntityDataSerializers.BOOLEAN);
     public final AnimationState sittingDownAnimation = new AnimationState();
@@ -262,9 +266,31 @@ public class EDDinosaureEntityBase extends PathfinderMob implements OwnableEntit
     }
     public int tamingChance;
 
+    /// HUNGER + THIRST ///
+    public int motabolism;
+    public static final EntityDataAccessor<Integer> HUNGER =
+            SynchedEntityData.defineId(EDDinosaureEntityBase.class, EntityDataSerializers.INT);
+    public int maxHunger;
+    public void SetHunger(int input){
+        entityData.set(HUNGER, input);
+    }
+    public int getHunger(){
+        return entityData.get(HUNGER);
+    }
+
+    public static final EntityDataAccessor<Integer> THIRST =
+            SynchedEntityData.defineId(EDDinosaureEntityBase.class, EntityDataSerializers.INT);
+    public int maxThirst;
+    public void SetThirst(int input){
+        entityData.set(THIRST, input);
+    }
+    public int getThirst(){
+        return entityData.get(THIRST);
+    }
+
     /// CONSTRUCTOR ///
 
-    protected EDDinosaureEntityBase(EntityType<? extends PathfinderMob> type, Level level, Item tameItem, int maxAge, int rateOfAging, List<EntityDimensions> dimensions, int LengthOfIdle, int LengthOfBlink, int LengthOfEat, int LengthOfSittingDown, int LengthOfSitting, int LengthOfStandingUp, boolean leashable, int chanceAtTaming, int minAgeBeforeBreeding, int maxInLoveTimer) {
+    protected EDDinosaureEntityBase(EntityType<? extends PathfinderMob> type, Level level, Item tameItem, int maxAge, int rateOfAging, List<EntityDimensions> dimensions, int LengthOfIdle, int LengthOfBlink, int LengthOfEat, int LengthOfSittingDown, int LengthOfSitting, int LengthOfStandingUp, boolean leashable, int chanceAtTaming, int minAgeBeforeBreeding, int maxInLoveTimer, int maxHunger, int maxThirst) {
         super(type, level);
         this.TameItem = tameItem;
         this.MaxAge = maxAge;
@@ -283,6 +309,9 @@ public class EDDinosaureEntityBase extends PathfinderMob implements OwnableEntit
         this.leashable = leashable;
         this.tamingChance = chanceAtTaming;
         this.InLoveTimer = maxInLoveTimer;
+
+        this.maxHunger = maxHunger;//this and
+        this.maxThirst = maxThirst;//this each add 10 minutes to the time before they need to eat.
     }
 
     /// MOB INTERACTION ///
@@ -421,6 +450,9 @@ public class EDDinosaureEntityBase extends PathfinderMob implements OwnableEntit
         //taming
         entityData.define(DATA_OWNERUUID_ID, Optional.empty());
         entityData.define(DATA_FLAGS_ID, (byte)0);
+        //motabolism
+        entityData.define(HUNGER, maxHunger);
+        entityData.define(THIRST, maxThirst);
     }
 
     @Override
@@ -482,6 +514,10 @@ public class EDDinosaureEntityBase extends PathfinderMob implements OwnableEntit
 
         EntityReference<LivingEntity> owner = this.getOwnerReference();
         EntityReference.store(owner, output, "Owner");
+
+        output.putInt("motabolism", motabolism);
+        output.putInt("hunger", getHunger());
+        output.putInt("thirst", getThirst());
     }
 
     @Override
@@ -531,6 +567,10 @@ public class EDDinosaureEntityBase extends PathfinderMob implements OwnableEntit
             this.entityData.set(DATA_OWNERUUID_ID, Optional.empty());
             this.setTame(false, true);
         }
+
+        motabolism = input.getIntOr("motabolism", TicksForMotabolism);
+        SetHunger(input.getIntOr("hunger", maxHunger));
+        SetThirst(input.getIntOr("thirst", maxThirst));
     }
 
     /// On Spawn ///
@@ -548,16 +588,16 @@ public class EDDinosaureEntityBase extends PathfinderMob implements OwnableEntit
 
             /// IN LOVE
             if (getInLove() > 0) {
-                setInLove(getInLove()-1);
+                setInLove(getInLove() - 1);
             }
 
-            if(LoveCooldown>0){
+            if (LoveCooldown > 0) {
                 LoveCooldown--;
             }
 
             /// AGE ///
             if (!AgeLocked) {
-                if (MaxAge-1 > getAge()) {
+                if (MaxAge - 1 > getAge()) {
                     setAgeTicks(getAgeTicks() + 1);
                     if (getAgeTicks() >= RateOfAging) {
                         setAgeTicks(0);
@@ -566,6 +606,43 @@ public class EDDinosaureEntityBase extends PathfinderMob implements OwnableEntit
                 }
             }
             ticksAlive++;
+
+            /// MOTABOLISM ///
+            if (motabolism-- <= 0) {
+                motabolism = TicksForMotabolism;
+                SetHunger(getHunger()-1);
+                SetThirst(getThirst()-1);
+            }
+
+            if(getThirst()<=0) {
+                if (this.ticksAlive % 80 == 0) {
+                    this.hurt(this.damageSources().starve(), 1.0f);
+                    for(int i=0; this.level().players().size() > i; i++) {
+                        Player currentPlayer = this.level().players().get(i);
+                        if (!hasCustomName()) {
+                            currentPlayer.sendSystemMessage(Component.literal("A " + this.getPlainTextName() + " is dying of thirst at: X " + (int) Math.round(asLivingEntity().position().x) + ", Y " + (int) Math.round(asLivingEntity().position().y) + ", Z " + (int) Math.round(asLivingEntity().position().z) + " Please take this dinosaur to either a water trough or water source so it may drink."));
+                        }else{
+                            currentPlayer.sendSystemMessage(Component.literal(this.getPlainTextName() + " is dying of thirst at: X " + (int) Math.round(asLivingEntity().position().x) + ", Y " + (int) Math.round(asLivingEntity().position().y) + ", Z " + (int) Math.round(asLivingEntity().position().z) + " Please take this dinosaur to either a water trough or water source so it may drink."));
+                        }
+                    }
+                }
+            }
+
+            if(getHunger()<=0) {
+                if (this.ticksAlive % 80 == 0) {
+                    this.hurt(this.damageSources().starve(), 1.0f);
+                    for(int i=0; this.level().players().size() > i; i++){
+                        Player currentPlayer = this.level().players().get(i);
+                        if (!hasCustomName()) {
+                            currentPlayer.sendSystemMessage(Component.literal("A " + this.getPlainTextName() + " is dying of starvation at: X " + (int) Math.round(asLivingEntity().position().x) + ", Y " + (int) Math.round(asLivingEntity().position().y) + ", Z " + (int) Math.round(asLivingEntity().position().z) + " Please drop some of this dinosaurs food or take it to a feeder so it may eat."));
+                        }else {
+                            currentPlayer.sendSystemMessage(Component.literal(this.getPlainTextName() + " is dying of starvation at: X " + (int) Math.round(asLivingEntity().position().x) + ", Y " + (int) Math.round(asLivingEntity().position().y) + ", Z " + (int) Math.round(asLivingEntity().position().z) + " Please drop some of this dinosaurs food or take it to a feeder so it may eat."));
+                        }
+                    }
+                }
+            }
+
+            EverbloomDandaloo.LOGGER.info("Motabolism: "+motabolism);
 
             /// ANIMATIONS ///
             if (getIdle()) {
@@ -586,16 +663,17 @@ public class EDDinosaureEntityBase extends PathfinderMob implements OwnableEntit
                 blinkCount = maxBlinkCount + random.nextInt(20, 100);
             }
 
-            /*
             if (getEat()) {
                 if (eatCount-- <= 0) {
                     setEat(false);
                 }
             } else {
-                setEat(true);
-                eatCount = maxEatCount;
+                if (eatingOrDrinking) {
+                    setEat(true);
+                    eatCount = maxEatCount;
+                    eatingOrDrinking = false;
+                }
             }
-            */
 
             setUpSitting();
         }
