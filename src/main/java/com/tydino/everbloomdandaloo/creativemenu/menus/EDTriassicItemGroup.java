@@ -21,8 +21,6 @@ public class EDTriassicItemGroup {
             .title(Component.translatable("creativeTab.triassic"))
             .displayItems((params, output) -> {
 
-                output.accept(EDTriassicItems.TriassicAnimalFossil);
-                output.accept(EDTriassicItems.AnimalFossilFragments);
             })
             .build();
 

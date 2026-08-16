@@ -22,8 +22,6 @@ public class EDCretaceousItemGroup {
             .title(Component.translatable("creativeTab.cretaceous"))
             .displayItems((params, output) -> {
 
-                output.accept(EDCretaceousItems.CretaceousAnimalFossil);
-                output.accept(EDCretaceousItems.AnimalFossilFragments);
             })
             .build();
 

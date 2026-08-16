@@ -20,9 +20,6 @@ public class EDPaleozoicItemGroup {
             .icon(() -> new ItemStack(EDPaleozoicItems.PermianAnimalFossil))
             .title(Component.translatable("creativeTab.paleozoic"))
             .displayItems((params, output) -> {
-
-                output.accept(EDPaleozoicItems.PermianAnimalFossil);
-                output.accept(EDPaleozoicItems.AnimalFossilFragments);
                 output.accept(EDPaleozoicItems.BigBugAmber);
             })
             .build();

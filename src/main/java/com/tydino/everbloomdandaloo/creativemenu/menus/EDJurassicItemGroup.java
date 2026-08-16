@@ -22,23 +22,22 @@ public class EDJurassicItemGroup {
             .title(Component.translatable("creativeTab.jurassic"))
             .displayItems((params, output) -> {
 
-                /// FOSSILS
-                output.accept(EDJurassicItems.JurassicAnimalFossil);
-                output.accept(EDJurassicItems.AnimalFossilFragments);
-
+                /// FOSSILS ///
                 output.accept(EDJurassicBlocks.BrachiosaurusFossilOre);
                 output.accept(EDJurassicItems.BrachiosaurusFossil);
                 output.accept(EDJurassicItems.BrachiosaurusFragments);
 
-                /// scarabs
-                output.accept(EDJurassicItems.BigScarab);
-
-                /// DINOSAURS
-                output.accept(EDJurassicBlocks.BrachiosaurusEgg);
-                output.accept(EDJurassicItems.HatchedBrachiosaurus);
+                /// BONES ///
                 output.accept(EDJurassicItems.BrachiosaurusLimb);
                 output.accept(EDJurassicItems.BrachiosaurusRibcage);
                 output.accept(EDJurassicItems.BrachiosaurusSkull);
+
+                /// scarabs ///
+                output.accept(EDJurassicItems.BigScarab);
+
+                /// DINOSAURS ///
+                output.accept(EDJurassicBlocks.BrachiosaurusEgg);
+                output.accept(EDJurassicItems.HatchedBrachiosaurus);
             })
             .build();
 

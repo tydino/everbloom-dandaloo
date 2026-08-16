@@ -19,9 +19,11 @@ public class EDAncientBlocks {
             properties -> new Block(properties.strength(6f).requiresCorrectToolForDrops()));
 
     public static final Block FossilOre = EDBlockRegistry.registerBlock("fossilore",
-            properties -> new Block(properties.strength(6f).requiresCorrectToolForDrops()));
+            properties -> new Block(properties.strength(6f).requiresCorrectToolForDrops()),
+            Component.translatable("tooltip.everbloomdandaloo.depricated"));
     public static final Block DeepslateFossilOre = EDBlockRegistry.registerBlock("deepslate_fossilore",
-            properties -> new Block(properties.strength(10f).requiresCorrectToolForDrops()));
+            properties -> new Block(properties.strength(10f).requiresCorrectToolForDrops()),
+            Component.translatable("tooltip.everbloomdandaloo.depricated"));
 
     // doesn't actually use power Machines//
     public static final Block FossilRecombiner = EDBlockRegistry.registerBlock("fossil_recombiner",

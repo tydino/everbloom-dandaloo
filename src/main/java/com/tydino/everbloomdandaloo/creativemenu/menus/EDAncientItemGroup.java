@@ -23,18 +23,6 @@ public class EDAncientItemGroup {
             .title(Component.translatable("creativeTab.ancient"))
             .displayItems((params, output) -> {
                 output.accept(EDAncientItems.GrowthSerum);
-                //fossils
-                output.accept(EDAncientBlocks.FossilOre);
-                output.accept(EDAncientBlocks.DeepslateFossilOre);
-                output.accept(EDPaleozoicItems.PermianAnimalFossil);
-                output.accept(EDTriassicItems.TriassicAnimalFossil);
-                output.accept(EDJurassicItems.JurassicAnimalFossil);
-                output.accept(EDCretaceousItems.CretaceousAnimalFossil);
-                //fossil fragments
-                output.accept(EDPaleozoicItems.AnimalFossilFragments);
-                output.accept(EDTriassicItems.AnimalFossilFragments);
-                output.accept(EDJurassicItems.AnimalFossilFragments);
-                output.accept(EDCretaceousItems.AnimalFossilFragments);
                 //amber
                 output.accept(EDAncientBlocks.AmberOre);
                 output.accept(EDAncientBlocks.DeepslateAmberOre);
@@ -46,9 +34,17 @@ public class EDAncientItemGroup {
                 //scarabs
                 output.accept(EDJurassicItems.BigScarab);
                 output.accept(EDAncientItems.BreedingScarab);
-                /// DINOSAURS
-                output.accept(EDJurassicBlocks.BrachiosaurusEgg);
+
+                /// DINOSAURS ///
+                output.accept(EDJurassicBlocks.BrachiosaurusEgg);                               //BRACHIOSUARUS//
                 output.accept(EDJurassicItems.HatchedBrachiosaurus);
+                output.accept(EDJurassicBlocks.BrachiosaurusFossilOre);
+                output.accept(EDJurassicItems.BrachiosaurusFossil);
+                output.accept(EDJurassicItems.BrachiosaurusFragments);
+                output.accept(EDJurassicItems.BrachiosaurusLimb);
+                output.accept(EDJurassicItems.BrachiosaurusRibcage);
+                output.accept(EDJurassicItems.BrachiosaurusSkull);
+
 
                 //powered objects
                 output.accept(EDAncientBlocks.FossilRecombiner);

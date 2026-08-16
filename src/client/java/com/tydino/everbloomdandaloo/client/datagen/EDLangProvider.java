@@ -22,6 +22,8 @@ public class EDLangProvider extends FabricLanguageProvider {
 
     @Override
     public void generateTranslations(HolderLookup.Provider provider, TranslationBuilder translationBuilder) {
+        translationBuilder.add("tooltip.everbloomdandaloo.depricated", "This has been depricated as a feature. This and its accompanying items are not used.");
+
         EverbloomDandaloo.LOGGER.info("Making The Names for Everbloom Dandaloo");
         translationBuilder.add("creativeTab.ancient", "Ancient :: Everbloom Dandaloo");                                 /// ANCIENTS ///
 
