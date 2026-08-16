@@ -26,6 +26,10 @@ public class EDJurassicItemGroup {
                 output.accept(EDJurassicItems.JurassicAnimalFossil);
                 output.accept(EDJurassicItems.AnimalFossilFragments);
 
+                output.accept(EDJurassicBlocks.BrachiosaurusFossilOre);
+                output.accept(EDJurassicItems.BrachiosaurusFossil);
+                output.accept(EDJurassicItems.BrachiosaurusFragments);
+
                 /// scarabs
                 output.accept(EDJurassicItems.BigScarab);
 

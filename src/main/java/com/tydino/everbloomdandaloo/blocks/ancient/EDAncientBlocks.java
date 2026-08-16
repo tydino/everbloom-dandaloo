@@ -10,6 +10,9 @@ public class EDAncientBlocks {
 
     public static final float DinosaurEggBreakTime = 60000f;//is over 16 hours, most eggs should have hatched by the time the break time is barely started
 
+    public static final float OreBreakTime = 6f;
+
+    /// AMBER AND FOSSIL ORES HERE ARE JUST GENERICS ///
     public static final Block AmberOre = EDBlockRegistry.registerBlock("amberore",
             properties -> new Block(properties.strength(4f).requiresCorrectToolForDrops()));
     public static final Block DeepslateAmberOre = EDBlockRegistry.registerBlock("deepslate_amberore",

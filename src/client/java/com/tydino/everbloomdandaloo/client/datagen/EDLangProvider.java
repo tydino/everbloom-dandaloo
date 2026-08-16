@@ -47,11 +47,14 @@ public class EDLangProvider extends FabricLanguageProvider {
 
         translationBuilder.add("creativeTab.jurassic", "Jurassic :: Everbloom Dandaloo"); /// JURASSIC ///
         translationBuilder.add(EDJurassicItems.JurassicAnimalFossil, "Jurassic Animal Fossil");
+        translationBuilder.add(EDJurassicItems.BrachiosaurusFossil, "Brachiosaurus Fossil");
         translationBuilder.add(EDJurassicItems.AnimalFossilFragments, "Jurassic Animal Fossil Fragments");
+        translationBuilder.add(EDJurassicItems.BrachiosaurusFragments, "Brachiosaurus Fossil Fragments");
 
         translationBuilder.add(JurassicEntityTypes.Brachiosaurus, "Brachiosaurus");
         translationBuilder.add(EDJurassicBlocks.BrachiosaurusEgg, "Brachiosaurus Egg");
         translationBuilder.add(EDJurassicItems.HatchedBrachiosaurus, "Hatched Brachiosaurus");
+        translationBuilder.add(EDJurassicBlocks.BrachiosaurusFossilOre, "Brachiosaurus Fossil Ore");
         translationBuilder.add(EDJurassicItems.BrachiosaurusLimb, "Brachiosaurus Limb");
         translationBuilder.add(EDJurassicItems.BrachiosaurusRibcage, "Brachiosaurus Ribcage");
         translationBuilder.add(EDJurassicItems.BrachiosaurusSkull, "Brachiosaurus Skull");

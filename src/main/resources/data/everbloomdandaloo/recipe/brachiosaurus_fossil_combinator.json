@@ -1,0 +1,7 @@
+{
+  "type": "everbloomdandaloo:fossil_combinator",
+  "baseItem": "everbloomdandaloo:brachiosaurus_fragments",
+  "result": {
+    "id": "everbloomdandaloo:brachiosaurus_fossil"
+  }
+}

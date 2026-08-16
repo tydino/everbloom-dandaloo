@@ -1,6 +1,7 @@
 {
   "block.everbloomdandaloo.amberore": "Amber Ore",
   "block.everbloomdandaloo.brachiosaurus_egg": "Brachiosaurus Egg",
+  "block.everbloomdandaloo.brachiosaurus_fossilore": "Brachiosaurus Fossil Ore",
   "block.everbloomdandaloo.deepslate_amberore": "Deepslate Amber Ore",
   "block.everbloomdandaloo.deepslate_fossilore": "Deepslate Fossil Ore",
   "block.everbloomdandaloo.fossil_adapter": "Fossil Adapter",
@@ -23,6 +24,8 @@
   "item.everbloomdandaloo.amber_plant": "Amber with a Broken Plant",
   "item.everbloomdandaloo.amber_wing": "Amber with a Wing",
   "item.everbloomdandaloo.au_revoir_tail": "Au Revoir tail",
+  "item.everbloomdandaloo.brachiosaurus_fossil": "Brachiosaurus Fossil",
+  "item.everbloomdandaloo.brachiosaurus_fragments": "Brachiosaurus Fossil Fragments",
   "item.everbloomdandaloo.cretaceous_animal_fossil": "Cretaceous Animal Fossil",
   "item.everbloomdandaloo.cretaceous_animal_fossilfragments": "Cretaceous Animal Fossil Fragments",
   "item.everbloomdandaloo.dagger_stabber_meat": "Dagger Stabber Meat",

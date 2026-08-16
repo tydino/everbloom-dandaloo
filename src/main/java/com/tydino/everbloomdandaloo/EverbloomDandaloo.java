@@ -8,27 +8,25 @@ import com.tydino.everbloomdandaloo.items.EDItemRegistry;
 import com.tydino.everbloomdandaloo.items.ancient.*;
 import com.tydino.everbloomdandaloo.recipes.EDRecipes;
 import com.tydino.everbloomdandaloo.menus.EDMenuTypes;
+import com.tydino.everbloomdandaloo.worldgen.ore.EDAncientOres;
 import net.fabricmc.api.ModInitializer;
 
 import net.fabricmc.fabric.api.creativetab.v1.CreativeModeTabEvents;
-import net.minecraft.world.entity.EntityDimensions;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.Items;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.ArrayList;
-import java.util.List;
 
-/// TODO:
-/// Add the ability for dinosaurs to eat and drink
-/// Rework the current fossils a bit to match a definitive system.
-/// Implement the menu to the Fossil Adapter
-/// Make the fossil Adapter functionality
-/// Fix textures of the custom blocks
-/// Make the egg only hatchable around specific dinosaurs/mobs, or can be put into an incubator.
-/// Make and implement the missing textures and ways to get the untextured items
-/// Reimplement the old mobs
+// TODO:
+// Add the ability for dinosaurs to eat and drink
+// Rework the current fossils a bit to match a definitive system.
+// Implement the menu to the Fossil Adapter
+// Make the fossil Adapter functionality
+// Make the egg only hatchable around specific dinosaurs/mobs, or can be put into an incubator.
+// Make and implement the missing textures and ways to get the untextured items
+// Reimplement the old mobs
+//make the brachiosaurus deepslate fossil ore
 
 /// REMINDERS
 /// Make the systems definitive over RNG.
@@ -62,7 +60,10 @@ public class EverbloomDandaloo implements ModInitializer {
 		LOGGER.info("Registering Item Groups (for creative)");
 		EDItemGroups.onInitialize();
 
-		LOGGER.info("Adding the Items into Vanilla Creative Tabs");
+		LOGGER.info("Registering WorldGen Adjustments");
+		EDAncientOres.onInitialize();
+
+		/*LOGGER.info("Adding the Items into Vanilla Creative Tabs");
 		// fossils //																													/// ANCIENT ///
 		CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.INGREDIENTS).register(content ->
 				content.insertAfter(Items.BONE_MEAL, EDPaleozoicItems.PermianAnimalFossil));
@@ -93,7 +94,7 @@ public class EverbloomDandaloo implements ModInitializer {
 		CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.INGREDIENTS).register(content ->
 				content.insertAfter(EDAncientItems.AmberMediumBug, EDAncientItems.AmberPlant));
 		CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.INGREDIENTS).register(content ->
-				content.insertAfter(EDAncientItems.AmberPlant, EDAncientItems.AmberWing));
+				content.insertAfter(EDAncientItems.AmberPlant, EDAncientItems.AmberWing));*/
 
 	}
 }
