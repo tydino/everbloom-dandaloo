@@ -19,7 +19,7 @@ public class EDAncientItemGroup {
             BuiltInRegistries.CREATIVE_MODE_TAB.key(), Identifier.fromNamespaceAndPath(EverbloomDandaloo.MOD_ID, "ancient")
     );
     public static final CreativeModeTab CreativeTab = FabricCreativeModeTab.builder()
-            .icon(() -> new ItemStack(EDPaleozoicItems.PermianAnimalFossil))
+            .icon(() -> new ItemStack(EDJurassicItems.BrachiosaurusFossil))
             .title(Component.translatable("creativeTab.ancient"))
             .displayItems((params, output) -> {
                 output.accept(EDAncientItems.GrowthSerum);

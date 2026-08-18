@@ -35,20 +35,6 @@ public class EDAetherItemGroup {
                 output.accept(EDAetherItemRegistry.AuRevoirTail);
 
                 output.accept(EDCookingItemRegistry.Tomato);
-
-                output.accept(EDAncientBlocks.FossilOre);
-                output.accept(EDAncientBlocks.DeepslateFossilOre);
-
-                //fossils
-                output.accept(EDPaleozoicItems.PermianAnimalFossil);
-                output.accept(EDTriassicItems.TriassicAnimalFossil);
-                output.accept(EDJurassicItems.JurassicAnimalFossil);
-                output.accept(EDCretaceousItems.CretaceousAnimalFossil);
-                //fossil fragments
-                output.accept(EDPaleozoicItems.AnimalFossilFragments);
-                output.accept(EDTriassicItems.AnimalFossilFragments);
-                output.accept(EDJurassicItems.AnimalFossilFragments);
-                output.accept(EDCretaceousItems.AnimalFossilFragments);
             })
             .build();
 

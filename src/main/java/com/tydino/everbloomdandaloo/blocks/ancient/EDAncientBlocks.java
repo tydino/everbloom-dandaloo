@@ -18,13 +18,6 @@ public class EDAncientBlocks {
     public static final Block DeepslateAmberOre = EDBlockRegistry.registerBlock("deepslate_amberore",
             properties -> new Block(properties.strength(6f).requiresCorrectToolForDrops()));
 
-    public static final Block FossilOre = EDBlockRegistry.registerBlock("fossilore",
-            properties -> new Block(properties.strength(6f).requiresCorrectToolForDrops()),
-            Component.translatable("tooltip.everbloomdandaloo.depricated"));
-    public static final Block DeepslateFossilOre = EDBlockRegistry.registerBlock("deepslate_fossilore",
-            properties -> new Block(properties.strength(10f).requiresCorrectToolForDrops()),
-            Component.translatable("tooltip.everbloomdandaloo.depricated"));
-
     // doesn't actually use power Machines//
     public static final Block FossilRecombiner = EDBlockRegistry.registerBlock("fossil_recombiner",
             properties -> new FossilRecombinerBlock(properties.strength(2f).noOcclusion()),

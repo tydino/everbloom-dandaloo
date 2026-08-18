@@ -27,9 +27,6 @@ public class EDLangProvider extends FabricLanguageProvider {
         EverbloomDandaloo.LOGGER.info("Making The Names for Everbloom Dandaloo");
         translationBuilder.add("creativeTab.ancient", "Ancient :: Everbloom Dandaloo");                                 /// ANCIENTS ///
 
-        translationBuilder.add(EDAncientBlocks.FossilOre, "Fossil Ore");
-        translationBuilder.add(EDAncientBlocks.DeepslateFossilOre, "Deepslate Fossil Ore");
-
         translationBuilder.add(EDAncientBlocks.AmberOre, "Amber Ore");
         translationBuilder.add(EDAncientBlocks.DeepslateAmberOre, "Deepslate Amber Ore");
 
@@ -39,8 +36,6 @@ public class EDLangProvider extends FabricLanguageProvider {
         translationBuilder.add(EDAncientItems.AmberWing, "Amber with a Wing");
 
         translationBuilder.add("creativeTab.paleozoic", "Paleozoic :: Everbloom Dandaloo"); /// PALEOZOIC ///
-        translationBuilder.add(EDPaleozoicItems.PermianAnimalFossil, "Permian Animal Fossil");
-        translationBuilder.add(EDPaleozoicItems.AnimalFossilFragments, "Permian Animal Fossil Fragments");
         translationBuilder.add(EDPaleozoicItems.BigBugAmber, "Amber with a Rather large Bug");
 
         translationBuilder.add("creativeTab.triassic", "Triassic :: Everbloom Dandaloo"); /// TRIASSIC ///
@@ -48,9 +43,7 @@ public class EDLangProvider extends FabricLanguageProvider {
         translationBuilder.add(EDTriassicItems.AnimalFossilFragments, "Triassic Animal Fossil Fragments");
 
         translationBuilder.add("creativeTab.jurassic", "Jurassic :: Everbloom Dandaloo"); /// JURASSIC ///
-        translationBuilder.add(EDJurassicItems.JurassicAnimalFossil, "Jurassic Animal Fossil");
         translationBuilder.add(EDJurassicItems.BrachiosaurusFossil, "Brachiosaurus Fossil");
-        translationBuilder.add(EDJurassicItems.AnimalFossilFragments, "Jurassic Animal Fossil Fragments");
         translationBuilder.add(EDJurassicItems.BrachiosaurusFragments, "Brachiosaurus Fossil Fragments");
 
         translationBuilder.add(JurassicEntityTypes.Brachiosaurus, "Brachiosaurus");

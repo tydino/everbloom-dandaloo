@@ -7,13 +7,10 @@ import net.minecraft.world.item.SpawnEggItem;
 
 public class EDJurassicItems {
     //fossils
-    public static Item JurassicAnimalFossil = EDItemRegistry.register("jurassic_animal_fossil", Item::new, new Item.Properties());
 
     public static Item BrachiosaurusFossil = EDItemRegistry.register("brachiosaurus_fossil", Item::new, new Item.Properties());
 
     //fragments
-
-    public static Item AnimalFossilFragments = EDItemRegistry.register("jurassic_animal_fossilfragments", Item::new, new Item.Properties());
 
     public static Item BrachiosaurusFragments = EDItemRegistry.register("brachiosaurus_fragments", Item::new, new Item.Properties());
 

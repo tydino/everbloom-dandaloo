@@ -17,7 +17,7 @@ public class EDPaleozoicItemGroup {
             BuiltInRegistries.CREATIVE_MODE_TAB.key(), Identifier.fromNamespaceAndPath(EverbloomDandaloo.MOD_ID, "paleozoic")
     );
     public static final CreativeModeTab CreativeTab = FabricCreativeModeTab.builder()
-            .icon(() -> new ItemStack(EDPaleozoicItems.PermianAnimalFossil))
+            .icon(() -> new ItemStack(EDPaleozoicItems.BigBugAmber))
             .title(Component.translatable("creativeTab.paleozoic"))
             .displayItems((params, output) -> {
                 output.accept(EDPaleozoicItems.BigBugAmber);

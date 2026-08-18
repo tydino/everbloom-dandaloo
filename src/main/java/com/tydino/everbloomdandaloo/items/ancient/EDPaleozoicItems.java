@@ -5,8 +5,6 @@ import net.minecraft.world.item.Item;
 
 public class EDPaleozoicItems {
     //fossils
-    public static Item PermianAnimalFossil = EDItemRegistry.register("permian_animal_fossil", Item::new, new Item.Properties());
-    public static Item AnimalFossilFragments = EDItemRegistry.register("permian_animal_fossilfragments", Item::new, new Item.Properties());
 
     //amber
     public static Item BigBugAmber = EDItemRegistry.register("amber_largebug", Item::new, new Item.Properties());

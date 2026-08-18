@@ -22,8 +22,6 @@ public class EDModelProvider extends FabricModelProvider {
         blockModelGenerators.createTrivialCube(EDAncientBlocks.AmberOre);
         blockModelGenerators.createTrivialCube(EDAncientBlocks.DeepslateAmberOre);
 
-        blockModelGenerators.createTrivialCube(EDAncientBlocks.DeepslateFossilOre);
-
         blockModelGenerators.createNonTemplateHorizontalBlock(EDAncientBlocks.FossilRecombiner);
         blockModelGenerators.createNonTemplateHorizontalBlock(EDAncientBlocks.FossilAdapter);
 
@@ -42,17 +40,5 @@ public class EDModelProvider extends FabricModelProvider {
         itemModelGenerators.generateFlatItem(EDAncientItems.AmberMediumBug, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(EDAncientItems.AmberPlant, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(EDAncientItems.AmberWing, ModelTemplates.FLAT_ITEM);
-
-        /// permian ///
-        itemModelGenerators.generateFlatItem(EDPaleozoicItems.PermianAnimalFossil, ModelTemplates.FLAT_ITEM);
-
-        /// triassic ///
-        itemModelGenerators.generateFlatItem(EDTriassicItems.TriassicAnimalFossil, ModelTemplates.FLAT_ITEM);
-
-        /// jurassic ///
-        itemModelGenerators.generateFlatItem(EDJurassicItems.JurassicAnimalFossil, ModelTemplates.FLAT_ITEM);
-
-        /// cretaceous ///
-        itemModelGenerators.generateFlatItem(EDCretaceousItems.CretaceousAnimalFossil, ModelTemplates.FLAT_ITEM);
     }
 }

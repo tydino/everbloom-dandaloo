@@ -18,7 +18,7 @@ public class EDJurassicItemGroup {
             BuiltInRegistries.CREATIVE_MODE_TAB.key(), Identifier.fromNamespaceAndPath(EverbloomDandaloo.MOD_ID, "jurassic")
     );
     public static final CreativeModeTab CreativeTab = FabricCreativeModeTab.builder()
-            .icon(() -> new ItemStack(EDJurassicItems.JurassicAnimalFossil))
+            .icon(() -> new ItemStack(EDJurassicItems.BrachiosaurusSkull))
             .title(Component.translatable("creativeTab.jurassic"))
             .displayItems((params, output) -> {
 

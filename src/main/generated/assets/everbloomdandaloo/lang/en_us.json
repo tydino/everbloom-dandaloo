@@ -1,13 +1,10 @@
 {
-  "tooltip.everbloomdandaloo.depricated": "This has been depricated as a feature. This and its accompanying items are not used.",
   "block.everbloomdandaloo.amberore": "Amber Ore",
   "block.everbloomdandaloo.brachiosaurus_egg": "Brachiosaurus Egg",
   "block.everbloomdandaloo.brachiosaurus_fossilore": "Brachiosaurus Fossil Ore",
   "block.everbloomdandaloo.deepslate_amberore": "Deepslate Amber Ore",
-  "block.everbloomdandaloo.deepslate_fossilore": "Deepslate Fossil Ore",
   "block.everbloomdandaloo.fossil_adapter": "Fossil Adapter",
   "block.everbloomdandaloo.fossil_recombiner": "Fossil Recombiner",
-  "block.everbloomdandaloo.fossilore": "Fossil Ore",
   "block.everbloomdandaloo.tomato_bush": "Tomato Bush",
   "creativeTab.aether": "Depricated Things :: Everbloom Dandaloo",
   "creativeTab.ancient": "Ancient :: Everbloom Dandaloo",
@@ -32,11 +29,7 @@
   "item.everbloomdandaloo.dagger_stabber_meat": "Dagger Stabber Meat",
   "item.everbloomdandaloo.daggerstabber_dagger": "Dagger Stabber Dagger",
   "item.everbloomdandaloo.hatched_brachiosaurus": "Hatched Brachiosaurus",
-  "item.everbloomdandaloo.jurassic_animal_fossil": "Jurassic Animal Fossil",
-  "item.everbloomdandaloo.jurassic_animal_fossilfragments": "Jurassic Animal Fossil Fragments",
   "item.everbloomdandaloo.limb_brachiosaurus": "Brachiosaurus Limb",
-  "item.everbloomdandaloo.permian_animal_fossil": "Permian Animal Fossil",
-  "item.everbloomdandaloo.permian_animal_fossilfragments": "Permian Animal Fossil Fragments",
   "item.everbloomdandaloo.ribcage_brachiosaurus": "Brachiosaurus Ribcage",
   "item.everbloomdandaloo.skull_brachiosaurus": "Brachiosaurus Skull",
   "item.everbloomdandaloo.spawn_aurevoir": "Spawn Au Revoir",
@@ -44,6 +37,7 @@
   "item.everbloomdandaloo.tomato": "Tomato",
   "item.everbloomdandaloo.triassic_animal_fossil": "Triassic Animal Fossil",
   "item.everbloomdandaloo.triassic_animal_fossilfragments": "Triassic Animal Fossil Fragments",
+  "tooltip.everbloomdandaloo.depricated": "This has been depricated as a feature. This and its accompanying items are not used.",
   "tooltip.everbloomdandaloo.fossil_adapter": "With a full fossil, and a bone, you can reform the bone to a fossil.",
   "tooltip.everbloomdandaloo.fossil_recombiner": "You use this when you have fossil fragments to reform a fossil."
 }

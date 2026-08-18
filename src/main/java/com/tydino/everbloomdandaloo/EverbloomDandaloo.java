@@ -19,6 +19,7 @@ import org.slf4j.LoggerFactory;
 
 
 // TODO:
+//Finish removing depricated fossil items (cretaceous and triassic still have their fossil and fragment items)
 // Add the ability for dinosaurs to eat and drink
 // Rework the current fossils a bit to match a definitive system.
 // Implement the menu to the Fossil Adapter

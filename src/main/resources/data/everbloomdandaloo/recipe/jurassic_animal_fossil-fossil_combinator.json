@@ -1,7 +1,0 @@
-{
-  "type": "everbloomdandaloo:fossil_combinator",
-  "baseItem": "everbloomdandaloo:jurassic_animal_fossilfragments",
-  "result": {
-    "id": "everbloomdandaloo:jurassic_animal_fossil"
-  }
-}

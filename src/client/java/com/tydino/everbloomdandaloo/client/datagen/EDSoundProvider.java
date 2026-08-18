@@ -1,6 +1,6 @@
 package com.tydino.everbloomdandaloo.client.datagen;
 
-public class EDSoundProbider {
+public class EDSoundProvider {
 
     //not implemented yet.
 }
