@@ -28,6 +28,10 @@ public class EDAncientBlocks {
             properties -> new FossilAdapterBlock(properties.strength(8f)),
             Component.translatable("tooltip.everbloomdandaloo.fossil_adapter"));
 
+    //MISC blocks
+    public static final Block Feeder = EDBlockRegistry.registerBlock("feeder",
+            properties -> new FeederBlock(properties.strength(4f)));
+
     public static void onInitialize(){
         EDPaleozoicBlocks.onInitialize();
         EDTriassicBlocks.onInitialize();

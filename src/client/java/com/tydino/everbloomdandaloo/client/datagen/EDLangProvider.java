@@ -9,6 +9,7 @@ import com.tydino.everbloomdandaloo.entities.ancient.jurassic.JurassicEntityType
 import com.tydino.everbloomdandaloo.items.aether.EDAetherItemRegistry;
 import com.tydino.everbloomdandaloo.items.ancient.*;
 import com.tydino.everbloomdandaloo.items.cooking.EDCookingItemRegistry;
+import com.tydino.everbloomdandaloo.stats.ancient.EDAncientStats;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.minecraft.core.HolderLookup;
@@ -26,6 +27,10 @@ public class EDLangProvider extends FabricLanguageProvider {
 
         EverbloomDandaloo.LOGGER.info("Making The Names for Everbloom Dandaloo");
         translationBuilder.add("creativeTab.ancient", "Ancient :: Everbloom Dandaloo");                                 /// ANCIENTS ///
+
+        translationBuilder.add("container.feeder", "Feeder");
+        translationBuilder.add(EDAncientStats.InteractionsWithFeeder, "Interactions With Feeder");
+        translationBuilder.add(EDAncientBlocks.Feeder, "Feeder");
 
         translationBuilder.add(EDAncientBlocks.AmberOre, "Amber Ore");
         translationBuilder.add(EDAncientBlocks.DeepslateAmberOre, "Deepslate Amber Ore");
@@ -61,6 +66,7 @@ public class EDLangProvider extends FabricLanguageProvider {
         translationBuilder.add("creativeTab.edcrafting", "Crafting :: Everbloom Dandaloo");                             /// CRAFTING ///
 
         translationBuilder.add(EDAncientBlocks.FossilRecombiner, "Fossil Recombiner");
+        translationBuilder.add(EDAncientStats.InteractionsWithFossilRecombiner, "Interactions With Fossil Recombiner");
         translationBuilder.add("tooltip.everbloomdandaloo.fossil_recombiner", "You use this when you have fossil fragments to reform a fossil.");
 
         translationBuilder.add(EDAncientBlocks.FossilAdapter, "Fossil Adapter");

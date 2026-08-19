@@ -22,6 +22,7 @@ public class EDAncientItemGroup {
             .icon(() -> new ItemStack(EDJurassicItems.BrachiosaurusFossil))
             .title(Component.translatable("creativeTab.ancient"))
             .displayItems((params, output) -> {
+                output.accept(EDAncientBlocks.Feeder);
                 output.accept(EDAncientItems.GrowthSerum);
                 //amber
                 output.accept(EDAncientBlocks.AmberOre);

@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "particle": "everbloomdandaloo:block/feeder/feeder_side",
+    "down": "everbloomdandaloo:block/feeder/feeder_bottom",
+    "up": "everbloomdandaloo:block/feeder/feeder_top",
+    "side": "everbloomdandaloo:block/feeder/feeder_side"
+  }
+}

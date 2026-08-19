@@ -1,19 +1,18 @@
 package com.tydino.everbloomdandaloo;
 
+import com.tydino.everbloomdandaloo.blockentities.EDBlockEntities;
 import com.tydino.everbloomdandaloo.blocks.EDBlockRegistry;
 import com.tydino.everbloomdandaloo.creativemenu.EDItemGroups;
 import com.tydino.everbloomdandaloo.entities.EDEntitySpawn;
 import com.tydino.everbloomdandaloo.entities.EDEntityTypes;
 import com.tydino.everbloomdandaloo.items.EDItemRegistry;
-import com.tydino.everbloomdandaloo.items.ancient.*;
 import com.tydino.everbloomdandaloo.recipes.EDRecipes;
 import com.tydino.everbloomdandaloo.menus.EDMenuTypes;
+import com.tydino.everbloomdandaloo.stats.EDStats;
 import com.tydino.everbloomdandaloo.worldgen.ore.EDAncientOres;
 import net.fabricmc.api.ModInitializer;
 
-import net.fabricmc.fabric.api.creativetab.v1.CreativeModeTabEvents;
-import net.minecraft.world.item.CreativeModeTabs;
-import net.minecraft.world.item.Items;
+import net.fabricmc.loader.impl.util.log.Log;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -46,6 +45,8 @@ public class EverbloomDandaloo implements ModInitializer {
 		EDItemRegistry.onInitialize();
 		LOGGER.info("Registering Block");
 		EDBlockRegistry.onInitialize();
+		LOGGER.info("Registering Block Entities");
+		EDBlockEntities.OnInitialize();
 		LOGGER.info("Registering Recipes");
 		EDRecipes.onInitialize();
 		LOGGER.info("Registeirng Menus");
@@ -63,6 +64,9 @@ public class EverbloomDandaloo implements ModInitializer {
 
 		LOGGER.info("Registering WorldGen Adjustments");
 		EDAncientOres.onInitialize();
+
+		LOGGER.info("Registering Stats");
+		EDStats.OnInitialize();
 
 		/*LOGGER.info("Adding the Items into Vanilla Creative Tabs");
 		// fossils //																													/// ANCIENT ///
