@@ -13,6 +13,8 @@ public class EDMenuTypes {
 
     public static final MenuType<FossilRecombinatorMenu> FossilRecombinator = register("fossil_recombinator", FossilRecombinatorMenu::new);
 
+    public static MenuType<FeederMenu> Feeder = register("feeder", FeederMenu::new);
+
     public static <T extends AbstractContainerMenu> MenuType<T> register(String name, MenuType.MenuSupplier<T> constructor) {
         return Registry.register(BuiltInRegistries.MENU, Identifier.fromNamespaceAndPath(EverbloomDandaloo.MOD_ID, name), new MenuType<>(constructor, FeatureFlagSet.of()));
     }

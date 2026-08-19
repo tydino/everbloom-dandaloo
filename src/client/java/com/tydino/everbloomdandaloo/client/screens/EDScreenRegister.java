@@ -7,5 +7,6 @@ public class EDScreenRegister {
 
     public static void onInitialize() {
         MenuScreens.register(EDMenuTypes.FossilRecombinator, FossilRecombinatorScreen::new);
+        MenuScreens.register(EDMenuTypes.Feeder, FeederScreen::new);
     }
 }

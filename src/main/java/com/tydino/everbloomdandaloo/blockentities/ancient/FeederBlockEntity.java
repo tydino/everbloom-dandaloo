@@ -1,5 +1,6 @@
 package com.tydino.everbloomdandaloo.blockentities.ancient;
 
+import com.tydino.everbloomdandaloo.menus.FeederMenu;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
@@ -45,7 +46,7 @@ public class FeederBlockEntity extends BaseContainerBlockEntity {
 
     @Override
     protected AbstractContainerMenu createMenu(int containerId, Inventory inventory) {
-        return null;
+        return new FeederMenu(containerId, inventory);
     }
 
     @Override

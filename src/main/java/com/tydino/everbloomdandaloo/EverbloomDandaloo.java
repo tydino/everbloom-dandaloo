@@ -18,8 +18,9 @@ import org.slf4j.LoggerFactory;
 
 
 // TODO:
+//Fix the items dissapearing issue with the feeder's menu so no items are lost
 //Finish removing depricated fossil items (cretaceous and triassic still have their fossil and fragment items)
-// Add the ability for dinosaurs to eat and drink
+// Add the ability for dinosaurs to eat and drink (feeder should hold items using a hopper putting them in, see line 21 for major issue)
 // Rework the current fossils a bit to match a definitive system.
 // Implement the menu to the Fossil Adapter
 // Make the fossil Adapter functionality
