@@ -2,6 +2,7 @@ package com.tydino.everbloomdandaloo.blocks.ancient.energy;
 
 import com.mojang.serialization.MapCodec;
 import com.tydino.everbloomdandaloo.menus.fossil_recombinator.FossilRecombinatorMenu;
+import com.tydino.everbloomdandaloo.stats.ancient.EDAncientStats;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.MenuProvider;
@@ -38,6 +39,7 @@ public class FossilRecombinerBlock extends HorizontalDirectionalBlock {
     protected InteractionResult useWithoutItem(BlockState blockState, Level level, BlockPos blockPos, Player player, BlockHitResult blockHitResult) {
         if (!level.isClientSide()) {
             player.openMenu(blockState.getMenuProvider(level, blockPos));
+            player.awardStat(EDAncientStats.InteractionsWithFossilRecombiner);
         }
 
         return InteractionResult.SUCCESS;

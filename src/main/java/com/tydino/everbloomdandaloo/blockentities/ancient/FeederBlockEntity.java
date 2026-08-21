@@ -1,6 +1,7 @@
 package com.tydino.everbloomdandaloo.blockentities.ancient;
 
 import com.tydino.everbloomdandaloo.menus.FeederMenu;
+import net.fabricmc.fabric.api.menu.v1.ExtendedMenuProvider;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
@@ -9,6 +10,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.ContainerHelper;
 import net.minecraft.world.Containers;
 import net.minecraft.world.entity.player.Inventory;
@@ -20,7 +22,7 @@ import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
 import org.jspecify.annotations.Nullable;
 
-public class FeederBlockEntity extends BaseContainerBlockEntity {
+public class FeederBlockEntity extends BaseContainerBlockEntity implements ExtendedMenuProvider<BlockPos> {
     public NonNullList<ItemStack> inventory;
     private static final Component DefaultName = Component.translatable("container.feeder");
 
@@ -46,7 +48,7 @@ public class FeederBlockEntity extends BaseContainerBlockEntity {
 
     @Override
     protected AbstractContainerMenu createMenu(int containerId, Inventory inventory) {
-        return new FeederMenu(containerId, inventory);
+        return new FeederMenu(containerId, inventory, this);
     }
 
     @Override
@@ -78,5 +80,18 @@ public class FeederBlockEntity extends BaseContainerBlockEntity {
 
     public void drops() {
         Containers.dropContents(this.level, this.worldPosition, this.inventory);
+    }
+
+    @Override
+    public BlockPos getScreenOpeningData(ServerPlayer serverPlayer) {
+        return this.worldPosition;
+    }
+
+    @Override
+    public void setChanged() {
+        super.setChanged();
+        if(!level.isClientSide()) {
+            level.sendBlockUpdated(worldPosition, this.getBlockState(), this.getBlockState(), 3);
+        }
     }
 }

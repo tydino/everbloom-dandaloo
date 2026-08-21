@@ -29,7 +29,7 @@ public class EDLangProvider extends FabricLanguageProvider {
         translationBuilder.add("creativeTab.ancient", "Ancient :: Everbloom Dandaloo");                                 /// ANCIENTS ///
 
         translationBuilder.add("container.feeder", "Feeder");
-        translationBuilder.add(EDAncientStats.InteractionsWithFeeder, "Interactions With Feeder");
+        translationBuilder.add("stat.everbloomdandaloo.interactions_with_feeder", "Interactions With Feeder");
         translationBuilder.add(EDAncientBlocks.Feeder, "Feeder");
 
         translationBuilder.add(EDAncientBlocks.AmberOre, "Amber Ore");
