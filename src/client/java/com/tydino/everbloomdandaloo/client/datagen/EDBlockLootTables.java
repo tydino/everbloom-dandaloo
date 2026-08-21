@@ -18,9 +18,12 @@ public class EDBlockLootTables extends FabricBlockLootSubProvider {
     public void generate() {
         EverbloomDandaloo.LOGGER.info("Making Block Loot for Everbloom Dandaloo");
         /// ANCIENT ///
+        dropSelf(EDAncientBlocks.Feeder);
 
         //machines
         dropSelf(EDAncientBlocks.FossilRecombiner);
         dropSelf(EDAncientBlocks.FossilAdapter);
+        dropSelf(EDAncientBlocks.BoneAnalyzer);
+        dropSelf(EDAncientBlocks.DNAReformer);
     }
 }

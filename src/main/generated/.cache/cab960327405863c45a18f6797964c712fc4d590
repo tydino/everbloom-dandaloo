@@ -1,3 +1,6 @@
 // 26.2	-999999999-01-01T00:00:00	EverbloomDandaloo/Block Loot Tables
+1e5eb534e2d177c7b2de3be3ea0d5c5559dd4b66 data/everbloomdandaloo/loot_table/blocks/bone_analyzer.json
+177339014ac2b33d7140d698a4a2befcafb272a1 data/everbloomdandaloo/loot_table/blocks/dna_reformer.json
+8e320529d6303ece5d327e4cccabcc74d6009e97 data/everbloomdandaloo/loot_table/blocks/feeder.json
 4ed2de073e6206c8968eedba5726f1d358b4a779 data/everbloomdandaloo/loot_table/blocks/fossil_adapter.json
 d10e71e70c6892626c524e8ccea3db98aa4e3d25 data/everbloomdandaloo/loot_table/blocks/fossil_recombiner.json

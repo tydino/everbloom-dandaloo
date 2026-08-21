@@ -1,6 +1,8 @@
 package com.tydino.everbloomdandaloo.blocks.ancient;
 
 import com.tydino.everbloomdandaloo.blocks.EDBlockRegistry;
+import com.tydino.everbloomdandaloo.blocks.ancient.energy.BoneAnalyzerBlock;
+import com.tydino.everbloomdandaloo.blocks.ancient.energy.DNAReformerBlock;
 import com.tydino.everbloomdandaloo.blocks.ancient.energy.FossilAdapterBlock;
 import com.tydino.everbloomdandaloo.blocks.ancient.energy.FossilRecombinerBlock;
 import net.minecraft.network.chat.Component;
@@ -24,9 +26,17 @@ public class EDAncientBlocks {
             Component.translatable("tooltip.everbloomdandaloo.fossil_recombiner"));
 
     // uses power Machines//
-    public  static final Block FossilAdapter = EDBlockRegistry.registerBlock("fossil_adapter",
+    public static final Block FossilAdapter = EDBlockRegistry.registerBlock("fossil_adapter",
             properties -> new FossilAdapterBlock(properties.strength(8f)),
             Component.translatable("tooltip.everbloomdandaloo.fossil_adapter"));
+
+    public static final Block BoneAnalyzer = EDBlockRegistry.registerBlock("bone_analyzer",
+            properties -> new BoneAnalyzerBlock(properties.strength(10f)),
+            Component.translatable("tooltip.everbloomdandaloo.bone_analyzer"));
+
+    public static final Block DNAReformer = EDBlockRegistry.registerBlock("dna_reformer",
+            properties -> new DNAReformerBlock(properties.strength(5f)),
+            Component.translatable("tooltip.everbloomdandaloo.dna_reformer"));
 
     //MISC blocks
     public static final Block Feeder = EDBlockRegistry.registerBlock("feeder",

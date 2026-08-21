@@ -12,13 +12,12 @@ import com.tydino.everbloomdandaloo.stats.EDStats;
 import com.tydino.everbloomdandaloo.worldgen.ore.EDAncientOres;
 import net.fabricmc.api.ModInitializer;
 
-import net.fabricmc.loader.impl.util.log.Log;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 
 // TODO:
-//Fix the items dissapearing issue with the feeder's menu so no items are lost
+//finish the bone analyzer and dna reformer
 //Finish removing depricated fossil items (cretaceous and triassic still have their fossil and fragment items)
 // Add the ability for dinosaurs to eat and drink (feeder should hold items using a hopper putting them in, see line 21 for major issue)
 // Rework the current fossils a bit to match a definitive system.

@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "everbloomdandaloo:block/dna_reformer",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "everbloomdandaloo:block/dna_reformer"
+    },
+    "facing=south": {
+      "model": "everbloomdandaloo:block/dna_reformer",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "everbloomdandaloo:block/dna_reformer",
+      "y": 270
+    }
+  }
+}

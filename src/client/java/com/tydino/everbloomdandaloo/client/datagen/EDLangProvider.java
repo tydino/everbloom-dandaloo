@@ -29,7 +29,7 @@ public class EDLangProvider extends FabricLanguageProvider {
         translationBuilder.add("creativeTab.ancient", "Ancient :: Everbloom Dandaloo");                                 /// ANCIENTS ///
 
         translationBuilder.add("container.feeder", "Feeder");
-        translationBuilder.add("stat.everbloomdandaloo.interactions_with_feeder", "Interactions With Feeder");
+        translationBuilder.add("stat."+EDAncientStats.InteractionsWithFeeder, "Interactions With Feeder");
         translationBuilder.add(EDAncientBlocks.Feeder, "Feeder");
 
         translationBuilder.add(EDAncientBlocks.AmberOre, "Amber Ore");
@@ -66,11 +66,20 @@ public class EDLangProvider extends FabricLanguageProvider {
         translationBuilder.add("creativeTab.edcrafting", "Crafting :: Everbloom Dandaloo");                             /// CRAFTING ///
 
         translationBuilder.add(EDAncientBlocks.FossilRecombiner, "Fossil Recombiner");
-        translationBuilder.add(EDAncientStats.InteractionsWithFossilRecombiner, "Interactions With Fossil Recombiner");
+        translationBuilder.add("stat."+EDAncientStats.InteractionsWithFossilRecombiner, "Interactions With Fossil Recombiner");
         translationBuilder.add("tooltip.everbloomdandaloo.fossil_recombiner", "You use this when you have fossil fragments to reform a fossil.");
 
         translationBuilder.add(EDAncientBlocks.FossilAdapter, "Fossil Adapter");
+        translationBuilder.add("stat."+EDAncientStats.InteractionsWithFossilAdapter, "Interactions With Fossil Adapter");
         translationBuilder.add("tooltip.everbloomdandaloo.fossil_adapter", "With a full fossil, and a bone, you can reform the bone to a fossil.");
+
+        translationBuilder.add(EDAncientBlocks.BoneAnalyzer, "Bone Analyzer");
+        translationBuilder.add("stat."+EDAncientStats.InteractionsWithBoneAnalyzer, "Interactions With Bone Analyzer");
+        translationBuilder.add("tooltip.everbloomdandaloo.bone_analyzer", "You use this with either a complete skeleton or a refined bone to get a DNA vial.");
+
+        translationBuilder.add(EDAncientBlocks.DNAReformer, "DNA Reformer");
+        translationBuilder.add("stat."+EDAncientStats.InteractionsWithDNAReformer, "Interactions With DNA Reformer");
+        translationBuilder.add("tooltip.everbloomdandaloo.dna_reformer", "You use this with DNA vial(s) to form an embryo.");
 
 
         translationBuilder.add("creativeTab.aether", "Depricated Things :: Everbloom Dandaloo");                        /// DEPRICATED ///

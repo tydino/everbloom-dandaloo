@@ -22,6 +22,8 @@ public class EDCraftingBlocks {
                 //powered objects
                 output.accept(EDAncientBlocks.FossilRecombiner);
                 output.accept(EDAncientBlocks.FossilAdapter);
+                output.accept(EDAncientBlocks.BoneAnalyzer);
+                output.accept(EDAncientBlocks.DNAReformer);
             })
             .build();
 

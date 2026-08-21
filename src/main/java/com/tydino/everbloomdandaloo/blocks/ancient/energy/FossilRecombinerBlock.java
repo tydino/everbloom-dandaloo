@@ -36,6 +36,17 @@ public class FossilRecombinerBlock extends HorizontalDirectionalBlock {
     protected VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {return SHAPE;}
 
     @Override
+    public BlockState getStateForPlacement(final BlockPlaceContext context) {
+        return (BlockState)this.defaultBlockState().setValue(FACING, context.getHorizontalDirection().getOpposite());
+    }
+
+    @Override
+    protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
+        builder.add(new Property[]{FACING});
+    }
+
+    /// MENU
+    @Override
     protected InteractionResult useWithoutItem(BlockState blockState, Level level, BlockPos blockPos, Player player, BlockHitResult blockHitResult) {
         if (!level.isClientSide()) {
             player.openMenu(blockState.getMenuProvider(level, blockPos));
@@ -50,15 +61,5 @@ public class FossilRecombinerBlock extends HorizontalDirectionalBlock {
         return new SimpleMenuProvider(
                 (containerId, inventory, player) -> new FossilRecombinatorMenu(containerId, inventory, ContainerLevelAccess.create(level, pos)), this.getName()
         );
-    }
-
-    @Override
-    public BlockState getStateForPlacement(final BlockPlaceContext context) {
-        return (BlockState)this.defaultBlockState().setValue(FACING, context.getHorizontalDirection().getOpposite());
-    }
-
-    @Override
-    protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(new Property[]{FACING});
     }
 }

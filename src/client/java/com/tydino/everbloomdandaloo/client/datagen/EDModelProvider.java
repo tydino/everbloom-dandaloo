@@ -24,6 +24,8 @@ public class EDModelProvider extends FabricModelProvider {
 
         blockModelGenerators.createNonTemplateHorizontalBlock(EDAncientBlocks.FossilRecombiner);
         blockModelGenerators.createNonTemplateHorizontalBlock(EDAncientBlocks.FossilAdapter);
+        blockModelGenerators.createNonTemplateModelBlock(EDAncientBlocks.BoneAnalyzer);
+        blockModelGenerators.createNonTemplateHorizontalBlock(EDAncientBlocks.DNAReformer);
 
         /// EGGS ///
         //jurassic

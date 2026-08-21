@@ -181,22 +181,22 @@ How to properly make a power bar for powered objects
 Most things are in everbloom-dandaloo-depricated pre-reset, not all of it can be used hence the reset, but how it works and was put together is there!
 Writeups for descriptions of blocks:
 
-Fossil Recombiner:
+Fossil Recombiner: (done)
 You use this when you have fossil fragments to reform a fossil.
 
-Fossil Adapter:
+Fossil Adapter: (started)
 You use this when you have fossils to turn them into refined bones.
 
 Bone Combinator:
 You use this with refined bones to make a complete skeleton.
 
-Bone Analyzer(was Refiner):
+Bone Analyzer(was Refiner):  (started)
 You use this with either a complete skeleton or a refined bone to get a DNA vial.
 
 Amber Distiller:
 You use this to distill amber you found into a distilled DNA vial.
 
-DNA Reformer:
+DNA Reformer:  (started)
 You use this with DNA vial(s) to form an embryo.
 
 DNA (rename to Sequencer ingame)Combinator:
