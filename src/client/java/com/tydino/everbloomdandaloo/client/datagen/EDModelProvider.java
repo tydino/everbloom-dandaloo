@@ -4,6 +4,7 @@ import com.tydino.everbloomdandaloo.EverbloomDandaloo;
 import com.tydino.everbloomdandaloo.blocks.ancient.EDAncientBlocks;
 import com.tydino.everbloomdandaloo.blocks.ancient.EDJurassicBlocks;
 import com.tydino.everbloomdandaloo.items.ancient.*;
+import com.tydino.everbloomdandaloo.items.cooking.EDCookingItemRegistry;
 import net.fabricmc.fabric.api.client.datagen.v1.provider.FabricModelProvider;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.minecraft.client.data.models.BlockModelGenerators;
@@ -42,5 +43,8 @@ public class EDModelProvider extends FabricModelProvider {
         itemModelGenerators.generateFlatItem(EDAncientItems.AmberMediumBug, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(EDAncientItems.AmberPlant, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(EDAncientItems.AmberWing, ModelTemplates.FLAT_ITEM);
+
+        //misc items
+        itemModelGenerators.generateFlatItem(EDAncientItems.GrowthSerum, ModelTemplates.FLAT_ITEM);
     }
 }

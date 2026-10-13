@@ -11,5 +11,6 @@ public class EDItemGroups {
         EDTriassicItemGroup.onInitialize();
         EDJurassicItemGroup.onInitialize();
         EDCretaceousItemGroup.onInitialize();
+        EDMiscItemsGroup.onInitialize();
     }
 }

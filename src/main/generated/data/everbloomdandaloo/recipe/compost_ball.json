@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "minecraft:oak_leaves",
+    "minecraft:beef",
+    "minecraft:wheat_seeds"
+  ],
+  "result": {
+    "count": 4,
+    "id": "everbloomdandaloo:compost_ball"
+  }
+}

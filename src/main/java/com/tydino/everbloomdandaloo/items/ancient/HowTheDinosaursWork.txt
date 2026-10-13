@@ -122,6 +122,8 @@ To breed dinosaurs, they will either breed on their own, or you will need a bree
 
 A breeding scarab is made by any scarab of a certain time period and the following items, A meat, crop, seed, and leaf. (or compost ball) This will give you 2 breeding scarabs from one scarab.
 
+A compost ball is made of wheat seeds, beef, and oak leaf
+
 To speed up growth, a growth serum will require a vial, enderpearl, and a compost ball
 
 All scarabs will become an item on death, and the item is placeable.

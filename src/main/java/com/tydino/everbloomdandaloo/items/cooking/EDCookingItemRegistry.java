@@ -9,6 +9,10 @@ import net.minecraft.world.item.Item;
 
 public class EDCookingItemRegistry {
 
+    //general craftables
+    public static final Item CompostBall = EDItemRegistry.register("compost_ball", Item::new, new Item.Properties());
+    public static final Item Vial = EDItemRegistry.register("vial", Item::new, new Item.Properties());
+
     //Foods
     public static final Item Tomato = EDItemRegistry.register("tomato", setting -> new BlockItem(EDCookingBlocks.TomatoBush, setting.food(new FoodProperties.Builder().nutrition(3).saturationModifier(0.25f).build())), new Item.Properties());
 

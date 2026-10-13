@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "minecraft:ender_pearl",
+    "everbloomdandaloo:vial",
+    "everbloomdandaloo:compost_ball"
+  ],
+  "result": {
+    "id": "everbloomdandaloo:growth_serum"
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_compost_ball": {
+      "conditions": {
+        "items": [
+          {
+            "items": "everbloomdandaloo:compost_ball"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "everbloomdandaloo:growth_serum"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_vial": {
+      "conditions": {
+        "items": [
+          {
+            "items": "everbloomdandaloo:vial"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_vial",
+      "has_compost_ball"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "everbloomdandaloo:growth_serum"
+    ]
+  }
+}

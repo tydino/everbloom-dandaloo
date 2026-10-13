@@ -2,6 +2,7 @@ package com.tydino.everbloomdandaloo.client.datagen;
 
 import com.tydino.everbloomdandaloo.EverbloomDandaloo;
 import com.tydino.everbloomdandaloo.blocks.ancient.EDAncientBlocks;
+import com.tydino.everbloomdandaloo.items.ancient.EDAncientItems;
 import com.tydino.everbloomdandaloo.items.cooking.EDCookingItemRegistry;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
@@ -50,6 +51,14 @@ public class EDRecipeProvider extends FabricRecipeProvider {
                         .save(output);
 
                 /// ANCIENT ///
+                //items
+                shapeless(RecipeCategory.MISC, EDAncientItems.GrowthSerum)
+                        .requires(Items.ENDER_PEARL)
+                        .requires(EDCookingItemRegistry.Vial)
+                        .requires(EDCookingItemRegistry.CompostBall)
+                        .unlockedBy(getHasName(EDCookingItemRegistry.Vial), has(EDCookingItemRegistry.Vial))
+                        .unlockedBy(getHasName(EDCookingItemRegistry.CompostBall), has(EDCookingItemRegistry.CompostBall))
+                        .save(output);
                 //blocks
                 shaped(RecipeCategory.REDSTONE, EDAncientBlocks.FossilRecombiner)
                         .pattern(" s ")
@@ -69,6 +78,14 @@ public class EDRecipeProvider extends FabricRecipeProvider {
                         .define('r', TRContent.Parts.RUBBER)
                         .define('b', TRContent.Parts.ELECTRONIC_CIRCUIT)
                         .unlockedBy(getHasName(TRContent.Parts.ELECTRONIC_CIRCUIT), has(TRContent.Parts.ELECTRONIC_CIRCUIT))
+                        .save(output);
+                /// COOKING ///
+                //craftable items
+                shapeless(RecipeCategory.MISC, EDCookingItemRegistry.CompostBall, 4)
+                        .requires(Items.OAK_LEAVES)
+                        .requires(Items.BEEF)
+                        .requires(Items.WHEAT_SEEDS)
+                        .unlockedBy(getHasName(Items.WHEAT_SEEDS), has(Items.WHEAT_SEEDS))
                         .save(output);
             }
         };
