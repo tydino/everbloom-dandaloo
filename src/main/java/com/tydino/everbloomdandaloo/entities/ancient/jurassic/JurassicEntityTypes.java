@@ -1,6 +1,7 @@
 package com.tydino.everbloomdandaloo.entities.ancient.jurassic;
 
 import com.tydino.everbloomdandaloo.entities.EDEntityTypes;
+import com.tydino.everbloomdandaloo.entities.ancient.jurassic.animalia.brachiosaurus.BrachiosaurusEntity;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;

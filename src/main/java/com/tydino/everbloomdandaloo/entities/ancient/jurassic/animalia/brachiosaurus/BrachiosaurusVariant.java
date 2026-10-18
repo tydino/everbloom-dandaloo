@@ -1,4 +1,4 @@
-package com.tydino.everbloomdandaloo.entities.ancient.jurassic;
+package com.tydino.everbloomdandaloo.entities.ancient.jurassic.animalia.brachiosaurus;
 
 import java.util.Arrays;
 import java.util.Comparator;

@@ -22,9 +22,10 @@ import org.slf4j.LoggerFactory;
 
 
 // TODO:
-/// Make and implement the missing textures and ways to get the untextured items
+/// Make and implement the missing textures and ways to get the untextured items (only add texture when way to get item is added.)
 /// Make everything a definitive system (paleozoic is the only exception, but one is garenteed per amber)
 ///Finish removing depricated fossil items with dinos from their respective times instead. (cretaceous and triassic still have their fossil and fragment items)
+//implement the untamable brachiosaurus/dinosaurs (best if done before adding hypsilophodon.)
 //finish the bone analyzer and dna reformer
 //consider removing the motabolism entirely.
 // Add the ability for dinosaurs to eat and drink (feeder should hold items using a hopper putting them in, see line 21 for major issue) (motabolism is commented out until this is done!)

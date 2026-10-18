@@ -1,4 +1,4 @@
-package com.tydino.everbloomdandaloo.entities.ancient.jurassic;
+package com.tydino.everbloomdandaloo.entities.ancient.jurassic.animalia.brachiosaurus;
 
 import com.tydino.everbloomdandaloo.EverbloomDandaloo;
 import com.tydino.everbloomdandaloo.blocks.ancient.EDJurassicBlocks;
