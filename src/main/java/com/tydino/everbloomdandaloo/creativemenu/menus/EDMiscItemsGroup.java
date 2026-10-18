@@ -22,6 +22,7 @@ public class EDMiscItemsGroup {
             .icon(() -> new ItemStack(EDCookingItemRegistry.Vial))
             .title(Component.translatable("creativeTab.craftables"))
             .displayItems((params, output) -> {
+                output.accept(EDAncientItems.GrowthSerum);
                 output.accept(EDCookingItemRegistry.Vial);
                 output.accept(EDCookingItemRegistry.CompostBall);
             })

@@ -19,7 +19,8 @@ import org.slf4j.LoggerFactory;
 // TODO:
 //finish the bone analyzer and dna reformer
 //Finish removing depricated fossil items (cretaceous and triassic still have their fossil and fragment items)
-// Add the ability for dinosaurs to eat and drink (feeder should hold items using a hopper putting them in, see line 21 for major issue)
+//consider removing the motabolism entirely.
+// Add the ability for dinosaurs to eat and drink (feeder should hold items using a hopper putting them in, see line 21 for major issue) (motabolism is commented out until this is done!)
 // Rework the current fossils a bit to match a definitive system.
 // Implement the menu to the Fossil Adapter
 // Make the fossil Adapter functionality
@@ -27,6 +28,7 @@ import org.slf4j.LoggerFactory;
 // Make and implement the missing textures and ways to get the untextured items
 // Reimplement the old mobs
 //make the brachiosaurus deepslate fossil ore
+//make shadows scale with mobs.
 
 /// REMINDERS
 /// Make the systems definitive over RNG.

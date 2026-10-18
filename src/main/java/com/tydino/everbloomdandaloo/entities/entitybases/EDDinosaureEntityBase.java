@@ -33,7 +33,7 @@ import java.util.Optional;
 
 //utilize Vanilla: Animal, TameableAnimal, and AgeableMob as basis
 public class EDDinosaureEntityBase extends PathfinderMob implements OwnableEntity{
-
+    //line 610 is the motabolism line
     public static EntityDimensions registerDimensions(float width, float height, float eyeHeight){
         return EntityDimensions.scalable(width, height).withEyeHeight(eyeHeight);
     }
@@ -607,6 +607,7 @@ public class EDDinosaureEntityBase extends PathfinderMob implements OwnableEntit
             }
             ticksAlive++;
 
+            /*
             /// MOTABOLISM ///
             if (motabolism-- <= 0) {
                 motabolism = TicksForMotabolism;
@@ -643,6 +644,7 @@ public class EDDinosaureEntityBase extends PathfinderMob implements OwnableEntit
             }
 
             EverbloomDandaloo.LOGGER.info("Motabolism: "+motabolism);
+            */
 
             /// ANIMATIONS ///
             if (getIdle()) {
