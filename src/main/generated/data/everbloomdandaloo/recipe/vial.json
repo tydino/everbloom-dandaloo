@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    "minecraft:glass_bottle",
+    "minecraft:glass_pane"
+  ],
+  "result": {
+    "id": "everbloomdandaloo:vial"
+  }
+}

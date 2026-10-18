@@ -3,6 +3,7 @@ package com.tydino.everbloomdandaloo.client.datagen;
 import com.tydino.everbloomdandaloo.EverbloomDandaloo;
 import com.tydino.everbloomdandaloo.blocks.ancient.EDAncientBlocks;
 import com.tydino.everbloomdandaloo.items.ancient.EDAncientItems;
+import com.tydino.everbloomdandaloo.items.ancient.EDJurassicItems;
 import com.tydino.everbloomdandaloo.items.cooking.EDCookingItemRegistry;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
@@ -52,13 +53,26 @@ public class EDRecipeProvider extends FabricRecipeProvider {
 
                 /// ANCIENT ///
                 //items
+                shapeless(RecipeCategory.TOOLS, EDCookingItemRegistry.Vial)
+                        .requires(Items.GLASS_BOTTLE)
+                        .requires(Blocks.GLASS_PANE)
+                        .unlockedBy(getHasName(Items.GLASS_BOTTLE), has(Items.GLASS_BOTTLE))
+                        .save(output);
+
+                shapeless(RecipeCategory.TOOLS, EDCookingItemRegistry.Syringe)
+                        .requires(EDCookingItemRegistry.Vial)
+                        .requires(Items.STICK)
+                        .unlockedBy(getHasName(Items.STICK), has(Items.STICK))
+                        .save(output);
+
                 shapeless(RecipeCategory.MISC, EDAncientItems.GrowthSerum)
                         .requires(Items.ENDER_PEARL)
-                        .requires(EDCookingItemRegistry.Vial)
+                        .requires(EDCookingItemRegistry.Syringe)
                         .requires(EDCookingItemRegistry.CompostBall)
                         .unlockedBy(getHasName(EDCookingItemRegistry.Vial), has(EDCookingItemRegistry.Vial))
                         .unlockedBy(getHasName(EDCookingItemRegistry.CompostBall), has(EDCookingItemRegistry.CompostBall))
                         .save(output);
+
                 //blocks
                 shaped(RecipeCategory.REDSTONE, EDAncientBlocks.FossilRecombiner)
                         .pattern(" s ")

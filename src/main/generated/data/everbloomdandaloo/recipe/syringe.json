@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    "everbloomdandaloo:vial",
+    "minecraft:stick"
+  ],
+  "result": {
+    "id": "everbloomdandaloo:syringe"
+  }
+}

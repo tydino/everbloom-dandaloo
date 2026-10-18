@@ -11,6 +11,7 @@ public class EDCookingItemRegistry {
 
     //general craftables
     public static final Item CompostBall = EDItemRegistry.register("compost_ball", Item::new, new Item.Properties());
+    public static final Item Syringe = EDItemRegistry.register("syringe", Item::new, new Item.Properties());
     public static final Item Vial = EDItemRegistry.register("vial", Item::new, new Item.Properties());
 
     //Foods

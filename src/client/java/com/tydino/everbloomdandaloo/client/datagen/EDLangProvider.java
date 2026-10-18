@@ -46,8 +46,6 @@ public class EDLangProvider extends FabricLanguageProvider {
         translationBuilder.add(EDPaleozoicItems.BigBugAmber, "Amber with a Rather large Bug");
 
         translationBuilder.add("creativeTab.triassic", "Triassic :: Everbloom Dandaloo"); /// TRIASSIC ///
-        translationBuilder.add(EDTriassicItems.TriassicAnimalFossil, "Triassic Animal Fossil");
-        translationBuilder.add(EDTriassicItems.AnimalFossilFragments, "Triassic Animal Fossil Fragments");
 
         translationBuilder.add("creativeTab.jurassic", "Jurassic :: Everbloom Dandaloo"); /// JURASSIC ///
         translationBuilder.add(EDJurassicItems.BrachiosaurusFossil, "Brachiosaurus Fossil");
@@ -62,8 +60,6 @@ public class EDLangProvider extends FabricLanguageProvider {
         translationBuilder.add(EDJurassicItems.BrachiosaurusSkull, "Brachiosaurus Skull");
 
         translationBuilder.add("creativeTab.cretaceous", "Cretaceous :: Everbloom Dandaloo"); /// cretaceous ///
-        translationBuilder.add(EDCretaceousItems.CretaceousAnimalFossil, "Cretaceous Animal Fossil");
-        translationBuilder.add(EDCretaceousItems.AnimalFossilFragments, "Cretaceous Animal Fossil Fragments");
 
         translationBuilder.add("creativeTab.edcrafting", "Crafting :: Everbloom Dandaloo");                             /// CRAFTING ///
 
