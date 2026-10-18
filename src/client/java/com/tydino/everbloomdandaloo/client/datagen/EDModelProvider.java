@@ -44,7 +44,12 @@ public class EDModelProvider extends FabricModelProvider {
         itemModelGenerators.generateFlatItem(EDAncientItems.AmberPlant, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(EDAncientItems.AmberWing, ModelTemplates.FLAT_ITEM);
 
-        //misc items
+        //syringes
+        itemModelGenerators.generateFlatItem(EDCookingItemRegistry.Syringe, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(EDAncientItems.GrowthSerum, ModelTemplates.FLAT_ITEM);
+
+        //misc items
+        itemModelGenerators.generateFlatItem(EDCookingItemRegistry.Vial, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(EDCookingItemRegistry.CompostBall, ModelTemplates.FLAT_ITEM);
     }
 }

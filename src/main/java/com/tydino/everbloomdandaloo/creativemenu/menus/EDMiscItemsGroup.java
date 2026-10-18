@@ -23,10 +23,11 @@ public class EDMiscItemsGroup {
             .title(Component.translatable("creativeTab.craftables"))
             .displayItems((params, output) -> {
                 output.accept(EDCookingItemRegistry.Vial);
-                output.accept(EDCookingItemRegistry.Syringe);
                 output.accept(EDCookingItemRegistry.CompostBall);
 
+                output.accept(EDCookingItemRegistry.Syringe);
                 output.accept(EDAncientItems.GrowthSerum);
+
                 output.accept(EDAncientItems.BreedingScarab);
             })
             .build();

@@ -63,6 +63,10 @@ public class EDLangProvider extends FabricLanguageProvider {
 
         translationBuilder.add("creativeTab.edcrafting", "Crafting :: Everbloom Dandaloo");                             /// CRAFTING ///
 
+        translationBuilder.add(EDCookingItemRegistry.CompostBall, "Compost ball");
+        translationBuilder.add(EDCookingItemRegistry.Vial, "Vial");
+        translationBuilder.add(EDCookingItemRegistry.Syringe, "Syringe");
+
         translationBuilder.add(EDAncientBlocks.FossilRecombiner, "Fossil Recombiner");
         translationBuilder.add("stat."+EDAncientStats.InteractionsWithFossilRecombiner, "Interactions With Fossil Recombiner");
         translationBuilder.add("tooltip.everbloomdandaloo.fossil_recombiner", "You use this when you have fossil fragments to reform a fossil.");
