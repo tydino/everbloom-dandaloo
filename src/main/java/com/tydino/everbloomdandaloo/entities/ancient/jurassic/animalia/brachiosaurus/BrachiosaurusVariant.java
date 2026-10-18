@@ -8,7 +8,9 @@ public enum BrachiosaurusVariant {
     movie_male(0),
     banana_male(1),
     movie_female(2),
-    banana_female(3);
+    banana_female(3),
+    emo_male(4),
+    emo_female(5);
 
     private static final BrachiosaurusVariant[] BY_ID = Arrays.stream(values()).sorted(Comparator.
             comparingInt(BrachiosaurusVariant::getId)).toArray(BrachiosaurusVariant[]::new);

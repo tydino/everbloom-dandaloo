@@ -29,6 +29,10 @@ public class BrachiosaurusRenderer extends MobRenderer<BrachiosaurusEntity, Brac
                         Identifier.fromNamespaceAndPath(EverbloomDandaloo.MOD_ID, "textures/entity/ancient/jurassic/brachiosaurus/hatchling_brachiosaurus_male_banana.png"));
                 map.put(BrachiosaurusVariant.banana_female,
                         Identifier.fromNamespaceAndPath(EverbloomDandaloo.MOD_ID, "textures/entity/ancient/jurassic/brachiosaurus/hatchling_brachiosaurus_female_banana.png"));
+                map.put(BrachiosaurusVariant.emo_male,
+                        Identifier.fromNamespaceAndPath(EverbloomDandaloo.MOD_ID, "textures/entity/ancient/jurassic/brachiosaurus/hatchling_brachiosaurus_male_emo.png"));
+                map.put(BrachiosaurusVariant.emo_female,
+                        Identifier.fromNamespaceAndPath(EverbloomDandaloo.MOD_ID, "textures/entity/ancient/jurassic/brachiosaurus/hatchling_brachiosaurus_female_emo.png"));
             });
 
     static final Map<BrachiosaurusVariant, Identifier> TexturesForBaby =
@@ -41,6 +45,10 @@ public class BrachiosaurusRenderer extends MobRenderer<BrachiosaurusEntity, Brac
                         Identifier.fromNamespaceAndPath(EverbloomDandaloo.MOD_ID, "textures/entity/ancient/jurassic/brachiosaurus/baby_brachiosaurus_male_banana.png"));
                 map.put(BrachiosaurusVariant.banana_female,
                         Identifier.fromNamespaceAndPath(EverbloomDandaloo.MOD_ID, "textures/entity/ancient/jurassic/brachiosaurus/baby_brachiosaurus_female_banana.png"));
+                map.put(BrachiosaurusVariant.emo_male,
+                        Identifier.fromNamespaceAndPath(EverbloomDandaloo.MOD_ID, "textures/entity/ancient/jurassic/brachiosaurus/baby_brachiosaurus_male_emo.png"));
+                map.put(BrachiosaurusVariant.emo_female,
+                        Identifier.fromNamespaceAndPath(EverbloomDandaloo.MOD_ID, "textures/entity/ancient/jurassic/brachiosaurus/baby_brachiosaurus_female_emo.png"));
             });
 
     static final Map<BrachiosaurusVariant, Identifier> TexturesForJuvenile =
@@ -53,6 +61,10 @@ public class BrachiosaurusRenderer extends MobRenderer<BrachiosaurusEntity, Brac
                         Identifier.fromNamespaceAndPath(EverbloomDandaloo.MOD_ID, "textures/entity/ancient/jurassic/brachiosaurus/juvenile_brachiosaurus_male_banana.png"));
                 map.put(BrachiosaurusVariant.banana_female,
                         Identifier.fromNamespaceAndPath(EverbloomDandaloo.MOD_ID, "textures/entity/ancient/jurassic/brachiosaurus/juvenile_brachiosaurus_female_banana.png"));
+                map.put(BrachiosaurusVariant.emo_male,
+                        Identifier.fromNamespaceAndPath(EverbloomDandaloo.MOD_ID, "textures/entity/ancient/jurassic/brachiosaurus/juvenile_brachiosaurus_male_emo.png"));
+                map.put(BrachiosaurusVariant.emo_female,
+                        Identifier.fromNamespaceAndPath(EverbloomDandaloo.MOD_ID, "textures/entity/ancient/jurassic/brachiosaurus/juvenile_brachiosaurus_female_emo.png"));
             });
 
     static final Map<BrachiosaurusVariant, Identifier> TexturesForFullGrown =
@@ -65,6 +77,10 @@ public class BrachiosaurusRenderer extends MobRenderer<BrachiosaurusEntity, Brac
                         Identifier.fromNamespaceAndPath(EverbloomDandaloo.MOD_ID, "textures/entity/ancient/jurassic/brachiosaurus/fullgrownadult_brachiosaurus_male_banana.png"));
                 map.put(BrachiosaurusVariant.banana_female,
                         Identifier.fromNamespaceAndPath(EverbloomDandaloo.MOD_ID, "textures/entity/ancient/jurassic/brachiosaurus/fullgrownadult_brachiosaurus_female_banana.png"));
+                map.put(BrachiosaurusVariant.emo_male,
+                        Identifier.fromNamespaceAndPath(EverbloomDandaloo.MOD_ID, "textures/entity/ancient/jurassic/brachiosaurus/fullgrownadult_brachiosaurus_male_emo.png"));
+                map.put(BrachiosaurusVariant.emo_female,
+                        Identifier.fromNamespaceAndPath(EverbloomDandaloo.MOD_ID, "textures/entity/ancient/jurassic/brachiosaurus/fullgrownadult_brachiosaurus_female_emo.png"));
             });
 
     final BrachiosaurusFullGrownAdultModel FullGrownModel;

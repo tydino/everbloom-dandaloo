@@ -48,6 +48,18 @@ public class BrachiosaurusEgg extends DinosaurEgg {
                             entity.variant = ((BrachiosaurusEntity) entity).getVariant().getId();
                         }
                     }
+                }else if(entity.variant == BrachiosaurusVariant.emo_female.getId()) {
+                    if (entity instanceof BrachiosaurusEntity) {
+                        if (maleOrFemale == 0) {
+                            ((BrachiosaurusEntity) entity).setVariant(BrachiosaurusVariant.emo_female);
+                            entity.setGender(EDDinosaureEntityBase.gender_female);
+                            entity.variant = ((BrachiosaurusEntity) entity).getVariant().getId();
+                        } else {
+                            ((BrachiosaurusEntity) entity).setVariant(BrachiosaurusVariant.emo_male);
+                            entity.setGender(EDDinosaureEntityBase.gender_male);
+                            entity.variant = ((BrachiosaurusEntity) entity).getVariant().getId();
+                        }
+                    }
                 }
             } else {///father
                 if (entity.partnerVariant == BrachiosaurusVariant.banana_male.getId()) {
@@ -72,11 +84,21 @@ public class BrachiosaurusEgg extends DinosaurEgg {
                             entity.setGender(EDDinosaureEntityBase.gender_male);
                         }
                     }
+                }else if (entity.partnerVariant == BrachiosaurusVariant.emo_male.getId()) {
+                    if (entity instanceof BrachiosaurusEntity) {
+                        if (maleOrFemale == 0) {
+                            ((BrachiosaurusEntity) entity).setVariant(BrachiosaurusVariant.emo_female);
+                            entity.setGender(EDDinosaureEntityBase.gender_female);
+                        } else {
+                            ((BrachiosaurusEntity) entity).setVariant(BrachiosaurusVariant.emo_female);
+                            entity.setGender(EDDinosaureEntityBase.gender_male);
+                        }
+                    }
                 }
             }
         }
         else{
-            int variantToUseRandom = random.nextInt(4);
+            int variantToUseRandom = random.nextInt(6);
 
             if(variantToUseRandom == 0) {
                 ((BrachiosaurusEntity) entity).setVariant(BrachiosaurusVariant.movie_male);
@@ -95,6 +117,16 @@ public class BrachiosaurusEgg extends DinosaurEgg {
             }
             if(variantToUseRandom == 3) {
                 ((BrachiosaurusEntity) entity).setVariant(BrachiosaurusVariant.banana_female);
+                entity.setGender(EDDinosaureEntityBase.gender_female);
+                entity.variant = ((BrachiosaurusEntity) entity).getVariant().getId();
+            }
+            if(variantToUseRandom == 4) {
+                ((BrachiosaurusEntity) entity).setVariant(BrachiosaurusVariant.emo_male);
+                entity.setGender(EDDinosaureEntityBase.gender_male);
+                entity.variant = ((BrachiosaurusEntity) entity).getVariant().getId();
+            }
+            if(variantToUseRandom == 5) {
+                ((BrachiosaurusEntity) entity).setVariant(BrachiosaurusVariant.emo_female);
                 entity.setGender(EDDinosaureEntityBase.gender_female);
                 entity.variant = ((BrachiosaurusEntity) entity).getVariant().getId();
             }

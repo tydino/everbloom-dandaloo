@@ -106,7 +106,7 @@ public class BrachiosaurusEntity extends EDDinosaureEntityBase {
     public @Nullable SpawnGroupData finalizeSpawn(ServerLevelAccessor level, DifficultyInstance difficulty, EntitySpawnReason spawnReason, @Nullable SpawnGroupData groupData) {
         BrachiosaurusVariant temp  = Util.getRandom(BrachiosaurusVariant.values(), this.random);
         setVariant(temp);
-        if(getVariant() == BrachiosaurusVariant.banana_female || getVariant() == BrachiosaurusVariant.movie_female){
+        if(getVariant() == BrachiosaurusVariant.banana_female || getVariant() == BrachiosaurusVariant.movie_female || getVariant() == BrachiosaurusVariant.emo_female){
             setGender(gender_female);
         }else{
             setGender(gender_male);
