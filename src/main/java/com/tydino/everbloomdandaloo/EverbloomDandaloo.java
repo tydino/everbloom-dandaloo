@@ -25,7 +25,6 @@ import org.slf4j.LoggerFactory;
 /// Make and implement the missing textures and ways to get the untextured items (only add texture when way to get item is added.)
 /// Make everything a definitive system (paleozoic is the only exception, but one is garenteed per amber)
 ///Finish removing depricated fossil items with dinos from their respective times instead. (cretaceous and triassic still have their fossil and fragment items)
-//add items currently incomplete from wednesday 10/21/26 to be fully done and implemented regarding hypsilophodon.
 //add hypsilophodon fossils, items and scritch+scritch-sound
 //implement the untamable brachiosaurus/dinosaurs (best if done before adding hypsilophodon.)
 //carnotaurus gets 'jocky' variant, and hypsilophodon gets 'nerdy'

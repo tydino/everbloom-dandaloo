@@ -57,7 +57,7 @@ public class HypsilophodonEntity extends EDDinosaureEntityBase {
     public static AttributeSupplier.Builder createAttributes(){
         return PathfinderMob.createMobAttributes()
                 .add(Attributes.SCALE, 1)
-                .add(Attributes.MAX_HEALTH, 200)
+                .add(Attributes.MAX_HEALTH, 20)
                 .add(Attributes.TEMPT_RANGE, 10)
                 .add(Attributes.MOVEMENT_SPEED, 0.09);
     }

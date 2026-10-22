@@ -2,9 +2,11 @@ package com.tydino.everbloomdandaloo.client.datagen;
 
 import com.tydino.everbloomdandaloo.EverbloomDandaloo;
 import com.tydino.everbloomdandaloo.blocks.ancient.EDAncientBlocks;
+import com.tydino.everbloomdandaloo.blocks.ancient.EDCretaceousBlocks;
 import com.tydino.everbloomdandaloo.blocks.ancient.EDJurassicBlocks;
 import com.tydino.everbloomdandaloo.blocks.cooking.EDCookingBlocks;
 import com.tydino.everbloomdandaloo.entities.aether.AetherEntityTypes;
+import com.tydino.everbloomdandaloo.entities.ancient.cretaceous.animalia.CretaceousEntityTypes;
 import com.tydino.everbloomdandaloo.entities.ancient.jurassic.JurassicEntityTypes;
 import com.tydino.everbloomdandaloo.items.aether.EDAetherItemRegistry;
 import com.tydino.everbloomdandaloo.items.ancient.*;
@@ -48,18 +50,24 @@ public class EDLangProvider extends FabricLanguageProvider {
         translationBuilder.add("creativeTab.triassic", "Triassic :: Everbloom Dandaloo"); /// TRIASSIC ///
 
         translationBuilder.add("creativeTab.jurassic", "Jurassic :: Everbloom Dandaloo"); /// JURASSIC ///
+        /// BRACHIOSAURS
+        translationBuilder.add(EDJurassicBlocks.BrachiosaurusFossilOre, "Brachiosaurus Fossil Ore");
         translationBuilder.add(EDJurassicItems.BrachiosaurusFossil, "Brachiosaurus Fossil");
         translationBuilder.add(EDJurassicItems.BrachiosaurusFragments, "Brachiosaurus Fossil Fragments");
 
         translationBuilder.add(JurassicEntityTypes.Brachiosaurus, "Brachiosaurus");
         translationBuilder.add(EDJurassicBlocks.BrachiosaurusEgg, "Brachiosaurus Egg");
         translationBuilder.add(EDJurassicItems.HatchedBrachiosaurus, "Hatched Brachiosaurus");
-        translationBuilder.add(EDJurassicBlocks.BrachiosaurusFossilOre, "Brachiosaurus Fossil Ore");
         translationBuilder.add(EDJurassicItems.BrachiosaurusLimb, "Brachiosaurus Limb");
         translationBuilder.add(EDJurassicItems.BrachiosaurusRibcage, "Brachiosaurus Ribcage");
         translationBuilder.add(EDJurassicItems.BrachiosaurusSkull, "Brachiosaurus Skull");
 
         translationBuilder.add("creativeTab.cretaceous", "Cretaceous :: Everbloom Dandaloo"); /// cretaceous ///
+        /// HYPSILOPHODON
+
+        translationBuilder.add(CretaceousEntityTypes.Hypsilophodon, "Hypsilophodon");
+        translationBuilder.add(EDCretaceousBlocks.HypsilophodonEgg, "Hypsilophodon Egg");
+        translationBuilder.add(EDCretaceousItems.HatchedHypsilophodon, "Hatched Hypsilophodon");
 
         translationBuilder.add("creativeTab.edcrafting", "Crafting :: Everbloom Dandaloo");                             /// CRAFTING ///
 

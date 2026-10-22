@@ -72,7 +72,7 @@ public class HypsilophodonRenderer extends MobRenderer<HypsilophodonEntity, Hyps
     final HypsilophodonAdultModel adultModel;
 
     public HypsilophodonRenderer(EntityRendererProvider.Context context){
-        super(context, new HypsilophodonAdultModel(context.bakeLayer(EDCretaceousModelLoader.HypsilophodonAdult)), 1f);
+        super(context, new HypsilophodonAdultModel(context.bakeLayer(EDCretaceousModelLoader.HypsilophodonAdult)), 0.5f);
         this.hatchlingModel = new HypsilophodonHatchlingModel(context.bakeLayer(EDCretaceousModelLoader.HypsilophodonHatchling));
         this.babyModel = new HypsilophodonBabyModel(context.bakeLayer(EDCretaceousModelLoader.HypsilophodonBaby));
         this.adultModel = new HypsilophodonAdultModel(context.bakeLayer(EDCretaceousModelLoader.HypsilophodonAdult));
@@ -104,7 +104,7 @@ public class HypsilophodonRenderer extends MobRenderer<HypsilophodonEntity, Hyps
         if(state.Age <= 0) {
             return TexturesForHatchling.get(state.variant);
         }
-        else if(state.Age >=1 || state.Age <=2){
+        else if(state.Age ==1 || state.Age ==2){
             return TexturesForBaby.get(state.variant);
         }
         return TexturesForAdult.get(state.variant);
