@@ -6,6 +6,7 @@ import net.minecraft.world.level.block.Block;
 
 public class EDJurassicBlocks {
 
+    /// BRACHIOSAURUS
     public static final Block BrachiosaurusFossilOre = EDBlockRegistry.registerBlock("brachiosaurus_fossilore",
             properties -> new Block(properties.strength(EDAncientBlocks.OreBreakTime).requiresCorrectToolForDrops()));
 

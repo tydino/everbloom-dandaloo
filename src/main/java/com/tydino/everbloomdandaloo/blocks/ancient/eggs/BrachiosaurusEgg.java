@@ -90,7 +90,7 @@ public class BrachiosaurusEgg extends DinosaurEgg {
                             ((BrachiosaurusEntity) entity).setVariant(BrachiosaurusVariant.emo_female);
                             entity.setGender(EDDinosaureEntityBase.gender_female);
                         } else {
-                            ((BrachiosaurusEntity) entity).setVariant(BrachiosaurusVariant.emo_female);
+                            ((BrachiosaurusEntity) entity).setVariant(BrachiosaurusVariant.emo_male);
                             entity.setGender(EDDinosaureEntityBase.gender_male);
                         }
                     }
@@ -138,6 +138,6 @@ public class BrachiosaurusEgg extends DinosaurEgg {
     }
 
     public BrachiosaurusEgg(Properties properties) {
-        super(properties, 4, 0, 4, 12, 6, 12, 30, JurassicEntityTypes.Brachiosaurus, CODEC, 4);
+        super(properties, 4, 0, 4, 12, 6, 12, 120, JurassicEntityTypes.Brachiosaurus, CODEC);
     }
 }

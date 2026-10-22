@@ -270,7 +270,7 @@ public class EDDinosaureEntityBase extends PathfinderMob implements OwnableEntit
     public int motabolism;
     public static final EntityDataAccessor<Integer> HUNGER =
             SynchedEntityData.defineId(EDDinosaureEntityBase.class, EntityDataSerializers.INT);
-    public int maxHunger;
+    public int maxHunger = 10;
     public void SetHunger(int input){
         entityData.set(HUNGER, input);
     }
@@ -280,7 +280,7 @@ public class EDDinosaureEntityBase extends PathfinderMob implements OwnableEntit
 
     public static final EntityDataAccessor<Integer> THIRST =
             SynchedEntityData.defineId(EDDinosaureEntityBase.class, EntityDataSerializers.INT);
-    public int maxThirst;
+    public int maxThirst = 10;
     public void SetThirst(int input){
         entityData.set(THIRST, input);
     }
@@ -290,7 +290,7 @@ public class EDDinosaureEntityBase extends PathfinderMob implements OwnableEntit
 
     /// CONSTRUCTOR ///
 
-    protected EDDinosaureEntityBase(EntityType<? extends PathfinderMob> type, Level level, Item tameItem, int maxAge, int rateOfAging, List<EntityDimensions> dimensions, int LengthOfIdle, int LengthOfBlink, int LengthOfEat, int LengthOfSittingDown, int LengthOfSitting, int LengthOfStandingUp, boolean leashable, int chanceAtTaming, int minAgeBeforeBreeding, int maxInLoveTimer, int maxHunger, int maxThirst) {
+    protected EDDinosaureEntityBase(EntityType<? extends PathfinderMob> type, Level level, Item tameItem, int maxAge, int rateOfAging, List<EntityDimensions> dimensions, int LengthOfIdle, int LengthOfBlink, int LengthOfEat, int LengthOfSittingDown, int LengthOfSitting, int LengthOfStandingUp, boolean leashable, int chanceAtTaming, int minAgeBeforeBreeding, int maxInLoveTimer) {
         super(type, level);
         this.TameItem = tameItem;
         this.MaxAge = maxAge;
@@ -310,8 +310,10 @@ public class EDDinosaureEntityBase extends PathfinderMob implements OwnableEntit
         this.tamingChance = chanceAtTaming;
         this.InLoveTimer = maxInLoveTimer;
 
+        /* depricated
         this.maxHunger = maxHunger;//this and
         this.maxThirst = maxThirst;//this each add 10 minutes to the time before they need to eat.
+         */
     }
 
     /// MOB INTERACTION ///

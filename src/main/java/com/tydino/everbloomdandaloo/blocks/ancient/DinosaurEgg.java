@@ -50,14 +50,14 @@ public class DinosaurEgg extends Block {
         return (MapCodec<? extends DinosaurEgg>) CODEC;
     }
 
-    public DinosaurEgg(Properties properties, int minX, int minY, int minZ, int maxX, int maxY, int maxZ, int hatchingTime, EntityType<? extends EDDinosaureEntityBase> TDE, MapCodec<?> codec, int DinosaurVariants) {
+    public DinosaurEgg(Properties properties, int minX, int minY, int minZ, int maxX, int maxY, int maxZ, int hatchingTime, EntityType<? extends EDDinosaureEntityBase> TDE, MapCodec<?> codec) {
         super(properties);
         this.registerDefaultState(defaultBlockState().setValue(HATCH, 0));
         this.registerDefaultState(defaultBlockState().setValue(ParentVariantMother, 0));
         this.registerDefaultState(defaultBlockState().setValue(ParentVariantFather, 0));
         this.registerDefaultState(defaultBlockState().setValue(HasParents, false));
         this.SHAPE = DinosaurEgg.box(minX, minY, minZ, maxX, maxY, maxZ);
-        this.HATCHING_TIME = hatchingTime;// /3 then *20 for full time in seconds
+        this.HATCHING_TIME = hatchingTime;// divide/3 then *20 for full time in seconds
         this.CODEC = codec;
         this.TDE = TDE;
     }
