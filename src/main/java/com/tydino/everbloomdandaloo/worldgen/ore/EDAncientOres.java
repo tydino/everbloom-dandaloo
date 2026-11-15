@@ -15,6 +15,7 @@ public class EDAncientOres {
 
     public static void onInitialize(){
         EDJurrassicFossils.onInitialize();
+        EDCretaceousOres.onInitialize();
 
         BiomeModifications.addFeature(
                 BiomeSelectors.foundInOverworld(),
