@@ -64,6 +64,10 @@ public class EDLangProvider extends FabricLanguageProvider {
 
         translationBuilder.add("creativeTab.cretaceous", "Cretaceous :: Everbloom Dandaloo"); /// cretaceous ///
         /// HYPSILOPHODON
+        translationBuilder.add(EDCretaceousBlocks.HypsilophodonFossilOre, "Hypsilophodon Fossil Ore");
+        translationBuilder.add(EDCretaceousBlocks.HypsilophodonDeepslateFossilOre, "Hypsilophodon Deepslate Fossil Ore");
+        translationBuilder.add(EDCretaceousItems.HypsilophodonFossil, "Hypsilophodon Fossil");
+        translationBuilder.add(EDCretaceousItems.HypsilophodonFragments, "Hypsilophodon Fossil Fragments");
 
         translationBuilder.add(CretaceousEntityTypes.Hypsilophodon, "Hypsilophodon");
         translationBuilder.add(EDCretaceousBlocks.HypsilophodonEgg, "Hypsilophodon Egg");

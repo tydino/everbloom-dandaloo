@@ -22,6 +22,7 @@ import org.slf4j.LoggerFactory;
 
 
 // TODO:
+//add hypsilophodon items to item groups
 /// Make and implement the missing textures and ways to get the untextured items (only add texture when way to get item is added.)
 /// Make everything a definitive system (paleozoic is the only exception, but one is garenteed per amber)
 ///Finish removing depricated fossil items with dinos from their respective times instead. (cretaceous and triassic still have their fossil and fragment items)

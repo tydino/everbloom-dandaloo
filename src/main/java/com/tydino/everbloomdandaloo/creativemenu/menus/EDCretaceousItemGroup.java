@@ -18,7 +18,7 @@ public class EDCretaceousItemGroup {
             BuiltInRegistries.CREATIVE_MODE_TAB.key(), Identifier.fromNamespaceAndPath(EverbloomDandaloo.MOD_ID, "cretaceous")
     );
     public static final CreativeModeTab CreativeTab = FabricCreativeModeTab.builder()
-            .icon(() -> new ItemStack(EDCretaceousItems.CretaceousAnimalFossil))
+            .icon(() -> new ItemStack(EDCretaceousItems.HypsilophodonFossil))
             .title(Component.translatable("creativeTab.cretaceous"))
             .displayItems((params, output) -> {
 

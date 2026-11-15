@@ -7,7 +7,8 @@ import net.minecraft.world.item.SpawnEggItem;
 
 public class EDCretaceousItems {
     //fossils
-    public static Item CretaceousAnimalFossil = EDItemRegistry.register("cretaceous_animal_fossil", Item::new, new Item.Properties());
+    public static Item HypsilophodonFossil = EDItemRegistry.register("hypsilophodon_fossil", Item::new, new Item.Properties());
+    public static Item HypsilophodonFragments = EDItemRegistry.register("hypsilophodon_fragments", Item::new, new Item.Properties());
 
     //scarabs
     public static Item SmallScarab = EDItemRegistry.register("small_gold_scarab", Item::new, new Item.Properties());

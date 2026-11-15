@@ -1,0 +1,7 @@
+{
+  "type": "everbloomdandaloo:fossil_combinator",
+  "baseItem": "everbloomdandaloo:hypsilophodon_fragments",
+  "result": {
+    "id": "everbloomdandaloo:hypsilophodon_fossil"
+  }
+}

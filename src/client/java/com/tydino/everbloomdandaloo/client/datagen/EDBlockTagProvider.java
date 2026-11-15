@@ -3,6 +3,7 @@ package com.tydino.everbloomdandaloo.client.datagen;
 import com.tydino.everbloomdandaloo.EverbloomDandaloo;
 import com.tydino.everbloomdandaloo.blocks.EDBlockRegistry;
 import com.tydino.everbloomdandaloo.blocks.ancient.EDAncientBlocks;
+import com.tydino.everbloomdandaloo.blocks.ancient.EDCretaceousBlocks;
 import com.tydino.everbloomdandaloo.blocks.ancient.EDJurassicBlocks;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagsProvider;
@@ -23,12 +24,18 @@ public class EDBlockTagProvider extends FabricTagsProvider.BlockTagsProvider{
 
                 .add(EDBlockRegistry.getRK(EDJurassicBlocks.BrachiosaurusFossilOre))
 
+                .add(EDBlockRegistry.getRK(EDCretaceousBlocks.HypsilophodonFossilOre))
+                .add(EDBlockRegistry.getRK(EDCretaceousBlocks.HypsilophodonDeepslateFossilOre))
+
                 .add(EDBlockRegistry.getRK(EDAncientBlocks.AmberOre))
                 .add(EDBlockRegistry.getRK(EDAncientBlocks.DeepslateAmberOre));
 
         tag(BlockTags.NEEDS_IRON_TOOL)
 
                 .add(EDBlockRegistry.getRK(EDJurassicBlocks.BrachiosaurusFossilOre))
+
+                .add(EDBlockRegistry.getRK(EDCretaceousBlocks.HypsilophodonFossilOre))
+                .add(EDBlockRegistry.getRK(EDCretaceousBlocks.HypsilophodonDeepslateFossilOre))
 
                 .add(EDBlockRegistry.getRK(EDAncientBlocks.AmberOre))
                 .add(EDBlockRegistry.getRK(EDAncientBlocks.DeepslateAmberOre));
