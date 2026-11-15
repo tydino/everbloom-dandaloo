@@ -132,6 +132,10 @@ public class HypsilophodonBabyModel extends EntityModel<HypsilophodonRenderState
 			this.standUp.apply(state.standingupAnimationState, state.ageInTicks);
 		}
 
+		if(state.scritchAnimationState.isStarted()){
+			this.scritch.apply(state.scritchAnimationState, state.ageInTicks);
+		}
+
 		this.walk.applyWalk(state.walkAnimationPos, state.walkAnimationSpeed, 6f, 18f);
 
 		//head

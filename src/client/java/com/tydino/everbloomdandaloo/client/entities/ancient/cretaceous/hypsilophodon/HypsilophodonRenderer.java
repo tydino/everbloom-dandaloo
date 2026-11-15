@@ -90,7 +90,7 @@ public class HypsilophodonRenderer extends MobRenderer<HypsilophodonEntity, Hyps
         state.idleAnimationState.copyFrom(entity.idleAnimation);
         state.blinkAnimationState.copyFrom(entity.blinkAnimation);
         state.eatAnimationState.copyFrom(entity.eatAnimation);
-        //state.scritchAnimationState.copyFrom(entity.scritchAnimation);
+        state.scritchAnimationState.copyFrom(entity.scritchAnimation);
 
         state.sittingdownAnimationState.copyFrom(entity.sittingDownAnimation);
         state.sitAnimationState.copyFrom(entity.sittingAnimation);

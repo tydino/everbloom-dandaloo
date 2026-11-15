@@ -189,7 +189,7 @@ public class HypsilophodonHatchlingAnimations {
 		))
 		.build();
 
-	public static final AnimationDefinition scritch = AnimationDefinition.Builder.withLength(8.0F).looping()
+	public static final AnimationDefinition scritch = AnimationDefinition.Builder.withLength(8.0F)
 		.addAnimation("dinosaur", new AnimationChannel(AnimationChannel.Targets.POSITION,
 			new Keyframe(0.0F, KeyframeAnimations.posVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.LINEAR),
 			new Keyframe(8.0F, KeyframeAnimations.posVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.LINEAR)

@@ -40,6 +40,17 @@ public class HypsilophodonEntity extends EDDinosaureEntityBase {
         this.entityData.set(VARIANT, variant.getId() & 255);
     }
 
+    public static final EntityDataAccessor<Boolean> SCRITCH =
+            SynchedEntityData.defineId(HypsilophodonEntity.class, EntityDataSerializers.BOOLEAN);
+    public final AnimationState scritchAnimation = new AnimationState();
+    int scritchCount;
+    public boolean getScritch(){
+        return entityData.get(SCRITCH);
+    }
+    public void setScritch(boolean input){
+        entityData.set(SCRITCH, input);
+    }
+
     public static final List<EntityDimensions> Dimensions = List.of(
             registerDimensions(0.375f, 0.5f, 0.375f), //0 hatchling
             registerDimensions(0.375f, 0.375f, 0.375f), //1 baby
@@ -79,21 +90,54 @@ public class HypsilophodonEntity extends EDDinosaureEntityBase {
     @Override
     protected void defineSynchedData(SynchedEntityData.Builder entityData) {
         super.defineSynchedData(entityData);
+        entityData.define(SCRITCH, false);
 
         entityData.define(VARIANT, 1);
+    }
+
+    @Override
+    public void onSyncedDataUpdated(EntityDataAccessor<?> updatedItems) {
+        super.onSyncedDataUpdated(updatedItems);
+
+        if(updatedItems == SCRITCH){
+            if(getScritch()) {
+                scritchAnimation.start(this.tickCount);
+            }
+        }
     }
 
     @Override
     protected void addAdditionalSaveData(ValueOutput output) {
         super.addAdditionalSaveData(output);
         output.putInt("variant", this.getTypeVariant());
+        output.putInt("scritch_count", scritchCount);
     }
 
     @Override
     protected void readAdditionalSaveData(ValueInput input) {
         super.readAdditionalSaveData(input);
+
+        scritchCount = input.getIntOr("scritch_count", 0);
+        setScritch(scritchCount>0);
+
         HypsilophodonVariant variant = HypsilophodonVariant.byId(input.getInt("variant").orElse(0));
         setVariant(variant);
+    }
+
+    @Override
+    public void tick() {
+        super.tick();
+
+        if(!level().isClientSide()) {
+            if (getScritch()) {
+                if (scritchCount-- <= 0) {
+                    setScritch(false);
+                }
+            } else {
+                setScritch(true);
+                scritchCount = 160/*scritch animation length*/ + random.nextInt(500, 1000);
+            }
+        }
     }
 
     /// On Spawn ///

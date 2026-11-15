@@ -340,7 +340,7 @@ public class HypsilophodonAdultAnimations {
 		))
 		.build();
 
-	public static final AnimationDefinition scritch = AnimationDefinition.Builder.withLength(8.0F).looping()
+	public static final AnimationDefinition scritch = AnimationDefinition.Builder.withLength(8.0F)
 		.addAnimation("neck", new AnimationChannel(AnimationChannel.Targets.ROTATION,
 			new Keyframe(0.0F, KeyframeAnimations.degreeVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.LINEAR),
 			new Keyframe(0.125F, KeyframeAnimations.degreeVec(0.0F, -5.0F, 0.0F), AnimationChannel.Interpolations.LINEAR),
